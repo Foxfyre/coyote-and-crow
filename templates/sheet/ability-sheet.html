@@ -1,0 +1,52 @@
+<form class="{{cssClass}} ability-sheet" autocomplete="off">
+        <div class="sheet-title" style="margin-top: 10px;">
+            <span>Ability</span>
+        </div>
+        <div class="ability-row">
+            <label for="name">Name:</label>
+            <input class="ability-input" name="name" type="text" value="{{name}}" />
+        </div>
+        <div class="ability-row">
+            <label for="">Stat:</label>
+            <select name="data.relStat" value="{{data.relStat}}">
+                {{#select data.relStat}}
+                <option value="Agility">Agility</option>
+                <option value="Charisma">Charisma</option>
+                <option value="Endurance">Endurance</option>
+                <option value="Intelligence">Intelligence</option>
+                <option value="Perception">Perception</option>
+                <option value="Spirit">Spirit</option>
+                <option value="Strength">Strength</option>
+                <option value="Will">Will</option>
+                <option value="Wisdom">Wisdom</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="ability-row">
+            <label for="">Activation:</label>
+            <select name="data.activate" value="{{data.activate}}">
+                {{#select data.activate}}
+                <option value="primary">Primary Action</option>
+                <option value="reaction">Reaction Roll</option>
+                <option value="secondary">Secondary Action</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="ability-row">
+            <label for="data.value">Cost:</label>
+            <input class="ability-input" name="data.value" type="text" value="{{data.value}}" />
+        </div>
+        <div class="ability-row">
+            <label for="data.diceCheck">Dice Check:</label>
+            <input class="ability-input" name="data.diceCheck" type="text" value="{{data.diceCheck}}" />
+        </div>
+        <div class="ability-row">
+            <label for="data.shortDesc">Short Description:</label>
+            <input class="ability-input" name="data.shortDesc" type="text" value="{{data.shortDesc}}" />
+        </div>
+        <div class="ability-col">
+            <label for="data.description" class="ability-description">Description</label>
+            <!--editor-->
+            {{editor content=data.description target="data.description" button=true owner=owner editable=true}}
+        </div>
+</form>

@@ -1,0 +1,527 @@
+/* Global overrides */
+body {
+    background-image: url(../ui/background-image.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+/*:root {
+    --font-primary: "Quiza Pro", sans-serif;
+}*/
+
+.app {
+    background-color: whitesmoke;
+}
+
+.window-app {
+    background-color: rgb(57, 32, 91);
+    background: none;
+}
+
+.window-app .window-content {
+    background: none;
+    background-color: whitesmoke;
+}
+
+.window-app .window-header {
+    background-color: rgb(57, 32, 91);
+}
+
+img {
+    border: none;
+}
+
+input[type="text"] {
+    border: none;
+    background: rgba(57,32,91,0.20);
+    border-bottom:black 2px solid;
+}
+
+input[type="number"] {
+    border: none;
+    background: rgba(57,32,91,0.20);
+    border-bottom:black 2px solid;
+}
+
+select {
+    border: none;
+    background: rgba(57,32,91,0.20);
+    border-bottom:black 2px solid;
+}
+
+.sheet nav.sheet-tabs {
+    margin: 10px 0;
+}
+
+/* Character Sheet */
+
+.c-sheet .logo-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.c-sheet .logo-row img {
+    width: 600px;
+}
+
+.c-sheet .header-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.c-sheet .c-left-header-col {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.c-sheet .c-image {
+    width: 200px;
+}
+
+.c-sheet .c-image img {
+    display: flex;
+    width: 200px;
+    flex: 0;
+    object-fit: contain;
+    border-color: black;
+    border-width:1px;
+    border-style:solid;
+    max-width: unset;
+}
+
+.c-sheet .c-status-col {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.c-sheet .legendary-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 30px;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: medium;
+}
+
+.c-sheet .legendary-row input[type="number"] {
+    width: 65px;
+}
+
+.c-sheet .c-info-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 10px;
+    justify-content: space-between;
+}
+
+.c-sheet .info-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.c-sheet .c-info-name {
+    width: 65%;
+}
+
+.c-sheet .c-info-age {
+    width: 30%;
+}
+
+.c-sheet .c-info-archetype {
+    width: 32%;
+}
+
+.c-sheet .c-info-path {
+    display:flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    width: 32%;
+}
+
+.c-sheet .c-info-motivation {
+    width: 30%;
+}
+
+.c-sheet .c-separator {
+    margin: 10px auto;
+}
+
+.c-sheet .c-stats-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-sheet .stats-sec-row {
+    display: flex;
+    flex-direction:row;
+}
+
+.c-sheet .stats-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.c-sheet .stats-row:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.c-sheet .stats {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.c-sheet .stat-block-title {
+    width: 100%;
+    font-size: x-large;
+}
+
+.c-sheet .stat-block {
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    height: 60px;
+    border: none;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.c-sheet .stat-name {
+    line-height: 10px;
+    padding-top: 5px;
+}
+
+.c-sheet .stat-num {
+    height: 25px;
+}
+
+.c-sheet .stat-num input[type="number"] {
+    border: none;
+    background: none;
+    text-align: center;
+}
+
+.str-blue {
+    background: #d6e6f2;
+}
+
+.agi-blue {
+    background: #e0ecf5;
+}
+
+.end-blue {
+    background: #ebf3f9;
+}
+
+.int-purp {
+    background: #dddce9;
+}
+
+.per-purp {
+    background: #e5e5ed;
+}
+
+.wis-purp {
+    background: #efeef6;
+}
+
+.spi-yellow {
+    background: #fffbd7;
+}
+
+.cha-yellow {
+    background: #fffde2;
+}
+
+.wll-yellow {
+    background: #fffeec;
+}
+
+.top-left-angle {
+    border-top-left-radius: 10px;
+}
+
+.border-gradient {
+    border-bottom: solid;
+    border-image-slice: 1;
+    border-width: 3px;
+}
+
+.border-gradient-blue {
+    border-image-source: linear-gradient(to right, #438ec7, rgba(0,0,0,0));
+}
+
+.border-gradient-purple {
+    border-image-source: linear-gradient(to right, #3c2461, rgba(0,0,0,0));
+}
+
+.border-gradient-yellow {
+    border-image-source: linear-gradient(to right, #f3d597, rgba(0,0,0,0));
+}
+
+.c-sheet .skill-table-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 30px;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.c-sheet .skill-table-col {
+    padding: 2px 5px;
+    width: 100%;
+    text-align: start;
+}
+
+.c-sheet .col-rank {
+    width: 40%;
+}
+
+.c-sheet .col-total {
+    width: 35%;
+    text-align: center;
+}
+
+.c-sheet .skill-tables {
+    display: flex;
+    flex-direction: row;
+}
+
+.c-sheet .skill-table-col-1 {
+    width: 50%;
+}
+
+.c-sheet .skill-table-col-2 {
+    width: 50%;
+    border-left: rgba(0,0,0,0.2) 1px solid;
+}
+
+.c-sheet .skill-table-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 30px;
+    align-items: center;
+}
+
+.c-sheet  .skill-table-row:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.c-sheet .skill-table-rank {
+    width: 20%;
+    text-align: center;
+}
+
+ul.items {
+    list-style: none;
+    padding: 0;
+}
+
+.c-sheet .spec-table-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 30px;
+    margin: 5px 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.c-sheet .spec-table-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.c-sheet .spec-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.c-sheet .spec-items {
+    width: 100%;
+}
+
+.c-sheet .spec-table-col {
+    display: flex;
+    flex-direction: row;
+    padding: 2px 5px;
+    text-align: start;
+}
+
+.c-sheet .spec-col-20 {
+    width: 20%;
+}
+
+.c-sheet .spec-values {
+    width: 40px;
+}
+
+.c-sheet .spec-controls {
+    width: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.c-sheet .add-spec {
+    margin-top: 10px;
+}
+
+/* Specialization-sheet CSS */
+
+.spec-sheet-tables {
+    display: flex;
+    flex-direction: row;
+}
+
+.spec-sheet .spec-sheet-table-col {
+    padding: 2px 5px;
+    width: 100%;
+    text-align: start;
+}
+
+.spec-sheet .spec-table-col {
+    padding: 2px 5px;
+    width: 100%;
+    text-align: start;
+}
+
+.spec-sheet .spec-table-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 30px;
+    margin: 5px 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.spec-sheet .spec-table-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spec-sheet .spec-values {
+    width: 40%;
+}
+
+/*Ability Sheet*/
+
+.ability-sheet .sheet-title {
+    width: 100%;
+    font-size: x-large;
+}
+
+.ability-sheet {
+    min-height: 300px;
+}
+
+.ability-sheet .ability-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    margin: 10px;
+}
+
+.ability-sheet .ability-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.ability-sheet .ability-row > label {
+    width: 20%;
+}
+
+.ability-sheet .ability-input {
+    width: 75%;
+}
+
+.ability-sheet .tox.tox-tinymce {
+    min-height:100px;
+}
+
+.ability-sheet .editor {
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+}
+
+.ability-sheet .ability-description {
+    border-bottom:black 2px solid;
+}
+
+/* Character Sheet - Abilities */
+
+.c-sheet .abilities-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-sheet .ability-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-sheet .ability-section {
+    display: flex;
+    flex-direction: column;    
+}
+
+.c-sheet .ability-section-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: rgba(57, 32, 91, .2);
+    margin: 5px 0;
+    padding: 3px 10px;
+    justify-content: space-between;
+}
+
+.c-sheet .ability-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.c-sheet .ability-list-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 2px 0px;
+    background-color: rgba(57, 32, 91, .1);
+    width: 98%;
+    padding: 3px 10px;
+}

@@ -1,0 +1,82 @@
+<form class="{{cssClass}} spec-sheet" autocomplete="off">
+    <div class="stat-block-title" style="margin-top: 10px;">
+        <span>Specialized Skills</span>
+    </div>
+    <div class="spec-sheet-tables">
+        <div class="spec-sheet-table-col">
+            <div class="spec-table-header">
+                <div class="spec-table-col">
+                    <span>Specialization</span>
+                </div>
+                <div class="spec-table-col">
+                    <span>General Skill</span>
+                </div>
+                <div class="spec-table-col">
+                    <span>Stat</span>
+                </div>
+                <div class="spec-table-col spec-values">
+                    <span>Rank</span>
+                </div>
+            </div>
+            <div class="spec-table-row">
+                <div class="spec-table-col">
+                    <input type="text" name="name" value="{{name}}" />
+                </div>
+                <div class="spec-table-col">
+                    <select name="data.skill" value="{{data.skill}}">
+                        {{#select data.skill}}
+                        <option value="Art">Art</option>
+                        <option value="Athletics">Athletics</option>
+                        <option value="Ceremony">Ceremony</option>
+                        <option value="Charm">Charm</option>
+                        <option value="Coercion">Coercion</option>
+                        <option value="Computers">Computers</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Crafting">Crafting</option>
+                        <option value="Cybernetics">Cybernetics</option>
+                        <option value="Deception">Deception</option>
+                        <option value="Farming">Farming</option>
+                        <option value="Herbalism">Herbalism</option>
+                        <option value="Husbandry">Husbandry</option>
+                        <option value="Investigation">Investigation</option>
+                        <option value="Knowledge">Knowledge</option>
+                        <option value="Language">Language</option>
+                        <option value="Medicine">Medicine</option>
+                        <option value="Melee Weapons">Melee Weapons</option>
+                        <option value="Music">Music</option>
+                        <option value="Performance">Performance</option>
+                        <option value="Piloting">Piloting</option>
+                        <option value="Ranged Weapons">Ranged Weapons</option>
+                        <option value="Science">Science</option>
+                        <option value="Skulduggery">Skuldugger</option>
+                        <option value="Stealth">Stealth</option>
+                        <option value="Survival">Survival</option>
+                        <option value="Tracking">Tracking</option>
+                        <option value="Unarmed Combat">Unarmed Combat</option>
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="spec-table-col">
+                    <select name="data.stat" value="{{data.stat}}">
+                        {{#select data.stat}}
+                        <option value="str" stat-name="strength">Strength</option>
+                        <option value="agi" stat-name="agility">Agility</option>
+                        <option value="end" stat-name="endurance">Endurance</option>
+                        <option value="int" stat-name="intelligence">Intelligence</option>
+                        <option value="per" stat-name="perception">Perception</option>
+                        <option value="wis" stat-name="wisdom">Wisdom</option>
+                        <option value="spi" stat-name="spirit">Spirit</option>
+                        <option value="cha" stat-name="charisma">Charisma</option>
+                        <option value="wll" stat-name="will">Will</option>
+                        {{/select}}
+                    </select>
+                </div>
+                <div class="spec-table-col spec-values">
+                    <input class="spec-table-rank" type="number" name="data.rank" value="{{data.rank}}" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>

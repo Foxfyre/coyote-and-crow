@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Quiza Pro';
+    src: url('QuizaPro-Regular.eot');
+    src: local('Quiza Pro Regular'), local('QuizaPro-Regular'),
+        url('QuizaPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('QuizaPro-Regular.woff2') format('woff2'),
+        url('QuizaPro-Regular.woff') format('woff'),
+        url('QuizaPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Quiza Pro';
+    src: url('QuizaPro-Italic.eot');
+    src: local('Quiza Pro Italic'), local('QuizaPro-Italic'),
+        url('QuizaPro-Italic.eot?#iefix') format('embedded-opentype'),
+        url('QuizaPro-Italic.woff2') format('woff2'),
+        url('QuizaPro-Italic.woff') format('woff'),
+        url('QuizaPro-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+

@@ -2,145 +2,313 @@
     "Actor": {
         "types": [
             "character",
-            "npc",
-            "ship"
+            "npc"
         ],
         "character": {
             "info": {
-                "name": "",
-                "origin": "",
-                "background": "",
-                "social-class": "",
-                "profession": "",
-                "drive": "",
-                "income": 0,
-                "equipment": ""
-            },
-            "attributes": {
-                "speed": {
-                    "value": 0,
-                    "modified": 0,
-                    "label": "Speed",
-                    "type": "number"
+                "age": {
+                    "value": "",
+                    "name": "Age"
                 },
-                "defense": {
-                    "value": 0,
-                    "modified": 0,
-                    "bonus": 0,
-                    "label": "Defense",
-                    "type": "number"
+                "archetype": {
+                    "value": "",
+                    "name": "Archetype"
                 },
-                "toughness": {
-                    "value": 0,
-                    "modified": 0,
-                    "label": "Toughness",
-                    "type": "number"
+                "path": {
+                    "value": "",
+                    "name": "Path"
                 },
-                "armor": {
-                    "value": 0,
-                    "modified": 0,
-                    "label": "Armor",
-                    "type": "number"
+                "motivation": {
+                    "value": "",
+                    "name": "Motivation"
                 },
-                "penalty": {
-                    "value": 0,
-                    "modified": 0,
-                    "label": "Penalty",
-                    "type": "number"
-                },
-                "move": {
-                    "value": 0,
-                    "modified": 0,
-                    "label": "Move",
-                    "type": "number"
-                },
-                "run": {
-                    "value": 0,
-                    "modified": 0,
-                    "label": "Run",
-                    "type": "number"
-                },
-                "level": {
-                    "value": 1,
-                    "modified": 1,
-                    "label": "Level",
-                    "type": "number",
-                    "bonus": false
-                },
-                "fortune": {
-                    "value": 0,
-                    "modified": 0,
-                    "max": 0,
-                    "label": "Fortune",
-                    "type": "number"
-                },
-                "stuntpoints": {
-                    "value": 0,
-                    "modified": 0,
-                    "thisround": false
+                "legendary": {
+                    "ranks": 0,
+                    "name": "Legendary Ranks"
                 }
             },
-            "abilities": {
-                "accuracy": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false,
-                    "useFocusPlus": false
+            "stats": {
+                "str": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Strength",
+                    "label": "STAT.Strength"
                 },
-                "communication": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false,
-                    "useFocusPlus": false
+                "agi": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Agility",
+                    "label": "STAT.Agility"
                 },
-                "constitution": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false,
-                    "useFocusPlus": false
+                "end": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Endurance",
+                    "label": "STAT.Endurance"
                 },
-                "dexterity": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false,
-                    "useFocusPlus": false
+                "int": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Intelligence",
+                    "label": "STAT.Intelligence"
                 },
-                "fighting": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false,
-                    "useFocusPlus": false
+                "per": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Perception",
+                    "label": "STAT.Perception"
                 },
-                "intelligence": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false,
-                    "useFocusPlus": false
+                "wis": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Wisdom",
+                    "label": "STAT.Wisdom"
                 },
-                "perception": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false,
-                    "useFocusPlus": false
+                "spi": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Spirit",
+                    "label": "STAT.Spirit"
                 },
-                "strength": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false,
-                    "useFocusPlus": false
+                "cha": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Charisma",
+                    "label": "STAT.Charisma"
                 },
-                "willpower": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false,
-                    "useFocusPlus": false
+                "wll": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Will",
+                    "label": "STAT.Will"
+                }
+            },
+            "attributes": {
+                "body": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Body (Current)"
+                },
+                "mind": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Mind (Current)"
+                },
+                "soul": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Soul (Current)"
+                },
+                "init": {
+                    "score": 0,
+                    "name": "Initiative Score"
+                }
+            },
+            "skills": {
+                "art": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.art",
+                    "name": "Art",
+                    "total": 0
+                },
+                "athletics": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.athletics",
+                    "name": "Athletics",
+                    "total": 0
+                },
+                "ceremony": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.ceremony",
+                    "name": "Ceremony",
+                    "total": 0
+                },
+                "charm": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.charm",
+                    "name": "Charm",
+                    "total": 0
+                },
+                "coercion": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.coercion",
+                    "name": "Coercion",
+                    "total": 0
+                },
+                "computers": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.computers",
+                    "name": "Computers",
+                    "total": 0
+                },
+                "cooking": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.cooking",
+                    "name": "Cooking",
+                    "total": 0
+                },
+                "crafting": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.crafting",
+                    "name": "Crafting",
+                    "total": 0
+                },
+                "cybernetics": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.cybernetics",
+                    "name": "Cybernetics",
+                    "total": 0
+                },
+                "deception": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.deception",
+                    "name": "Deception",
+                    "total": 0
+                },
+                "farming": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.farming",
+                    "name": "farming",
+                    "total": 0
+                },
+                "herbalism": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.herbalism",
+                    "name": "Herbalism",
+                    "total": 0
+                },
+                "husbandry": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.husbandry",
+                    "name": "Husbandry",
+                    "total": 0
+                },
+                "investigation": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.investigation",
+                    "name": "Investigation",
+                    "total": 0
+                },
+                "knowledge": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.knowledge",
+                    "name": "Knowledge",
+                    "total": 0
+                },
+                "language": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.language",
+                    "name": "Language",
+                    "total": 0
+                },
+                "medicine": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.medicine",
+                    "name": "Medicine",
+                    "total": 0
+                },
+                "melee": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.melee",
+                    "name": "Melee Weapons",
+                    "total": 0
+                },
+                "music": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.music",
+                    "name": "Music",
+                    "total": 0
+                },
+                "performance": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.performance",
+                    "name": "Performance",
+                    "total": 0
+                },
+                "piloting": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.piloting",
+                    "name": "Piloting",
+                    "total": 0
+                },
+                "ranged": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.ranged",
+                    "name": "Ranged Weapons",
+                    "total": 0
+                },
+                "science": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.science",
+                    "name": "Science",
+                    "total": 0
+                },
+                "skulduggery": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.skulduggery",
+                    "name": "Skulduggery",
+                    "total": 0
+                },
+                "stealth": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.stealth",
+                    "name": "Stealth",
+                    "total": 0
+                },
+                "survival": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.survival",
+                    "name": "Survival",
+                    "total": 0
+                },
+                "tracking": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.tracking",
+                    "name": "Tracking",
+                    "total": 0
+                },
+                "unarmed": {
+                    "stat": "",
+                    "rank": 0,
+                    "label": "SKILL.unarmed",
+                    "name": "Unarmed Combat",
+                    "total": 0
                 }
             },
             "bio": {
-                "appearance": "",
-                "relationships": "",
-                "goals": "",
-                "notes": ""
+                "identifiers": "",
+                "background": "",
+                "gifts-burdens": "",
+                "notes": "",
+                "short-goals": "",
+                "long-goal": ""
             },
             "templates": [
                 "base"
@@ -329,12 +497,30 @@
     },
     "Item": {
         "types": [
-            "talent",
-            "stunt",
+            "specialization",
+            "ability",
             "weapon",
             "armor",
             "shield"
         ],
+        "specialization": {
+            "label": "SPEC.",
+            "skill": "",
+            "stat": "",
+            "rank": 0,
+            "total": 0,
+            "statName": ""
+        },
+        "ability": {
+            "name": "",
+            "label": "ABILITY.",
+            "value": "",
+            "relStat": "",
+            "activate": "",
+            "diceCheck": "",
+            "description": "",
+            "shortDesc": ""
+        },
         "talent": {
             "highest": "",
             "requirement": "",

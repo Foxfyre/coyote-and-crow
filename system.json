@@ -4,7 +4,7 @@
   "description": "The official system for Coyote And Crow",
   "version": "0.0.1",
   "minimumCoreVersion": "0.8.7",
-  "compatibleCoreVersion": "0.9.0",
+  "compatibleCoreVersion": "9",
   "author": "Charlotte Hamilton",
   "authors": [
     {
@@ -17,11 +17,11 @@
     }
   ],
   "esmodules": [
-    "module/cnc.js",
-    "scripts/scripts.js"
+    "coyote-and-crow.js"
   ],
   "styles": [
-    "styles/cnc.css"
+    "styles/cnc.css",
+    "styles/fonts.css"
   ],
   "scripts": [],
   "packs": [],

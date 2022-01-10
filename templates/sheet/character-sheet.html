@@ -1,0 +1,86 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="c-sheet">
+        <div class="logo-row">
+            <img src="systems/coyote-and-crow/ui/page-header.png">
+        </div>
+
+        <div class="header-section">
+            <!-- This column contains the image, Legendary Ranks, Initiative Score And States & Effects -->
+            <div class="c-left-header-col">
+                <div class="c-image">
+                    <img class="c-image-small" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"
+                        name="actor.img" />
+                </div>
+                <div class="c-status-col">
+                    <div class="legendary-row">
+                        <label for="data.info.legendary.ranks">Legendary Ranks:</label>
+                        <input class="number-input" name="data.info.legendary.ranks" type="number" value="{{info.legendary.ranks}}" />
+                    </div>
+                    <div class="legendary-row">
+                        <label for="data.attributes.init.score">Initiative Score:</label>
+                        <input class="number-input" name="data.attributes.init.score" type="number" value="{{attributes.init.score}}" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="c-info-col">
+                <div class="info-row">
+                    <div class="c-info-name">
+                        <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
+                    </div>
+                    <div class="c-info-age">
+                        <input name="data.info.age.value" type="text" value="{{info.age.value}}" placeholder="Age" />
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="c-info-archetype">
+                        <input name="data.info.archetype.value" type="text" value="{{info.archetype.value}}"
+                            placeholder="{{localize 'PLAYER.archetype'}}" />
+                    </div>
+                    <div class="c-info-path">
+                        <input name="data.info.path.value" type="text" value="{{info.path.value}}"
+                            placeholder="Path Of The..." />
+                    </div>
+                    <div class="c-info-motivation">
+                        <input name="data.info.motivation.value" type="text" value="{{info.motivation.value}}"
+                            placeholder="Motivation" />
+                    </div>
+                </div>
+                <div class="c-separator">
+                    <img src="systems/coyote-and-crow/ui/divider.png">
+                </div>
+                <div class="c-stats-section">
+                    {{> systems/coyote-and-crow/templates/sheet/partial/player-stats.html}}
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <!--Tab Section -->
+
+        <nav class="sheet-tabs tabs" data-group="primary">
+            <a class="item" data-tab="summary">{{localize "TAB.summary"}}</a>
+            <a class="item" data-tab="skills">{{localize "TAB.skills"}}</a>
+            <a class="item" data-tab="abilities">{{localize "TAB.abilities"}}</a>
+            <a class="item" data-tab="belongings">{{localize "TAB.belongings"}}</a>
+        </nav>
+
+        <div class="content-section">
+            <div class="tab" data-group="primary" data-tab="summary">
+                {{> systems/coyote-and-crow/templates/sheet/partial/player-summary.html}}
+            </div>
+
+            <div class="tab skills" data-group="primary" data-tab="skills">
+                {{> systems/coyote-and-crow/templates/sheet/partial/player-skills.html}}
+            </div>
+
+            <div class="tab abilities" data-group="primary" data-tab="abilities">
+                {{> systems/coyote-and-crow/templates/sheet/partial/player-abilities.html}}
+            </div>
+        </div>
+
+    </div>
+</form>

@@ -1,19 +1,22 @@
-import { cncActorSheet } from "./actor-sheet.js";
-/*import { coyote-and-crowItemSheet } from "./item-sheet.js";
-import { coyote-and-crowItem } from "./item.js";
-import { coyote-and-crowActor } from "./actor.js";
+import { cncActorSheet } from "./scripts/actor/sheet/actor-sheet.js";
+import { cncActor } from "./scripts/actor/actor.js";
+import { cncItemSheet } from "./scripts/items/sheet/item-sheet.js";
+/*import { coyote-and-crowItem } from "./item.js";
+
 import { coyote-and-crowNPCSheet } from "./npc-sheet.js";
 import { coyote-and-crowShipSheet } from "./ship-sheet.js";*/
-import { registerDiceSoNice } from "./hooks/dice-so-nice.js";
+//import { registerDiceSoNice } from "./hooks/dice-so-nice.js";
+
+import { initializeHandlebars } from "./scripts/system/handlebars.js";
 
 Hooks.once("init", async function () {
   console.log(`Initializing A Template`);
 
   // Define custom Entity classes
   CONFIG.Actor.documentClass = cncActor;
-  CONFIG.Item.documentClass = cncItem;
+  //CONFIG.Item.documentClass = cncItem;
   CONFIG.Combat.initiative = {
-    formula: "3d6",
+    formula: "1d12",
     decimals: 2
   }
 
@@ -22,18 +25,16 @@ Hooks.once("init", async function () {
     types: ["character"],
     makeDefault: true
   });
-  Actors.registerSheet("coyote-and-crow", cncNPCSheet, {
+  /*Actors.registerSheet("coyote-and-crow", cncNPCSheet, {
     types: ["npc"],
     makeDefault: true
-  });
-  Actors.registerSheet("coyote-and-crow", cncShipSheet, {
-    types: ["ship"],
-    makeDefault: true
-  })
+  });*/
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("coyote-and-crow", cncItemSheet, {
     makeDefault: true
   });
+
+  initializeHandlebars();
 
   Handlebars.registerHelper('concat', function () {
     let arg = Array.prototype.slice.call(arguments, 0);
@@ -70,9 +71,9 @@ Hooks.once("init", async function () {
   });
 });
 
-Hooks.once("diceSoNiceReady", (dice3d) => {
+/*Hooks.once("diceSoNiceReady", (dice3d) => {
   registerDiceSoNice(dice3d);
-});
+});*/
 
 Hooks.once("init", () => {
   const debouncedReload = foundry.utils.debounce(() => {
