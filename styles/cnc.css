@@ -525,3 +525,197 @@ ul.items {
     width: 98%;
     padding: 3px 10px;
 }
+
+/*Item Sheet CSS*/
+
+.item-sheet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 450px;
+    height: 100%;
+}
+
+.sheet-title {
+    width: 100%;
+    font-size: x-large;
+}
+
+.sheet-title-h2 {
+    font-size: large;
+    margin-left: 5px;
+}
+
+.item-sheet .item-col-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.item-sheet .item-col-base {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    min-width: 50%;
+}
+
+.item-sheet .item-col-img {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.item-sheet .item-image {
+    width: 125px;
+}
+
+.item-sheet .item-img img {
+    display: flex;
+    width: 125px;
+    flex: 0;
+    object-fit: contain;
+    border-color: black;
+    border-width:1px;
+    border-style:solid;
+    max-width: unset;
+}
+
+.item-col-img .item-image-small {
+    width: 150px;
+}
+
+.item-sheet .item-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+
+.item-sheet img {
+    width: 150px;
+    height: 150px;
+}
+
+.item-sheet .item-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-sheet .row-50 {
+    width: 49%;
+}
+
+.row-60 {
+    width: 59%;
+}
+
+.row-30 {
+    width: 30%;
+}
+
+.item-sheet .item-num-input {
+    width: 40px;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.item-sheet .item-label {
+    margin-right: 5px;
+}
+
+.item-sheet .item-stat-mod {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.item-sheet .item-stat-mod-label {
+    align-items:center;
+}
+
+.item-sheet .item-stat-mod-value {
+    width: 30px;
+}
+
+.item-sheet .item-mods {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 5px;
+}
+
+.item-sheet .item-sections {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.item-sheet .item-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 5px 0 0 5px;
+}
+
+.item-sheet .item-section input[type="number"] {
+    width: 30px;
+    text-align:center;
+}
+
+.item-sheet .pd-stat {
+width: 100px;
+}
+
+.item-sheet .pd-mod {
+    margin-left: 5px;
+}
+
+/*Belongings*/
+
+.c-sheet .belongings-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-sheet .belonging-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-sheet .belonging-section {
+    display: flex;
+    flex-direction: column;    
+}
+
+/*Bio & Notes*/
+
+.c-sheet .bio-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-sheet .bio-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.c-sheet .bio-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.c-sheet .short-goal-input {
+    width: 45%;
+}
+
+.c-sheet .item-label {
+    margin-bottom: 3px;
+}

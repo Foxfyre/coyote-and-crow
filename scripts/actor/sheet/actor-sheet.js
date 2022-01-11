@@ -5,7 +5,8 @@ export class cncActorSheet extends ActorSheet {
             classes: ["sheet", "actor"],
             height: 750,
             width: 700,
-            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".content-section", initial: "abilities" }],
+            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".content-section", initial: "abilities" },
+            { navSelector: ".sheet-sec-tabs", contentSelector: ".content-section-sec", initial: "gifts" }],
             dragDrop: [
                 { dragSelector: ".item-list .item", dropSelector: null }
             ]
@@ -88,7 +89,7 @@ export class cncActorSheet extends ActorSheet {
             }
 
             v.data.total = v.data.statRank + v.data.skillRank + v.data.rank;
-            
+
             this.actor.updateEmbeddedDocuments("Item", [v])
         }
 

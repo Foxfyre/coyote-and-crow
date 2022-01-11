@@ -1,0 +1,94 @@
+<div class="belongings-page">
+    <div class="stat-block-title" style="margin-top: 10px;">
+        <span>Belongings</span>
+    </div>
+    <div class="belonging-block">
+        <!--items-->
+        <div class="belonging-section">
+            <div class="ability-section-header">
+                <span>{{localize "ITEM.Weapons"}}</span>
+                <a class="item-control item-create" data-type="item" title='{{localize "ITEM.createItem"}}'><i
+                        class="fas fa-plus"></i>
+                </a>
+            </div>
+            <ul class="ability-list items">
+                {{#each items as |i key|}}
+                {{#ifCond "weapon" '===' i.data.type}}
+                <li class="ability-list-item item" data-item-id="{{i._id}}">
+                    <div class="ability-list-name">
+                        <span>{{name}}</span>
+                    </div>
+                    <div class="ability-short-desc">
+                        <span>{{i.data.shortDesc}}</span>
+                    </div>
+                    <div class="item-controls flexrow spec-controls">
+                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
+                                class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
+                                class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/ifCond}}
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="belonging-section">
+            <div class="ability-section-header">
+                <span>{{localize "ITEM.ArmourClothing"}}</span>
+                <a class="item-control item-create" data-type="item" title='{{localize "ITEM.createItem"}}'><i
+                        class="fas fa-plus"></i>
+                </a>
+            </div>
+            <ul class="ability-list items">
+                {{#each items as |i key|}}
+                {{#ifCond "armor" '===' i.data.type}}
+                <li class="ability-list-item item" data-item-id="{{i._id}}">
+                    <div class="ability-list-name">
+                        <span>{{name}}</span>
+                    </div>
+                    <div class="ability-short-desc">
+                        <span>{{i.data.shortDesc}}</span>
+                    </div>
+                    <div class="item-controls flexrow spec-controls">
+                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
+                                class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
+                                class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/ifCond}}
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="belonging-section">
+            <div class="ability-section-header">
+                <span>{{localize "ITEM.Items"}}</span>
+                <a class="item-control item-create" data-type="item" title='{{localize "ITEM.createItem"}}'><i
+                        class="fas fa-plus"></i>
+                </a>
+            </div>
+            <ul class="ability-list items">
+                {{#each items as |i key|}}
+                {{#ifCond "item" '===' i.data.type}}
+                <li class="ability-list-item item" data-item-id="{{i._id}}">
+                    <div class="ability-list-name">
+                        <span>{{name}}</span>
+                    </div>
+                    <div class="ability-short-desc">
+                        <span>{{i.data.shortDesc}}</span>
+                    </div>
+                    <div class="item-controls flexrow spec-controls">
+                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
+                                class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
+                                class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/ifCond}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>

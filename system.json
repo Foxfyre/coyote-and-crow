@@ -44,6 +44,6 @@
   "secondaryTokenAttribute": "resource2",
   "url": "https://github.com/Foxfyre/coyote-and-crow",
   "manifest": "https://raw.githubusercontent.com/Foxfyre/coyote-and-crow/main/system.json",
-  "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/v0.7.2/coyote-and-crow.zip",
+  "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/v0.0.1/coyote-and-crow.zip",
   "license": "LICENSE.txt"
 }

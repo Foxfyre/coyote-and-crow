@@ -14,11 +14,13 @@
                 <div class="c-status-col">
                     <div class="legendary-row">
                         <label for="data.info.legendary.ranks">Legendary Ranks:</label>
-                        <input class="number-input" name="data.info.legendary.ranks" type="number" value="{{info.legendary.ranks}}" />
+                        <input class="number-input" name="data.info.legendary.ranks" type="number"
+                            value="{{info.legendary.ranks}}" />
                     </div>
                     <div class="legendary-row">
                         <label for="data.attributes.init.score">Initiative Score:</label>
-                        <input class="number-input" name="data.attributes.init.score" type="number" value="{{attributes.init.score}}" />
+                        <input class="number-input" name="data.attributes.init.score" type="number"
+                            value="{{attributes.init.score}}" />
                     </div>
                 </div>
             </div>
@@ -66,11 +68,13 @@
             <a class="item" data-tab="skills">{{localize "TAB.skills"}}</a>
             <a class="item" data-tab="abilities">{{localize "TAB.abilities"}}</a>
             <a class="item" data-tab="belongings">{{localize "TAB.belongings"}}</a>
+            <a class="item" data-tab="bio">{{localize "TAB.Notes"}}</a>
         </nav>
 
         <div class="content-section">
-            <div class="tab" data-group="primary" data-tab="summary">
+            <div class="tab summary" data-group="primary" data-tab="summary">
                 {{> systems/coyote-and-crow/templates/sheet/partial/player-summary.html}}
+                <span>boop</span>
             </div>
 
             <div class="tab skills" data-group="primary" data-tab="skills">
@@ -79,6 +83,14 @@
 
             <div class="tab abilities" data-group="primary" data-tab="abilities">
                 {{> systems/coyote-and-crow/templates/sheet/partial/player-abilities.html}}
+            </div>
+
+            <div class="tab belongings" data-group="primary" data-tab="belongings">
+                {{> systems/coyote-and-crow/templates/sheet/partial/player-belongings.html}}
+            </div>
+
+            <div class="tab bio" data-group="primary" data-tab="bio">
+                {{> systems/coyote-and-crow/templates/sheet/partial/player-bio.html}}
             </div>
         </div>
 

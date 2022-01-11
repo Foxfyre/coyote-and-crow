@@ -501,8 +501,80 @@
             "ability",
             "weapon",
             "armor",
-            "shield"
+            "item"
         ],
+        "templates": {
+            "baseItem": {
+                "name": "",
+                "label": "",
+                "costRank": 0,
+                "type": "",
+                "details": "",
+                "description": "",
+                "equipped": false,
+                "traits": ""
+            },
+            "modifier": {
+                "modifier": {
+                    "pd": {
+                        "value": 0
+                    },
+                    "stat": {
+                        "agi": {
+                            "value": 0,
+                            "statName": "STAT.Agility"
+                        },
+                        "cha": {
+                            "value": 0,
+                            "statName": "STAT.Charisma"
+                        },
+                        "end": {
+                            "value": 0,
+                            "statName": "STAT.Endurance"
+                        },
+                        "int": {
+                            "value": 0,
+                            "statName": "STAT.Intelligence"
+                        },
+                        "per": {
+                            "value": 0,
+                            "statName": "STAT.Perception"
+                        },
+                        "spi": {
+                            "value": 0,
+                            "statName": "STAT.Spirit"
+                        },
+                        "str": {
+                            "value": 0,
+                            "statName": "STAT.Strength"
+                        },
+                        "wis": {
+                            "value": 0,
+                            "statName": "STAT.Wisdom"
+                        },
+                        "wll": {
+                            "value": 0,
+                            "statName": "STAT.will"
+                        }
+                    },
+                    "sn": {
+                        "value": 0,
+                        "skillName": ""
+                    },
+                    "sn1": {
+                        "value": 0,
+                        "skillName": ""
+                    },
+                    "sn2": {
+                        "value": 0,
+                        "skillName": ""
+                    },
+                    "dp": {
+                        "value": 0
+                    }
+                }
+            }
+        },
         "specialization": {
             "label": "SPEC.",
             "skill": "",
@@ -521,75 +593,29 @@
             "description": "",
             "shortDesc": ""
         },
-        "talent": {
-            "highest": "",
-            "requirement": "",
-            "specialization": false,
-            "ranks": {
-                "novice": {
-                    "label": "novice",
-                    "effect": "",
-                    "active": false
-                },
-                "expert": {
-                    "label": "expert",
-                    "effect": "",
-                    "active": false
-                },
-                "master": {
-                    "label": "master",
-                    "effect": "",
-                    "active": false
-                }
-            }
-        },
-        "stunt": {
-            "type": "",
-            "name": "",
-            "cost": "",
-            "repeatable": false,
-            "description": ""
-        },
         "weapon": {
-            "name": "",
-            "type": "",
-            "group": "",
-            "attack": "",
-            "npcattack": "",
-            "usefocus": false,
-            "usefocusplus": false,
-            "damage": 0,
-            "hasBonusDamage": false,
-            "bonusDamage": 0,
-            "rangemin": 0,
-            "rangemax": 0,
-            "range": "",
-            "cost": 0,
-            "equipped": false,
-            "description": "",
-            "modifier": "",
-            "bonusModifier": "",
-            "tohitabil": "",
-            "quality": "",
-            "manualDamage": 0,
-            "dieFaces": "6"
+            "templates": [
+                "baseItem",
+                "modifer"
+            ],
+            "range": {
+                "short": "",
+                "medium": "",
+                "long": ""
+            },
+            "weaponDamage": 0
         },
         "armor": {
-            "name": "",
-            "type": "",
-            "bonus": 0,
-            "penalty": 0,
-            "cost": 0,
-            "defense": 0,
-            "equip": false,
-            "description": ""
+            "templates": [
+                "baseItem",
+                "modifier"
+            ]
         },
-        "shield": {
-            "name": "",
-            "type": "",
-            "bonus": 0,
-            "cost": 0,
-            "equip": false
+        "item": {
+            "templates": [
+                "baseItem",
+                "modifier"
+            ]
         }
     }
 }
