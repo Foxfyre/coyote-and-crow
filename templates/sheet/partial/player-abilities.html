@@ -3,267 +3,41 @@
         <span>Abilities</span>
     </div>
     <div class="ability-block">
-        <!--Agility-->
+
+        {{#each abilities as |ability key|}}
+
         <div class="ability-section">
             <div class="ability-section-header">
-                <span>{{localize "STAT.Agility"}}</span>
+                <span>{{key}}</span>
                 <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
                     title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
                 </a>
             </div>
-            <ul class="ability-list items">
-                {{#each abilities as |ability key|}}
-                {{#ifCond "Agility" '===' ability.data.relStat}}
-                <li class="ability-list-item item" data-item-id="{{ability._id}}">
-                    <div class="ability-list-name">
-                        <span>{{name}}</span>
-                    </div>
-                    <div class="ability-short-desc">
-                        <span>{{ability.data.shortDesc}}</span>
-                    </div>
-                    <div class="item-controls flexrow spec-controls">
-                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/ifCond}}
-                {{/each}}
-            </ul>
         </div>
 
-        <!--Charisma-->
-        <div class="ability-section">
-            <div class="ability-section-header">
-                <span>{{localize "STAT.Charisma"}}</span>
-                <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
-                    title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
-                </a>
-            </div>
-            <ul class="ability-list items">
-                {{#each abilities as |ability key|}}
-                {{#ifCond "Charisma" '===' ability.data.relStat}}
-                <li class="ability-list-item item" data-item-id="{{ability._id}}">
-                    <div class="ability-list-name">
-                        <span>{{name}}</span>
-                    </div>
-                    <div class="ability-short-desc">
-                        <span>{{ability.data.shortDesc}}</span>
-                    </div>
-                    <div class="item-controls flexrow spec-controls">
-                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/ifCond}}
-                {{/each}}
-            </ul>
-        </div>
-        <!--Endurance-->
-        <div class="ability-section">
-            <div class="ability-section-header">
-                <span>{{localize "STAT.Endurance"}}</span>
-                <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
-                    title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
-                </a>
-            </div>
-            <ul class="ability-list items">
-                {{#each abilities as |ability key|}}
-                {{#ifCond "Endurance" '===' ability.data.relStat}}
-                <li class="ability-list-item item" data-item-id="{{ability._id}}">
-                    <div class="ability-list-name">
-                        <span>{{name}}</span>
-                    </div>
-                    <div class="ability-short-desc">
-                        <span>{{ability.data.shortDesc}}</span>
-                    </div>
-                    <div class="item-controls flexrow spec-controls">
-                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/ifCond}}
-                {{/each}}
-            </ul>
-        </div>
-        <!--Intelligence-->
-        <div class="ability-section">
-            <div class="ability-section-header">
-                <span>{{localize "STAT.Intelligence"}}</span>
-                <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
-                    title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
-                </a>
-            </div>
-            <ul class="ability-list items">
-                {{#each abilities as |ability key|}}
-                {{#ifCond "Intelligence" '===' ability.data.relStat}}
-                <li class="ability-list-item item" data-item-id="{{ability._id}}">
-                    <div class="ability-list-name">
-                        <span>{{name}}</span>
-                    </div>
-                    <div class="ability-short-desc">
-                        <span>{{ability.data.shortDesc}}</span>
-                    </div>
-                    <div class="item-controls flexrow spec-controls">
-                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/ifCond}}
-                {{/each}}
-            </ul>
-        </div>
-        <!--Perception-->
-        <div class="ability-section">
-            <div class="ability-section-header">
-                <span>{{localize "STAT.Perception"}}</span>
-                <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
-                    title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
-                </a>
-            </div>
-            <ul class="ability-list items">
-                {{#each abilities as |ability key|}}
-                {{#ifCond "Perception" '===' ability.data.relStat}}
-                <li class="ability-list-item item" data-item-id="{{ability._id}}">
-                    <div class="ability-list-name">
-                        <span>{{name}}</span>
-                    </div>
-                    <div class="ability-short-desc">
-                        <span>{{ability.data.shortDesc}}</span>
-                    </div>
-                    <div class="item-controls flexrow spec-controls">
-                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/ifCond}}
-                {{/each}}
-            </ul>
-        </div>
-        <!--Spirit-->
-        <div class="ability-section">
-            <div class="ability-section-header">
-                <span>{{localize "STAT.Spirit"}}</span>
-                <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
-                    title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
-                </a>
-            </div>
-            <ul class="ability-list items">
-                {{#each abilities as |ability key|}}
-                {{#ifCond "Spirit" '===' ability.data.relStat}}
-                <li class="ability-list-item item" data-item-id="{{ability._id}}">
-                    <div class="ability-list-name">
-                        <span>{{name}}</span>
-                    </div>
-                    <div class="ability-short-desc">
-                        <span>{{ability.data.shortDesc}}</span>
-                    </div>
-                    <div class="item-controls flexrow spec-controls">
-                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/ifCond}}
-                {{/each}}
-            </ul>
-        </div>
-        <!--Strength-->
-        <div class="ability-section">
-            <div class="ability-section-header">
-                <span>{{localize "STAT.Strength"}}</span>
-                <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
-                    title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
-                </a>
-            </div>
-            <ul class="ability-list items">
-                {{#each abilities as |ability key|}}
-                {{#ifCond "Strength" '===' ability.data.relStat}}
-                <li class="ability-list-item item" data-item-id="{{ability._id}}">
-                    <div class="ability-list-name">
-                        <span>{{name}}</span>
-                    </div>
-                    <div class="ability-short-desc">
-                        <span>{{ability.data.shortDesc}}</span>
-                    </div>
-                    <div class="item-controls flexrow spec-controls">
-                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/ifCond}}
-                {{/each}}
-            </ul>
-        </div>
-        <!--Will-->
-        <div class="ability-section">
-            <div class="ability-section-header">
-                <span>{{localize "STAT.Will"}}</span>
-                <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
-                    title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
-                </a>
-            </div>
-            <ul class="ability-list items">
-                {{#each abilities as |ability key|}}
-                {{#ifCond "Will" '===' ability.data.relStat}}
-                <li class="ability-list-item item" data-item-id="{{ability._id}}">
-                    <div class="ability-list-name">
-                        <span>{{name}}</span>
-                    </div>
-                    <div class="ability-short-desc">
-                        <span>{{ability.data.shortDesc}}</span>
-                    </div>
-                    <div class="item-controls flexrow spec-controls">
-                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/ifCond}}
-                {{/each}}
-            </ul>
-        </div>
-        <!--Wisdom-->
-        <div class="ability-section">
-            <div class="ability-section-header">
-                <span>{{localize "STAT.Wisdom"}}</span>
-                <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
-                    title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
-                </a>
-            </div>
-            <ul class="ability-list items">
-                {{#each abilities as |ability key|}}
-                {{#ifCond "Wisdom" '===' ability.data.relStat}}
-                <li class="ability-list-item item" data-item-id="{{ability._id}}">
-                    <div class="ability-list-name">
-                        <span>{{name}}</span>
-                    </div>
-                    <div class="ability-short-desc">
-                        <span>{{ability.data.shortDesc}}</span>
-                    </div>
-                    <div class="item-controls flexrow spec-controls">
-                        <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                                class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-                {{/ifCond}}
-                {{/each}}
-            </ul>
-        </div>
+        <ul class="ability-list items">
+
+            {{#each ability as |ability key|}}
+            
+            <li class="ability-list-item item" data-item-id="{{ability._id}}">
+                <div class="ability-list-name">
+                    <span>{{name}}</span>
+                </div>
+                <div class="ability-short-desc">
+                    <span>{{ability.data.shortDesc}}</span>
+                </div>
+                <div class="item-controls flexrow spec-controls">
+                    <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
+                            class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
+                            class="fas fa-trash"></i></a>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+        {{/each}}
+
+
+        
     </div>
 </div>

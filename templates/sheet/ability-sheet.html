@@ -1,13 +1,14 @@
 <form class="{{cssClass}} ability-sheet" autocomplete="off">
         <div class="sheet-title" style="margin-top: 10px;">
             <span>Ability</span>
-        </div>
+        </div> 
         <div class="ability-row">
             <label for="name">Name:</label>
             <input class="ability-input" name="name" type="text" value="{{name}}" />
         </div>
         <div class="ability-row">
             <label for="">Stat:</label>
+            {{log data}}
             <select name="data.relStat" value="{{data.relStat}}">
                 {{#select data.relStat}}
                 <option value="Agility">Agility</option>

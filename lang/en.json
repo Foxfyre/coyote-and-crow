@@ -4,11 +4,15 @@
     "PLAYER.Background": "Background",
     "PLAYER.ShortGoal": "Short Term Goals",
     "PLAYER.LongGoal": "Long Term Goal",
+    "PLAYER.Gifts" : "Gifts",
+    "PLAYER.Burdens": "Burdens",
+    "PLAYER.Notes": "Notes",
     "TAB.summary": "Summary",
     "TAB.skills": "Skills",
-    "TAB.abilities": "Abilities & Effects",
+    "TAB.abilities": "Abilities",
     "TAB.belongings": "Belongings",
-    "TAB.Gifts": "Gifts & Burdens",
+    "TAB.Gifts": "Gifts",
+    "TAB.Burdens": "Burdens",
     "TAB.Biography": "Biography",
     "TAB.Notes": "Notes",
     "SKILL.art": "Art",
@@ -68,5 +72,8 @@
     "ITEM.Type": "Type",
     "ITEM.Items": "Items",
     "ITEM.ArmourClothing": "Armour & Clothing",
-    "ITEM.Weapons": "Weapons"
+    "ITEM.Weapons": "Weapons",
+    "ITEM.CreateGift": "Add Gift",
+    "ITEM.CreateBurden": "Add Burden",
+    "DIALOG.ConfirmDelete": "Confirm Delete"
 }

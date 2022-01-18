@@ -8,6 +8,7 @@
             <!-- This column contains the image, Legendary Ranks, Initiative Score And States & Effects -->
             <div class="c-left-header-col">
                 <div class="c-image">
+                    <img class="image-frame" src="systems/coyote-and-crow/ui/CNC_galley_pictureframe1.png" />
                     <img class="c-image-small" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"
                         name="actor.img" />
                 </div>
@@ -40,8 +41,28 @@
                             placeholder="{{localize 'PLAYER.archetype'}}" />
                     </div>
                     <div class="c-info-path">
-                        <input name="data.info.path.value" type="text" value="{{info.path.value}}"
-                            placeholder="Path Of The..." />
+                        <!--<input name="data.info.path.value" type="text" value="{{info.path.value}}"
+                            placeholder="Path Of The..." />-->
+                        <select name="data.info.path.value" value="info.path.value">
+                            {{#select info.path.value}}
+                            <option value="">Select your Path</option>
+                            <option value="badger">Path of the Badger</option>
+                            <option value="bear">Path of the Bear</option>
+                            <option value="beaver">Path of the Beaver</option>
+                            <option value="bison">Path of the Bison</option>
+                            <option value="coyote">Path of the Coyote</option>
+                            <option value="crow">Path of the Crow</option>
+                            <option value="deer">Path of the Deer</option>
+                            <option value="eagle">Path of the Eagle</option>
+                            <option value="falcon">Path of the Falcon</option>
+                            <option value="fox">Path of the Fox</option>
+                            <option value="owl">Path of the Owl</option>
+                            <option value="raccoon">Path of the Raccoon</option>
+                            <option value="salmon">Path of the Salmon</option>
+                            <option value="snake">Path of the Snake</option>
+                            <option value="spider">Path of the Spider</option>
+                            {{/select}}
+                        </select>
                     </div>
                     <div class="c-info-motivation">
                         <input name="data.info.motivation.value" type="text" value="{{info.motivation.value}}"
@@ -49,7 +70,7 @@
                     </div>
                 </div>
                 <div class="c-separator">
-                    <img src="systems/coyote-and-crow/ui/divider.png">
+                    <img src="systems/coyote-and-crow/ui/CNC_galley_divider.png">
                 </div>
                 <div class="c-stats-section">
                     {{> systems/coyote-and-crow/templates/sheet/partial/player-stats.html}}
@@ -74,7 +95,6 @@
         <div class="content-section">
             <div class="tab summary" data-group="primary" data-tab="summary">
                 {{> systems/coyote-and-crow/templates/sheet/partial/player-summary.html}}
-                <span>boop</span>
             </div>
 
             <div class="tab skills" data-group="primary" data-tab="skills">

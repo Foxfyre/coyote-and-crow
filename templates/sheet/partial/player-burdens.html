@@ -1,16 +1,16 @@
 <div class="gifts-page">
     <div class="sheet-title" style="margin-top: 10px;">
-        <span>Gifts</span>
+        <span>Burdens</span>
     </div>
     <div class="sheet-title-h2" style="margin-top: 10px;">
-        <span>Add a Gift </span>
-        <a class="item-control item-create" data-type="gift" title='{{localize "ITEM.CreateGift"}}'><i
+        <span>Add a Burden </span>
+        <a class="item-control item-create" data-type="burden" title='{{localize "ITEM.CreateGift"}}'><i
                 class="fas fa-plus"></i>
         </a>
     </div>
     <ul class="bio-col items">
-        {{#each gifts as |gift key|}}
-        <li class="item gift-item" data-item-id={{gift._id}}>
+        {{#each burdens as |burden key|}}
+        <li class="item gift-item" data-item-id={{burden._id}}>
             <div class="bio-row">
                 <div class="gift-input">
                     <span>Name</span>
@@ -21,13 +21,13 @@
                 <div class="gift-input">
                     <span>Category</span>
                     <div class="input-readonly">
-                        <span>{{{gift.data.category}}}</span>
+                        <span>{{{burden.data.category}}}</span>
                     </div>
                 </div>
                 <div class="gift-level-input">
                     <span>Level</span>
                     <div class="input-readonly-num">
-                        <span>{{{gift.data.level}}}</span>
+                        <span>{{{burden.data.level}}}</span>
                     </div>
                 </div>
                 <div class="item-controls flexrow gift-controls gift-input">
@@ -44,7 +44,7 @@
             <div class="gift-editor">
                 <span>Description</span>
                 <div class="gift-editor-text">
-                    {{{gift.data.description}}}
+                    {{{burden.data.description}}}
                 </div>
             </div>
         </li>

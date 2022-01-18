@@ -9,6 +9,11 @@ body {
     --font-primary: "Quiza Pro", sans-serif;
 }*/
 
+input[type="checkbox"]:checked {
+    -webkit-filter: none;
+    filter: none;
+}
+
 .app {
     background-color: whitesmoke;
 }
@@ -33,24 +38,47 @@ img {
 
 input[type="text"] {
     border: none;
-    background: rgba(57,32,91,0.20);
+    background: rgba(57,32,91,0.1);
     border-bottom:black 2px solid;
 }
 
 input[type="number"] {
     border: none;
-    background: rgba(57,32,91,0.20);
+    background: rgba(57,32,91,0.1);
     border-bottom:black 2px solid;
 }
 
 select {
     border: none;
-    background: rgba(57,32,91,0.20);
+    background: rgba(57,32,91,0.1);
     border-bottom:black 2px solid;
 }
 
 .sheet nav.sheet-tabs {
     margin: 10px 0;
+}
+
+.input-readonly {
+    background: rgba(57,32,91,0.1);
+    border-bottom:black 2px solid;
+    height: var(--form-field-height);
+    border-radius: 3px;
+    padding: 3px;
+}
+
+.input-readonly-num {
+    background: rgba(57,32,91,0.1);
+    border-bottom:black 2px solid;
+    height: var(--form-field-height);
+    border-radius: 3px;
+    padding: 3px;
+    width:40px;
+}
+
+.input-readonly > span {
+    display: flex;
+    text-align: center;
+    width: 200px;
 }
 
 /* Character Sheet */
@@ -78,18 +106,25 @@ select {
 }
 
 .c-sheet .c-image {
-    width: 200px;
+    width: 190px;
+    position: relative;
 }
 
-.c-sheet .c-image img {
+.c-sheet .c-image > img.c-image-small {
     display: flex;
-    width: 200px;
+    width: 190px;
     flex: 0;
     object-fit: contain;
-    border-color: black;
-    border-width:1px;
-    border-style:solid;
     max-width: unset;
+}
+
+.image-frame {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    object-fit: contain;
+    top: -10px;
+    right: -10px;
 }
 
 .c-sheet .c-status-col {
@@ -116,7 +151,7 @@ select {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 0 10px;
+    margin: 0 20px;
     justify-content: space-between;
 }
 
@@ -138,14 +173,14 @@ select {
 }
 
 .c-sheet .c-info-archetype {
-    width: 32%;
+    width: 30%;
 }
 
 .c-sheet .c-info-path {
     display:flex;
     flex-direction: row;
     flex-wrap:nowrap;
-    width: 32%;
+    width: 34%;
 }
 
 .c-sheet .c-info-motivation {
@@ -286,6 +321,10 @@ select {
     padding: 2px 5px;
     width: 100%;
     text-align: start;
+}
+
+.c-sheet .skill-table-col select{
+    width: 100px;
 }
 
 .c-sheet .col-rank {
@@ -501,7 +540,7 @@ ul.items {
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: rgba(57, 32, 91, .2);
+    background-color: rgba(57, 32, 91, .1);
     margin: 5px 0;
     padding: 3px 10px;
     justify-content: space-between;
@@ -673,7 +712,7 @@ width: 100px;
 }
 
 .item-sheet .pd-mod {
-    margin-left: 5px;
+    margin: 5px 0 5px 5px;
 }
 
 /*Belongings*/
@@ -718,4 +757,191 @@ width: 100px;
 
 .c-sheet .item-label {
     margin-bottom: 3px;
+}
+
+/* GIFTS */
+
+.gifts-page .gift-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.gifts-page .gift-input {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.gifts-page .gift-level-input {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.gift-input > span, .gift-level-input > span {
+    margin-bottom: 5px;
+}
+
+.gifts-page .gift-category {
+    width: 200px;
+}
+
+.gifts-page .gift-level {
+    width: 40px;
+}
+
+.gifts-page .gift-editor {
+    margin-top: 10px;
+}
+
+.gift-editor > span {
+    margin-bottom: 15px;
+}
+
+.gifts-page .editor {
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+    background-color:rgba(57, 32, 91, .1);
+    border-radius: 5px;
+}
+
+.gifts-page .gift-editor-text {
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+    background-color:rgba(57, 32, 91, .1);
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
+.gifts-page .tox.tox-tinymce {
+    min-height:100px;
+}
+
+.gifts-page .gift-item {
+    margin: 10px 0;
+}
+
+/*GIFT SHEET*/
+
+.gifts-sheet {
+    width: 450px;
+}
+
+.gifts-sheet .gift-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.gifts-sheet .gift-input {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.gifts-sheet .gift-category {
+    width: 185px;
+}
+
+.gifts-sheet .gift-level {
+    width: 40px;
+}
+
+.gifts-sheet .gift-editor {
+    margin-top: 10px;
+
+}
+
+.gifts-sheet .editor {
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+    background-color:rgba(57, 32, 91, .1);
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
+.gifts-sheet .tox.tox-tinymce, .bio-page .tox.tox-tinymce {
+    min-height:100px;
+}
+
+/* BIO & NOTES */
+
+.bio-page .editor {
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
+    background-color:rgba(57, 32, 91, .1);
+    border-radius: 5px;
+}
+
+/* SUMMARY */
+
+.c-sheet .summary-skill-table-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 20px;
+    margin: 3px 0;
+    width: 100%;
+}
+
+.c-sheet .summary-skill-table-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 20px;
+    align-items: center;
+}
+
+.c-sheet  .summary-skill-table-row:not(:last-child) {
+    margin-bottom: 2px;
+}
+
+.c-sheet .state-effect {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 5px;
+}
+
+.c-sheet .half-col-left {
+    width: 49%;
+}
+
+.c-sheet .half-col-right {
+    width: 49%;
+}
+
+.c-sheet .effects {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-sheet .effect {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.c-sheet .effect-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 3px;
+}
+
+
+.c-sheet .effect-text-input {
+    width: 80%;
+}
+
+.coyote-checkbox {
+    accent-color: rgba(57,32,91,0.5);
 }

@@ -25,18 +25,8 @@
                     <span>{{name}}</span>
                 </div>
                 <div class="skill-table-col">
-                    <select name="data.skills.{{key}}.stat" value="{{skill.stat}}">
-                        {{#select skill.stat}}
-                        <option value="str" stat-type="strength">Strength</option>
-                        <option value="agi" stat-type="agility">Agility</option>
-                        <option value="end" stat-type="endurance">Endurance</option>
-                        <option value="int" stat-type="intelligence">Intelligence</option>
-                        <option value="per" stat-type="perception">Perception</option>
-                        <option value="wis" stat-type="wisdom">Wisdom</option>
-                        <option value="spi" stat-type="spirit">Spirit</option>
-                        <option value="cha" stat-type="charisma">Charisma</option>
-                        <option value="wll" stat-type="will">Will</option>
-                        {{/select}}
+                    <select name="data.skills.{{key}}.stat">
+                        {{selectOptions relStats selected=skill.stat}}
                     </select>
                 </div>
                 <div class="skill-table-col col-rank">
@@ -73,18 +63,8 @@
                     <span>{{name}}</span>
                 </div>
                 <div class="skill-table-col">
-                    <select name="data.skills.{{key}}.stat" value="{{skill.stat}}">
-                        {{#select skill.stat}}
-                        <option value="str" stat-type="strength">Strength</option>
-                        <option value="agi" stat-type="agility">Agility</option>
-                        <option value="end" stat-type="endurance">Endurance</option>
-                        <option value="int" stat-type="intelligence">Intelligence</option>
-                        <option value="per" stat-type="perception">Perception</option>
-                        <option value="wis" stat-type="wisdom">Wisdom</option>
-                        <option value="spi" stat-type="spirit">Spirit</option>
-                        <option value="cha" stat-type="charisma">Charisma</option>
-                        <option value="wll" stat-type="will">Will</option>
-                        {{/select}}
+                    <select name="data.skills.{{key}}.stat">
+                        {{selectOptions relStats selected=skill.stat}}
                     </select>
                 </div>
                 <div class="skill-table-col col-rank">
@@ -138,25 +118,32 @@
                 <li class="item spec-items" data-item-id="{{spec._id}}">
                     <div class="spec-table-row">
                         <div class="spec-table-col spec-col-20">
-                            <input type="text" value="{{spec.name}}" readonly="readonly" /> <!--Specialization Name-->
+                            <input type="text" value="{{spec.name}}" readonly="readonly" />
+                            <!--Specialization Name-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <input type="number" value="{{spec.data.rank}}" readonly="readonly" /> <!--Specialization Rank-->
+                            <input type="number" value="{{spec.data.rank}}" readonly="readonly" />
+                            <!--Specialization Rank-->
                         </div>
                         <div class="spec-table-col spec-col-20">
-                            <input type="text" value="{{spec.data.skill}}" readonly="readonly" /> <!--Linked Skill Name-->
+                            <input type="text" value="{{spec.data.skill}}" readonly="readonly" />
+                            <!--Linked Skill Name-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <input type="number" value="{{spec.data.skillRank}}" readonly="readonly" /> <!--Linked Skill Rank-->
+                            <input type="number" value="{{spec.data.skillRank}}" readonly="readonly" />
+                            <!--Linked Skill Rank-->
                         </div>
                         <div class="spec-table-col spec-col-20">
-                            <input type="text" value="{{spec.data.statName}}" readonly="readonly" /> <!--Linked Stat Name-->
+                            <input type="text" value="{{spec.data.statName}}" readonly="readonly" />
+                            <!--Linked Stat Name-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <input type="number" value="{{spec.data.statRank}}" readonly="readonly" /> <!--Linked Stat Rank-->
+                            <input type="number" value="{{spec.data.statRank}}" readonly="readonly" />
+                            <!--Linked Stat Rank-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <span class="spec-table-rank">{{spec.data.total}}</span> <!--Total of all 3 values-->
+                            <span class="spec-table-rank">{{spec.data.total}}</span>
+                            <!--Total of all 3 values-->
                         </div>
                         <div class="item-controls flexrow spec-controls">
                             <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i

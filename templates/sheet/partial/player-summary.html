@@ -1,0 +1,237 @@
+<div>
+    <div class="stat-block-title">
+        <span>Skills</span>
+    </div>
+    <div class="skill-tables">
+        <div class="skill-table-col-1">
+            <div class="summary-skill-table-header">
+                <div class="skill-table-col">
+                    <span>General Skills</span>
+                </div>
+                <div class="skill-table-col">
+                    <span>Stat</span>
+                </div>
+                <div class="skill-table-col col-rank">
+                    <span>Rank</span>
+                </div>
+                <div class="skill-table-col col-total">
+                    <span>Total</span>
+                </div>
+            </div>
+            {{#each skills as |skill key|}}
+            {{#ifCond skill.colMod "===" 1}}
+            <div class="summary-skill-table-row">
+                <div class="skill-table-col">
+                    <span>{{name}}</span>
+                </div>
+                <div class="skill-table-col">
+                    {{{skill.statName}}}
+                </div>
+                <div class="skill-table-col col-rank">
+                    {{{skill.rank}}}
+                </div>
+                <div class="skill-table-col col-total">
+                    <span class="skill-table-rank">{{skill.total}}</span>
+                </div>
+            </div>
+            {{/ifCond}}
+            {{/each}}
+
+        </div>
+        <div class="skill-table-col-2">
+            <div class="summary-skill-table-header">
+                <div class="skill-table-col">
+                    <span>General Skills</span>
+                </div>
+                <div class="skill-table-col">
+                    <span>Stat</span>
+                </div>
+                <div class="skill-table-col col-rank">
+                    <span>Rank</span>
+                </div>
+                <div class="skill-table-col col-total">
+                    <span>Total</span>
+                </div>
+            </div>
+            {{#each skills as |skill key|}}
+            {{#ifCond skill.colMod "===" 0}}
+            <div class="summary-skill-table-row">
+                <div class="skill-table-col">
+                    <span>{{name}}</span>
+                </div>
+                <div class="skill-table-col">
+                    {{{skill.statName}}}
+                </div>
+                <div class="skill-table-col col-rank">
+                    {{{skill.rank}}}
+                </div>
+                <div class="skill-table-col col-total">
+                    <span class="skill-table-rank">{{skill.total}}</span>
+                </div>
+            </div>
+            {{/ifCond}}
+            {{/each}}
+        </div>
+    </div>
+    <div class="stat-block-title" style="margin-top: 10px;">
+        <span>Specialized Skills</span>
+    </div>
+    <div class="skill-tables">
+        <div class="skill-table-col">
+            <div class="spec-table-header">
+                <div class="spec-col-20 spec-table-col">
+                    <span>Specialization</span>
+                </div>
+                <div class="spec-table-col spec-values">
+                    <span>Rank</span>
+                </div>
+                <div class="spec-col-20 spec-table-col">
+                    <span>General Skill</span>
+                </div>
+                <div class="spec-table-col spec-values">
+                    <span>Rank</span>
+                </div>
+                <div class="spec-col-20 spec-table-col">
+                    <span>Stat</span>
+                </div>
+                <div class="spec-table-col spec-values">
+                    <span>Rank</span>
+                </div>
+                <div class="spec-table-col spec-values">
+                    <span>Total</span>
+                </div>
+                <div class="spec-table-col spec-controls">
+                    <span></span>
+                </div>
+            </div>
+
+            <ul class="items spec-list">
+                {{#each specialization as |spec key|}}
+                <li class="item spec-items" data-item-id="{{spec._id}}">
+                    <div class="spec-table-row">
+                        <div class="spec-table-col spec-col-20">
+                            <span>{{{spec.name}}}</span>
+                            <input type="text" value="{{spec.name}}" readonly="readonly" />
+                            <!--Specialization Name-->
+                        </div>
+                        <div class="spec-table-col spec-values">
+                            <input type="number" value="{{spec.data.rank}}" readonly="readonly" />
+                            <!--Specialization Rank-->
+                        </div>
+                        <div class="spec-table-col spec-col-20">
+                            <input type="text" value="{{spec.data.skill}}" readonly="readonly" />
+                            <!--Linked Skill Name-->
+                        </div>
+                        <div class="spec-table-col spec-values">
+                            <input type="number" value="{{spec.data.skillRank}}" readonly="readonly" />
+                            <!--Linked Skill Rank-->
+                        </div>
+                        <div class="spec-table-col spec-col-20">
+                            <input type="text" value="{{spec.data.statName}}" readonly="readonly" />
+                            <!--Linked Stat Name-->
+                        </div>
+                        <div class="spec-table-col spec-values">
+                            <input type="number" value="{{spec.data.statRank}}" readonly="readonly" />
+                            <!--Linked Stat Rank-->
+                        </div>
+                        <div class="spec-table-col spec-values">
+                            <span class="spec-table-rank">{{spec.data.total}}</span>
+                            <!--Total of all 3 values-->
+                        </div>
+                        <div class="item-controls flexrow spec-controls">
+
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="state-effect">
+        <div class="half-col-left">
+            <div class="stat-block-title">
+                <span>Effects</span>
+            </div>
+            <div class="effects">
+                <div class="effect">
+                    <span>Environmental</span>
+                    <div class="effect-row">
+                        <input type="checkbox" class="coyote-checkbox" name="data.effects.environmental.active"
+                            {{checked effects.environmental.active}}>
+                        <input type="text" class="effect-text-input" name="data.effects.environmental.value" value="{{effects.environmental.value}}">
+                    </div>
+                </div>
+                <div class="effect">
+                    <span>Poison</span>
+                    <div class="effect-row">
+                        <input type="checkbox" class="coyote-checkbox" name="data.effects.poison.active"
+                            {{checked effects.poison.active}}>
+                        <input type="text" class="effect-text-input" name="data.effects.poison.value" value="{{effects.poison.value}}">
+                    </div>
+                </div>
+                <div class="effect">
+                    <span>Bleeding</span>
+                    <div class="effect-row">
+                        <input type="checkbox" class="coyote-checkbox" name="data.effects.bleeding.active"
+                            {{checked effects.bleeding.active}}>
+                        <input type="text" class="effect-text-input" name="data.effects.bleeding.value" value="{{effects.bleeding.value}}">
+                    </div>
+                </div>
+                <div class="effect">
+                    <span>Stunned</span>
+                    <div class="effect-row">
+                        <input type="checkbox" class="coyote-checkbox" name="data.effects.stun.active"
+                            {{checked effects.stun.active}}>
+                        <input type="text" class="effect-text-input" name="data.effects.stun.value" value="{{effects.stun.value}}">
+                    </div>
+                </div>
+                <div class="effect">
+                    <span>Burning</span>
+                    <div class="effect-row">
+                        <input type="checkbox" class="coyote-checkbox" name="data.effects.burning.active"
+                            {{checked effects.burning.active}}>
+                        <input type="text" class="effect-text-input" name="data.effects.burning.value" value="{{effects.burning.value}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="half-col-right">
+            <div class="stat-block-title">
+                <span>States</span>
+            </div>
+            <div class="effect">
+                <span>Sleeping</span>
+                <div class="effect-row">
+                    <input type="checkbox" class="coyote-checkbox" name="data.states.sleeping.active"
+                        {{checked states.sleeping.active}}>
+                    <input type="text" class="effect-text-input" name="data.states.sleeping.value" value="{{states.sleeping.value}}">
+                </div>
+            </div>
+            <div class="effect">
+                <span>Altered</span>
+                <div class="effect-row">
+                    <input type="checkbox" class="coyote-checkbox" name="data.states.altered.active"
+                        {{checked states.altered.active}}>
+                    <input type="text" class="effect-text-input" name="data.states.altered.value" value="{{states.altered.value}}">
+                </div>
+            </div>
+            <div class="effect">
+                <span>Panic</span>
+                <div class="effect-row">
+                    <input type="checkbox" class="coyote-checkbox" name="data.states.panic.active"
+                        {{checked states.panic.active}}>
+                    <input type="text" class="effect-text-input" name="data.states.panic.value" value="{{states.panic.value}}">
+                </div>
+            </div>
+            <div class="effect">
+                <span>Unconcious</span>
+                <div class="effect-row">
+                    <input type="checkbox" class="coyote-checkbox" name="data.states.unconcious.active"
+                        {{checked states.unconcious.active}}>
+                    <input type="text" class="effect-text-input" name="data.states.unconcious.value" value="{{states.unconcious.value}}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

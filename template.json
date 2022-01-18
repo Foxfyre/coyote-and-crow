@@ -16,7 +16,11 @@
                 },
                 "path": {
                     "value": "",
-                    "name": "Path"
+                    "name": "",
+                    "stats": {
+                        "stat1": "",
+                        "stat2": ""
+                    }
                 },
                 "motivation": {
                     "value": "",
@@ -106,196 +110,336 @@
             },
             "skills": {
                 "art": {
+                    "relStats": {
+                        "spi": "Spirit",
+                        "wll": "Will"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.art",
                     "name": "Art",
                     "total": 0
                 },
                 "athletics": {
+                    "relStats": {
+                        "str": "Strength",
+                        "end": "Endurance"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.athletics",
                     "name": "Athletics",
                     "total": 0
                 },
                 "ceremony": {
+                    "relStats": {
+                        "spi": "Spirit",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.ceremony",
                     "name": "Ceremony",
                     "total": 0
                 },
                 "charm": {
+                    "relStats": {
+                        "cha": "Charisma",
+                        "per": "Perception"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.charm",
                     "name": "Charm",
                     "total": 0
                 },
                 "coercion": {
+                    "relStats": {
+                        "spi": "Spirit",
+                        "cha": "Charisma"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.coercion",
                     "name": "Coercion",
                     "total": 0
                 },
                 "computers": {
+                    "relStats": {
+                        "int": "Intelligence",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.computers",
                     "name": "Computers",
                     "total": 0
                 },
                 "cooking": {
+                    "relStats": {
+                        "spi": "Spirit",
+                        "int": "Intelligence"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.cooking",
                     "name": "Cooking",
                     "total": 0
                 },
                 "crafting": {
+                    "relStats": {
+                        "spi": "Spirit",
+                        "per": "Perception"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.crafting",
                     "name": "Crafting",
                     "total": 0
                 },
                 "cybernetics": {
+                    "relStats": {
+                        "int": "Intelligence",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.cybernetics",
                     "name": "Cybernetics",
                     "total": 0
                 },
                 "deception": {
+                    "relStats": {
+                        "cha": "Charisma",
+                        "wll": "Will"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.deception",
                     "name": "Deception",
                     "total": 0
                 },
                 "farming": {
+                    "relStats": {
+                        "int": "Intelligence",
+                        "end": "Endurance"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.farming",
                     "name": "farming",
                     "total": 0
                 },
                 "herbalism": {
+                    "relStats": {
+                        "per": "Perception",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.herbalism",
                     "name": "Herbalism",
                     "total": 0
                 },
                 "husbandry": {
+                    "relStats": {
+                        "cha": "Charisma",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.husbandry",
                     "name": "Husbandry",
                     "total": 0
                 },
                 "investigation": {
+                    "relStats": {
+                        "per": "Perception",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.investigation",
                     "name": "Investigation",
                     "total": 0
                 },
                 "knowledge": {
+                    "relStats": {
+                        "int": "Intelligence",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.knowledge",
                     "name": "Knowledge",
                     "total": 0
                 },
                 "language": {
+                    "relStats": {
+                        "per": "Perception",
+                        "wll": "Will"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.language",
                     "name": "Language",
                     "total": 0
                 },
                 "medicine": {
+                    "relStats": {
+                        "int": "Intelligence",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.medicine",
                     "name": "Medicine",
                     "total": 0
                 },
                 "melee": {
+                    "relStats": {
+                        "str": "Strength",
+                        "end": "Endurance"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.melee",
                     "name": "Melee Weapons",
                     "total": 0
                 },
                 "music": {
+                    "relStats": {
+                        "spi": "Spirit",
+                        "per": "Perception"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.music",
                     "name": "Music",
                     "total": 0
                 },
                 "performance": {
+                    "relStats": {
+                        "cha": "Charisma",
+                        "spi": "Spirit"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.performance",
                     "name": "Performance",
                     "total": 0
                 },
                 "piloting": {
+                    "relStats": {
+                        "int": "Intelligence",
+                        "agi": "Agility"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.piloting",
                     "name": "Piloting",
                     "total": 0
                 },
                 "ranged": {
+                    "relStats": {
+                        "per": "Perception",
+                        "agi": "Agility"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.ranged",
                     "name": "Ranged Weapons",
                     "total": 0
                 },
                 "science": {
+                    "relStats": {
+                        "int": "Intelligence",
+                        "per": "Perception"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.science",
                     "name": "Science",
                     "total": 0
                 },
                 "skulduggery": {
+                    "relStats": {
+                        "per": "Perception",
+                        "cha": "Charisma"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.skulduggery",
                     "name": "Skulduggery",
                     "total": 0
                 },
                 "stealth": {
+                    "relStats": {
+                        "agi": "Agility",
+                        "wll": "Will"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.stealth",
                     "name": "Stealth",
                     "total": 0
                 },
                 "survival": {
+                    "relStats": {
+                        "end": "Endurance",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.survival",
                     "name": "Survival",
                     "total": 0
                 },
                 "tracking": {
+                    "relStats": {
+                        "per": "Perception",
+                        "wis": "Wisdom"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.tracking",
                     "name": "Tracking",
                     "total": 0
                 },
                 "unarmed": {
+                    "relStats": {
+                        "int": "Intelligence",
+                        "str": "Strength"
+                    },
                     "stat": "",
+                    "statName": "",
                     "rank": 0,
                     "label": "SKILL.unarmed",
                     "name": "Unarmed Combat",
@@ -307,51 +451,53 @@
                 "background": "",
                 "gifts-burdens": "",
                 "notes": "",
-                "short-goals": "",
-                "long-goal": ""
+                "shortGoal1": "",
+                "shortGoal2": "",
+                "longGoal": "",
+                "gifts": [],
+                "burdens": []
             },
             "templates": [
                 "base"
             ],
-            "conditions": {
-                "blinded": {
-                    "active": false
+            "effects": {
+                "environmental": {
+                    "active": false,
+                    "value": ""
                 },
-                "deafened": {
-                    "active": false
+                "poison": {
+                    "active": false,
+                    "value": ""
                 },
-                "dying": {
-                    "active": false
+                "bleeding": {
+                    "active": false,
+                    "value": ""
                 },
-                "exhausted": {
-                    "active": false
+                "stun": {
+                    "active": false,
+                    "value": ""
                 },
-                "fatigued": {
-                    "active": false
+                "burning": {
+                    "active": false,
+                    "value": ""
+                }
+            },
+            "states": {
+                "sleeping": {
+                    "active": false,
+                    "value": ""
                 },
-                "freefall": {
-                    "active": false
+                "altered": {
+                    "active": false,
+                    "value": ""
                 },
-                "helpless": {
-                    "active": false
+                "panic": {
+                    "active": false,
+                    "value": ""
                 },
-                "hindered": {
-                    "active": false
-                },
-                "injured": {
-                    "active": false
-                },
-                "prone": {
-                    "active": false
-                },
-                "restrained": {
-                    "active": false
-                },
-                "unconscious": {
-                    "active": false
-                },
-                "wounded": {
-                    "active": false
+                "unconcious": {
+                    "active": false,
+                    "value": ""
                 }
             }
         },
@@ -501,7 +647,9 @@
             "ability",
             "weapon",
             "armor",
-            "item"
+            "item",
+            "gift",
+            "burden"
         ],
         "templates": {
             "baseItem": {
@@ -591,7 +739,11 @@
             "activate": "",
             "diceCheck": "",
             "description": "",
-            "shortDesc": ""
+            "shortDesc": "",
+            "allowStats": {
+                "stat1": "",
+                "stat2": ""
+            }
         },
         "weapon": {
             "templates": [
@@ -616,6 +768,16 @@
                 "baseItem",
                 "modifier"
             ]
+        },
+        "gift": {
+            "category": "",
+            "level": 0,
+            "description": ""
+        },
+        "burden": {
+            "category": "",
+            "level": 0,
+            "description": ""
         }
     }
 }

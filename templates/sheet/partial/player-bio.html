@@ -1,7 +1,7 @@
 <nav class="sheet-sec-tabs tabs" data-group="secondary">
     <a class="item" data-tab="gifts">{{localize "TAB.Gifts"}}</a>
+    <a class="item" data-tab="burdens">{{localize "TAB.Burdens"}}</a>
     <a class="item" data-tab="biography">{{localize "TAB.Biography"}}</a>
-    <a class="item" data-tab="notes">{{localize "TAB.Notes"}}</a>
 </nav>
 
 <section class="content-section-sec">
@@ -9,12 +9,11 @@
         {{> systems/coyote-and-crow/templates/sheet/partial/player-gifts.html}}
     </div>
 
+    <div class="tab burdens" data-group="secondary" data-tab="burdens">
+        {{> systems/coyote-and-crow/templates/sheet/partial/player-burdens.html}}
+    </div>
+
     <div class="tab biography" data-group="secondary" data-tab="biography">
         {{> systems/coyote-and-crow/templates/sheet/partial/player-biography.html}}
     </div>
-
-    <div class="tab notes" data-group="secondary" data-tab="notes">
-        {{> systems/coyote-and-crow/templates/sheet/partial/player-notes.html}}
-    </div>
-
 </section>

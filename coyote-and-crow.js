@@ -1,9 +1,9 @@
 import { cncActorSheet } from "./scripts/actor/sheet/actor-sheet.js";
 import { cncActor } from "./scripts/actor/actor.js";
 import { cncItemSheet } from "./scripts/items/sheet/item-sheet.js";
-/*import { coyote-and-crowItem } from "./item.js";
+import { cncItem } from "./scripts/items/item.js";
 
-import { coyote-and-crowNPCSheet } from "./npc-sheet.js";
+/*import { coyote-and-crowNPCSheet } from "./npc-sheet.js";
 import { coyote-and-crowShipSheet } from "./ship-sheet.js";*/
 //import { registerDiceSoNice } from "./hooks/dice-so-nice.js";
 
@@ -14,7 +14,7 @@ Hooks.once("init", async function () {
 
   // Define custom Entity classes
   CONFIG.Actor.documentClass = cncActor;
-  //CONFIG.Item.documentClass = cncItem;
+  CONFIG.Item.documentClass = cncItem;
   CONFIG.Combat.initiative = {
     formula: "1d12",
     decimals: 2
@@ -112,3 +112,22 @@ Hooks.on("ready", async () => {
     }
   }).render(true)
 })
+
+/*Hooks.on("renderDialog", (dialog, html) => {
+  Array.from(html.find("#document-create option")).forEach(i => {
+      if (i.value == "burden")
+      {
+          i.remove()
+      }
+  })
+})*/
+
+/*Hooks.on("preCreateActor", (actor, createData, options, userId) => {
+  const additionalItems = [
+    new Item({name: "category", type: 'gift'}, {parent: actor}),
+    new Item({name: "category", type: 'burden'}, {parent: actor})
+  ];
+  actor.data.update({
+    items: additionalItems.map(i => i.toObject())
+  });
+});*/

@@ -3,22 +3,23 @@
         <span>Biography & Notes</span>
     </div>
     <div class="bio-col">
-        <span class="item-label" for="name">{{localize "PLAYER.OtherIdent"}}:</span>
-        <input class="" name="name" type="text" value="{{name}}" />
+        <span class="item-label">{{localize "PLAYER.OtherIdent"}}:</span>
+        <input class="" name="data.bio.identifiers" type="text" value="{{data.data.bio.identifiers}}" />
     </div>
     <div class="bio-col">
         <span class="item-label">{{localize "PLAYER.ShortGoal"}}:</span>
         <div class="bio-row justify-between">
-            <input class="short-goal-input" name="name" type="text" value="{{name}}" />
-            <input class="short-goal-input" name="name" type="text" value="{{name}}" />
+            <input class="short-goal-input" name="data.bio.shortGoal1" type="text" value="{{data.data.bio.shortGoal1}}" />
+            <input class="short-goal-input" name="data.bio.shortGoal2" type="text" value="{{data.data.bio.shortGoal2}}" />
         </div>
     </div>
     <div class="bio-col">
-        <span class="item-label" for="name">{{localize "PLAYER.LongGoal"}}:</span>
-        <input class="" name="name" type="text" value="{{name}}" />
+        <span class="item-label">{{localize "PLAYER.LongGoal"}}:</span>
+        <input class="" name="data.bio.longGoal" type="text" value="{{data.data.bio.longGoal}}" />
     </div>
+
     <div class="bio-col">
-        <span class="item-label" for="name">{{localize "PLAYER.OtherIdent"}}:</span>
-        <input class="" name="name" type="text" value="{{name}}" />
+        <span class="item-label">{{localize "PLAYER.Notes"}}:</span>
+        {{editor content=data.data.data.bio.notes target="data.data.bio.notes" button=true owner=owner editable=true}}
     </div>
 </div>

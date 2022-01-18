@@ -1,0 +1,23 @@
+<form class="{{cssClass}} gifts-sheet" autocomplete="off">
+    <div class="sheet-title" style="margin-top: 10px;">
+        <span>Burden</span>
+    </div>
+    <div class="gift-row">
+        <div class="gift-input">
+            <span>Name</span>
+            <input class="gift-category" name="name" type="text" value="{{name}}" />
+        </div>
+        <div class="gift-input">
+            <span>Category</span>
+            <input class="gift-category" name="data.category" type="text" value="{{data.category}}" />
+        </div>
+        <div class="gift-input">
+            <span>Level</span>
+            <input class="gift-level" name="data.level" type="text" value="{{data.level}}" />
+        </div>
+    </div>
+    <div class="gift-editor">
+        <span>Description</span>
+        {{editor content=data.description target="data.description" button=true owner=owner editable=true}}
+    </div>
+</form>

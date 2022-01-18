@@ -5,7 +5,7 @@ export class cncActorSheet extends ActorSheet {
             classes: ["sheet", "actor"],
             height: 750,
             width: 700,
-            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".content-section", initial: "abilities" },
+            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".content-section", initial: "summary" },
             { navSelector: ".sheet-sec-tabs", contentSelector: ".content-section-sec", initial: "gifts" }],
             dragDrop: [
                 { dragSelector: ".item-list .item", dropSelector: null }
@@ -26,6 +26,7 @@ export class cncActorSheet extends ActorSheet {
         const sheetData = super.getData();
         const data = {};
         const actorData = this.actor.data.toObject(false);
+
         data.actor = actorData;
         data.data = actorData.data;
         sheetData.stats = actorData.data.stats;
@@ -33,68 +34,44 @@ export class cncActorSheet extends ActorSheet {
         sheetData.derived = actorData.data.derived;
         sheetData.attributes = actorData.data.attributes;
         sheetData.info = actorData.data.info;
-
-        sheetData.specialization = data.actor.items.filter(i => i.type === "specialization");
-        sheetData.abilities = data.actor.items.filter(i => i.type === "ability");
-
-        for (let [k, v] of Object.entries(sheetData.specialization)) {
-            console.log(v.data);
-            switch (v.data.stat) {
-                case "agi":
-                    v.data.statName = "Agility";
-                    v.data.statRank = sheetData.stats.agi.value;
-                    break;
-                case "cha":
-                    v.data.statName = "Charisma";
-                    v.data.statRank = sheetData.stats.cha.value;
-                    break;
-                case "end":
-                    v.data.statName = "Endurance";
-                    v.data.statRank = sheetData.stats.end.value;
-                    break;
-                case "int":
-                    v.data.statName = "Intelligence";
-                    v.data.statRank = sheetData.stats.int.value;
-                    break;
-                case "per":
-                    v.data.statName = "Perception";
-                    v.data.statRank = sheetData.stats.per.value;
-                    break;
-                case "spi":
-                    v.data.statName = "Spirit";
-                    v.data.statRank = sheetData.stats.spi.value;
-                    break;
-                case "str":
-                    v.data.statName = "Strength";
-                    v.data.statRank = sheetData.stats.str.value;
-                    break;
-                case "wis":
-                    v.data.statName = "Wisdom";
-                    v.data.statRank = sheetData.stats.wis.value;
-                    break;
-                case "wll":
-                    v.data.statName = "Willpower"
-                    v.data.statRank = sheetData.stats.wll.value;
-                    break;
-            }
-            console.log(v)
-            let skillName = v.data.skill
-
-            for (let [c, h] of Object.entries(sheetData.skills)) {
-                console.log(h)
-                if (skillName === h.name) {
-                    v.data.skillRank = h.rank;
-                    console.log(v.data.skillRank);
-                }
-            }
-
-            v.data.total = v.data.statRank + v.data.skillRank + v.data.rank;
-
-            this.actor.updateEmbeddedDocuments("Item", [v])
+        sheetData.gifts = data.actor.items.filter(i => i.type === "gift");
+        sheetData.burdens = data.actor.items.filter(i => i.type === "burden");
+        sheetData.effects = actorData.data.effects;
+        sheetData.states = actorData.data.states;
+        sheetData.playerInfo = {}
+        sheetData.playerInfo.baseStats = {
+            "agi": "Agility",
+            "cha": "Charisma",
+            "end": "Endurance",
+            "int": "Intelligence",
+            "per": "Perception",
+            "spi": "Spirit",
+            "str": "Strength",
+            "wis": "Wisdom",
+            "wll": "will"
         }
 
-        console.log(sheetData)
+        sheetData.abilities = {
+            [`${actorData.data.info.path.stats.stat1}`]: "",
+            [`${actorData.data.info.path.stats.stat2}`]: ""
+        }
+        sheetData.specialization = data.actor.items.filter(i => i.type === "specialization");
+        sheetData.abilities[`${actorData.data.info.path.stats.stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === actorData.data.info.path.stats.stat1);
+        sheetData.abilities[`${actorData.data.info.path.stats.stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === actorData.data.info.path.stats.stat2);
+
+        /*sheetData.playerStats = {
+            "stat1": actorData.data.info.path.stats.stat1,
+            "stat2": actorData.data.info.path.stats.stat2
+        }*/
+
+        //sheetData.popAbilities =
+        //sheetData.abilities.path = {};
+        //sheetData.abilities.path.name = actorData.data.info.path.value;
+        //sheetData.abilities.path.stats = actorData.data.info.path;
+        /* Add object stating allowed abilities in .abilities*/
+        console.log(actorData)
         this._sortSkills(sheetData);
+        console.log(sheetData);
         return sheetData;
     }
 
@@ -129,9 +106,25 @@ export class cncActorSheet extends ActorSheet {
 
     _onItemDelete(event) {
         event.preventDefault();
-        const li = event.currentTarget.closest(".item");
-        const item = this.actor.items.get(li.dataset.itemId);
-        if (item) return item.delete();
+        let confirmDel = new Dialog({
+            title: game.i18n.localize("DIALOG.ConfirmDelete"),
+            content: `<h2>Are you sure you want to delete this item?</h2>`,
+            buttons: {
+                "yes": {
+                    label: "Delete",
+                    callback: () => {
+                        const li = event.currentTarget.closest(".item");
+                        const item = this.actor.items.get(li.dataset.itemId);
+                        if (item) return item.delete();
+                    }
+                },
+                "no": {
+                    label: "Don't Delete",
+                    callback: null
+                }
+            },
+        })
+        confirmDel.render(true);
     }
 
     _sortSkills(data) {
@@ -141,6 +134,117 @@ export class cncActorSheet extends ActorSheet {
             (i < midpoint) ? skill.colMod = 1 : skill.colMod = 0;
             i++
         }
+    }
+
+    _setPath(actorData) {
+        switch (actorData.data.info.path.value) {
+            case "badger":
+                actorData.data.info.path.name = "Badger";
+                actorData.data.info.path.stats = {
+                    "stat1": "int",
+                    "stat2": "wll"
+                }
+                return actorData;
+            case "bear":
+                actorData.data.info.path.name = "Bear";
+                actorData.data.info.path.stats = {
+                    "stat1": "cha",
+                    "stat2": "str"
+                }
+                return actorData;
+            case "beaver":
+                actorData.data.info.path.name = "Beaver";
+                actorData.data.info.path.stats = {
+                    "stat1": "end",
+                    "stat2": "per"
+                }
+                return actorData;
+            case "bison":
+                actorData.data.info.path.name = "Bison";
+                actorData.data.info.path.stats = {
+                    "stat1": "str",
+                    "stat2": "wll"
+                }
+                return actorData;
+            case "coyote":
+                actorData.data.info.path.name = "Coyote";
+                actorData.data.info.path.stats = {
+                    "stat1": "agi",
+                    "stat2": "int"
+                }
+                return actorData;
+            case "crow":
+                actorData.data.info.path.name = "Crow";
+                actorData.data.info.path.stats = {
+                    "stat1": "spi",
+                    "stat2": "wis"
+                }
+                return actorData;
+            case "deer":
+                actorData.data.info.path.name = "Deer";
+                actorData.data.info.path.stats = {
+                    "stat1": "wis",
+                    "stat2": "cha"
+                }
+                return actorData;
+            case "eagle":
+                actorData.data.info.path.name = "Eagle";
+                actorData.data.info.path.stats = {
+                    "stat1": "str",
+                    "stat2": "wis"
+                }
+                return actorData;
+            case "falcon":
+                actorData.data.info.path.name = "Falcon";
+                actorData.data.info.path.stats = {
+                    "stat1": "per",
+                    "stat2": "spi"
+                }
+                return actorData;
+            case "fox":
+                actorData.data.info.path.name = "Fox";
+                actorData.data.info.path.stats = {
+                    "stat1": "agi",
+                    "stat2": "spi"
+                };
+                return actorData;
+            case "owl":
+                actorData.data.info.path.name = "Owl";
+                actorData.data.info.path.stats = {
+                    "stat1": "end",
+                    "stat2": "int"
+                }
+                return actorData;
+            case "raccoon":
+                actorData.data.info.path.name = "Raccoon";
+                actorData.data.info.path.stats = {
+                    "stat1": "cha",
+                    "stat2": "int"
+                }
+                return actorData;
+            case "salmon":
+                actorData.data.info.path.name = "Salmon";
+                actorData.data.info.path.stats = {
+                    "stat1": "wll",
+                    "stat2": "agi"
+                }
+                return actorData;
+            case "snake":
+                actorData.data.info.path.name = "Snake";
+                actorData.data.info.path.stats = {
+                    "stat1": "spi",
+                    "stat2": "end"
+                }
+                return actorData;
+            case "spider":
+                actorData.data.info.path.name = "Spider";
+                actorData.data.info.path.stats = {
+                    "stat1": "per",
+                    "stat2": "str"
+                }
+                return actorData;
+        }
+
     }
 
 }
