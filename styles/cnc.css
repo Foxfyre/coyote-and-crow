@@ -38,20 +38,20 @@ img {
 
 input[type="text"] {
     border: none;
-    background: rgba(57,32,91,0.1);
-    border-bottom:black 2px solid;
+    background: rgba(57, 32, 91, 0.1);
+    border-bottom: black 2px solid;
 }
 
 input[type="number"] {
     border: none;
-    background: rgba(57,32,91,0.1);
-    border-bottom:black 2px solid;
+    background: rgba(57, 32, 91, 0.1);
+    border-bottom: black 2px solid;
 }
 
 select {
     border: none;
-    background: rgba(57,32,91,0.1);
-    border-bottom:black 2px solid;
+    background: rgba(57, 32, 91, 0.1);
+    border-bottom: black 2px solid;
 }
 
 .sheet nav.sheet-tabs {
@@ -59,23 +59,23 @@ select {
 }
 
 .input-readonly {
-    background: rgba(57,32,91,0.1);
-    border-bottom:black 2px solid;
+    background: rgba(57, 32, 91, 0.1);
+    border-bottom: black 2px solid;
     height: var(--form-field-height);
     border-radius: 3px;
     padding: 3px;
 }
 
 .input-readonly-num {
-    background: rgba(57,32,91,0.1);
-    border-bottom:black 2px solid;
+    background: rgba(57, 32, 91, 0.1);
+    border-bottom: black 2px solid;
     height: var(--form-field-height);
     border-radius: 3px;
     padding: 3px;
-    width:40px;
+    width: 40px;
 }
 
-.input-readonly > span {
+.input-readonly>span {
     display: flex;
     text-align: center;
     width: 200px;
@@ -110,7 +110,7 @@ select {
     position: relative;
 }
 
-.c-sheet .c-image > img.c-image-small {
+.c-sheet .c-image>img.c-image-small {
     display: flex;
     width: 190px;
     flex: 0;
@@ -177,9 +177,9 @@ select {
 }
 
 .c-sheet .c-info-path {
-    display:flex;
+    display: flex;
     flex-direction: row;
-    flex-wrap:nowrap;
+    flex-wrap: nowrap;
     width: 34%;
 }
 
@@ -198,7 +198,7 @@ select {
 
 .c-sheet .stats-sec-row {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
 }
 
 .c-sheet .stats-row {
@@ -297,15 +297,15 @@ select {
 }
 
 .border-gradient-blue {
-    border-image-source: linear-gradient(to right, #438ec7, rgba(0,0,0,0));
+    border-image-source: linear-gradient(to right, #438ec7, rgba(0, 0, 0, 0));
 }
 
 .border-gradient-purple {
-    border-image-source: linear-gradient(to right, #3c2461, rgba(0,0,0,0));
+    border-image-source: linear-gradient(to right, #3c2461, rgba(0, 0, 0, 0));
 }
 
 .border-gradient-yellow {
-    border-image-source: linear-gradient(to right, #f3d597, rgba(0,0,0,0));
+    border-image-source: linear-gradient(to right, #f3d597, rgba(0, 0, 0, 0));
 }
 
 .c-sheet .skill-table-header {
@@ -323,7 +323,7 @@ select {
     text-align: start;
 }
 
-.c-sheet .skill-table-col select{
+.c-sheet .skill-table-col select {
     width: 100px;
 }
 
@@ -347,7 +347,7 @@ select {
 
 .c-sheet .skill-table-col-2 {
     width: 50%;
-    border-left: rgba(0,0,0,0.2) 1px solid;
+    border-left: rgba(0, 0, 0, 0.2) 1px solid;
 }
 
 .c-sheet .skill-table-row {
@@ -358,7 +358,7 @@ select {
     align-items: center;
 }
 
-.c-sheet  .skill-table-row:not(:last-child) {
+.c-sheet .skill-table-row:not(:last-child) {
     margin-bottom: 5px;
 }
 
@@ -497,7 +497,7 @@ ul.items {
     height: 100%;
 }
 
-.ability-sheet .ability-row > label {
+.ability-sheet .ability-row>label {
     width: 20%;
 }
 
@@ -506,7 +506,7 @@ ul.items {
 }
 
 .ability-sheet .tox.tox-tinymce {
-    min-height:100px;
+    min-height: 100px;
 }
 
 .ability-sheet .editor {
@@ -516,7 +516,7 @@ ul.items {
 }
 
 .ability-sheet .ability-description {
-    border-bottom:black 2px solid;
+    border-bottom: black 2px solid;
 }
 
 /* Character Sheet - Abilities */
@@ -533,7 +533,7 @@ ul.items {
 
 .c-sheet .ability-section {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
 }
 
 .c-sheet .ability-section-header {
@@ -616,8 +616,8 @@ ul.items {
     flex: 0;
     object-fit: contain;
     border-color: black;
-    border-width:1px;
-    border-style:solid;
+    border-width: 1px;
+    border-style: solid;
     max-width: unset;
 }
 
@@ -674,7 +674,7 @@ ul.items {
 }
 
 .item-sheet .item-stat-mod-label {
-    align-items:center;
+    align-items: center;
 }
 
 .item-sheet .item-stat-mod-value {
@@ -704,11 +704,11 @@ ul.items {
 
 .item-sheet .item-section input[type="number"] {
     width: 30px;
-    text-align:center;
+    text-align: center;
 }
 
 .item-sheet .pd-stat {
-width: 100px;
+    width: 100px;
 }
 
 .item-sheet .pd-mod {
@@ -729,7 +729,7 @@ width: 100px;
 
 .c-sheet .belonging-section {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
 }
 
 /*Bio & Notes*/
@@ -781,7 +781,7 @@ width: 100px;
     text-align: center;
 }
 
-.gift-input > span, .gift-level-input > span {
+.gift-input>span, .gift-level-input>span {
     margin-bottom: 5px;
 }
 
@@ -797,7 +797,7 @@ width: 100px;
     margin-top: 10px;
 }
 
-.gift-editor > span {
+.gift-editor>span {
     margin-bottom: 15px;
 }
 
@@ -805,7 +805,7 @@ width: 100px;
     display: flex;
     flex-direction: column;
     min-height: 50px;
-    background-color:rgba(57, 32, 91, .1);
+    background-color: rgba(57, 32, 91, .1);
     border-radius: 5px;
 }
 
@@ -813,13 +813,13 @@ width: 100px;
     display: flex;
     flex-direction: column;
     min-height: 50px;
-    background-color:rgba(57, 32, 91, .1);
+    background-color: rgba(57, 32, 91, .1);
     border-radius: 5px;
     padding: 0 5px;
 }
 
 .gifts-page .tox.tox-tinymce {
-    min-height:100px;
+    min-height: 100px;
 }
 
 .gifts-page .gift-item {
@@ -861,13 +861,13 @@ width: 100px;
     display: flex;
     flex-direction: column;
     min-height: 50px;
-    background-color:rgba(57, 32, 91, .1);
+    background-color: rgba(57, 32, 91, .1);
     border-radius: 5px;
     padding: 0 5px;
 }
 
 .gifts-sheet .tox.tox-tinymce, .bio-page .tox.tox-tinymce {
-    min-height:100px;
+    min-height: 100px;
 }
 
 /* BIO & NOTES */
@@ -876,7 +876,7 @@ width: 100px;
     display: flex;
     flex-direction: column;
     min-height: 150px;
-    background-color:rgba(57, 32, 91, .1);
+    background-color: rgba(57, 32, 91, .1);
     border-radius: 5px;
 }
 
@@ -899,7 +899,7 @@ width: 100px;
     align-items: center;
 }
 
-.c-sheet  .summary-skill-table-row:not(:last-child) {
+.c-sheet .summary-skill-table-row:not(:last-child) {
     margin-bottom: 2px;
 }
 
@@ -943,5 +943,42 @@ width: 100px;
 }
 
 .coyote-checkbox {
-    accent-color: rgba(57,32,91,0.5);
+    accent-color: rgba(57, 32, 91, 0.5);
+}
+
+.mod-list-expand {
+    list-style: none;
+}
+
+.toggle {
+    display: none;
+}
+
+.toggle-active {
+    display: block;
+}
+
+.gb-mod {
+    display: flex;
+    flex-direction: row;
+}
+
+.gb-mod label {
+    align-self: center;
+    margin-right: 10px;
+}
+
+.gb-mod input[type="number"] {
+    width: 40px;
+}
+
+.gifts-sheet .item-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.gifts-sheet .item-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }

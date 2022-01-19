@@ -17,21 +17,23 @@ export class cncItemSheet extends ItemSheet {
     async getData(options) {
         const data = super.getData(options);
         const itemData = data.data;
-        
 
-        console.log(data.document.parent === null)
 
-        if (data.document.parent === null) {return itemData;} 
+
+        if (data.document.parent === null) {
+            itemData.data.owned = false;
+            return itemData;
+        }
 
         const actorData = data.item.parent.data
         if (itemData.type === "ability") {
             let pathStats = {
-                "stat1": actorData.data.info.path.stats.stat1,
-                "stat2": actorData.data.info.path.stats.stat2
+                [`${actorData.data.info.path.stats.stat1}`]: actorData.data.info.path.stats.stat1,
+                [`${actorData.data.info.path.stats.stat2}`]: actorData.data.info.path.stats.stat2
             }
             itemData.data.allowStats = pathStats;
+            itemData.data.owned = true;
             this.actor.updateEmbeddedDocuments("Item", [itemData])
-            console.log(itemData)
         }
 
         if (itemData.type === "specialization") {
@@ -84,7 +86,27 @@ export class cncItemSheet extends ItemSheet {
             itemData.data.total = itemData.data.statRank + itemData.data.skillRank + itemData.data.rank;
             this.actor.updateEmbeddedDocuments("Item", [itemData])
         }
-        console.log(itemData);
         return itemData;
     }
+
+    activateListeners(html) {
+        super.activateListeners(html)
+
+        html.find(".toggle-on-click").on("click", (event) => {
+            console.log(event)
+            console.log(event.target.classList);
+            const elmt = $(event.currentTarget).data("toggle");
+            const tgt = html.find("." + elmt);
+            tgt.toggleClass("toggle-active");
+            if (event.target.classList.contains("fa-angle-double-down")) {
+                event.target.classList.remove("fa-angle-double-down")
+                event.target.classList.add("fa-angle-double-up")
+            } else {
+                event.target.classList.remove("fa-angle-double-up")
+                event.target.classList.add("fa-angle-double-down")
+            }
+        });
+    }
+
+
 }

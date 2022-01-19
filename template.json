@@ -772,7 +772,26 @@
         "gift": {
             "category": "",
             "level": 0,
-            "description": ""
+            "description": "",
+            "mod": {
+                "successNumber": {
+                    "active": false,
+                    "value": 0,
+                    "skill": ""
+                },
+                "initiative": {
+                    "active": false,
+                    "value": 0
+                },
+                "physicalDefense": {
+                    "active": false,
+                    "value": 0
+                },
+                "dicePool": {
+                    "active": false,
+                    "value": 0
+                }
+            }
         },
         "burden": {
             "category": "",

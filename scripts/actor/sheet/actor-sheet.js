@@ -59,16 +59,6 @@ export class cncActorSheet extends ActorSheet {
         sheetData.abilities[`${actorData.data.info.path.stats.stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === actorData.data.info.path.stats.stat1);
         sheetData.abilities[`${actorData.data.info.path.stats.stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === actorData.data.info.path.stats.stat2);
 
-        /*sheetData.playerStats = {
-            "stat1": actorData.data.info.path.stats.stat1,
-            "stat2": actorData.data.info.path.stats.stat2
-        }*/
-
-        //sheetData.popAbilities =
-        //sheetData.abilities.path = {};
-        //sheetData.abilities.path.name = actorData.data.info.path.value;
-        //sheetData.abilities.path.stats = actorData.data.info.path;
-        /* Add object stating allowed abilities in .abilities*/
         console.log(actorData)
         this._sortSkills(sheetData);
         console.log(sheetData);

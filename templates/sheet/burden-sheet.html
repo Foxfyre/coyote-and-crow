@@ -20,4 +20,95 @@
         <span>Description</span>
         {{editor content=data.description target="data.description" button=true owner=owner editable=true}}
     </div>
+
+    <!--Modifications-->
+    <div class="sheet-title-h2 toggle-on-click" data-toggle="toggle" style="margin-top: 10px;">
+        <span>Modifiers <i class="fas fa-angle-double-down"></i></span>
+    </div>
+    <ul class="toggle">
+        <li class="mod-list-expand">
+            <div class="sheet-title-h2" style="margin-top: 10px;">
+                <span>Success Number</span>
+            </div>
+            <div class="pd-mod">
+                <label name="data.mod.successNumber.value">+ / - SN </label>
+                <select name="data.mod.successNumber.value" value="{{data.mod.successNumber.value}}">
+                    {{#select data.mod.successNumber.value}}
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">+1</option>
+                    <option value="2">+2</option>
+                    <option value="3">+3</option>
+                    <option value="4">+4</option>
+                    {{/select}}
+                </select>
+                <select class="pd-stat" name="data.mod.successNumber.skill" value="{{data.mod.successNumber.skill}}">
+                    {{#select data.mod.successNumber.skill}}
+                    <option value="">None</option>
+                    <option value="Art">Art</option>
+                    <option value="Athletics">Athletics</option>
+                    <option value="Ceremony">Ceremony</option>
+                    <option value="Charm">Charm</option>
+                    <option value="Coercion">Coercion</option>
+                    <option value="Computers">Computers</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Crafting">Crafting</option>
+                    <option value="Cybernetics">Cybernetics</option>
+                    <option value="Deception">Deception</option>
+                    <option value="Farming">Farming</option>
+                    <option value="Herbalism">Herbalism</option>
+                    <option value="Husbandry">Husbandry</option>
+                    <option value="Investigation">Investigation</option>
+                    <option value="Knowledge">Knowledge</option>
+                    <option value="Language">Language</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Melee Weapons">Melee Weapons</option>
+                    <option value="Music">Music</option>
+                    <option value="Performance">Performance</option>
+                    <option value="Piloting">Piloting</option>
+                    <option value="Ranged Weapons">Ranged Weapons</option>
+                    <option value="Science">Science</option>
+                    <option value="Skulduggery">Skuldugger</option>
+                    <option value="Stealth">Stealth</option>
+                    <option value="Survival">Survival</option>
+                    <option value="Tracking">Tracking</option>
+                    <option value="Unarmed Combat">Unarmed Combat</option>
+                    {{/select}}
+                </select>
+            </div>
+            <div class="item-row justify-between">
+                <div class="item-section">
+                    <div class="sheet-title-h2" style="margin: 10px 0 0 0;">
+                        <span>Physical Defense</span>
+                    </div>
+                    <div class="gb-mod">
+                        <label name="data.mod.physicalDefense.value" title='{{localize "DSTAT.PD"}}'>+ / - PD </label>
+                        <input type="number" name="data.mod.physicalDefense.value"
+                            value="{{data.mod.physicalDefense.value}}" />
+                    </div>
+                </div>
+                <div class="item-section">
+                    <div class="sheet-title-h2" style="margin-top: 10px;">
+                        <span>Dice Pool</span>
+                    </div>
+                    <div class="gb-mod">
+                        <label name="data.mod.dicePool.value" title='{{localize "ITEM.DicePool"}}'>+ / - Dice </label>
+                        <input type="number" name="data.mod.dicePool.value" value="{{data.mod.dicePool.value}}" />
+                    </div>
+                </div>
+                <div class="item-section">
+                    <div class="sheet-title-h2" style="margin-top: 10px;">
+                        <span>Initiative</span>
+                    </div>
+                    <div class="gb-mod">
+                        <label name="data.mod.initiative.value" title='{{localize "ITEM.DicePool"}}'>+ / - </label>
+                        <input type="number" name="data.mod.initiative.value" value="{{data.mod.initiative.value}}" />
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
 </form>
