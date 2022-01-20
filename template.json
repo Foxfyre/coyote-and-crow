@@ -32,55 +32,55 @@
                 }
             },
             "stats": {
-                "str": {
+                "strength": {
                     "value": 0,
                     "modified": 0,
                     "name": "Strength",
                     "label": "STAT.Strength"
                 },
-                "agi": {
+                "agility": {
                     "value": 0,
                     "modified": 0,
                     "name": "Agility",
                     "label": "STAT.Agility"
                 },
-                "end": {
+                "endurance": {
                     "value": 0,
                     "modified": 0,
                     "name": "Endurance",
                     "label": "STAT.Endurance"
                 },
-                "int": {
+                "intelligence": {
                     "value": 0,
                     "modified": 0,
                     "name": "Intelligence",
                     "label": "STAT.Intelligence"
                 },
-                "per": {
+                "perception": {
                     "value": 0,
                     "modified": 0,
                     "name": "Perception",
                     "label": "STAT.Perception"
                 },
-                "wis": {
+                "wisdom": {
                     "value": 0,
                     "modified": 0,
                     "name": "Wisdom",
                     "label": "STAT.Wisdom"
                 },
-                "spi": {
+                "spirit": {
                     "value": 0,
                     "modified": 0,
                     "name": "Spirit",
                     "label": "STAT.Spirit"
                 },
-                "cha": {
+                "charisma": {
                     "value": 0,
                     "modified": 0,
                     "name": "Charisma",
                     "label": "STAT.Charisma"
                 },
-                "wll": {
+                "will": {
                     "value": 0,
                     "modified": 0,
                     "name": "Will",
@@ -726,8 +726,10 @@
         "specialization": {
             "label": "SPEC.",
             "skill": "",
+            "skillRank": 0,
             "stat": "",
-            "rank": 0,
+            "statRank": 0,
+            "specRank": 0,
             "total": 0,
             "statName": ""
         },

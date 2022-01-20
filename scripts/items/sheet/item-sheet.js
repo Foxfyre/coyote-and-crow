@@ -3,6 +3,8 @@
  * @extends {ItemSheet}
  */
 
+import { convertStatName } from "../../system/utility.js";
+
 export class cncItemSheet extends ItemSheet {
     constructor(...args) {
         super(...args)
@@ -37,42 +39,39 @@ export class cncItemSheet extends ItemSheet {
         }
 
         if (itemData.type === "specialization") {
+            console.log(itemData)
+            itemData.data.statName = convertStatName(itemData.data.stat)
+            console.log(itemData.data.statName);
             switch (itemData.data.stat) {
                 case "agi":
-                    itemData.data.statName = "Agility";
                     itemData.data.statRank = actorData.data.stats.agi.value;
                     break;
                 case "cha":
-                    itemData.data.statName = "Charisma";
                     itemData.data.statRank = actorData.data.stats.cha.value;
                     break;
                 case "end":
-                    itemData.data.statName = "Endurance";
                     itemData.data.statRank = actorData.data.stats.end.value;
                     break;
                 case "int":
-                    itemData.data.statName = "Intelligence";
                     itemData.data.statRank = actorData.data.stats.int.value;
                     break;
                 case "per":
-                    itemData.data.statName = "Perception";
                     itemData.data.statRank = actorData.data.stats.per.value;
                     break;
                 case "spi":
-                    itemData.data.statName = "Spirit";
                     itemData.data.statRank = actorData.data.stats.spi.value;
                     break;
                 case "str":
-                    itemData.data.statName = "Strength";
                     itemData.data.statRank = actorData.data.stats.str.value;
                     break;
                 case "wis":
-                    itemData.data.statName = "Wisdom";
                     itemData.data.statRank = actorData.data.stats.wis.value;
                     break;
                 case "wll":
-                    itemData.data.statName = "Willpower"
                     itemData.data.statRank = actorData.data.stats.wll.value;
+                    break;
+                default:
+                    console.log("ItemData.data.statRank not set")
                     break;
             }
             let skillName = itemData.data.skill
@@ -84,7 +83,7 @@ export class cncItemSheet extends ItemSheet {
             }
 
             itemData.data.total = itemData.data.statRank + itemData.data.skillRank + itemData.data.rank;
-            this.actor.updateEmbeddedDocuments("Item", [itemData])
+            //this.actor.updateEmbeddedDocuments("Item", [itemData])
         }
         return itemData;
     }

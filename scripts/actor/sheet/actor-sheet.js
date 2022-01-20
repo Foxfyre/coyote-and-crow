@@ -76,11 +76,27 @@ export class cncActorSheet extends ActorSheet {
         event.preventDefault();
         const header = event.currentTarget;
         const type = header.dataset.type;
-        const itemData = {
-            name: game.i18n.format("ITEM.itemNew", { type: game.i18n.localize(`ITEM.ItemType${type.capitalize()}`) }),
-            type: type,
-            data: foundry.utils.deepClone(header.dataset)
-        };
+        let itemData;
+
+        if (type === "specialization") {
+            itemData = {
+                name: game.i18n.format("ITEM.itemNew", { type: game.i18n.localize(`ITEM.ItemType${type.capitalize()}`) }),
+                type: type,
+                data: foundry.utils.deepClone(header.dataset),
+                data: {
+                    skill: "Art",
+                    stat: "Strength"
+                }
+            }
+        } else {
+            itemData = {
+                name: game.i18n.format("ITEM.itemNew", { type: game.i18n.localize(`ITEM.ItemType${type.capitalize()}`) }),
+                type: type,
+                data: foundry.utils.deepClone(header.dataset)
+            };
+        }
+
+        console.log(itemData)
         delete itemData.data.type;
         return this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: true });
     }
