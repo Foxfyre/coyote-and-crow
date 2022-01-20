@@ -32,55 +32,55 @@
                 }
             },
             "stats": {
-                "strength": {
+                "str": {
                     "value": 0,
                     "modified": 0,
                     "name": "Strength",
                     "label": "STAT.Strength"
                 },
-                "agility": {
+                "agi": {
                     "value": 0,
                     "modified": 0,
                     "name": "Agility",
                     "label": "STAT.Agility"
                 },
-                "endurance": {
+                "end": {
                     "value": 0,
                     "modified": 0,
                     "name": "Endurance",
                     "label": "STAT.Endurance"
                 },
-                "intelligence": {
+                "int": {
                     "value": 0,
                     "modified": 0,
                     "name": "Intelligence",
                     "label": "STAT.Intelligence"
                 },
-                "perception": {
+                "per": {
                     "value": 0,
                     "modified": 0,
                     "name": "Perception",
                     "label": "STAT.Perception"
                 },
-                "wisdom": {
+                "wis": {
                     "value": 0,
                     "modified": 0,
                     "name": "Wisdom",
                     "label": "STAT.Wisdom"
                 },
-                "spirit": {
+                "spi": {
                     "value": 0,
                     "modified": 0,
                     "name": "Spirit",
                     "label": "STAT.Spirit"
                 },
-                "charisma": {
+                "cha": {
                     "value": 0,
                     "modified": 0,
                     "name": "Charisma",
                     "label": "STAT.Charisma"
                 },
-                "will": {
+                "wll": {
                     "value": 0,
                     "modified": 0,
                     "name": "Will",
