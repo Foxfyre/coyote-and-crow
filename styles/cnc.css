@@ -54,6 +54,10 @@ select {
     border-bottom: black 2px solid;
 }
 
+.form-group .form-fields select option:first-letter {
+    text-transform: capitalize;
+}
+
 .sheet nav.sheet-tabs {
     margin: 10px 0;
 }

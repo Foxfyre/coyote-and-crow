@@ -113,14 +113,14 @@ Hooks.on("ready", async () => {
   }).render(true)
 })
 
-/*Hooks.on("renderDialog", (dialog, html) => {
+Hooks.on("renderDialog", (dialog, html) => {
   Array.from(html.find("#document-create option")).forEach(i => {
-      if (i.value == "burden")
+      if (i.value == "weapon" || i.value == "armor")
       {
           i.remove()
       }
   })
-})*/
+})
 
 /*Hooks.on("preCreateActor", (actor, createData, options, userId) => {
   const additionalItems = [

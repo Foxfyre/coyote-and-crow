@@ -57,22 +57,27 @@
                     </select>
                 </div>
                 <div class="spec-table-col">
+                    {{#if data.owned}}
+                    <select name="data.stat">
+                        {{selectOptions actorData.data.info.path.stats selected=data.stat}}
+                    </select>
+                    {{else}}
                     <select name="data.stat" value="{{data.stat}}">
                         {{#select data.stat}}
-                        <option value="Strength" stat-name="strength">Strength</option>
-                        <option value="Agility" stat-name="agility">Agility</option>
-                        <option value="Endurance" stat-name="endurance">Endurance</option>
-                        <option value="Intelligence" stat-name="intelligence">Intelligence</option>
-                        <option value="Perception" stat-name="perception">Perception</option>
-                        <option value="Wisdom" stat-name="wisdom">Wisdom</option>
-                        <option value="Spirit" stat-name="spirit">Spirit</option>
-                        <option value="Charisma" stat-name="charisma">Charisma</option>
-                        <option value="Will" stat-name="will">Will</option>
+                        <option value="strength" stat-name="strength">Strength</option>
+                        <option value="agility" stat-name="agility">Agility</option>
+                        <option value="endurance" stat-name="endurance">Endurance</option>
+                        <option value="intelligence" stat-name="intelligence">Intelligence</option>
+                        <option value="perception" stat-name="perception">Perception</option>
+                        <option value="wisdom" stat-name="wisdom">Wisdom</option>
+                        <option value="spirit" stat-name="spirit">Spirit</option>
+                        <option value="charisma" stat-name="charisma">Charisma</option>
+                        <option value="will" stat-name="will">Will</option>
                         {{/select}}
-                    </select>
+                    </select>{{/if}}
                 </div>
                 <div class="spec-table-col spec-values">
-                    <input class="spec-table-rank" type="number" name="data.rank" value="{{data.specRank}}" />
+                    <input class="spec-table-rank" type="number" name="data.specRank" value="{{data.specRank}}" />
                 </div>
             </div>
         </div>
