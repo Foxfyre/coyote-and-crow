@@ -2,7 +2,7 @@ export function convertStatName(statName) {
     let stat = "";
 
     switch (statName) {
-        case "str":
+        case "strength":
             stat = "Strength";
             break;
         case "agi":

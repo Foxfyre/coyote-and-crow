@@ -39,17 +39,6 @@ export class cncActorSheet extends ActorSheet {
         sheetData.effects = actorData.data.effects;
         sheetData.states = actorData.data.states;
         sheetData.playerInfo = {}
-        sheetData.playerInfo.baseStats = {
-            "agi": "Agility",
-            "cha": "Charisma",
-            "end": "Endurance",
-            "int": "Intelligence",
-            "per": "Perception",
-            "spi": "Spirit",
-            "str": "Strength",
-            "wis": "Wisdom",
-            "wll": "will"
-        }
 
         sheetData.abilities = {
             [`${actorData.data.info.path.stats.stat1}`]: "",
@@ -84,8 +73,8 @@ export class cncActorSheet extends ActorSheet {
                 type: type,
                 data: foundry.utils.deepClone(header.dataset),
                 data: {
-                    skill: "Art",
-                    stat: "Strength"
+                    skill: "art",
+                    stat: "strength"
                 }
             }
         } else {
@@ -147,106 +136,106 @@ export class cncActorSheet extends ActorSheet {
             case "badger":
                 actorData.data.info.path.name = "Badger";
                 actorData.data.info.path.stats = {
-                    "stat1": "int",
-                    "stat2": "wll"
+                    "stat1": "intelligence",
+                    "stat2": "will"
                 }
                 return actorData;
             case "bear":
                 actorData.data.info.path.name = "Bear";
                 actorData.data.info.path.stats = {
-                    "stat1": "cha",
-                    "stat2": "str"
+                    "stat1": "charisma",
+                    "stat2": "strength"
                 }
                 return actorData;
             case "beaver":
                 actorData.data.info.path.name = "Beaver";
                 actorData.data.info.path.stats = {
-                    "stat1": "end",
-                    "stat2": "per"
+                    "stat1": "endurance",
+                    "stat2": "perception"
                 }
                 return actorData;
             case "bison":
                 actorData.data.info.path.name = "Bison";
                 actorData.data.info.path.stats = {
-                    "stat1": "str",
-                    "stat2": "wll"
+                    "stat1": "strength",
+                    "stat2": "will"
                 }
                 return actorData;
             case "coyote":
                 actorData.data.info.path.name = "Coyote";
                 actorData.data.info.path.stats = {
-                    "stat1": "agi",
-                    "stat2": "int"
+                    "stat1": "agility",
+                    "stat2": "intelligence"
                 }
                 return actorData;
             case "crow":
                 actorData.data.info.path.name = "Crow";
                 actorData.data.info.path.stats = {
-                    "stat1": "spi",
-                    "stat2": "wis"
+                    "stat1": "spirit",
+                    "stat2": "wisdom"
                 }
                 return actorData;
             case "deer":
                 actorData.data.info.path.name = "Deer";
                 actorData.data.info.path.stats = {
-                    "stat1": "wis",
-                    "stat2": "cha"
+                    "stat1": "wisdom",
+                    "stat2": "charisma"
                 }
                 return actorData;
             case "eagle":
                 actorData.data.info.path.name = "Eagle";
                 actorData.data.info.path.stats = {
-                    "stat1": "str",
-                    "stat2": "wis"
+                    "stat1": "strength",
+                    "stat2": "wisdom"
                 }
                 return actorData;
             case "falcon":
                 actorData.data.info.path.name = "Falcon";
                 actorData.data.info.path.stats = {
-                    "stat1": "per",
-                    "stat2": "spi"
+                    "stat1": "perception",
+                    "stat2": "spirit"
                 }
                 return actorData;
             case "fox":
                 actorData.data.info.path.name = "Fox";
                 actorData.data.info.path.stats = {
-                    "stat1": "agi",
-                    "stat2": "spi"
+                    "stat1": "agility",
+                    "stat2": "spirit"
                 };
                 return actorData;
             case "owl":
                 actorData.data.info.path.name = "Owl";
                 actorData.data.info.path.stats = {
-                    "stat1": "end",
-                    "stat2": "int"
+                    "stat1": "endurance",
+                    "stat2": "intelligence"
                 }
                 return actorData;
             case "raccoon":
                 actorData.data.info.path.name = "Raccoon";
                 actorData.data.info.path.stats = {
-                    "stat1": "cha",
-                    "stat2": "int"
+                    "stat1": "charisma",
+                    "stat2": "intelligence"
                 }
                 return actorData;
             case "salmon":
                 actorData.data.info.path.name = "Salmon";
                 actorData.data.info.path.stats = {
-                    "stat1": "wll",
-                    "stat2": "agi"
+                    "stat1": "will",
+                    "stat2": "agility"
                 }
                 return actorData;
             case "snake":
                 actorData.data.info.path.name = "Snake";
                 actorData.data.info.path.stats = {
-                    "stat1": "spi",
-                    "stat2": "end"
+                    "stat1": "spirit",
+                    "stat2": "endurance"
                 }
                 return actorData;
             case "spider":
                 actorData.data.info.path.name = "Spider";
                 actorData.data.info.path.stats = {
-                    "stat1": "per",
-                    "stat2": "str"
+                    "stat1": "perception",
+                    "stat2": "strength"
                 }
                 return actorData;
         }

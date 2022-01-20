@@ -22,13 +22,13 @@ export class cncActor extends Actor {
     prepareDerivedData() {
         const actorData = this.data;
         const data = actorData.data;
-        data.attributes.init.score = data.stats.agi.value + data.stats.per.value + data.stats.cha.value;
-        data.attributes.body.pd = data.stats.agi.value + data.stats.end.value;
-        data.attributes.mind.md = data.stats.per.value + data.stats.wis.value;
-        data.attributes.soul.sd = data.stats.cha.value + data.stats.wll.value;
-        data.attributes.body.value = data.stats.str.value + data.stats.agi.value + data.stats.end.value;
-        data.attributes.mind.value = data.stats.int.value + data.stats.per.value + data.stats.wis.value;
-        data.attributes.soul.value = data.stats.spi.value + data.stats.cha.value + data.stats.wll.value;
+        data.attributes.init.score = data.stats.agility.value + data.stats.perception.value + data.stats.charisma.value;
+        data.attributes.body.pd = data.stats.agility.value + data.stats.endurance.value;
+        data.attributes.mind.md = data.stats.perception.value + data.stats.wisdom.value;
+        data.attributes.soul.sd = data.stats.charisma.value + data.stats.will.value;
+        data.attributes.body.value = data.stats.strength.value + data.stats.agility.value + data.stats.endurance.value;
+        data.attributes.mind.value = data.stats.intelligence.value + data.stats.perception.value + data.stats.wisdom.value;
+        data.attributes.soul.value = data.stats.spirit.value + data.stats.charisma.value + data.stats.will.value;
 
         if (this.type === "character") {
             this._calcTotalSkills()
@@ -59,31 +59,31 @@ export class cncActor extends Actor {
 
     _setSkillName(skill, skillKey) {
         switch (skill.stat) {
-            case "str":
+            case "strength":
                 this.data.data.skills[skillKey].statName = "Strength";
                 break;
-            case "agi":
+            case "agility":
                 this.data.data.skills[skillKey].statName = "Agility";
                 break;
-            case "end":
+            case "endurance":
                 this.data.data.skills[skillKey].statName = "Endurance";
                 break;
-            case "int":
+            case "intelligence":
                 this.data.data.skills[skillKey].statName = "Intelligence";
                 break;
-            case "per":
+            case "perception":
                 this.data.data.skills[skillKey].statName = "Perception";
                 break;
-            case "wis":
+            case "wisdom":
                 this.data.data.skills[skillKey].statName = "Wisdom";
                 break;
-            case "spi":
+            case "spirit":
                 this.data.data.skills[skillKey].statName = "Spirit";
                 break;
-            case "cha":
+            case "charisma":
                 this.data.data.skills[skillKey].statName = "Charisma";
                 break;
-            case "wll":
+            case "will":
                 this.data.data.skills[skillKey].statName = "Will";
                 break;
         }
@@ -92,24 +92,24 @@ export class cncActor extends Actor {
 
     _skillMod(stat) {
         switch (stat) {
-            case "str":
-                return this.data.data.stats.str.value;
-            case "agi":
-                return this.data.data.stats.agi.value;
-            case "end":
-                return this.data.data.stats.end.value;
-            case "int":
-                return this.data.data.stats.int.value;
-            case "per":
-                return this.data.data.stats.per.value;
-            case "wis":
-                return this.data.data.stats.wis.value;
-            case "spi":
-                return this.data.data.stats.spi.value;
-            case "cha":
-                return this.data.data.stats.cha.value;
-            case "wll":
-                return this.data.data.stats.wll.value;
+            case "strength":
+                return this.data.data.stats.strength.value;
+            case "agility":
+                return this.data.data.stats.agility.value;
+            case "endurance":
+                return this.data.data.stats.endurance.value;
+            case "intelligence":
+                return this.data.data.stats.intelligence.value;
+            case "perception":
+                return this.data.data.stats.perception.value;
+            case "wisdom":
+                return this.data.data.stats.wisdom.value;
+            case "spirit":
+                return this.data.data.stats.spirit.value;
+            case "charisma":
+                return this.data.data.stats.charisma.value;
+            case "will":
+                return this.data.data.stats.will.value;
         }
     }
 
@@ -118,106 +118,106 @@ export class cncActor extends Actor {
             case "badger":
                 actorData.data.info.path.name = "Badger";
                 actorData.data.info.path.stats = {
-                    "stat1": "Intelligence",
-                    "stat2": "Will"
+                    "intelligence": "Intelligence",
+                    "will": "Will"
                 }
                 return actorData;
             case "bear":
                 actorData.data.info.path.name = "Bear";
                 actorData.data.info.path.stats = {
-                    "stat1": "Charisma",
-                    "stat2": "Strength"
+                    "charisma": "Charisma",
+                    "strength": "Strength"
                 }
                 return actorData;
             case "beaver":
                 actorData.data.info.path.name = "Beaver";
                 actorData.data.info.path.stats = {
-                    "stat1": "Endurance",
-                    "stat2": "Perception"
+                    "endurance": "Endurance",
+                    "perception": "Perception"
                 }
                 return actorData;
             case "bison":
                 actorData.data.info.path.name = "Bison";
                 actorData.data.info.path.stats = {
-                    "stat1": "Strength",
-                    "stat2": "Will"
+                    "strength": "Strength",
+                    "willl": "Will"
                 }
                 return actorData;
             case "coyote":
                 actorData.data.info.path.name = "Coyote";
                 actorData.data.info.path.stats = {
-                    "stat1": "Agility",
-                    "stat2": "Intelligence"
+                    "agility": "Agility",
+                    "intelligence": "Intelligence"
                 }
                 return actorData;
             case "crow":
                 actorData.data.info.path.name = "Crow";
                 actorData.data.info.path.stats = {
-                    "stat1": "Spirit",
-                    "stat2": "Wisdom"
+                    "spirit": "Spirit",
+                    "wisdom": "Wisdom"
                 }
                 return actorData;
             case "deer":
                 actorData.data.info.path.name = "Deer";
                 actorData.data.info.path.stats = {
-                    "stat1": "Wisdom",
-                    "stat2": "Charisma"
+                    "wisdom": "Wisdom",
+                    "charisma": "Charisma"
                 }
                 return actorData;
             case "eagle":
                 actorData.data.info.path.name = "Eagle";
                 actorData.data.info.path.stats = {
-                    "stat1": "Strength",
-                    "stat2": "Wisdom"
+                    "strength": "Strength",
+                    "wisdom": "Wisdom"
                 }
                 return actorData;
             case "falcon":
                 actorData.data.info.path.name = "Falcon";
                 actorData.data.info.path.stats = {
-                    "stat1": "Perception",
-                    "stat2": "Spirit"
+                    "perception": "Perception",
+                    "spirit": "Spirit"
                 }
                 return actorData;
             case "fox":
                 actorData.data.info.path.name = "Fox";
                 actorData.data.info.path.stats = {
-                    "stat1": "Agility",
-                    "stat2": "Spirit"
+                    "agility": "Agility",
+                    "spirit": "Spirit"
                 };
                 return actorData;
             case "owl":
                 actorData.data.info.path.name = "Owl";
                 actorData.data.info.path.stats = {
-                    "stat1": "Endurance",
-                    "stat2": "Intelligence"
+                    "endurance": "Endurance",
+                    "intelligence": "Intelligence"
                 }
                 return actorData;
             case "raccoon":
                 actorData.data.info.path.name = "Raccoon";
                 actorData.data.info.path.stats = {
-                    "stat1": "Charisma",
-                    "stat2": "Intelligence"
+                    "charisma": "Charisma",
+                    "intelligence": "Intelligence"
                 }
                 return actorData;
             case "salmon":
                 actorData.data.info.path.name = "Salmon";
                 actorData.data.info.path.stats = {
-                    "stat1": "Will",
-                    "stat2": "Agility"
+                    "will": "Will",
+                    "agility": "Agility"
                 }
                 return actorData;
             case "snake":
                 actorData.data.info.path.name = "Snake";
                 actorData.data.info.path.stats = {
-                    "stat1": "Spirit",
-                    "stat2": "Endurance"
+                    "spirit": "Spirit",
+                    "endurance": "Endurance"
                 }
                 return actorData;
             case "spider":
                 actorData.data.info.path.name = "Spider";
                 actorData.data.info.path.stats = {
-                    "stat1": "Perception",
-                    "stat2": "Strength"
+                    "perception": "Perception",
+                    "strength": "Strength"
                 }
                 return actorData;
         }

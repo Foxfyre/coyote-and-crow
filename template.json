@@ -32,55 +32,55 @@
                 }
             },
             "stats": {
-                "str": {
+                "strength": {
                     "value": 0,
                     "modified": 0,
                     "name": "Strength",
                     "label": "STAT.Strength"
                 },
-                "agi": {
+                "agility": {
                     "value": 0,
                     "modified": 0,
                     "name": "Agility",
                     "label": "STAT.Agility"
                 },
-                "end": {
+                "endurance": {
                     "value": 0,
                     "modified": 0,
                     "name": "Endurance",
                     "label": "STAT.Endurance"
                 },
-                "int": {
+                "intelligence": {
                     "value": 0,
                     "modified": 0,
                     "name": "Intelligence",
                     "label": "STAT.Intelligence"
                 },
-                "per": {
+                "perception": {
                     "value": 0,
                     "modified": 0,
                     "name": "Perception",
                     "label": "STAT.Perception"
                 },
-                "wis": {
+                "wisdom": {
                     "value": 0,
                     "modified": 0,
                     "name": "Wisdom",
                     "label": "STAT.Wisdom"
                 },
-                "spi": {
+                "spirit": {
                     "value": 0,
                     "modified": 0,
                     "name": "Spirit",
                     "label": "STAT.Spirit"
                 },
-                "cha": {
+                "charisma": {
                     "value": 0,
                     "modified": 0,
                     "name": "Charisma",
                     "label": "STAT.Charisma"
                 },
-                "wll": {
+                "will": {
                     "value": 0,
                     "modified": 0,
                     "name": "Will",
@@ -111,8 +111,8 @@
             "skills": {
                 "art": {
                     "relStats": {
-                        "spi": "Spirit",
-                        "wll": "Will"
+                        "spirit": "Spirit",
+                        "will": "Will"
                     },
                     "stat": "",
                     "statName": "",
@@ -123,8 +123,8 @@
                 },
                 "athletics": {
                     "relStats": {
-                        "str": "Strength",
-                        "end": "Endurance"
+                        "strength": "Strength",
+                        "endurance": "Endurance"
                     },
                     "stat": "",
                     "statName": "",
@@ -135,8 +135,8 @@
                 },
                 "ceremony": {
                     "relStats": {
-                        "spi": "Spirit",
-                        "wis": "Wisdom"
+                        "spirit": "Spirit",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -147,8 +147,8 @@
                 },
                 "charm": {
                     "relStats": {
-                        "cha": "Charisma",
-                        "per": "Perception"
+                        "charisma": "Charisma",
+                        "perception": "Perception"
                     },
                     "stat": "",
                     "statName": "",
@@ -159,8 +159,8 @@
                 },
                 "coercion": {
                     "relStats": {
-                        "spi": "Spirit",
-                        "cha": "Charisma"
+                        "spirit": "Spirit",
+                        "charisma": "Charisma"
                     },
                     "stat": "",
                     "statName": "",
@@ -171,8 +171,8 @@
                 },
                 "computers": {
                     "relStats": {
-                        "int": "Intelligence",
-                        "wis": "Wisdom"
+                        "intelligence": "Intelligence",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -183,8 +183,8 @@
                 },
                 "cooking": {
                     "relStats": {
-                        "spi": "Spirit",
-                        "int": "Intelligence"
+                        "spirit": "Spirit",
+                        "intelligence": "Intelligence"
                     },
                     "stat": "",
                     "statName": "",
@@ -195,8 +195,8 @@
                 },
                 "crafting": {
                     "relStats": {
-                        "spi": "Spirit",
-                        "per": "Perception"
+                        "spirit": "Spirit",
+                        "perception": "Perception"
                     },
                     "stat": "",
                     "statName": "",
@@ -207,8 +207,8 @@
                 },
                 "cybernetics": {
                     "relStats": {
-                        "int": "Intelligence",
-                        "wis": "Wisdom"
+                        "intelligence": "Intelligence",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -219,8 +219,8 @@
                 },
                 "deception": {
                     "relStats": {
-                        "cha": "Charisma",
-                        "wll": "Will"
+                        "charisma": "Charisma",
+                        "will": "Will"
                     },
                     "stat": "",
                     "statName": "",
@@ -231,8 +231,8 @@
                 },
                 "farming": {
                     "relStats": {
-                        "int": "Intelligence",
-                        "end": "Endurance"
+                        "intelligence": "Intelligence",
+                        "endurance": "Endurance"
                     },
                     "stat": "",
                     "statName": "",
@@ -243,8 +243,8 @@
                 },
                 "herbalism": {
                     "relStats": {
-                        "per": "Perception",
-                        "wis": "Wisdom"
+                        "perception": "Perception",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -255,8 +255,8 @@
                 },
                 "husbandry": {
                     "relStats": {
-                        "cha": "Charisma",
-                        "wis": "Wisdom"
+                        "charisma": "Charisma",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -267,8 +267,8 @@
                 },
                 "investigation": {
                     "relStats": {
-                        "per": "Perception",
-                        "wis": "Wisdom"
+                        "perception": "Perception",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -279,8 +279,8 @@
                 },
                 "knowledge": {
                     "relStats": {
-                        "int": "Intelligence",
-                        "wis": "Wisdom"
+                        "intelligence": "Intelligence",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -291,8 +291,8 @@
                 },
                 "language": {
                     "relStats": {
-                        "per": "Perception",
-                        "wll": "Will"
+                        "perception": "Perception",
+                        "will": "Will"
                     },
                     "stat": "",
                     "statName": "",
@@ -303,8 +303,8 @@
                 },
                 "medicine": {
                     "relStats": {
-                        "int": "Intelligence",
-                        "wis": "Wisdom"
+                        "intelligence": "Intelligence",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -315,8 +315,8 @@
                 },
                 "melee": {
                     "relStats": {
-                        "str": "Strength",
-                        "end": "Endurance"
+                        "strength": "Strength",
+                        "endurance": "Endurance"
                     },
                     "stat": "",
                     "statName": "",
@@ -327,8 +327,8 @@
                 },
                 "music": {
                     "relStats": {
-                        "spi": "Spirit",
-                        "per": "Perception"
+                        "spirit": "Spirit",
+                        "perception": "Perception"
                     },
                     "stat": "",
                     "statName": "",
@@ -339,8 +339,8 @@
                 },
                 "performance": {
                     "relStats": {
-                        "cha": "Charisma",
-                        "spi": "Spirit"
+                        "charisma": "Charisma",
+                        "spirit": "Spirit"
                     },
                     "stat": "",
                     "statName": "",
@@ -351,8 +351,8 @@
                 },
                 "piloting": {
                     "relStats": {
-                        "int": "Intelligence",
-                        "agi": "Agility"
+                        "intelligence": "Intelligence",
+                        "agility": "Agility"
                     },
                     "stat": "",
                     "statName": "",
@@ -363,8 +363,8 @@
                 },
                 "ranged": {
                     "relStats": {
-                        "per": "Perception",
-                        "agi": "Agility"
+                        "perception": "Perception",
+                        "agility": "Agility"
                     },
                     "stat": "",
                     "statName": "",
@@ -375,8 +375,8 @@
                 },
                 "science": {
                     "relStats": {
-                        "int": "Intelligence",
-                        "per": "Perception"
+                        "intelligence": "Intelligence",
+                        "perception": "Perception"
                     },
                     "stat": "",
                     "statName": "",
@@ -387,8 +387,8 @@
                 },
                 "skulduggery": {
                     "relStats": {
-                        "per": "Perception",
-                        "cha": "Charisma"
+                        "perception": "Perception",
+                        "charisma": "Charisma"
                     },
                     "stat": "",
                     "statName": "",
@@ -399,8 +399,8 @@
                 },
                 "stealth": {
                     "relStats": {
-                        "agi": "Agility",
-                        "wll": "Will"
+                        "agility": "Agility",
+                        "will": "Will"
                     },
                     "stat": "",
                     "statName": "",
@@ -411,8 +411,8 @@
                 },
                 "survival": {
                     "relStats": {
-                        "end": "Endurance",
-                        "wis": "Wisdom"
+                        "endurance": "Endurance",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -423,8 +423,8 @@
                 },
                 "tracking": {
                     "relStats": {
-                        "per": "Perception",
-                        "wis": "Wisdom"
+                        "perception": "Perception",
+                        "wisdom": "Wisdom"
                     },
                     "stat": "",
                     "statName": "",
@@ -435,8 +435,8 @@
                 },
                 "unarmed": {
                     "relStats": {
-                        "int": "Intelligence",
-                        "str": "Strength"
+                        "intelligence": "Intelligence",
+                        "strength": "Strength"
                     },
                     "stat": "",
                     "statName": "",
@@ -668,39 +668,39 @@
                         "value": 0
                     },
                     "stat": {
-                        "agi": {
+                        "agility": {
                             "value": 0,
                             "statName": "STAT.Agility"
                         },
-                        "cha": {
+                        "charisma": {
                             "value": 0,
                             "statName": "STAT.Charisma"
                         },
-                        "end": {
+                        "endurance": {
                             "value": 0,
                             "statName": "STAT.Endurance"
                         },
-                        "int": {
+                        "intelligence": {
                             "value": 0,
                             "statName": "STAT.Intelligence"
                         },
-                        "per": {
+                        "perception": {
                             "value": 0,
                             "statName": "STAT.Perception"
                         },
-                        "spi": {
+                        "spirit": {
                             "value": 0,
                             "statName": "STAT.Spirit"
                         },
-                        "str": {
+                        "strength": {
                             "value": 0,
                             "statName": "STAT.Strength"
                         },
-                        "wis": {
+                        "wisdom": {
                             "value": 0,
                             "statName": "STAT.Wisdom"
                         },
-                        "wll": {
+                        "will": {
                             "value": 0,
                             "statName": "STAT.will"
                         }

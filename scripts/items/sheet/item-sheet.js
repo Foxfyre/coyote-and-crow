@@ -25,9 +25,13 @@ export class cncItemSheet extends ItemSheet {
         if (data.document.parent === null) {
             itemData.data.owned = false;
             return itemData;
+        } else {
+            itemData.data.owned = true;
         }
 
         const actorData = data.item.parent.data
+        itemData.actorData = actorData;
+
         if (itemData.type === "ability") {
             let pathStats = {
                 [`${actorData.data.info.path.stats.stat1}`]: actorData.data.info.path.stats.stat1,
@@ -39,36 +43,34 @@ export class cncItemSheet extends ItemSheet {
         }
 
         if (itemData.type === "specialization") {
-            console.log(itemData)
-            itemData.data.statName = convertStatName(itemData.data.stat)
-            console.log(itemData.data.statName);
+            itemData.data.statName = itemData.data.stat.capitalize()
             switch (itemData.data.stat) {
-                case "agi":
-                    itemData.data.statRank = actorData.data.stats.agi.value;
+                case "agility":
+                    itemData.data.statRank = actorData.data.stats.agility.value;
                     break;
-                case "cha":
-                    itemData.data.statRank = actorData.data.stats.cha.value;
+                case "charisma":
+                    itemData.data.statRank = actorData.data.stats.charisma.value;
                     break;
-                case "end":
-                    itemData.data.statRank = actorData.data.stats.end.value;
+                case "endurance":
+                    itemData.data.statRank = actorData.data.stats.endurance.value;
                     break;
-                case "int":
-                    itemData.data.statRank = actorData.data.stats.int.value;
+                case "intelligence":
+                    itemData.data.statRank = actorData.data.stats.intelligence.value;
                     break;
-                case "per":
-                    itemData.data.statRank = actorData.data.stats.per.value;
+                case "perception":
+                    itemData.data.statRank = actorData.data.stats.perception.value;
                     break;
-                case "spi":
-                    itemData.data.statRank = actorData.data.stats.spi.value;
+                case "spirit":
+                    itemData.data.statRank = actorData.data.stats.spirit.value;
                     break;
-                case "str":
-                    itemData.data.statRank = actorData.data.stats.str.value;
+                case "strength":
+                    itemData.data.statRank = actorData.data.stats.strength.value;
                     break;
-                case "wis":
-                    itemData.data.statRank = actorData.data.stats.wis.value;
+                case "wisdom":
+                    itemData.data.statRank = actorData.data.stats.wisdom.value;
                     break;
-                case "wll":
-                    itemData.data.statRank = actorData.data.stats.wll.value;
+                case "will":
+                    itemData.data.statRank = actorData.data.stats.will.value;
                     break;
                 default:
                     console.log("ItemData.data.statRank not set")
@@ -82,8 +84,8 @@ export class cncItemSheet extends ItemSheet {
                 }
             }
 
-            itemData.data.total = itemData.data.statRank + itemData.data.skillRank + itemData.data.rank;
-            //this.actor.updateEmbeddedDocuments("Item", [itemData])
+            itemData.data.total = itemData.data.statRank + itemData.data.skillRank + itemData.data.specRank;
+            this.actor.updateEmbeddedDocuments("Item", [itemData])
         }
         return itemData;
     }
