@@ -20,18 +20,19 @@
             </div>
             {{#each skills as |skill key|}}
             {{#ifCond skill.colMod "===" 1}}
-            <div class="summary-skill-table-row">
-                <div class="skill-table-col rollable">
+            <div class="summary-skill-table-row rollable" data-rollname="{{name}}" data-rolltype="skill">
+                <div class="skill-table-col">
                     <span>{{name}}</span>
                 </div>
+
                 <div class="skill-table-col">
                     {{{skill.statName}}}
                 </div>
                 <div class="skill-table-col col-rank">
-                    {{{skill.rank}}}
+                    {{{skill.skillRank}}}
                 </div>
                 <div class="skill-table-col col-total">
-                    <span class="skill-table-rank">{{skill.total}}</span>
+                    <span class="skill-table-rank">{{skill.skillTotal}}</span>
                 </div>
             </div>
             {{/ifCond}}
@@ -55,7 +56,7 @@
             </div>
             {{#each skills as |skill key|}}
             {{#ifCond skill.colMod "===" 0}}
-            <div class="summary-skill-table-row">
+            <div class="summary-skill-table-row rollable" data-rollname="{{name}}" data-rolltype="skill">
                 <div class="skill-table-col">
                     <span>{{name}}</span>
                 </div>
@@ -63,10 +64,10 @@
                     {{{skill.statName}}}
                 </div>
                 <div class="skill-table-col col-rank">
-                    {{{skill.rank}}}
+                    {{{skill.skillRank}}}
                 </div>
                 <div class="skill-table-col col-total">
-                    <span class="skill-table-rank">{{skill.total}}</span>
+                    <span class="skill-table-rank">{{skill.skillTotal}}</span>
                 </div>
             </div>
             {{/ifCond}}
@@ -134,7 +135,7 @@
                             <!--Linked Stat Rank-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <span class="spec-table-rank">{{spec.data.total}}</span>
+                            <span class="spec-table-rank">{{spec.data.skillTotal}}</span>
                             <!--Total of all 3 values-->
                         </div>
                         <div class="item-controls flexrow spec-controls">
@@ -157,39 +158,44 @@
                     <div class="effect-row">
                         <input type="checkbox" class="coyote-checkbox" name="data.effects.environmental.active"
                             {{checked effects.environmental.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.environmental.value" value="{{effects.environmental.value}}">
+                        <input type="text" class="effect-text-input" name="data.effects.environmental.value"
+                            value="{{effects.environmental.value}}">
                     </div>
                 </div>
                 <div class="effect">
                     <span>Poison</span>
                     <div class="effect-row">
-                        <input type="checkbox" class="coyote-checkbox" name="data.effects.poison.active"
-                            {{checked effects.poison.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.poison.value" value="{{effects.poison.value}}">
+                        <input type="checkbox" class="coyote-checkbox" name="data.effects.poison.active" {{checked
+                            effects.poison.active}}>
+                        <input type="text" class="effect-text-input" name="data.effects.poison.value"
+                            value="{{effects.poison.value}}">
                     </div>
                 </div>
                 <div class="effect">
                     <span>Bleeding</span>
                     <div class="effect-row">
-                        <input type="checkbox" class="coyote-checkbox" name="data.effects.bleeding.active"
-                            {{checked effects.bleeding.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.bleeding.value" value="{{effects.bleeding.value}}">
+                        <input type="checkbox" class="coyote-checkbox" name="data.effects.bleeding.active" {{checked
+                            effects.bleeding.active}}>
+                        <input type="text" class="effect-text-input" name="data.effects.bleeding.value"
+                            value="{{effects.bleeding.value}}">
                     </div>
                 </div>
                 <div class="effect">
                     <span>Stunned</span>
                     <div class="effect-row">
-                        <input type="checkbox" class="coyote-checkbox" name="data.effects.stun.active"
-                            {{checked effects.stun.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.stun.value" value="{{effects.stun.value}}">
+                        <input type="checkbox" class="coyote-checkbox" name="data.effects.stun.active" {{checked
+                            effects.stun.active}}>
+                        <input type="text" class="effect-text-input" name="data.effects.stun.value"
+                            value="{{effects.stun.value}}">
                     </div>
                 </div>
                 <div class="effect">
                     <span>Burning</span>
                     <div class="effect-row">
-                        <input type="checkbox" class="coyote-checkbox" name="data.effects.burning.active"
-                            {{checked effects.burning.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.burning.value" value="{{effects.burning.value}}">
+                        <input type="checkbox" class="coyote-checkbox" name="data.effects.burning.active" {{checked
+                            effects.burning.active}}>
+                        <input type="text" class="effect-text-input" name="data.effects.burning.value"
+                            value="{{effects.burning.value}}">
                     </div>
                 </div>
             </div>
@@ -201,33 +207,37 @@
             <div class="effect">
                 <span>Sleeping</span>
                 <div class="effect-row">
-                    <input type="checkbox" class="coyote-checkbox" name="data.states.sleeping.active"
-                        {{checked states.sleeping.active}}>
-                    <input type="text" class="effect-text-input" name="data.states.sleeping.value" value="{{states.sleeping.value}}">
+                    <input type="checkbox" class="coyote-checkbox" name="data.states.sleeping.active" {{checked
+                        states.sleeping.active}}>
+                    <input type="text" class="effect-text-input" name="data.states.sleeping.value"
+                        value="{{states.sleeping.value}}">
                 </div>
             </div>
             <div class="effect">
                 <span>Altered</span>
                 <div class="effect-row">
-                    <input type="checkbox" class="coyote-checkbox" name="data.states.altered.active"
-                        {{checked states.altered.active}}>
-                    <input type="text" class="effect-text-input" name="data.states.altered.value" value="{{states.altered.value}}">
+                    <input type="checkbox" class="coyote-checkbox" name="data.states.altered.active" {{checked
+                        states.altered.active}}>
+                    <input type="text" class="effect-text-input" name="data.states.altered.value"
+                        value="{{states.altered.value}}">
                 </div>
             </div>
             <div class="effect">
                 <span>Panic</span>
                 <div class="effect-row">
-                    <input type="checkbox" class="coyote-checkbox" name="data.states.panic.active"
-                        {{checked states.panic.active}}>
-                    <input type="text" class="effect-text-input" name="data.states.panic.value" value="{{states.panic.value}}">
+                    <input type="checkbox" class="coyote-checkbox" name="data.states.panic.active" {{checked
+                        states.panic.active}}>
+                    <input type="text" class="effect-text-input" name="data.states.panic.value"
+                        value="{{states.panic.value}}">
                 </div>
             </div>
             <div class="effect">
                 <span>Unconcious</span>
                 <div class="effect-row">
-                    <input type="checkbox" class="coyote-checkbox" name="data.states.unconcious.active"
-                        {{checked states.unconcious.active}}>
-                    <input type="text" class="effect-text-input" name="data.states.unconcious.value" value="{{states.unconcious.value}}">
+                    <input type="checkbox" class="coyote-checkbox" name="data.states.unconcious.active" {{checked
+                        states.unconcious.active}}>
+                    <input type="text" class="effect-text-input" name="data.states.unconcious.value"
+                        value="{{states.unconcious.value}}">
                 </div>
             </div>
         </div>

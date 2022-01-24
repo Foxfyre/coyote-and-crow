@@ -986,3 +986,8 @@ ul.items {
     flex-direction: column;
     flex-wrap: nowrap;
 }
+
+.rollable:hover {
+    color: purple;
+    font-weight: bold;
+}
