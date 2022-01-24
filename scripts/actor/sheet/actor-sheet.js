@@ -73,8 +73,8 @@ export class cncActorSheet extends ActorSheet {
                 type: type,
                 data: foundry.utils.deepClone(header.dataset),
                 data: {
-                    skill: "art",
-                    stat: "strength"
+                    skill: "Art",
+                    stat: "Strength"
                 }
             }
         } else {
