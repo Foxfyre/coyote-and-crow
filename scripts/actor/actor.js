@@ -53,7 +53,7 @@ export class cncActor extends Actor {
             let stat = this.data.data.skills[skillKey].stat;
             this._setSkillName(skill, skillKey);
             let skillModValue = this._skillMod(stat);
-            skill.total = 0 + skillModValue + this.data.data.skills[skillKey].rank;
+            skill.skillTotal = 0 + skillModValue + this.data.data.skills[skillKey].skillRank;
         }
     }
 
