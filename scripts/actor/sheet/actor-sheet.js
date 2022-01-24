@@ -1,3 +1,5 @@
+import buildRoll from "../../system/rolling.js";
+
 export class cncActorSheet extends ActorSheet {
 
     static get defaultOptions() {
@@ -59,6 +61,7 @@ export class cncActorSheet extends ActorSheet {
         html.find(".item-create").click(this._itemCreate.bind(this));
         html.find(".item-edit").click(this._onItemEdit.bind(this));
         html.find(".item-delete").click(this._onItemDelete.bind(this));
+        html.find(".rollable").click(this._diceRoll.bind(this));
     }
 
     _itemCreate(event) {
