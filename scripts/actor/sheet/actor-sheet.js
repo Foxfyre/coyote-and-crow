@@ -134,114 +134,39 @@ export class cncActorSheet extends ActorSheet {
         }
     }
 
-    _setPath(actorData) {
-        switch (actorData.data.info.path.value) {
-            case "badger":
-                actorData.data.info.path.name = "Badger";
-                actorData.data.info.path.stats = {
-                    "stat1": "intelligence",
-                    "stat2": "will"
-                }
-                return actorData;
-            case "bear":
-                actorData.data.info.path.name = "Bear";
-                actorData.data.info.path.stats = {
-                    "stat1": "charisma",
-                    "stat2": "strength"
-                }
-                return actorData;
-            case "beaver":
-                actorData.data.info.path.name = "Beaver";
-                actorData.data.info.path.stats = {
-                    "stat1": "endurance",
-                    "stat2": "perception"
-                }
-                return actorData;
-            case "bison":
-                actorData.data.info.path.name = "Bison";
-                actorData.data.info.path.stats = {
-                    "stat1": "strength",
-                    "stat2": "will"
-                }
-                return actorData;
-            case "coyote":
-                actorData.data.info.path.name = "Coyote";
-                actorData.data.info.path.stats = {
-                    "stat1": "agility",
-                    "stat2": "intelligence"
-                }
-                return actorData;
-            case "crow":
-                actorData.data.info.path.name = "Crow";
-                actorData.data.info.path.stats = {
-                    "stat1": "spirit",
-                    "stat2": "wisdom"
-                }
-                return actorData;
-            case "deer":
-                actorData.data.info.path.name = "Deer";
-                actorData.data.info.path.stats = {
-                    "stat1": "wisdom",
-                    "stat2": "charisma"
-                }
-                return actorData;
-            case "eagle":
-                actorData.data.info.path.name = "Eagle";
-                actorData.data.info.path.stats = {
-                    "stat1": "strength",
-                    "stat2": "wisdom"
-                }
-                return actorData;
-            case "falcon":
-                actorData.data.info.path.name = "Falcon";
-                actorData.data.info.path.stats = {
-                    "stat1": "perception",
-                    "stat2": "spirit"
-                }
-                return actorData;
-            case "fox":
-                actorData.data.info.path.name = "Fox";
-                actorData.data.info.path.stats = {
-                    "stat1": "agility",
-                    "stat2": "spirit"
-                };
-                return actorData;
-            case "owl":
-                actorData.data.info.path.name = "Owl";
-                actorData.data.info.path.stats = {
-                    "stat1": "endurance",
-                    "stat2": "intelligence"
-                }
-                return actorData;
-            case "raccoon":
-                actorData.data.info.path.name = "Raccoon";
-                actorData.data.info.path.stats = {
-                    "stat1": "charisma",
-                    "stat2": "intelligence"
-                }
-                return actorData;
-            case "salmon":
-                actorData.data.info.path.name = "Salmon";
-                actorData.data.info.path.stats = {
-                    "stat1": "will",
-                    "stat2": "agility"
-                }
-                return actorData;
-            case "snake":
-                actorData.data.info.path.name = "Snake";
-                actorData.data.info.path.stats = {
-                    "stat1": "spirit",
-                    "stat2": "endurance"
-                }
-                return actorData;
-            case "spider":
-                actorData.data.info.path.name = "Spider";
-                actorData.data.info.path.stats = {
-                    "stat1": "perception",
-                    "stat2": "strength"
-                }
-                return actorData;
-        }
+    _diceRoll(event) {
+        event.preventDefault();
+        const data = super.getData()
+        console.log(event)
+        const rollType = event.currentTarget.closest("[data-rolltype]").dataset.rolltype;
+        const rollName = event.currentTarget.closest("[data-rollname]").dataset.rollname;
+        console.log(data)
+
+        let rollObj = buildRoll(data, rollType, rollName);
+
+        console.log(rollObj)
+
+        /*let dMod = new Promise((resolve) => {
+            renderTemplate("/systems/coyote-and-crow/templates/dialog/dice-roll.html").then(dlg => {
+                new Dialog({
+                    title: game.i18n.localize("EXPANSE.DamageModifier"),
+                    content: dlg,
+                    buttons: {
+                        roll: {
+                            label: game.i18n.localize("EXPANSE.Roll"),
+                            callback: (html) => {
+                                resolve([
+                                    Number(html.find(`[name="add1D6"]`).val()),
+                                    Number(html.find(`[name="addDamage"]`).val())
+                                ])
+                            }
+                        }
+                    },
+                    default: "Roll"
+                }).render(true)
+            });
+        })
+        return dMod;*/
 
     }
 
