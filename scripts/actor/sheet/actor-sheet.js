@@ -1,4 +1,6 @@
-import buildRoll from "../../system/rolling.js";
+import buildRoll from "../../system/build-roll.js";
+import getRoll from "../../system/get-roll.js";
+import rollCard from "../../system/roll-card.js";
 
 export class cncActorSheet extends ActorSheet {
 
@@ -42,14 +44,17 @@ export class cncActorSheet extends ActorSheet {
         sheetData.states = actorData.data.states;
         sheetData.playerInfo = {}
 
+        let stat1 = data.actor.data.info.path.stats.stat1.value;
+        let stat2 = data.actor.data.info.path.stats.stat2.value;
+        let abilityStats = [];
+
         sheetData.abilities = {
-            [`${actorData.data.info.path.stats.stat1}`]: "",
-            [`${actorData.data.info.path.stats.stat2}`]: ""
+            [`${stat1}`]: "",
+            [`${stat2}`]: ""
         }
         sheetData.specialization = data.actor.items.filter(i => i.type === "specialization");
-        sheetData.abilities[`${actorData.data.info.path.stats.stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === actorData.data.info.path.stats.stat1);
-        sheetData.abilities[`${actorData.data.info.path.stats.stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === actorData.data.info.path.stats.stat2);
-
+        sheetData.abilities[`${stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat1);
+        sheetData.abilities[`${stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat2);
         console.log(actorData)
         this._sortSkills(sheetData);
         console.log(sheetData);
@@ -96,9 +101,7 @@ export class cncActorSheet extends ActorSheet {
     _onItemEdit(event) {
         event.preventDefault();
         const li = event.currentTarget.closest(".item");
-        console.log(li.dataset)
         const item = this.actor.items.get(li.dataset.itemId);
-        console.log(item)
         item.sheet.render(true);
     }
 
@@ -142,32 +145,134 @@ export class cncActorSheet extends ActorSheet {
         const rollName = event.currentTarget.closest("[data-rollname]").dataset.rollname;
         console.log(data)
 
-        let rollObj = buildRoll(data, rollType, rollName);
+        /*
+            Send data and roll info tto buildRoll to collect all relevant data needed for rolls. This will be referred to as the dicePayload.
+            when the object returns populated with data, check to see type of roll (skill/stat/ability). Each type will have it's own process.
+            For skill tests > Roll the dice based upon stat/skill. Any added modifiers are added to stats and skills already. 
+            Once roll is complete, send to chat with results and any relevant options, ie. use legendary, use focus, etc. If 12's are rolled, roll x many more
+        */
 
-        console.log(rollObj)
 
-        /*let dMod = new Promise((resolve) => {
-            renderTemplate("/systems/coyote-and-crow/templates/dialog/dice-roll.html").then(dlg => {
-                new Dialog({
-                    title: game.i18n.localize("EXPANSE.DamageModifier"),
-                    content: dlg,
-                    buttons: {
-                        roll: {
-                            label: game.i18n.localize("EXPANSE.Roll"),
-                            callback: (html) => {
-                                resolve([
-                                    Number(html.find(`[name="add1D6"]`).val()),
-                                    Number(html.find(`[name="addDamage"]`).val())
-                                ])
-                            }
+        // Send data and roll info to build roll. 
+        let pRollData = buildRoll(data, rollType, rollName);
+        pRollData.rollType = rollType;
+        pRollData.rollName = rollName;
+
+        console.log(pRollData)
+
+        //let dicePool = this._diceDisplay(pRollData)
+
+        let rollResults = getRoll(pRollData)
+        console.log(rollResults)
+
+        let rolledCard = rollCard(rollResults, pRollData);
+
+        let chatOptions = {
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            roll: rollResults,
+            flavor: rolledCard.title,
+            rollMode: game.settings.get("core", "rollMode"),
+            content: rolledCard.dice,
+            sound: CONFIG.sounds.dice
+        };
+
+        ChatMessage.create(chatOptions);
+
+        /*let rollApp = new Promise((resolve) => {
+
+            new Dialog({
+                title: game.i18n.localize("DICE.DicePrepare"),
+                content: (dicePool),
+                buttons: {
+                    roll: {
+                        label: game.i18n.localize("DICE.Roll"),
+                        callback: (html) => {
+                            resolve(getRoll(pRollData, dicePool))
                         }
-                    },
-                    default: "Roll"
-                }).render(true)
-            });
+                    }
+                },
+                default: "Roll"
+            },{width: 700, height: 400}).render(true)
         })
-        return dMod;*/
+        console.log(rollApp);*/
 
     }
+
+    // This function was building the popup. Can be deleted later
+    /*_diceDisplay(pRollData) {
+
+        let statDiceQty = pRollData.statDice;
+        let statDiceName = pRollData.statName;
+        let skillDiceQty = pRollData.skillDice;
+        let skillDiceName = pRollData.skillName;
+
+        let statDiv = "";
+        let skillDiv = "";
+
+        console.log(statDiceQty)
+
+        if (statDiceQty > 0) {
+            for (let s = 0; s < statDiceQty; s++) {
+                statDiv += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/wq.png" />`
+            }
+        }
+
+        if (skillDiceQty > 0) {
+            for (let t = 0; t < skillDiceQty; t++) {
+                skillDiv += `<img class="" height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/wq.png" />`
+            }
+        }
+
+        let sampleHTML = `
+        <form class="{{cssClass}} dice-prep" autocomplete="off">
+            <div class="dice-dialog">
+                <div class="dice-box">
+                    <div class="stat-block-title">
+                        <span>${statDiceName}</span>
+                    </div>
+                    <div class="stat-section">
+                        ${statDiv}
+                    </div>
+                    <div class="stat-block-title">
+                        <span>${skillDiceName}</span>
+                    </div>
+                    <div class="stat-section">
+                        ${skillDiv}
+                    </div>
+                </div>
+                <div class="check-info">
+                    <span>Create a Dice Pool</span>
+                    <span>Determine Success Number</span>
+                    <span>Roll Dice Poll</span>
+                    <span>Use Legendary Status</span>
+                    <span>Use Focus</span>
+                    <span>Roll Critical Dice</span>
+                    <span>Determine Success or Failure</span>
+                </div>
+            </div>
+
+
+        </form>
+
+        <script>
+        textContainer = document.querySelectorAll('.app.window-app.dialog');
+        length = textContainer.length;
+        for (i = 0; i < length; i++) {
+            if (textContainer[i].children[1].children[0].children[0].className.includes("dice-prep")) {
+            new_red = textContainer[i].id;
+            if (document.getElementById(new_red).className.includes("dice-prep-dialog")) {
+                continue;
+            }
+            else {
+                document.getElementById(new_red).className += " dice-prep-dialog";
+            }
+            } else { console.log("uhhhhhhhhhh") }
+        }
+        </script>
+    `;
+
+        return sampleHTML;
+    }*/
+
 
 }

@@ -3,12 +3,10 @@
         <span>Abilities</span>
     </div>
     <div class="ability-block">
-
         {{#each abilities as |ability key|}}
-
         <div class="ability-section">
             <div class="ability-section-header">
-                <span>{{key}}</span>
+                <span style="text-transform:capitalize;">{{key}}</span>
                 <a class="item-control item-create" data-type="ability" title='{{localize "ITEM.CreateAbility"}}'
                     title='{{localize "ITEM.AddAbility"}}'><i class="fas fa-plus"></i>
                 </a>

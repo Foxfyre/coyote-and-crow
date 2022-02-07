@@ -1,4 +1,43 @@
 <div class="item-section">
+    <div class="item-row" style="justify-content: space-around;">
+        <div class="item-section ">
+            <div class="sheet-title-h2" style="margin: 10px 0 0 0;">
+                <span>Physical Defense</span>
+            </div>
+            <div class="sn-mod">
+                <label name="" title='{{localize "DSTAT.PD"}}'>+ / - PD </label>
+                <input type="number" name="data.modifier.pd.value" value="{{data.modifier.pd.value}}" />
+            </div>
+        </div>
+        <div class="item-section">
+            <div class="sheet-title-h2" style="margin-top: 10px;">
+                <span>Dice Pool</span>
+            </div>
+            <div class="dp-mod">
+                <label name="data.modifier.dp.value" title='{{localize "ITEM.DicePool"}}'>+ / - Dice </label>
+                <input type="number" name="data.modifier.dp.value" value="{{data.modifier.dp.value}}" />
+            </div>
+        </div>
+        {{#ifCond data.type "===" "weapon"}}
+        <div class="item-section">
+            <div class="sheet-title-h2" style="margin-top: 10px;">
+                <span>Weapon Type</span>
+            </div>
+            <div class="weapon-select">
+                <label class="item-label" for="data.type">{{localize "ITEM.Type"}}:</label>
+                <select name="data.weaponTypes" value="{{data.weaponTypes}}">
+                    {{#select data.weaponTypes}}
+                    <option value="">Select</option>
+                    <option value="melee">Melee</option>
+                    <option value="ranged">Ranged</option>
+                    <option value="unarmed">Unarmed</option>
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+        {{/ifCond}}
+
+    </div>
     <div class="sheet-title-h2" style="margin-top: 10px;">
         <span>Stat Modification</span>
     </div>

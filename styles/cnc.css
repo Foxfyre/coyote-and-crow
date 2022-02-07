@@ -85,6 +85,12 @@ select {
     width: 200px;
 }
 
+.faux-input {
+    border: none;
+    background: rgba(57, 32, 91, 0.1);
+    border-bottom: black 2px solid;
+    height: 25px;
+}
 /* Character Sheet */
 
 .c-sheet .logo-row {
@@ -149,6 +155,11 @@ select {
 
 .c-sheet .legendary-row input[type="number"] {
     width: 65px;
+    text-align: center;
+}
+
+.c-sheet .legendary-row > .faux-input {
+    text-align: center;
 }
 
 .c-sheet .c-info-col {
@@ -221,7 +232,6 @@ select {
     display: flex;
     flex-direction: column;
     margin-right: 20px;
-    font-weight: bold;
 }
 
 .c-sheet .stat-block-title {
@@ -245,13 +255,24 @@ select {
 }
 
 .c-sheet .stat-num {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     height: 25px;
+    
+}
+
+.c-sheet .stat-modified {
+    height: 25px;
+    
 }
 
 .c-sheet .stat-num input[type="number"] {
     border: none;
     background: none;
     text-align: center;
+    width: 15px;
 }
 
 .str-blue {
@@ -629,7 +650,7 @@ ul.items {
     width: 150px;
 }
 
-.item-sheet .item-row {
+.item-row {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -641,12 +662,12 @@ ul.items {
     height: 150px;
 }
 
-.item-sheet .item-col {
+.item-col {
     display: flex;
     flex-direction: column;
 }
 
-.item-sheet .row-50 {
+.row-50 {
     width: 49%;
 }
 
@@ -666,56 +687,55 @@ ul.items {
     justify-content: space-between;
 }
 
-.item-sheet .item-label {
+.item-label {
     margin-right: 5px;
 }
 
-.item-sheet .item-stat-mod {
+.item-stat-mod {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
 }
 
-.item-sheet .item-stat-mod-label {
+.item-stat-mod-label {
     align-items: center;
 }
 
-.item-sheet .item-stat-mod-value {
+.item-stat-mod-value {
     width: 30px;
 }
 
-.item-sheet .item-mods {
+.item-mods {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 5px;
 }
 
-.item-sheet .item-sections {
+.item-sections {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
 }
 
-.item-sheet .item-section {
+.item-section {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     margin: 5px 0 0 5px;
 }
 
-.item-sheet .item-section input[type="number"] {
+.item-section input[type="number"] {
     width: 30px;
     text-align: center;
 }
 
-.item-sheet .pd-stat {
+.pd-stat {
     width: 100px;
 }
-
-.item-sheet .pd-mod {
+.pd-mod {
     margin: 5px 0 5px 5px;
 }
 
@@ -976,11 +996,6 @@ ul.items {
     width: 40px;
 }
 
-.gifts-sheet .item-row {
-    display: flex;
-    flex-direction: column;
-}
-
 .gifts-sheet .item-section {
     display: flex;
     flex-direction: column;
@@ -990,4 +1005,51 @@ ul.items {
 .rollable:hover {
     color: purple;
     font-weight: bold;
+}
+
+.init-span {
+    width: 65px;
+    padding: 1px 3px;
+}
+
+/* DICE ROLLING DIALOG */
+
+
+
+.dice-dialog {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 300px;
+    width: 600px;
+    background-color:rgb(157, 151, 172);
+    border-radius: 5px;
+    border-width: 3px;
+    border-color: rgb(68, 68, 68);
+}
+
+.dice-box {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 10px;;
+    height: 95%;
+    width: 70%;
+    border:darkslategray 2px;
+    border-radius: 6px;
+    background-color: whitesmoke;
+    box-shadow: inset 0px 0px 20px 5px rgba(0, 0, 0, 0.25);
+}
+
+.dice-dialog .stat-block-title {
+    width: 100%;
+    font-size: large;
+}
+
+.dice-dialog .stat-section > img {
+    margin: 5px 3px;
+}
+
+.dice-dialog .check-info {
+    display: flex;
+    flex-direction: column;
 }

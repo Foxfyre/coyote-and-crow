@@ -10,6 +10,9 @@
                 </div>
                 <div class="stat-num">
                     <input type="number" name="data.stats.strength.value" value="{{data.data.stats.strength.value}}" />
+                    {{#ifCond data.data.stats.strength.modified '!==' data.data.stats.strength.value}}
+                    <span class="stat-modified">({{{data.data.stats.strength.modified}}})</span>
+                    {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block agi-blue">
@@ -18,6 +21,9 @@
                 </div>
                 <div class="stat-num">
                     <input type="number" name="data.stats.agility.value" value="{{data.data.stats.agility.value}}" />
+                    {{#ifCond data.data.stats.agility.modified '!==' data.data.stats.agility.value}}
+                    <span class="stat-modified">({{{data.data.stats.agility.modified}}})</span>
+                    {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block end-blue">
@@ -26,6 +32,9 @@
                 </div>
                 <div class="stat-num">
                     <input type="number" name="data.stats.endurance.value" value="{{data.data.stats.endurance.value}}" />
+                    {{#ifCond data.data.stats.endurance.modified '!==' data.data.stats.endurance.value}}
+                    <span class="stat-modified">({{{data.data.stats.endurance.modified}}})</span>
+                    {{/ifCond}}
                 </div>
             </div>
         </div>
@@ -41,7 +50,7 @@
                     <span>PD</span>
                 </div>
                 <div class="stat-num">
-                    {{{attributes.body.pd}}} ({{attributes.body.modified}})
+                    <span>{{{attributes.body.pd}}} {{#ifCond attributes.body.modified '!==' 0}} ({{attributes.body.modified}}) {{/ifCond}}</span>
                 </div>
             </div>
 
@@ -50,7 +59,7 @@
                     <span>Body</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.body.value" value="{{attributes.body.value}}" />
+                    {{{attributes.body.value}}}
                 </div>
             </div>
 
@@ -60,7 +69,7 @@
                     <sub>(current)</sub>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.body.modified" value="{{data.data.attributes.body.modified}}" />
+                    <input type="number" name="data.attributes.body.currentValue" value="{{data.data.attributes.body.currentValue}}" />
                 </div>
             </div>
         </div>
@@ -76,6 +85,9 @@
                 </div>
                 <div class="stat-num">
                     <input type="number" name="data.stats.intelligence.value" value="{{data.data.stats.intelligence.value}}" />
+                    {{#ifCond data.data.stats.intelligence.modified '!==' data.data.stats.intelligence.value}}
+                    <span class="stat-modified">({{{data.data.stats.intelligence.modified}}})</span>
+                    {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block per-purp">
@@ -84,6 +96,9 @@
                 </div>
                 <div class="stat-num">
                     <input type="number" name="data.stats.perception.value" value="{{data.data.stats.perception.value}}" />
+                    {{#ifCond data.data.stats.perception.modified '!==' data.data.stats.perception.value}}
+                    <span class="stat-modified">({{{data.data.stats.perception.modified}}})</span>
+                    {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block wis-purp">
@@ -92,6 +107,9 @@
                 </div>
                 <div class="stat-num">
                     <input type="number" name="data.stats.wisdom.value" value="{{data.data.stats.wisdom.value}}" />
+                    {{#ifCond data.data.stats.wisdom.modified '!==' data.data.stats.wisdom.value}}
+                    <span class="stat-modified">({{{data.data.stats.wisdom.modified}}})</span>
+                    {{/ifCond}}
                 </div>
             </div>
         </div>
@@ -104,7 +122,7 @@
                     <span>MD</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.mind.md" value="{{attributes.mind.md}}" />
+                    <span>{{{attributes.mind.md}}}</span>
                 </div>
             </div>
 
@@ -113,7 +131,7 @@
                     <span>Mind</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.mind.value" value="{{attributes.mind.value}}" />
+                    {{{attributes.mind.value}}}
                 </div>
             </div>
 
@@ -123,7 +141,7 @@
                     <sub>(current)</sub>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.mind.modified" value="{{data.data.attributes.mind.modified}}" />
+                    <input type="number" name="data.attributes.mind.currentValue" value="{{data.data.attributes.mind.currentValue}}" />
                 </div>
             </div>
         </div>
@@ -139,6 +157,9 @@
                 </div>
                 <div class="stat-num">
                     <input type="number" name="data.stats.spirit.value" value="{{data.data.stats.spirit.value}}" />
+                    {{#ifCond data.data.stats.spirit.modified '!==' data.data.stats.spirit.value}}
+                    <span class="stat-modified">({{{data.data.stats.spirit.modified}}})</span>
+                    {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block cha-yellow">
@@ -147,6 +168,9 @@
                 </div>
                 <div class="stat-num">
                     <input type="number" name="data.stats.charisma.value" value="{{data.data.stats.charisma.value}}" />
+                    {{#ifCond data.data.stats.charisma.modified '!==' data.data.stats.charisma.value}}
+                    <span class="stat-modified">({{{data.data.stats.charisma.modified}}})</span>
+                    {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block wll-yellow">
@@ -155,6 +179,9 @@
                 </div>
                 <div class="stat-num">
                     <input type="number" name="data.stats.will.value" value="{{data.data.stats.will.value}}" />
+                    {{#ifCond data.data.stats.will.modified '!==' data.data.stats.will.value}}
+                    <span class="stat-modified">({{{data.data.stats.will.modified}}})</span>
+                    {{/ifCond}}
                 </div>
             </div>
         </div>
@@ -167,7 +194,7 @@
                     <span>SD</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.soul.sd" value="{{attributes.soul.sd}}" />
+                    {{{attributes.soul.sd}}}
                 </div>
             </div>
 
@@ -176,7 +203,7 @@
                     <span>Soul</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.soul.value" value="{{attributes.soul.value}}" />
+                    {{{attributes.soul.value}}}
                 </div>
             </div>
 
@@ -186,7 +213,7 @@
                     <sub>(current)</sub>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.soul.modified" value="{{data.data.attributes.soul.modified}}" />
+                    <input type="number" name="data.attributes.soul.currentValue" value="{{data.data.attributes.soul.currentValue}}" />
                 </div>
             </div>
         </div>

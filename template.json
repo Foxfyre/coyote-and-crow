@@ -5,17 +5,434 @@
             "npc"
         ],
         "templates": {
-            "baseSkill": {
-                "stat": "",
-                "statName": "",
-                "skillRank": "",
-                "snMod": "",
-                "skillTotal": 0
+            "skills": {
+                "skills": {
+                    "art": {
+                        "relStats": {
+                            "spirit": "Spirit",
+                            "will": "Will"
+                        },
+                        "label": "SKILL.art",
+                        "name": "Art",
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0
+                    },
+                    "athletics": {
+                        "relStats": {
+                            "strength": "Strength",
+                            "endurance": "Endurance"
+                        },
+                        "label": "SKILL.athletics",
+                        "name": "Athletics",
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0
+                    },
+                    "ceremony": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "spirit": "Spirit",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.ceremony",
+                        "name": "Ceremony"
+                    },
+                    "charm": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "charisma": "Charisma",
+                            "perception": "Perception"
+                        },
+                        "label": "SKILL.charm",
+                        "name": "Charm"
+                    },
+                    "coercion": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "spirit": "Spirit",
+                            "charisma": "Charisma"
+                        },
+                        "label": "SKILL.coercion",
+                        "name": "Coercion"
+                    },
+                    "computers": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "intelligence": "Intelligence",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.computers",
+                        "name": "Computers"
+                    },
+                    "cooking": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "spirit": "Spirit",
+                            "intelligence": "Intelligence"
+                        },
+                        "label": "SKILL.cooking",
+                        "name": "Cooking"
+                    },
+                    "crafting": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "spirit": "Spirit",
+                            "perception": "Perception"
+                        },
+                        "label": "SKILL.crafting",
+                        "name": "Crafting"
+                    },
+                    "cybernetics": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "intelligence": "Intelligence",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.cybernetics",
+                        "name": "Cybernetics"
+                    },
+                    "deception": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "charisma": "Charisma",
+                            "will": "Will"
+                        },
+                        "label": "SKILL.deception",
+                        "name": "Deception"
+                    },
+                    "farming": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "intelligence": "Intelligence",
+                            "endurance": "Endurance"
+                        },
+                        "label": "SKILL.farming",
+                        "name": "farming"
+                    },
+                    "herbalism": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "perception": "Perception",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.herbalism",
+                        "name": "Herbalism"
+                    },
+                    "husbandry": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "charisma": "Charisma",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.husbandry",
+                        "name": "Husbandry"
+                    },
+                    "investigation": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "perception": "Perception",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.investigation",
+                        "name": "Investigation"
+                    },
+                    "knowledge": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "intelligence": "Intelligence",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.knowledge",
+                        "name": "Knowledge"
+                    },
+                    "language": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "perception": "Perception",
+                            "will": "Will"
+                        },
+                        "label": "SKILL.language",
+                        "name": "Language"
+                    },
+                    "medicine": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "intelligence": "Intelligence",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.medicine",
+                        "name": "Medicine"
+                    },
+                    "melee": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "strength": "Strength",
+                            "endurance": "Endurance"
+                        },
+                        "label": "SKILL.melee",
+                        "name": "Melee Weapons"
+                    },
+                    "music": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "spirit": "Spirit",
+                            "perception": "Perception"
+                        },
+                        "label": "SKILL.music",
+                        "name": "Music"
+                    },
+                    "performance": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "charisma": "Charisma",
+                            "spirit": "Spirit"
+                        },
+                        "label": "SKILL.performance",
+                        "name": "Performance"
+                    },
+                    "piloting": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "intelligence": "Intelligence",
+                            "agility": "Agility"
+                        },
+                        "label": "SKILL.piloting",
+                        "name": "Piloting"
+                    },
+                    "ranged": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "perception": "Perception",
+                            "agility": "Agility"
+                        },
+                        "label": "SKILL.ranged",
+                        "name": "Ranged Weapons"
+                    },
+                    "science": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "intelligence": "Intelligence",
+                            "perception": "Perception"
+                        },
+                        "label": "SKILL.science",
+                        "name": "Science"
+                    },
+                    "skulduggery": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "perception": "Perception",
+                            "charisma": "Charisma"
+                        },
+                        "label": "SKILL.skulduggery",
+                        "name": "Skulduggery"
+                    },
+                    "stealth": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "agility": "Agility",
+                            "will": "Will"
+                        },
+                        "label": "SKILL.stealth",
+                        "name": "Stealth"
+                    },
+                    "survival": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "endurance": "Endurance",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.survival",
+                        "name": "Survival"
+                    },
+                    "tracking": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "perception": "Perception",
+                            "wisdom": "Wisdom"
+                        },
+                        "label": "SKILL.tracking",
+                        "name": "Tracking"
+                    },
+                    "unarmed": {
+                        "stat": "",
+                        "statName": "",
+                        "skillRank": 0,
+                        "snMod": 0,
+                        "skillTotal": 0,
+                        "dicePoolMod": 0,
+                        "itemMod": 0,
+                        "relStats": {
+                            "intelligence": "Intelligence",
+                            "strength": "Strength"
+                        },
+                        "label": "SKILL.unarmed",
+                        "name": "Unarmed Combat"
+                    }
+                }
             }
         },
         "character": {
             "templates": [
-                "baseSkill"
+                "skills"
             ],
             "info": {
                 "age": {
@@ -102,334 +519,29 @@
             "attributes": {
                 "body": {
                     "value": 0,
-                    "modified": [0],
-                    "name": "Body (Current)"
+                    "modified": 0,
+                    "name": "Body (Current)",
+                    "currentValue": 0
                 },
                 "mind": {
                     "value": 0,
                     "modified": 0,
-                    "name": "Mind (Current)"
+                    "name": "Mind (Current)",
+                    "currentValue": 0
                 },
                 "soul": {
                     "value": 0,
                     "modified": 0,
-                    "name": "Soul (Current)"
+                    "name": "Soul (Current)",
+                    "currentValue": 0
                 },
                 "init": {
                     "score": 0,
+                    "modified": 0,
                     "name": "Initiative Score"
                 }
             },
-            "skills": {
-                "art": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "spirit": "Spirit",
-                        "will": "Will"
-                    },
-                    "label": "SKILL.art",
-                    "name": "Art"
-                },
-                "athletics": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "strength": "Strength",
-                        "endurance": "Endurance"
-                    },
-                    "label": "SKILL.athletics",
-                    "name": "Athletics"
-                },
-                "ceremony": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "spirit": "Spirit",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.ceremony",
-                    "name": "Ceremony"
-                },
-                "charm": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "charisma": "Charisma",
-                        "perception": "Perception"
-                    },
-                    "label": "SKILL.charm",
-                    "name": "Charm"
-                },
-                "coercion": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "spirit": "Spirit",
-                        "charisma": "Charisma"
-                    },
-                    "label": "SKILL.coercion",
-                    "name": "Coercion"
-                },
-                "computers": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "intelligence": "Intelligence",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.computers",
-                    "name": "Computers"
-                },
-                "cooking": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "spirit": "Spirit",
-                        "intelligence": "Intelligence"
-                    },
-                    "label": "SKILL.cooking",
-                    "name": "Cooking"
-                },
-                "crafting": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "spirit": "Spirit",
-                        "perception": "Perception"
-                    },
-                    "label": "SKILL.crafting",
-                    "name": "Crafting"
-                },
-                "cybernetics": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "intelligence": "Intelligence",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.cybernetics",
-                    "name": "Cybernetics"
-                },
-                "deception": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "charisma": "Charisma",
-                        "will": "Will"
-                    },
-                    "label": "SKILL.deception",
-                    "name": "Deception"
-                },
-                "farming": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "intelligence": "Intelligence",
-                        "endurance": "Endurance"
-                    },
-                    "label": "SKILL.farming",
-                    "name": "farming"
-                },
-                "herbalism": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "perception": "Perception",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.herbalism",
-                    "name": "Herbalism"
-                },
-                "husbandry": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "charisma": "Charisma",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.husbandry",
-                    "name": "Husbandry"
-                },
-                "investigation": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "perception": "Perception",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.investigation",
-                    "name": "Investigation"
-                },
-                "knowledge": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "intelligence": "Intelligence",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.knowledge",
-                    "name": "Knowledge"
-                },
-                "language": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "perception": "Perception",
-                        "will": "Will"
-                    },
-                    "label": "SKILL.language",
-                    "name": "Language"
-                },
-                "medicine": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "intelligence": "Intelligence",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.medicine",
-                    "name": "Medicine"
-                },
-                "melee": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "strength": "Strength",
-                        "endurance": "Endurance"
-                    },
-                    "label": "SKILL.melee",
-                    "name": "Melee Weapons"
-                },
-                "music": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "spirit": "Spirit",
-                        "perception": "Perception"
-                    },
-                    "label": "SKILL.music",
-                    "name": "Music"
-                },
-                "performance": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "charisma": "Charisma",
-                        "spirit": "Spirit"
-                    },
-                    "label": "SKILL.performance",
-                    "name": "Performance"
-                },
-                "piloting": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "intelligence": "Intelligence",
-                        "agility": "Agility"
-                    },
-                    "label": "SKILL.piloting",
-                    "name": "Piloting"
-                },
-                "ranged": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "perception": "Perception",
-                        "agility": "Agility"
-                    },
-                    "label": "SKILL.ranged",
-                    "name": "Ranged Weapons"
-                },
-                "science": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "intelligence": "Intelligence",
-                        "perception": "Perception"
-                    },
-                    "label": "SKILL.science",
-                    "name": "Science"
-                },
-                "skulduggery": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "perception": "Perception",
-                        "charisma": "Charisma"
-                    },
-                    "label": "SKILL.skulduggery",
-                    "name": "Skulduggery"
-                },
-                "stealth": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "agility": "Agility",
-                        "will": "Will"
-                    },
-                    "label": "SKILL.stealth",
-                    "name": "Stealth"
-                },
-                "survival": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "endurance": "Endurance",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.survival",
-                    "name": "Survival"
-                },
-                "tracking": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "perception": "Perception",
-                        "wisdom": "Wisdom"
-                    },
-                    "label": "SKILL.tracking",
-                    "name": "Tracking"
-                },
-                "unarmed": {
-                    "templates": [
-                        "baseSkill"
-                    ],
-                    "relStats": {
-                        "intelligence": "Intelligence",
-                        "strength": "Strength"
-                    },
-                    "label": "SKILL.unarmed",
-                    "name": "Unarmed Combat"
-                }
-            },
+            "skills": {},
             "bio": {
                 "identifiers": "",
                 "background": "",
@@ -641,7 +753,13 @@
                 "details": "",
                 "description": "",
                 "equipped": false,
-                "traits": ""
+                "traits": "",
+                "range": {
+                    "short": "",
+                    "medium": "",
+                    "long": ""
+                },
+                "weaponTypes": ""
             },
             "modifier": {
                 "modifier": {
@@ -651,54 +769,69 @@
                     "stat": {
                         "agility": {
                             "value": 0,
-                            "statName": "STAT.Agility"
+                            "statName": "STAT.Agility",
+                            "name": "agility"
                         },
                         "charisma": {
                             "value": 0,
-                            "statName": "STAT.Charisma"
+                            "statName": "STAT.Charisma",
+                            "name": "charisma"
                         },
                         "endurance": {
                             "value": 0,
-                            "statName": "STAT.Endurance"
+                            "statName": "STAT.Endurance",
+                            "name": "endurance"
                         },
                         "intelligence": {
                             "value": 0,
-                            "statName": "STAT.Intelligence"
+                            "statName": "STAT.Intelligence",
+                            "name": "intelligence"
                         },
                         "perception": {
                             "value": 0,
-                            "statName": "STAT.Perception"
+                            "statName": "STAT.Perception",
+                            "name": "perception"
                         },
                         "spirit": {
                             "value": 0,
-                            "statName": "STAT.Spirit"
+                            "statName": "STAT.Spirit",
+                            "name": "spirit"
                         },
                         "strength": {
                             "value": 0,
-                            "statName": "STAT.Strength"
+                            "statName": "STAT.Strength",
+                            "name": "strength"
                         },
                         "wisdom": {
                             "value": 0,
-                            "statName": "STAT.Wisdom"
+                            "statName": "STAT.Wisdom",
+                            "name": "wisdom"
                         },
                         "will": {
                             "value": 0,
-                            "statName": "STAT.will"
+                            "statName": "STAT.will",
+                            "name": "will"
                         }
                     },
                     "sn": {
                         "value": 0,
-                        "skillName": ""
+                        "skillName": "",
+                        "skill": ""
                     },
                     "sn1": {
                         "value": 0,
-                        "skillName": ""
+                        "skillName": "",
+                        "skill": ""
                     },
                     "sn2": {
                         "value": 0,
-                        "skillName": ""
+                        "skillName": "",
+                        "skill": ""
                     },
                     "dp": {
+                        "value": 0
+                    },
+                    "init": {
                         "value": 0
                     }
                 }
@@ -753,6 +886,9 @@
             ]
         },
         "gift": {
+            "templates": [
+                "modifier"
+            ],
             "category": "",
             "level": 0,
             "description": "",
@@ -777,6 +913,9 @@
             }
         },
         "burden": {
+            "templates": [
+                "modifier"
+            ],
             "category": "",
             "level": 0,
             "description": ""

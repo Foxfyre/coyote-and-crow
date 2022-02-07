@@ -20,8 +20,6 @@ export class cncItemSheet extends ItemSheet {
         const data = super.getData(options);
         const itemData = data.data;
 
-
-
         if (data.document.parent === null) {
             itemData.data.owned = false;
             return itemData;
@@ -32,19 +30,17 @@ export class cncItemSheet extends ItemSheet {
         const actorData = data.item.parent.data
         itemData.actorData = actorData;
 
-        if (itemData.type === "ability") {
-            let pathStats = {
-                [`${actorData.data.info.path.stats.stat1}`]: actorData.data.info.path.stats.stat1,
-                [`${actorData.data.info.path.stats.stat2}`]: actorData.data.info.path.stats.stat2
-            }
-            itemData.data.allowStats = pathStats;
-            itemData.data.owned = true;
-            this.actor.updateEmbeddedDocuments("Item", [itemData])
+        let pathStats = {
+            [`${itemData.actorData.data.info.path.stats.stat1.value}`]: itemData.actorData.data.info.path.stats.stat1.name,
+            [`${itemData.actorData.data.info.path.stats.stat2.value}`]: itemData.actorData.data.info.path.stats.stat2.name
         }
+        itemData.data.allowStats = pathStats;
+        itemData.data.owned = true;
+        this.actor.updateEmbeddedDocuments("Item", [itemData])
 
         if (itemData.type === "specialization") {
             itemData.data.statName = itemData.data.stat.capitalize()
-            switch (itemData.data.stat) {
+            switch (itemData.data.stat.toLowerCase()) {
                 case "agility":
                     itemData.data.statRank = actorData.data.stats.agility.value;
                     break;
@@ -80,7 +76,7 @@ export class cncItemSheet extends ItemSheet {
 
             for (let [c, h] of Object.entries(actorData.data.skills)) {
                 if (skillName === h.name) {
-                    itemData.data.skillRank = h.rank;
+                    itemData.data.skillRank = h.skillRank;
                 }
             }
 

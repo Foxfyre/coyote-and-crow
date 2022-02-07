@@ -75,5 +75,7 @@
     "ITEM.Weapons": "Weapons",
     "ITEM.CreateGift": "Add Gift",
     "ITEM.CreateBurden": "Add Burden",
-    "DIALOG.ConfirmDelete": "Confirm Delete"
+    "DIALOG.ConfirmDelete": "Confirm Delete",
+    "DICE.DicePrepare": "Build your dice pool",
+    "DICE.Roll": "Roll"
 }

@@ -11,9 +11,9 @@
                 <div class="spec-table-col">
                     <span>General Skill</span>
                 </div>
-                <div class="spec-table-col">
+                <!--<div class="spec-table-col">
                     <span>Stat</span>
-                </div>
+                </div>-->
                 <div class="spec-table-col spec-values">
                     <span>Rank</span>
                 </div>
@@ -55,26 +55,6 @@
                         <option value="Unarmed Combat">Unarmed Combat</option>
                         {{/select}}
                     </select>
-                </div>
-                <div class="spec-table-col">
-                    {{#if data.owned}}
-                    <select name="data.stat">
-                        {{selectOptions actorData.data.info.path.stats selected=data.stat}}
-                    </select>
-                    {{else}}
-                    <select name="data.stat" value="{{data.stat}}">
-                        {{#select data.stat}}
-                        <option value="strength" stat-name="strength">Strength</option>
-                        <option value="agility" stat-name="agility">Agility</option>
-                        <option value="endurance" stat-name="endurance">Endurance</option>
-                        <option value="intelligence" stat-name="intelligence">Intelligence</option>
-                        <option value="perception" stat-name="perception">Perception</option>
-                        <option value="wisdom" stat-name="wisdom">Wisdom</option>
-                        <option value="spirit" stat-name="spirit">Spirit</option>
-                        <option value="charisma" stat-name="charisma">Charisma</option>
-                        <option value="will" stat-name="will">Will</option>
-                        {{/select}}
-                    </select>{{/if}}
                 </div>
                 <div class="spec-table-col spec-values">
                     <input class="spec-table-rank" type="number" name="data.specRank" value="{{data.specRank}}" />

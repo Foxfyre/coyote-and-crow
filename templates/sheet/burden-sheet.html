@@ -25,15 +25,107 @@
     <div class="sheet-title-h2 toggle-on-click" data-toggle="toggle" style="margin-top: 10px;">
         <span>Modifiers <i class="fas fa-angle-double-down"></i></span>
     </div>
-    <ul class="toggle">
-        <li class="mod-list-expand">
+    <div class="item-section">
+        <div class="item-row" style="justify-content: space-around;">
+            <div class="item-section ">
+                <div class="sheet-title-h2" style="margin: 10px 0 0 0;">
+                    <span>Physical Defense</span>
+                </div>
+                <div class="sn-mod">
+                    <label name="" title='{{localize "DSTAT.PD"}}'>+ / - PD </label>
+                    <input type="number" name="data.modifier.pd.value" value="{{data.modifier.pd.value}}" />
+                </div>
+            </div>
+            <div class="item-section">
+                <div class="sheet-title-h2" style="margin-top: 10px;">
+                    <span>Dice Pool</span>
+                </div>
+                <div class="dp-mod">
+                    <label name="data.modifier.dp.value" title='{{localize "ITEM.DicePool"}}'>+ / - Dice
+                    </label>
+                    <input type="number" name="data.modifier.dp.value" value="{{data.modifier.dp.value}}" />
+                </div>
+            </div>
+            <div class="item-section">
+                <div class="sheet-title-h2" style="margin-top: 10px;">
+                    <span>Initiative</span>
+                </div>
+                <div class="gb-mod">
+                    <label name="data.modifier.init.value" title='{{localize "ITEM.DicePool"}}'>+ / - </label>
+                    <input type="number" name="data.modifier.init.value" value="{{data.modifier.init.value}}" />
+                </div>
+            </div>
+
+        </div>
+        <div class="sheet-title-h2" style="margin-top: 10px;">
+            <span>Stat Modification</span>
+        </div>
+        <div class="item-mods">
+            <div class="item-stat-mod">
+                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.agility.statName}}">AGI
+                </div>
+                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.agility.value"
+                    value="{{data.modifier.stat.agility.value}}" />
+            </div>
+            <div class="item-stat-mod">
+                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.charisma.statName}}">CHA
+                </div>
+                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.charisma.value"
+                    value="{{data.modifier.stat.charisma.value}}" />
+            </div>
+            <div class="item-stat-mod">
+                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.endurance.statName}}">END
+                </div>
+                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.endurance.value"
+                    value="{{data.modifier.stat.endurance.value}}" />
+            </div>
+            <div class="item-stat-mod">
+                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.intelligence.statName}}">
+                    INT</div>
+                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.intelligence.value"
+                    value="{{data.modifier.stat.intelligence.value}}" />
+            </div>
+            <div class="item-stat-mod">
+                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.perception.statName}}">PER
+                </div>
+                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.perception.value"
+                    value="{{data.modifier.stat.perception.value}}" />
+            </div>
+            <div class="item-stat-mod">
+                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.spirit.statName}}">SPI
+                </div>
+                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.spirit.value"
+                    value="{{data.modifier.stat.spirit.value}}" />
+            </div>
+            <div class="item-stat-mod">
+                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.strength.statName}}">STR
+                </div>
+                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.strength.value"
+                    value="{{data.modifier.stat.strength.value}}" />
+            </div>
+            <div class="item-stat-mod">
+                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.wisdom.statName}}">WIS
+                </div>
+                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.wisdom.value"
+                    value="{{data.modifier.stat.wisdom.value}}" />
+            </div>
+            <div class="item-stat-mod">
+                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.will.statName}}">WLL</div>
+                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.will.value"
+                    value="{{data.modifier.stat.will.value}}" />
+            </div>
+        </div>
+    </div>
+
+    <div class="item-sections">
+        <div class="item-section">
             <div class="sheet-title-h2" style="margin-top: 10px;">
                 <span>Success Number</span>
             </div>
             <div class="pd-mod">
-                <label name="data.mod.successNumber.value">+ / - SN </label>
-                <select name="data.mod.successNumber.value" value="{{data.mod.successNumber.value}}">
-                    {{#select data.mod.successNumber.value}}
+                <label name="data.modifier.sn.value">+ / - SN </label>
+                <select name="data.modifier.sn.value" value="{{data.modifier.sn.value}}">
+                    {{#select data.modifier.sn.value}}
                     <option value="-4">-4</option>
                     <option value="-3">-3</option>
                     <option value="-2">-2</option>
@@ -45,8 +137,8 @@
                     <option value="4">+4</option>
                     {{/select}}
                 </select>
-                <select class="pd-stat" name="data.mod.successNumber.skill" value="{{data.mod.successNumber.skill}}">
-                    {{#select data.mod.successNumber.skill}}
+                <select class="pd-stat" name="data.modifier.sn.skill" value="{{data.modifier.sn.skill}}">
+                    {{#select data.modifier.sn.skill}}
                     <option value="">None</option>
                     <option value="Art">Art</option>
                     <option value="Athletics">Athletics</option>
@@ -79,36 +171,104 @@
                     {{/select}}
                 </select>
             </div>
-            <div class="item-row justify-between">
-                <div class="item-section">
-                    <div class="sheet-title-h2" style="margin: 10px 0 0 0;">
-                        <span>Physical Defense</span>
-                    </div>
-                    <div class="gb-mod">
-                        <label name="data.mod.physicalDefense.value" title='{{localize "DSTAT.PD"}}'>+ / - PD </label>
-                        <input type="number" name="data.mod.physicalDefense.value"
-                            value="{{data.mod.physicalDefense.value}}" />
-                    </div>
-                </div>
-                <div class="item-section">
-                    <div class="sheet-title-h2" style="margin-top: 10px;">
-                        <span>Dice Pool</span>
-                    </div>
-                    <div class="gb-mod">
-                        <label name="data.mod.dicePool.value" title='{{localize "ITEM.DicePool"}}'>+ / - Dice </label>
-                        <input type="number" name="data.mod.dicePool.value" value="{{data.mod.dicePool.value}}" />
-                    </div>
-                </div>
-                <div class="item-section">
-                    <div class="sheet-title-h2" style="margin-top: 10px;">
-                        <span>Initiative</span>
-                    </div>
-                    <div class="gb-mod">
-                        <label name="data.mod.initiative.value" title='{{localize "ITEM.DicePool"}}'>+ / - </label>
-                        <input type="number" name="data.mod.initiative.value" value="{{data.mod.initiative.value}}" />
-                    </div>
-                </div>
+            <div class="pd-mod">
+                <label name="data.modifier.sn1.value">+ / - SN </label>
+                <select name="data.modifier.sn1.value" value="{{data.modifier.sn1.value}}">
+                    {{#select data.modifier.sn1.value}}
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">+1</option>
+                    <option value="2">+2</option>
+                    <option value="3">+3</option>
+                    <option value="4">+4</option>
+                    {{/select}}
+                </select>
+                <select class="pd-stat" name="data.modifier.sn1.skill" value="{{data.modifier.sn1.skill}}">
+                    {{#select data.modifier.sn1.skill}}
+                    <option value="">None</option>
+                    <option value="Art">Art</option>
+                    <option value="Athletics">Athletics</option>
+                    <option value="Ceremony">Ceremony</option>
+                    <option value="Charm">Charm</option>
+                    <option value="Coercion">Coercion</option>
+                    <option value="Computers">Computers</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Crafting">Crafting</option>
+                    <option value="Cybernetics">Cybernetics</option>
+                    <option value="Deception">Deception</option>
+                    <option value="Farming">Farming</option>
+                    <option value="Herbalism">Herbalism</option>
+                    <option value="Husbandry">Husbandry</option>
+                    <option value="Investigation">Investigation</option>
+                    <option value="Knowledge">Knowledge</option>
+                    <option value="Language">Language</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Melee Weapons">Melee Weapons</option>
+                    <option value="Music">Music</option>
+                    <option value="Performance">Performance</option>
+                    <option value="Piloting">Piloting</option>
+                    <option value="Ranged Weapons">Ranged Weapons</option>
+                    <option value="Science">Science</option>
+                    <option value="Skulduggery">Skuldugger</option>
+                    <option value="Stealth">Stealth</option>
+                    <option value="Survival">Survival</option>
+                    <option value="Tracking">Tracking</option>
+                    <option value="Unarmed Combat">Unarmed Combat</option>
+                    {{/select}}
+                </select>
             </div>
-        </li>
-    </ul>
+            <div class="pd-mod">
+                <label name="data.modifier.sn2.value">+ / - SN </label>
+                <select name="data.modifier.sn2.value" value="{{data.modifier.sn2.value}}">
+                    {{#select data.modifier.sn2.value}}
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">+1</option>
+                    <option value="2">+2</option>
+                    <option value="3">+3</option>
+                    <option value="4">+4</option>
+                    {{/select}}
+                </select>
+                <select class="pd-stat" name="data.modifier.sn2.skill" value="{{data.modifier.sn2.skill}}">
+                    {{#select data.modifier.sn2.skill}}
+                    <option value="">None</option>
+                    <option value="Art">Art</option>
+                    <option value="Athletics">Athletics</option>
+                    <option value="Ceremony">Ceremony</option>
+                    <option value="Charm">Charm</option>
+                    <option value="Coercion">Coercion</option>
+                    <option value="Computers">Computers</option>
+                    <option value="Cooking">Cooking</option>
+                    <option value="Crafting">Crafting</option>
+                    <option value="Cybernetics">Cybernetics</option>
+                    <option value="Deception">Deception</option>
+                    <option value="Farming">Farming</option>
+                    <option value="Herbalism">Herbalism</option>
+                    <option value="Husbandry">Husbandry</option>
+                    <option value="Investigation">Investigation</option>
+                    <option value="Knowledge">Knowledge</option>
+                    <option value="Language">Language</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Melee Weapons">Melee Weapons</option>
+                    <option value="Music">Music</option>
+                    <option value="Performance">Performance</option>
+                    <option value="Piloting">Piloting</option>
+                    <option value="Ranged Weapons">Ranged Weapons</option>
+                    <option value="Science">Science</option>
+                    <option value="Skulduggery">Skuldugger</option>
+                    <option value="Stealth">Stealth</option>
+                    <option value="Survival">Survival</option>
+                    <option value="Tracking">Tracking</option>
+                    <option value="Unarmed Combat">Unarmed Combat</option>
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+    </div>
 </form>

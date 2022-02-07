@@ -5,9 +5,12 @@ import { cncItem } from "./scripts/items/item.js";
 
 /*import { coyote-and-crowNPCSheet } from "./npc-sheet.js";
 import { coyote-and-crowShipSheet } from "./ship-sheet.js";*/
-//import { registerDiceSoNice } from "./hooks/dice-so-nice.js";
+import { registerDiceSoNice } from "./scripts/hooks/dice-so-nice.js";
 
 import { initializeHandlebars } from "./scripts/system/handlebars.js";
+
+import { CoyoteDiceBlack } from "./module/cnc-dice-black.js";
+import { CoyoteDiceWhite } from "./module/cnc-dice-white.js";
 
 Hooks.once("init", async function () {
   console.log(`Initializing A Template`);
@@ -69,11 +72,15 @@ Hooks.once("init", async function () {
     }
 
   });
+
+  CONFIG.Dice.terms["a"] = CoyoteDiceWhite;
+  CONFIG.Dice.terms["b"] = CoyoteDiceBlack;
+
 });
 
-/*Hooks.once("diceSoNiceReady", (dice3d) => {
+Hooks.once("diceSoNiceReady", (dice3d) => {
   registerDiceSoNice(dice3d);
-});*/
+});
 
 Hooks.once("init", () => {
   const debouncedReload = foundry.utils.debounce(() => {
@@ -101,7 +108,7 @@ Hooks.once("init", () => {
   });*/
 })
 
-Hooks.on("ready", async () => {
+/*Hooks.on("ready", async () => {
   new Dialog({
     title: "Coyote And Crow",
     content: `This system is for Coyote and Crow. All features are currently in progress.`,
@@ -111,14 +118,13 @@ Hooks.on("ready", async () => {
       }
     }
   }).render(true)
-})
+})*/
 
 Hooks.on("renderDialog", (dialog, html) => {
   Array.from(html.find("#document-create option")).forEach(i => {
-      if (i.value == "weapon" || i.value == "armor")
-      {
-          i.remove()
-      }
+    if (i.value == "weapon" || i.value == "armor") {
+      i.remove()
+    }
   })
 })
 

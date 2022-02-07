@@ -8,7 +8,6 @@
     </div>
     <div class="ability-row">
         <label for="">Stat:</label>
-        {{log data}}
         {{#if data.owned}}
         <select name="data.relStat">
             {{selectOptions data.allowStats selected=data.relStat localize=true}}
