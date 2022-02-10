@@ -9,6 +9,7 @@
                 <input type="number" name="data.modifier.pd.value" value="{{data.modifier.pd.value}}" />
             </div>
         </div>
+        {{#ifCond data.type "===" "weapon"}}
         <div class="item-section">
             <div class="sheet-title-h2" style="margin-top: 10px;">
                 <span>Dice Pool</span>
@@ -18,7 +19,7 @@
                 <input type="number" name="data.modifier.dp.value" value="{{data.modifier.dp.value}}" />
             </div>
         </div>
-        {{#ifCond data.type "===" "weapon"}}
+
         <div class="item-section">
             <div class="sheet-title-h2" style="margin-top: 10px;">
                 <span>Weapon Type</span>
@@ -130,17 +131,17 @@
                 <option value="Knowledge">Knowledge</option>
                 <option value="Language">Language</option>
                 <option value="Medicine">Medicine</option>
-                <option value="Melee Weapons">Melee Weapons</option>
+                <option value="melee">Melee Weapons</option>
                 <option value="Music">Music</option>
                 <option value="Performance">Performance</option>
                 <option value="Piloting">Piloting</option>
-                <option value="Ranged Weapons">Ranged Weapons</option>
+                <option value="ranged">Ranged Weapons</option>
                 <option value="Science">Science</option>
                 <option value="Skulduggery">Skuldugger</option>
                 <option value="Stealth">Stealth</option>
                 <option value="Survival">Survival</option>
                 <option value="Tracking">Tracking</option>
-                <option value="Unarmed Combat">Unarmed Combat</option>
+                <option value="unarmed">Unarmed Combat</option>
                 {{/select}}
             </select>
         </div>

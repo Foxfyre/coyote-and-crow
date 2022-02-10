@@ -20,7 +20,9 @@
             </div>
             {{#each skills as |skill key|}}
             {{#ifCond skill.colMod "===" 1}}
-            <div class="summary-skill-table-row rollable" data-rollname="{{name}}" data-rolltype="skill">
+            <div class="summary-skill-table-row rollable" data-rollname="{{name}}" data-rolltype="skill"
+                data-skillname="{{skill.name}}" data-skillrank="{{skill.skillRank}}"
+                data-statname="{{skill.statName}}" data-statrank="{{skill.statRank}}">
                 <div class="skill-table-col">
                     <span>{{name}}</span>
                 </div>
@@ -29,7 +31,7 @@
                     {{{skill.statName}}}
                 </div>
                 <div class="skill-table-col col-rank">
-                    {{{skill.skillRank}}}
+                    {{{skill.skillRank}}} 
                 </div>
                 <div class="skill-table-col col-total">
                     <span class="skill-table-rank">{{skill.skillTotal}}</span>
@@ -56,7 +58,10 @@
             </div>
             {{#each skills as |skill key|}}
             {{#ifCond skill.colMod "===" 0}}
-            <div class="summary-skill-table-row rollable" data-rollname="{{name}}" data-rolltype="skill">
+            {{log skill}}
+            <div class="summary-skill-table-row rollable" data-rollname="{{name}}" data-rolltype="skill"
+                data-skillname="{{skill.name}}" data-skillrank="{{skill.skillRank}}" data-adddice="{{skill.addDice}}"
+                data-statname="{{skill.statName}}" data-statrank="{{skill.statRank}}">
                 <div class="skill-table-col">
                     <span>{{name}}</span>
                 </div>
@@ -64,10 +69,10 @@
                     {{{skill.statName}}}
                 </div>
                 <div class="skill-table-col col-rank">
-                    {{{skill.skillRank}}}
+                    {{{skill.skillRank}}} 
                 </div>
                 <div class="skill-table-col col-total">
-                    <span class="skill-table-rank">{{skill.skillTotal}}</span>
+                    <span class="skill-table-rank">{{skill.skillTotal}}{{#ifCond skill.addDice ">" 0}} ({{{skill.dicePoolMod}}}){{/ifCond}}</span>
                 </div>
             </div>
             {{/ifCond}}
@@ -108,34 +113,47 @@
 
             <ul class="items spec-list">
                 {{#each specialization as |spec key|}}
-                <li class="item spec-items" data-item-id="{{spec._id}}">
+                <li class="item spec-items rollable" data-item-id="{{spec._id}}" data-rollname="{{name}}"
+                    data-specrank="{{spec.data.specRank}}" data-skillname="{{spec.data.skill}}" data-adddice="{{skill.addDice}}"
+                    data-skillrank="{{spec.data.skillRank}}" data-statname="{{spec.data.statName}}"
+                    data-statrank="{{spec.data.statRank}}" data-rolltype="specialization">
                     <div class="spec-table-row">
                         <div class="spec-table-col spec-col-20">
-                            <input type="text" value="{{spec.name}}" readonly="readonly" />
+                            <span>{{spec.name}}</span>
                             <!--Specialization Name-->
                         </div>
-                        <div class="spec-table-col spec-values">
-                            <input type="number" value="{{spec.data.specRank}}" readonly="readonly" />
+                        <div class="spec-table-col spec-values col-rank">
+                            <span>
+                                {{{spec.data.specRank}}}
+                            </span>
                             <!--Specialization Rank-->
                         </div>
                         <div class="spec-table-col spec-col-20">
-                            <input type="text" value="{{spec.data.skill}}" readonly="readonly" />
+                            <span>
+                                {{{spec.data.skill}}}
+                            </span>
                             <!--Linked Skill Name-->
                         </div>
-                        <div class="spec-table-col spec-values">
-                            <input type="number" value="{{spec.data.skillRank}}" readonly="readonly" />
+                        <div class="spec-table-col spec-values col-rank">
+                            <span>
+                                {{{spec.data.skillRank}}}
+                            </span>
                             <!--Linked Skill Rank-->
                         </div>
                         <div class="spec-table-col spec-col-20">
-                            <input type="text" value="{{spec.data.statName}}" readonly="readonly" />
+                            <span>
+                                {{{spec.data.statName}}}
+                            </span>
                             <!--Linked Stat Name-->
                         </div>
-                        <div class="spec-table-col spec-values">
-                            <input type="number" value="{{spec.data.statRank}}" readonly="readonly" />
+                        <div class="spec-table-col spec-values col-rank">
+                            <span>
+                                {{{spec.data.statRank}}}
+                            </span>
                             <!--Linked Stat Rank-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <span class="spec-table-rank">{{spec.data.total}}</span>
+                            <span>{{{spec.data.total}}}</span>
                             <!--Total of all 3 values-->
                         </div>
                         <div class="item-controls flexrow spec-controls">

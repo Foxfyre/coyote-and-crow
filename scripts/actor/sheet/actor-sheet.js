@@ -82,7 +82,7 @@ export class cncActorSheet extends ActorSheet {
                 data: foundry.utils.deepClone(header.dataset),
                 data: {
                     skill: "Art",
-                    stat: "Strength"
+                    stat: ""
                 }
             }
         } else {
@@ -143,34 +143,65 @@ export class cncActorSheet extends ActorSheet {
         console.log(event)
         const rollType = event.currentTarget.closest("[data-rolltype]").dataset.rolltype;
         const rollName = event.currentTarget.closest("[data-rollname]").dataset.rollname;
+        const rollSkill = event.currentTarget.closest("[data-rolltype]").dataset.rollskill;
+        const rollStat = event.currentTarget.closest("[data-rolltype]").dataset.rollstat;
+        let rollData = {};
         console.log(data)
+        console.log(rollType)
 
         /*
-            Send data and roll info tto buildRoll to collect all relevant data needed for rolls. This will be referred to as the dicePayload.
+            Send data and roll info to buildRoll to collect all relevant data needed for rolls. This will be referred to as the dicePayload.
             when the object returns populated with data, check to see type of roll (skill/stat/ability). Each type will have it's own process.
             For skill tests > Roll the dice based upon stat/skill. Any added modifiers are added to stats and skills already. 
             Once roll is complete, send to chat with results and any relevant options, ie. use legendary, use focus, etc. If 12's are rolled, roll x many more
         */
 
+        /*if (rollType === "specialization") {
 
-        // Send data and roll info to build roll. 
-        let pRollData = buildRoll(data, rollType, rollName);
-        pRollData.rollType = rollType;
-        pRollData.rollName = rollName;
+            console.log(rollSkill)
+            console.log(rollStat)
+        }*/
 
-        console.log(pRollData)
+
+
+        rollData = {
+            type: event.currentTarget.closest("[data-rolltype]").dataset.rolltype,
+            specName: rollType === "specialization" ? event.currentTarget.closest("[data-rollname]").dataset.rollname : "",
+            specRank: rollType === "specialization" ? Number(event.currentTarget.closest("[data-specrank]").dataset.specrank) : 0,
+            skillName: event.currentTarget.closest("[data-skillname]").dataset.skillname,
+            skillRank: Number(event.currentTarget.closest("[data-skillrank]").dataset.skillrank),
+            statName: event.currentTarget.closest("[data-statname]").dataset.statname,
+            statRank: Number(event.currentTarget.closest("[data-statrank]").dataset.statrank),
+            legendary: 0,
+            mind: 0,
+            addDice: Number(event.currentTarget.closest("[data-adddice]").dataset.adddice),
+            totalDice: 0,
+            successNumber: 0
+        }
+        console.log(rollData)
+
+
+
+        // Send data and roll info to gather all information required for rolls. 
+        let compiledRollData = buildRoll(data, rollData);
+        //pRollData.rollType = rollType;
+        //pRollData.rollName = rollName;
+
+        console.log(compiledRollData)
 
         //let dicePool = this._diceDisplay(pRollData)
 
-        let rollResults = getRoll(pRollData)
+        let rollResults = getRoll(compiledRollData)
+
         console.log(rollResults)
 
-        let rolledCard = rollCard(rollResults, pRollData);
+        let rolledCard = rollCard(rollResults, compiledRollData);
 
         let chatOptions = {
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             roll: rollResults,
             flavor: rolledCard.title,
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
             rollMode: game.settings.get("core", "rollMode"),
             content: rolledCard.dice,
             sound: CONFIG.sounds.dice

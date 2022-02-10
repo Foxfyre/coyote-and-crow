@@ -27,7 +27,6 @@ export default function rollCard(rollResults, pRollData) {
 
 
 
-
     rollDesignate = `Rolling ${pRollData.skillName} & ${pRollData.statName}`;
 
     let rollCardInfo = {

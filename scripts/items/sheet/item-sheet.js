@@ -39,6 +39,15 @@ export class cncItemSheet extends ItemSheet {
         this.actor.updateEmbeddedDocuments("Item", [itemData])
 
         if (itemData.type === "specialization") {
+            let genSkillName = itemData.data.skill.split(' ');
+            
+            console.log(genSkillName.length);
+            let specSkillUsed = itemData.actorData.data.skills[genSkillName[0].toLowerCase()]
+            console.log(specSkillUsed);
+            itemData.data.stat = specSkillUsed.stat
+
+            //itemData.data.stat = itemData.actorData.data.skills[genSkillName].stat;
+            console.log(itemData.data)
             itemData.data.statName = itemData.data.stat.capitalize()
             switch (itemData.data.stat.toLowerCase()) {
                 case "agility":
@@ -76,7 +85,7 @@ export class cncItemSheet extends ItemSheet {
 
             for (let [c, h] of Object.entries(actorData.data.skills)) {
                 if (skillName === h.name) {
-                    itemData.data.skillRank = h.skillRank;
+                    itemData.data.skillRank = h.skillRank + h.addDice;
                 }
             }
 

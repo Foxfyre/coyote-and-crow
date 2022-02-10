@@ -170,7 +170,7 @@
                             "endurance": "Endurance"
                         },
                         "label": "SKILL.farming",
-                        "name": "farming"
+                        "name": "Farming"
                     },
                     "herbalism": {
                         "stat": "",
@@ -275,7 +275,8 @@
                             "endurance": "Endurance"
                         },
                         "label": "SKILL.melee",
-                        "name": "Melee Weapons"
+                        "name": "Melee Weapons",
+                        "addDice": 0
                     },
                     "music": {
                         "stat": "",
@@ -335,7 +336,8 @@
                             "agility": "Agility"
                         },
                         "label": "SKILL.ranged",
-                        "name": "Ranged Weapons"
+                        "name": "Ranged Weapons",
+                        "addDice": 0
                     },
                     "science": {
                         "stat": "",
@@ -425,7 +427,8 @@
                             "strength": "Strength"
                         },
                         "label": "SKILL.unarmed",
-                        "name": "Unarmed Combat"
+                        "name": "Unarmed Combat",
+                        "addDice": 0
                     }
                 }
             }
@@ -595,87 +598,168 @@
             }
         },
         "npc": {
-            "abilities": {
-                "accuracy": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false
+            "templates": [
+                "skills"
+            ],
+            "info": {
+                "age": {
+                    "value": "",
+                    "name": "Age"
                 },
-                "communication": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false
+                "archetype": {
+                    "value": "",
+                    "name": "Archetype"
                 },
-                "constitution": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false
+                "path": {
+                    "value": "",
+                    "name": "",
+                    "stats": {
+                        "stat1": "",
+                        "stat2": ""
+                    }
                 },
-                "dexterity": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false
+                "motivation": {
+                    "value": "",
+                    "name": "Motivation"
                 },
-                "fighting": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false
+                "legendary": {
+                    "ranks": 0,
+                    "name": "Legendary Ranks"
+                }
+            },
+            "stats": {
+                "strength": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Strength",
+                    "label": "STAT.Strength"
+                },
+                "agility": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Agility",
+                    "label": "STAT.Agility"
+                },
+                "endurance": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Endurance",
+                    "label": "STAT.Endurance"
                 },
                 "intelligence": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Intelligence",
+                    "label": "STAT.Intelligence"
                 },
                 "perception": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Perception",
+                    "label": "STAT.Perception"
                 },
-                "strength": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false
+                "wisdom": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Wisdom",
+                    "label": "STAT.Wisdom"
                 },
-                "willpower": {
-                    "rating": 0,
-                    "focus": "",
-                    "useFocus": false
+                "spirit": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Spirit",
+                    "label": "STAT.Spirit"
+                },
+                "charisma": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Charisma",
+                    "label": "STAT.Charisma"
+                },
+                "will": {
+                    "value": 0,
+                    "modified": 0,
+                    "name": "Will",
+                    "label": "STAT.Will"
                 }
             },
             "attributes": {
-                "speed": {
+                "body": {
                     "value": 0,
                     "modified": 0,
-                    "label": "Speed",
-                    "type": "number"
+                    "name": "Body (Current)",
+                    "currentValue": 0
                 },
-                "fortune": {
-                    "max": 0,
+                "mind": {
                     "value": 0,
                     "modified": 0,
-                    "label": "fortune",
-                    "type": "number"
+                    "name": "Mind (Current)",
+                    "currentValue": 0
                 },
-                "defense": {
+                "soul": {
                     "value": 0,
                     "modified": 0,
-                    "label": "defense",
-                    "type": "number"
+                    "name": "Soul (Current)",
+                    "currentValue": 0
                 },
-                "artou": {
-                    "value": 0,
+                "init": {
+                    "score": 0,
                     "modified": 0,
-                    "label": "ar+tou",
-                    "type": "number"
+                    "name": "Initiative Score"
                 }
             },
-            "threat": "",
-            "notes": "",
-            "stunts": "",
-            "talent1": "",
-            "talent2": "",
-            "equipment1": "",
-            "equipment2": ""
+            "skills": {},
+            "bio": {
+                "identifiers": "",
+                "background": "",
+                "gifts-burdens": "",
+                "notes": "",
+                "shortGoal1": "",
+                "shortGoal2": "",
+                "longGoal": "",
+                "gifts": [],
+                "burdens": []
+            },
+            "effects": {
+                "environmental": {
+                    "active": false,
+                    "value": ""
+                },
+                "poison": {
+                    "active": false,
+                    "value": ""
+                },
+                "bleeding": {
+                    "active": false,
+                    "value": ""
+                },
+                "stun": {
+                    "active": false,
+                    "value": ""
+                },
+                "burning": {
+                    "active": false,
+                    "value": ""
+                }
+            },
+            "states": {
+                "sleeping": {
+                    "active": false,
+                    "value": ""
+                },
+                "altered": {
+                    "active": false,
+                    "value": ""
+                },
+                "panic": {
+                    "active": false,
+                    "value": ""
+                },
+                "unconcious": {
+                    "active": false,
+                    "value": ""
+                }
+            }
         },
         "ship": {
             "name": "",
@@ -887,7 +971,8 @@
         },
         "gift": {
             "templates": [
-                "modifier"
+                "modifier",
+                "baseItem"
             ],
             "category": "",
             "level": 0,
@@ -914,11 +999,31 @@
         },
         "burden": {
             "templates": [
-                "modifier"
+                "modifier",
+                "baseItem"
             ],
             "category": "",
             "level": 0,
-            "description": ""
+            "description": "",
+            "mod": {
+                "successNumber": {
+                    "active": false,
+                    "value": 0,
+                    "skill": ""
+                },
+                "initiative": {
+                    "active": false,
+                    "value": 0
+                },
+                "physicalDefense": {
+                    "active": false,
+                    "value": 0
+                },
+                "dicePool": {
+                    "active": false,
+                    "value": 0
+                }
+            }
         }
     }
 }

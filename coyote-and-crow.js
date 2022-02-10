@@ -3,7 +3,7 @@ import { cncActor } from "./scripts/actor/actor.js";
 import { cncItemSheet } from "./scripts/items/sheet/item-sheet.js";
 import { cncItem } from "./scripts/items/item.js";
 
-/*import { coyote-and-crowNPCSheet } from "./npc-sheet.js";
+/*import { cncNPCSheet } from "./npc-sheet.js";
 import { coyote-and-crowShipSheet } from "./ship-sheet.js";*/
 import { registerDiceSoNice } from "./scripts/hooks/dice-so-nice.js";
 
@@ -25,7 +25,7 @@ Hooks.once("init", async function () {
 
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("coyote-and-crow", cncActorSheet, {
-    types: ["character"],
+    types: ["character", "npc"],
     makeDefault: true
   });
   /*Actors.registerSheet("coyote-and-crow", cncNPCSheet, {

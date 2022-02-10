@@ -1,11 +1,38 @@
-export default function getRoll(rollData) {
-  let skillDice = rollData.skillDice;
-  let statDice = rollData.statDice;
+export default function getRoll(compiledRollData) {
+
+  // rollData arguement comes in with the following information
+  /***
+  *   compiledRollData = {
+  *       type: 
+  *       specName: String
+  *       specRank: Number
+  *       skillName: String
+  *       skillRank: Number
+  *       statName: String
+  *       statRank: Number
+  *       legendary: Number
+  *       mind: Number
+  *       addDice: Number
+  *       totalDice: Number
+  *       successNumber: Number
+  *       physicalDefense: Number
+  *   }
+  ***/
+
+  let preppedRollData = compiledRollData;
+
+  //let skillDice = rollData.skillDice;
+  //let statDice = rollData.statDice;
   let count12 = 0;
   let explodingRoll;
   let roll;
-
-  let totalDiceRoll = skillDice + statDice
+  let totalDiceRoll = preppedRollData.totalDice;
+  //console.log(rollData)
+  /*if (rollData.type === "specialization") {
+    totalDiceRoll = rollData.totalDice;
+  } else {
+    totalDiceRoll = skillDice + statDice
+  }*/
 
   let baseRoll = new Roll(`${totalDiceRoll}da`).evaluate({ async: false });
 
