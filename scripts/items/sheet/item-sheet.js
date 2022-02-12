@@ -36,62 +36,81 @@ export class cncItemSheet extends ItemSheet {
         }
         itemData.data.allowStats = pathStats;
         itemData.data.owned = true;
-        this.actor.updateEmbeddedDocuments("Item", [itemData])
 
         if (itemData.type === "specialization") {
-            let genSkillName = itemData.data.skill.split(' ');
-            
-            console.log(genSkillName.length);
-            let specSkillUsed = itemData.actorData.data.skills[genSkillName[0].toLowerCase()]
-            console.log(specSkillUsed);
-            itemData.data.stat = specSkillUsed.stat
+            // get the name of the skill used in specialization, and force lowercase
+            let genSkillNameArr = itemData.data.skill.split(' ');
+            let genSkillName = genSkillNameArr[0].toLowerCase();
+            //console.log(genSkillName);
 
-            //itemData.data.stat = itemData.actorData.data.skills[genSkillName].stat;
-            console.log(itemData.data)
-            itemData.data.statName = itemData.data.stat.capitalize()
-            switch (itemData.data.stat.toLowerCase()) {
+            // get the specific named skill data from the actor
+            let specSkillObj = foundry.utils.deepClone(itemData.actorData.data.skills[genSkillName], {strict: true})
+            //console.log(specSkillObj);
+
+            // make a copy of the item to mutate. Note to self: find some turtles.
+            let itemObj = foundry.utils.deepClone(itemData.data);
+            //console.log(itemObj)
+
+            // assign the stat name used on the skill to the item.
+            itemObj.stat = specSkillObj.stat
+
+            // get the skill rank of the general skill used in the specialized skill
+            itemObj.skillRank =  actorData.data.skills[genSkillName].skillRank; /**** THIS NEEDS TO UPDATE THE ITEM. */
+            let skillRank = itemObj.skillRank;
+            //console.log(itemObj.skillRank)
+
+            // get stat name of stat the general skill is using to support
+            let statName = itemData.actorData.data.skills[genSkillName].stat;
+
+            // get addDice value from skill. Values assigned from  items and only relevant if using combat skill (melee, ranged, unarmed)
+            let addDice = specSkillObj.addDice ? specSkillObj.addDice : 0;
+            //console.log(addDice)
+
+            // get the specialized skill rank from the item
+            let specRank = itemData.data.specRank;
+
+            itemObj.statName = statName.capitalize(); // roll into itemData update clone
+
+            let statRank = 0;
+
+            switch (itemObj.stat) {
                 case "agility":
-                    itemData.data.statRank = actorData.data.stats.agility.value;
+                    statRank = actorData.data.stats.agility.value;
                     break;
                 case "charisma":
-                    itemData.data.statRank = actorData.data.stats.charisma.value;
+                    statRank = actorData.data.stats.charisma.value;
                     break;
                 case "endurance":
-                    itemData.data.statRank = actorData.data.stats.endurance.value;
+                    statRank = actorData.data.stats.endurance.value;
                     break;
                 case "intelligence":
-                    itemData.data.statRank = actorData.data.stats.intelligence.value;
+                    statRank = actorData.data.stats.intelligence.value;
                     break;
                 case "perception":
-                    itemData.data.statRank = actorData.data.stats.perception.value;
+                    statRank = actorData.data.stats.perception.value;
                     break;
                 case "spirit":
-                    itemData.data.statRank = actorData.data.stats.spirit.value;
+                    statRank = actorData.data.stats.spirit.value;
                     break;
                 case "strength":
-                    itemData.data.statRank = actorData.data.stats.strength.value;
+                    statRank = actorData.data.stats.strength.value;
                     break;
                 case "wisdom":
-                    itemData.data.statRank = actorData.data.stats.wisdom.value;
+                    statRank = actorData.data.stats.wisdom.value;
                     break;
                 case "will":
-                    itemData.data.statRank = actorData.data.stats.will.value;
+                    statRank = actorData.data.stats.will.value;
                     break;
                 default:
                     console.log("ItemData.data.statRank not set")
                     break;
             }
-            let skillName = itemData.data.skill
 
-            for (let [c, h] of Object.entries(actorData.data.skills)) {
-                if (skillName === h.name) {
-                    itemData.data.skillRank = h.skillRank + h.addDice;
-                }
-            }
-
-            itemData.data.total = itemData.data.statRank + itemData.data.skillRank + itemData.data.specRank;
-            this.actor.updateEmbeddedDocuments("Item", [itemData])
+            itemObj.statRank = statRank;
+            itemObj.total = statRank + skillRank + specRank + addDice;
+            itemData.data = itemObj;            
         }
+        this.actor.updateEmbeddedDocuments("Item", [itemData])
         return itemData;
     }
 

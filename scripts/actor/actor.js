@@ -127,11 +127,13 @@ export class cncActor extends Actor {
 
             for (let n of Object.values(snGroup)) {
                 if (n.skill.length === 0) { continue; }
+                let skillNameArr = n.skill.split(' ');
+                let skillName = skillNameArr[0].toLowerCase();
                 let itemSNValue = Number(n.value);
                 let itemSNSkill = n.skill.toLowerCase();
-                let skillSNMod = Number(actorSkills[itemSNSkill].snMod);
+                let skillSNMod = Number(actorSkills[skillName].snMod);
                 skillSNMod += itemSNValue;
-                actorSkills[itemSNSkill].snMod = Number(skillSNMod);
+                actorSkills[skillName].snMod = Number(skillSNMod);
             }
 
             this.data.data.stats = actorStats;

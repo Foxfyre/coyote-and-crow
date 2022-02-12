@@ -1,4 +1,4 @@
-export default function getRoll(compiledRollData) {
+export default async function getRoll(compiledRollData) {
 
   // rollData arguement comes in with the following information
   /***
@@ -34,7 +34,7 @@ export default function getRoll(compiledRollData) {
     totalDiceRoll = skillDice + statDice
   }*/
 
-  let baseRoll = new Roll(`${totalDiceRoll}da`).evaluate({ async: false });
+  let baseRoll = await new Roll(`${totalDiceRoll}da`).evaluate({ async: true });
 
   let results = baseRoll.terms[0].results;
   results.sort((a, b) => (a.result - b.result));
@@ -45,13 +45,20 @@ export default function getRoll(compiledRollData) {
       count12++;
     }
   })
-  
+
   if (count12 > 0) {
-    explodingRoll = new Roll(`${count12}db`).evaluate({ async: false })
+    explodingRoll = await new Roll(`${count12}db`).evaluate({ async: true })
+    console.log(explodingRoll)
 
     let explodingResults = explodingRoll.terms[0].results;
+    console.log(explodingResults)
+
     explodingResults.sort((a, b) => (a.result - b.result));
+    console.log(explodingResults)
+
     explodingRoll.terms[0].results = explodingResults;
+    console.log(explodingRoll.terms[0])
+
     const rolls = [baseRoll, explodingRoll];
     const pool = PoolTerm.fromRolls(rolls);
     roll = Roll.fromTerms([pool])

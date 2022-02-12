@@ -21,7 +21,7 @@
             {{#each skills as |skill key|}}
             {{#ifCond skill.colMod "===" 1}}
             <div class="summary-skill-table-row rollable" data-rollname="{{name}}" data-rolltype="skill"
-                data-skillname="{{skill.name}}" data-skillrank="{{skill.skillRank}}"
+                data-skillname="{{skill.name}}" data-skillrank="{{skill.skillRank}}" data-adddice="{{skill.addDice}}"
                 data-statname="{{skill.statName}}" data-statrank="{{skill.statRank}}">
                 <div class="skill-table-col">
                     <span>{{name}}</span>
@@ -58,7 +58,6 @@
             </div>
             {{#each skills as |skill key|}}
             {{#ifCond skill.colMod "===" 0}}
-            {{log skill}}
             <div class="summary-skill-table-row rollable" data-rollname="{{name}}" data-rolltype="skill"
                 data-skillname="{{skill.name}}" data-skillrank="{{skill.skillRank}}" data-adddice="{{skill.addDice}}"
                 data-statname="{{skill.statName}}" data-statrank="{{skill.statRank}}">

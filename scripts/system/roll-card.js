@@ -11,7 +11,7 @@ export default function rollCard(rollResults, pRollData) {
             diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${rollResults.terms[0].rolls[0].terms[0].results[d].result}.png" />`
         }
         for (let e = 0; e < rollResults.terms[0].rolls[1].terms[0].results.length; e++) {
-            diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${rollResults.terms[0].rolls[0].terms[0].results[e].result}.png" />`
+            diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${rollResults.terms[0].rolls[1].terms[0].results[e].result}.png" />`
         }
     } else {
         let results = rollResults.terms[0].results;

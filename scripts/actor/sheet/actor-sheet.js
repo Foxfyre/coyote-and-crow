@@ -137,7 +137,7 @@ export class cncActorSheet extends ActorSheet {
         }
     }
 
-    _diceRoll(event) {
+    async _diceRoll(event) {
         event.preventDefault();
         const data = super.getData()
         console.log(event)
@@ -191,7 +191,7 @@ export class cncActorSheet extends ActorSheet {
 
         //let dicePool = this._diceDisplay(pRollData)
 
-        let rollResults = getRoll(compiledRollData)
+        let rollResults = await getRoll(compiledRollData)
 
         console.log(rollResults)
 
