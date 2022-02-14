@@ -86,7 +86,8 @@ Hooks.once("init", () => {
 Hooks.on("ready", async () => {
   new Dialog({
     title: "Coyote And Crow",
-    content: `This system is for Coyote and Crow. All features are currently in progress and may change regularly. It is recommended that you back up your world before installing an update to the game system.<br><br>
+    content: `All features are currently in progress and may change regularly. Not all features may be available currently and are subject to change.<br>
+    It is recommended that you back up your world before installing an update to the game system.<br><br>
     Would you like to provide feedback on the Coyote and Crow Foundry System?<br><br>
     Join us on Discord! <a href="https://discord.gg/Fbm8Uevvny">https://discord.gg/Fbm8Uevvny</a><br><br>
     `,
