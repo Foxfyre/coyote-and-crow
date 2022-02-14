@@ -66,24 +66,6 @@ export class cncActor extends Actor {
         for (let x of items) {
             if (!x) { return }
             if (x.data.type === "specialization") { continue }
-            //if (x.data.type === "gift" || x.data.type === "burden") {continue}
-
-            //if (x.data.data.type === "armor") {
-            let armorPdMod = x.data.data.modifier.pd.value;
-            armorGroup += armorPdMod;
-            //}
-            //if (x.data.data.type === "item" || x.data.type === "gift") {
-
-            /*if (x.data.data.modifier.pd.value !== 0) {
-                let armorPdMod = x.data.data.modifier.pd.value;
-                armorGroup += armorPdMod;
-            }*/
-            /*if (x.data.data.modifier.dp.value !== 0) {
-                let dicePoolMod = x.data.data.modifier.dp.value;
-                let currDicePool = this.data.data.attributes.addDicePool /////////////////////////////////////////////////////////////////////
-                diceGroup += (dicePoolMod + currDicePool);
-            }*/
-            //}
 
             if (x.data.type !== "ability") {
                 if (x.data.data.modifier.init.value !== 0) {
@@ -93,29 +75,24 @@ export class cncActor extends Actor {
                 }
             }
 
-
             if (x.data.data.type === "weapon" && x.data.data.weaponTypes !== "") {
-                /*let dicePoolMod = x.data.data.modifier.dp.value;
-                let currDicePool = this.data.data.attributes.addDicePool /////////////////////////////////////////////////////////////////////
-                diceGroup += (dicePoolMod + currDicePool);*/
-                console.log(x.data.data)
                 let weaponType = x.data.data.weaponTypes; // get weapon type from item
                 let dp = x.data.data.modifier.dp.value;   // get value of dp from item
-                //let prevDice = this.data.data.skills[weaponType].addDice;
-                /*console.log(this.data.data.skills[weaponType])
-                this.data.data.skills[weaponType].skillTotal += dp; // get skillTotal and add the dicePool*/
                 this.data.data.skills[weaponType].addDice = dp;
-                console.log(this.data.data)
             }
+
             // cycle through the stat object, record the modifier on the item, pull actor stat value, add & write to actor. Valid on all items
             if (x.data.type === "ability") { continue }
+
+            let armorPdMod = x.data.data.modifier.pd.value ? x.data.data.modifier.pd.value : 0;
+            armorGroup += armorPdMod;
+
             for (let s of Object.values(x.data.data.modifier.stat)) {
                 actorStats = actorData.data.stats;
                 let itemStatName = s.name;
                 if (s.value !== 0) {
                     actorStats[itemStatName].modified += s.value;
                 }
-
             }
 
             // cycle through sn, record the skill and value, pull actor skill value, add & write to actor, valid on all items
@@ -139,15 +116,11 @@ export class cncActor extends Actor {
             this.data.data.stats = actorStats;
             this.data.data.attributes.addDicePool = diceGroup;
             this.data.data.attributes.body.modified = armorGroup + this.data.data.attributes.body.pd;
-            //this.data.data.attributes.init.modified = initiative;
         }
-        //this.data.data.skills = actorSkills;
-
     }
 
     _calcTotalSkills() {
         for (let skillKey in this.data.data.skills) {
-
             let skill = this.data.data.skills[skillKey]
             let stat = this.data.data.skills[skillKey].stat;
             this._setSkillName(skill, skillKey);

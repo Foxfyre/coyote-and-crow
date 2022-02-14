@@ -44,7 +44,7 @@ export class cncItemSheet extends ItemSheet {
             //console.log(genSkillName);
 
             // get the specific named skill data from the actor
-            let specSkillObj = foundry.utils.deepClone(itemData.actorData.data.skills[genSkillName], {strict: true})
+            let specSkillObj = foundry.utils.deepClone(itemData.actorData.data.skills[genSkillName], { strict: true })
             //console.log(specSkillObj);
 
             // make a copy of the item to mutate. Note to self: find some turtles.
@@ -55,7 +55,7 @@ export class cncItemSheet extends ItemSheet {
             itemObj.stat = specSkillObj.stat
 
             // get the skill rank of the general skill used in the specialized skill
-            itemObj.skillRank =  actorData.data.skills[genSkillName].skillRank; /**** THIS NEEDS TO UPDATE THE ITEM. */
+            itemObj.skillRank = actorData.data.skills[genSkillName].skillRank; /**** THIS NEEDS TO UPDATE THE ITEM. */
             let skillRank = itemObj.skillRank;
             //console.log(itemObj.skillRank)
 
@@ -107,8 +107,8 @@ export class cncItemSheet extends ItemSheet {
             }
 
             itemObj.statRank = statRank;
-            itemObj.total = statRank + skillRank + specRank + addDice;
-            itemData.data = itemObj;            
+            itemObj.total = statRank + specRank + addDice;
+            itemData.data = itemObj;
         }
         this.actor.updateEmbeddedDocuments("Item", [itemData])
         return itemData;
@@ -118,8 +118,6 @@ export class cncItemSheet extends ItemSheet {
         super.activateListeners(html)
 
         html.find(".toggle-on-click").on("click", (event) => {
-            console.log(event)
-            console.log(event.target.classList);
             const elmt = $(event.currentTarget).data("toggle");
             const tgt = html.find("." + elmt);
             tgt.toggleClass("toggle-active");

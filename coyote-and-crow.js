@@ -3,8 +3,6 @@ import { cncActor } from "./scripts/actor/actor.js";
 import { cncItemSheet } from "./scripts/items/sheet/item-sheet.js";
 import { cncItem } from "./scripts/items/item.js";
 
-/*import { cncNPCSheet } from "./npc-sheet.js";
-import { coyote-and-crowShipSheet } from "./ship-sheet.js";*/
 import { registerDiceSoNice } from "./scripts/hooks/dice-so-nice.js";
 
 import { initializeHandlebars } from "./scripts/system/handlebars.js";
@@ -28,10 +26,7 @@ Hooks.once("init", async function () {
     types: ["character", "npc"],
     makeDefault: true
   });
-  /*Actors.registerSheet("coyote-and-crow", cncNPCSheet, {
-    types: ["npc"],
-    makeDefault: true
-  });*/
+
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("coyote-and-crow", cncItemSheet, {
     makeDefault: true
@@ -86,39 +81,22 @@ Hooks.once("init", () => {
   const debouncedReload = foundry.utils.debounce(() => {
     window.location.reload();
   }, 100);
-
-  /*game.settings.register("coyote-and-crow", "diceStyle", {
-    name: "SETTINGS.DiceChoice",
-    hint: "SETTINGS.DiceChoiceHint",
-    scope: "client",
-    config: true,
-    default: 0,
-    type: String,
-    choices: {
-      "0": "SETTINGS.EarthDark",
-      "1": "SETTINGS.EarthLight",
-      "2": "SETTINGS.MarsDark",
-      "3": "SETTINGS.MarsLight",
-      "4": "SETTINGS.BeltDark",
-      "5": "SETTINGS.BeltLight",
-      "6": "SETTINGS.ProtoDark",
-      "7": "SETTINGS.ProtoLight"
-    },
-    onChange: debouncedReload
-  });*/
 })
 
-/*Hooks.on("ready", async () => {
+Hooks.on("ready", async () => {
   new Dialog({
     title: "Coyote And Crow",
-    content: `This system is for Coyote and Crow. All features are currently in progress.`,
+    content: `This system is for Coyote and Crow. All features are currently in progress and may change regularly. It is recommended that you back up your world before installing an update to the game system.<br><br>
+    Would you like to provide feedback on the Coyote and Crow Foundry System?<br><br>
+    Join us on Discord! <a href="https://discord.gg/Fbm8Uevvny">https://discord.gg/Fbm8Uevvny</a><br><br>
+    `,
     buttons: {
       ok: {
         label: "Proceed!",
       }
     }
   }).render(true)
-})*/
+})
 
 Hooks.on("renderDialog", (dialog, html) => {
   Array.from(html.find("#document-create option")).forEach(i => {

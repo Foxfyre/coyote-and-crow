@@ -21,18 +21,10 @@ export default async function getRoll(compiledRollData) {
 
   let preppedRollData = compiledRollData;
 
-  //let skillDice = rollData.skillDice;
-  //let statDice = rollData.statDice;
   let count12 = 0;
   let explodingRoll;
   let roll;
   let totalDiceRoll = preppedRollData.totalDice;
-  //console.log(rollData)
-  /*if (rollData.type === "specialization") {
-    totalDiceRoll = rollData.totalDice;
-  } else {
-    totalDiceRoll = skillDice + statDice
-  }*/
 
   let baseRoll = await new Roll(`${totalDiceRoll}da`).evaluate({ async: true });
 

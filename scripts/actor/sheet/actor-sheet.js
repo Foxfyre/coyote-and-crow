@@ -46,7 +46,6 @@ export class cncActorSheet extends ActorSheet {
 
         let stat1 = data.actor.data.info.path.stats.stat1.value;
         let stat2 = data.actor.data.info.path.stats.stat2.value;
-        let abilityStats = [];
 
         sheetData.abilities = {
             [`${stat1}`]: "",
@@ -140,29 +139,8 @@ export class cncActorSheet extends ActorSheet {
     async _diceRoll(event) {
         event.preventDefault();
         const data = super.getData()
-        console.log(event)
         const rollType = event.currentTarget.closest("[data-rolltype]").dataset.rolltype;
-        const rollName = event.currentTarget.closest("[data-rollname]").dataset.rollname;
-        const rollSkill = event.currentTarget.closest("[data-rolltype]").dataset.rollskill;
-        const rollStat = event.currentTarget.closest("[data-rolltype]").dataset.rollstat;
         let rollData = {};
-        console.log(data)
-        console.log(rollType)
-
-        /*
-            Send data and roll info to buildRoll to collect all relevant data needed for rolls. This will be referred to as the dicePayload.
-            when the object returns populated with data, check to see type of roll (skill/stat/ability). Each type will have it's own process.
-            For skill tests > Roll the dice based upon stat/skill. Any added modifiers are added to stats and skills already. 
-            Once roll is complete, send to chat with results and any relevant options, ie. use legendary, use focus, etc. If 12's are rolled, roll x many more
-        */
-
-        /*if (rollType === "specialization") {
-
-            console.log(rollSkill)
-            console.log(rollStat)
-        }*/
-
-
 
         rollData = {
             type: event.currentTarget.closest("[data-rolltype]").dataset.rolltype,
@@ -178,18 +156,11 @@ export class cncActorSheet extends ActorSheet {
             totalDice: 0,
             successNumber: 0
         }
-        console.log(rollData)
-
-
 
         // Send data and roll info to gather all information required for rolls. 
         let compiledRollData = buildRoll(data, rollData);
-        //pRollData.rollType = rollType;
-        //pRollData.rollName = rollName;
 
         console.log(compiledRollData)
-
-        //let dicePool = this._diceDisplay(pRollData)
 
         let rollResults = await getRoll(compiledRollData)
 
@@ -228,82 +199,4 @@ export class cncActorSheet extends ActorSheet {
         console.log(rollApp);*/
 
     }
-
-    // This function was building the popup. Can be deleted later
-    /*_diceDisplay(pRollData) {
-
-        let statDiceQty = pRollData.statDice;
-        let statDiceName = pRollData.statName;
-        let skillDiceQty = pRollData.skillDice;
-        let skillDiceName = pRollData.skillName;
-
-        let statDiv = "";
-        let skillDiv = "";
-
-        console.log(statDiceQty)
-
-        if (statDiceQty > 0) {
-            for (let s = 0; s < statDiceQty; s++) {
-                statDiv += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/wq.png" />`
-            }
-        }
-
-        if (skillDiceQty > 0) {
-            for (let t = 0; t < skillDiceQty; t++) {
-                skillDiv += `<img class="" height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/wq.png" />`
-            }
-        }
-
-        let sampleHTML = `
-        <form class="{{cssClass}} dice-prep" autocomplete="off">
-            <div class="dice-dialog">
-                <div class="dice-box">
-                    <div class="stat-block-title">
-                        <span>${statDiceName}</span>
-                    </div>
-                    <div class="stat-section">
-                        ${statDiv}
-                    </div>
-                    <div class="stat-block-title">
-                        <span>${skillDiceName}</span>
-                    </div>
-                    <div class="stat-section">
-                        ${skillDiv}
-                    </div>
-                </div>
-                <div class="check-info">
-                    <span>Create a Dice Pool</span>
-                    <span>Determine Success Number</span>
-                    <span>Roll Dice Poll</span>
-                    <span>Use Legendary Status</span>
-                    <span>Use Focus</span>
-                    <span>Roll Critical Dice</span>
-                    <span>Determine Success or Failure</span>
-                </div>
-            </div>
-
-
-        </form>
-
-        <script>
-        textContainer = document.querySelectorAll('.app.window-app.dialog');
-        length = textContainer.length;
-        for (i = 0; i < length; i++) {
-            if (textContainer[i].children[1].children[0].children[0].className.includes("dice-prep")) {
-            new_red = textContainer[i].id;
-            if (document.getElementById(new_red).className.includes("dice-prep-dialog")) {
-                continue;
-            }
-            else {
-                document.getElementById(new_red).className += " dice-prep-dialog";
-            }
-            } else { console.log("uhhhhhhhhhh") }
-        }
-        </script>
-    `;
-
-        return sampleHTML;
-    }*/
-
-
 }
