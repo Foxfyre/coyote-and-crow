@@ -77,5 +77,6 @@
     "ITEM.CreateBurden": "Add Burden",
     "DIALOG.ConfirmDelete": "Confirm Delete",
     "DICE.DicePrepare": "Build your dice pool",
-    "DICE.Roll": "Roll"
+    "DICE.Roll": "Roll",
+    "WARN.SkillRequired": "You must have training to use these skills."
 }

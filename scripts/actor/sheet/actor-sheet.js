@@ -157,6 +157,13 @@ export class cncActorSheet extends ActorSheet {
             successNumber: 0
         }
 
+        const skilledTests = ["Ceremony", "Cybernetics", "Herbalism", "Language", "Medicine", "Science"];
+
+        if (skilledTests.includes(rollData.skillName) === true && rollData.skillRank === 0) {
+            ui.notifications.warn(game.i18n.format("WARN.SkillRequired", {name: this.name}))
+            return;
+        }
+
         // Send data and roll info to gather all information required for rolls. 
         let compiledRollData = buildRoll(data, rollData);
 

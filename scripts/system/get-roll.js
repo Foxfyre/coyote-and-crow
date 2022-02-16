@@ -39,14 +39,14 @@ export default async function getRoll(compiledRollData) {
   })
 
   if (count12 > 0) {
-    explodingRoll = await new Roll(`${count12}db`).evaluate({ async: true })
+    explodingRoll = await new Roll(`${count12}dbx12`).evaluate({ async: true })
     console.log(explodingRoll)
 
     let explodingResults = explodingRoll.terms[0].results;
     console.log(explodingResults)
 
-    explodingResults.sort((a, b) => (a.result - b.result));
-    console.log(explodingResults)
+    //explodingResults.sort((a, b) => (a.result - b.result));
+    //console.log(explodingResults)
 
     explodingRoll.terms[0].results = explodingResults;
     console.log(explodingRoll.terms[0])
