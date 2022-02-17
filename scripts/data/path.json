@@ -1,0 +1,257 @@
+[
+    {
+        "name": "Badger",
+        "stats": {
+            "stat1": {
+                "name": "Intelligence",
+                "value": "intelligence"
+            },
+            "stat2": {
+                "name": "Will",
+                "value": "will"
+            }
+        },
+        "allowedStats": {
+            "intelligence": "Intelligence",
+            "will": "Will"
+        }
+    },
+    {
+        "name": "Bear",
+        "stats": {
+            "stat1": {
+                "name": "Charisma",
+                "value": "charisma"
+            },
+            "stat2": {
+                "name": "Strength",
+                "value": "strength"
+            }
+        },
+        "allowedStats": {
+            "charisma": "Charisma",
+            "strength": "Strength"
+        }
+    },
+    {
+        "name": "Beaver",
+        "stats": {
+            "stat1": {
+                "name": "Endurance",
+                "value": "endurance"
+            },
+            "stat2": {
+                "name": "Perception",
+                "value": "perception"
+            }
+        },
+        "allowedStats": {
+            "endurance": "Endurance",
+            "perception": "Perception"
+        }
+    },
+    {
+        "name": "Bison",
+        "stats": {
+            "stat1": {
+                "name": "Strength",
+                "value": "strength"
+            },
+            "stat2": {
+                "name": "Will",
+                "value": "will"
+            }
+        },
+        "allowedStats": {
+            "strength": "Strength",
+            "will": "Will"
+        }
+    },
+    {
+        "name": "Coyote",
+        "stats": {
+            "stat1": {
+                "name": "Agility",
+                "value": "agility"
+            },
+            "stat2": {
+                "name": "Intelligence",
+                "value": "intelligence"
+            }
+        },
+        "allowedStats": {
+            "agility": "Agility",
+            "intelligence": "Intelligence"
+        }
+    },
+    {
+        "name": "Crow",
+        "stats": {
+            "stat1": {
+                "name": "Spirit",
+                "value": "spirit"
+            },
+            "stat2": {
+                "name": "Wisdom",
+                "value": "wisdom"
+            }
+        },
+        "allowedStats": {
+            "spirit": "Spirit",
+            "wisdom": "Wisdom"
+        }
+    },
+    {
+        "name": "Deer",
+        "stats": {
+            "stat1": {
+                "name": "Wisdom",
+                "value": "wisdom"
+            },
+            "stat2": {
+                "name": "Charisma",
+                "value": "charisma"
+            }
+        },
+        "allowedStats": {
+            "wisdom": "Wisdom",
+            "charisma": "Charisma"
+        }
+    },
+    {
+        "name": "Eagle",
+        "stats": {
+            "stat1": {
+                "name": "Strength",
+                "value": "strength"
+            },
+            "stat2": {
+                "name": "Wisdom",
+                "value": "wisdom"
+            }
+        },
+        "allowedStats": {
+            "strength": "Strength",
+            "wisdom": "Wisdom"
+        }
+    },
+    {
+        "name": "Falcon",
+        "stats": {
+            "stat1": {
+                "name": "Perception",
+                "value": "perception"
+            },
+            "stat2": {
+                "name": "Spirit",
+                "value": "spirit"
+            }
+        },
+        "allowedStats": {
+            "perception": "Perception",
+            "spirit": "Spirit"
+        }
+    },
+    {
+        "name": "Fox",
+        "stats": {
+            "stat1": {
+                "name": "Agility",
+                "value": "agility"
+            },
+            "stat2": {
+                "name": "Spirit",
+                "value": "spirit"
+            }
+        },
+        "allowedStats": {
+            "agility": "Agility",
+            "spirit": "Spirit"
+        }
+    },
+    {
+        "name": "Owl",
+        "stats": {
+            "stat1": {
+                "name": "Endurance",
+                "value": "endurance"
+            },
+            "stat2": {
+                "name": "Intelligence",
+                "value": "intelligence"
+            }
+        },
+        "allowedStats": {
+            "endurance": "Endurance",
+            "intelligence": "Intelligence"
+        }
+    },
+    {
+        "name": "Raccoon",
+        "stats": {
+            "stat1": {
+                "name": "Charisma",
+                "value": "charisma"
+            },
+            "stat2": {
+                "name": "Intelligence",
+                "value": "intelligence"
+            }
+        },
+        "allowedStats": {
+            "charisma": "Charisma",
+            "intelligence": "Intelligence"
+        }
+    },
+    {
+        "name": "Salmon",
+        "stats": {
+            "stat1": {
+                "name": "Will",
+                "value": "will"
+            },
+            "stat2": {
+                "name": "Agility",
+                "value": "agility"
+            }
+        },
+        "allowedStats": {
+            "will": "Will",
+            "agility": "Agility"
+        }
+    },
+    {
+        "name": "Snake",
+        "stats": {
+            "stat1": {
+                "name": "Spirit",
+                "value": "spirit"
+            },
+            "stat2": {
+                "name": "Endurance",
+                "value": "endurance"
+            }
+        },
+        "allowedStats": {
+            "spirit": "Spirit",
+            "endurance": "Endurance"
+        }
+    },
+    {
+        "name": "Spider",
+        "stats": {
+            "stat1": {
+                "name": "Perception",
+                "value": "perception"
+            },
+            "stat2": {
+                "name": "Strength",
+                "value": "strength"
+            }
+        },
+        "allowedStats": {
+            "perception": "Perception",
+            "strength": "Strength"
+        }
+    }
+]
