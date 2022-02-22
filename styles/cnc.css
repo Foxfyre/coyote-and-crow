@@ -94,6 +94,10 @@ select {
 
 /* Character Sheet */
 
+.warning {
+    color: yellow;
+}
+
 .c-sheet .logo-row {
     display: flex;
     flex-direction: row;

@@ -2,7 +2,6 @@
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
-
 export class cncActor extends Actor {
     prepareData() {
         super.prepareData();
@@ -22,6 +21,8 @@ export class cncActor extends Actor {
     prepareDerivedData() {
         const actorData = this.data;
         const data = actorData.data;
+        let pathData;
+
         data.attributes.init.score = data.stats.agility.value + data.stats.perception.value + data.stats.charisma.value;
         data.attributes.body.pd = data.stats.agility.value + data.stats.endurance.value;
         data.attributes.mind.md = data.stats.perception.value + data.stats.wisdom.value;
@@ -30,19 +31,28 @@ export class cncActor extends Actor {
         data.attributes.mind.value = data.stats.intelligence.value + data.stats.perception.value + data.stats.wisdom.value;
         data.attributes.soul.value = data.stats.spirit.value + data.stats.charisma.value + data.stats.will.value;
         data.attributes.init.total = data.attributes.init.score + data.attributes.init.modified;
-
         // Add any modifiers from items to the stat value;
         for (let r of Object.values(data.stats)) {
             r.modified = r.value + r.modified
         }
-
         if (this.type === "character" || this.type === "npc") {
 
+            /*fetch('/systems/coyote-and-crow/scripts/data/path.json')
+                .then(response => response.json())
+                .then(data => {
+                    pathData = data;
+                    console.log(pathData);
+                    this._setPath(actorData, pathData);
+                })*/
+            /*getPathJSON().then(pathData => {
+                
+            })*/
             this._setPath(actorData);
             this._deriveItemModifiers(actorData);
             this._calcTotalSkills()
-        }
 
+            //console.log(pathData)
+        }
     }
 
     _initData() {
@@ -120,6 +130,7 @@ export class cncActor extends Actor {
     }
 
     _calcTotalSkills() {
+        const skilledTests = ["Ceremony", "Cybernetics", "Herbalism", "Language", "Medicine", "Science"];
         for (let skillKey in this.data.data.skills) {
             let skill = this.data.data.skills[skillKey]
             let stat = this.data.data.skills[skillKey].stat;
@@ -128,8 +139,19 @@ export class cncActor extends Actor {
             let weaponDPMod = this.data.data.skills[skillKey].addDice ? this.data.data.skills[skillKey].addDice : 0;
             skill.statRank = skillModValue
             !this.data.data.skills[skillKey].dicePoolMod ? this.data.data.skills[skillKey].dicePoolMod = 0 : null;
+
+
+            if (skill.name === "Knowledge" && skill.skillRank > 1) {
+                ui.notifications ? ui.notifications.warn(game.i18n.format("WARN.KnowledgeMax", { name: this.name })) : null;
+            }
             skill.skillRank = 0 + this.data.data.skills[skillKey].skillRank;
             skill.skillTotal = 0 + skillModValue + this.data.data.skills[skillKey].skillRank + this.data.data.skills[skillKey].dicePoolMod;
+            // 0 out skilled only skills if no skill rank present. Prevents confusion on character sheet.
+            if (skilledTests.includes(skill.name) === true && skill.skillRank === 0) {
+                skill.skillTotal = 0;
+            }
+
+
             skill.dicePoolMod = weaponDPMod + skill.skillTotal;
         }
     }
@@ -190,7 +212,10 @@ export class cncActor extends Actor {
         }
     }
 
+
+
     _setPath(actorData) {
+
         switch (actorData.data.info.path.value) {
             case "badger":
                 actorData.data.info.path.name = "Badger";
@@ -454,4 +479,13 @@ export class cncActor extends Actor {
 
     }
 
+
+
 }
+
+/*async function getPathJSON() {
+    const response = await fetch('/systems/coyote-and-crow/scripts/data/path.json');
+    const pathData = await response.json();
+
+    return pathData;
+}*/

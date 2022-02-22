@@ -2,7 +2,7 @@ import { cncActorSheet } from "./scripts/actor/sheet/actor-sheet.js";
 import { cncActor } from "./scripts/actor/actor.js";
 import { cncItemSheet } from "./scripts/items/sheet/item-sheet.js";
 import { cncItem } from "./scripts/items/item.js";
-
+import { cncScene } from "./scripts/scenes/scene.js";
 import { registerDiceSoNice } from "./scripts/hooks/dice-so-nice.js";
 
 import { initializeHandlebars } from "./scripts/system/handlebars.js";
@@ -16,6 +16,7 @@ Hooks.once("init", async function () {
   // Define custom Entity classes
   CONFIG.Actor.documentClass = cncActor;
   CONFIG.Item.documentClass = cncItem;
+  CONFIG.Scene.documentClass = cncScene;
   CONFIG.Combat.initiative = {
     formula: "1d12",
     decimals: 2
@@ -106,6 +107,28 @@ Hooks.on("renderDialog", (dialog, html) => {
     }
   })
 })
+
+/*Hooks.on("canvasReady", () => {
+  console.log(canvas.scene.data.drawings.document.img)
+  canvas.scene.data.drawings.document.img = 'systems/coyote-and-crow/ui/background-image.jpg';
+
+  const renderer = PIXI.autoDetectRenderer()
+  console.log(renderer)
+  renderer.backgroundColor = 0x550055;
+  renderer.options.backgroundAlpha = 0.5;
+  renderer.options.useContextAlpha = false;
+  
+  document.body.appendChild(renderer.view)
+
+  const stage = new PIXI.Container();
+
+  let texture = PIXI.Texture.from('systems/coyote-and-crow/ui/background-image.jpg');
+  let newBackground = new PIXI.Sprite(texture);
+
+  stage.addChild(newBackground)
+
+  renderer.render(stage)
+})*/
 
 /*Hooks.on("preCreateActor", (actor, createData, options, userId) => {
   const additionalItems = [

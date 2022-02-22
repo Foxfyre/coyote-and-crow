@@ -22,7 +22,7 @@
             {{#ifCond skill.colMod "===" 1}}
             <div class="skill-table-row">
                 <div class="skill-table-col">
-                    <span>{{name}}</span>
+                    <span>{{localize label}}</span>
                 </div>
                 <div class="skill-table-col">
                     <select name="data.skills.{{key}}.stat">
@@ -58,9 +58,10 @@
             </div>
             {{#each skills as |skill key|}}
             {{#ifCond skill.colMod "===" 0}}
+
             <div class="skill-table-row">
                 <div class="skill-table-col">
-                    <span>{{name}}</span>
+                    <span>{{localize label}}</span>
                 </div>
                 <div class="skill-table-col">
                     <select name="data.skills.{{key}}.stat">
@@ -163,4 +164,4 @@
             </div>
         </div>
     </div>
-</div> 
+</div>

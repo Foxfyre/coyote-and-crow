@@ -2,7 +2,7 @@
   "name": "coyote-and-crow",
   "title": "Coyote And Crow",
   "description": "The official system for Coyote And Crow",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "author": "Charlotte Hamilton",
@@ -45,6 +45,6 @@
   "secondaryTokenAttribute": "attributes.mind.currentValue",
   "url": "https://github.com/Foxfyre/coyote-and-crow",
   "manifest": "https://raw.githubusercontent.com/Foxfyre/coyote-and-crow/main/system.json",
-  "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/v0.1.1/coyote-and-crow.zip",
+  "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/v0.1.2/coyote-and-crow.zip",
   "license": "LICENSE.txt"
 }
