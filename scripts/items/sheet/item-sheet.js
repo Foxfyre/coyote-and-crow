@@ -11,6 +11,17 @@ export class cncItemSheet extends ItemSheet {
 
     }
 
+    static get defaultOptions() {
+        return mergeObject(super.defaultOptions, {
+            classes: ["item"],
+            height: 500,
+            tabs: [{ navSelector: ".item-tabs", contentSelector: ".item-modifier" }],
+            dragDrop: [
+                { dragSelector: ".item-list .item", dropSelector: null }
+            ]
+        });
+    }
+
     get template() {
         const path = "systems/coyote-and-crow/templates/sheet"
         return `${path}/${this.item.data.type}-sheet.html`;

@@ -66,7 +66,51 @@ export class cncActorSheet extends ActorSheet {
         html.find(".item-edit").click(this._onItemEdit.bind(this));
         html.find(".item-delete").click(this._onItemDelete.bind(this));
         html.find(".rollable").click(this._diceRoll.bind(this));
+        html.find(".equip").click(this._equipItem.bind(this));
     }
+
+    /* ITEM EQUIP */
+
+    _equipItem(event) {
+        event.preventDefault();
+        const li = event.currentTarget.closest(".item");
+        const itemId = li.dataset.itemId;
+        const item = duplicate(this.actor.getEmbeddedDocument("Item", itemId))
+        let isEquipped = item.data.equipped;
+        isEquipped = !isEquipped;
+        item.data.equipped = isEquipped;
+        return this.actor.updateEmbeddedDocuments("Item", [item]);
+    }
+
+    /*
+            html.find(".item-equip").click(async e => {
+            const data = super.getData()
+            const items = data.items;
+
+            let itemId = e.currentTarget.getAttribute("data-item-id");
+            const armor = duplicate(this.actor.getEmbeddedDocument("Item", itemId));
+
+            for (let [k, v] of Object.entries(items)) {
+                // Confirming only one armour equipped
+                if ((v.type === "armor" || v.type === "shield") && v.data.equip === true && v._id !== itemId) {
+                    Dialog.prompt({
+                        title: "Cannot Equip",
+                        content: "<p>You can only have one piece of armour and shield equipped at one time. Please remove your current armor before continuing",
+                        label: "OK",
+                        callback: () => console.log("denied!")
+                    });
+                    return;
+                }
+                // If targeting same armor, cycle on off;
+                if (v.type === "armor" && v._id === itemId) {
+                    armor.data.equip = !armor.data.equip;
+                } else if (v.type === "shield" && v._id === itemId) {
+                    armor.data.equip = !armor.data.equip;
+                }
+                this.actor.updateEmbeddedDocuments("Item", [armor])
+            }
+        });
+    */
 
     _itemCreate(event) {
         event.preventDefault();
@@ -141,7 +185,7 @@ export class cncActorSheet extends ActorSheet {
         const data = super.getData()
         const rollType = event.currentTarget.closest("[data-rolltype]").dataset.rolltype;
         let rollData = {};
-
+ 
         rollData = {
             type: event.currentTarget.closest("[data-rolltype]").dataset.rolltype,
             specName: rollType === "specialization" ? event.currentTarget.closest("[data-rollname]").dataset.rollname : "",
@@ -154,13 +198,15 @@ export class cncActorSheet extends ActorSheet {
             mind: 0,
             addDice: Number(event.currentTarget.closest("[data-adddice]").dataset.adddice),
             totalDice: 0,
-            successNumber: 0
+            successNumber: 0,
+            physicalDefense: 0,
+            physicalDefenseDetail: ""
         }
 
         const skilledTests = ["Ceremony", "Cybernetics", "Herbalism", "Language", "Medicine", "Science"];
 
         if (skilledTests.includes(rollData.skillName) === true && rollData.skillRank === 0) {
-            ui.notifications.warn(game.i18n.format("WARN.SkillRequired", {name: this.name}))
+            ui.notifications.warn(game.i18n.format("WARN.SkillRequired", { name: this.name }))
             return;
         }
 

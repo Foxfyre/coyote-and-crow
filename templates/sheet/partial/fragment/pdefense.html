@@ -1,0 +1,17 @@
+<div class="item-section ">
+    <div class="sheet-title-h2" style="margin: 10px 0 0 0;">
+        <span>Physical Defense</span>
+    </div>
+    <div class="sn-mod">
+        <label name="" title='{{localize "DSTAT.PD"}}'>+ / - PD </label>
+        <input type="number" name="data.modifier.pd.value" value="{{data.modifier.pd.value}}" />
+        <span>vs.</span>
+        <select name="data.modifier.pd.detail" value="{{data.modifier.pd.detail}}">
+            {{#select data.modifier.pd.detail}}
+            <option value=""></option>
+            <option value="environmental">Environmental</option>
+            {{/select}}
+        </select>
+        <span>Damage</span>
+    </div>
+</div>

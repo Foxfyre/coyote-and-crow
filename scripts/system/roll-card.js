@@ -1,9 +1,17 @@
-export default function rollCard(rollResults, pRollData) {
+export default function rollCard(rollResults, compiledRollData) {
     let diceSection = '';
     //console.log(rollResults);
-    //console.log(pRollData);
+    console.log(compiledRollData);
 
     //console.log(rollResults.terms)
+
+    let sn = compiledRollData.successNumber;
+    /*if (sn !== 0) {
+        snCardInfo = `</br><b>Modifier:</b> Apply ${sn} to the Success Number`;
+    }*/
+
+    const rollStatSkill = `Rolling ${compiledRollData.skillName} & ${compiledRollData.statName}<br>`;
+    let snCardInfo = (sn !== 0) ? `<b>Modifier:</b> Apply ${sn} to the Success Number` : ``;
 
     if (rollResults.type == "PoolTerm") {
         console.log(rollResults.terms[0].rolls)
@@ -22,7 +30,7 @@ export default function rollCard(rollResults, pRollData) {
 
     let rollDesignate = '';
 
-    rollDesignate = `Rolling ${pRollData.skillName} & ${pRollData.statName}`;
+    rollDesignate = `${rollStatSkill}${snCardInfo}`;
 
     let rollCardInfo = {
         title: rollDesignate,
@@ -32,4 +40,4 @@ export default function rollCard(rollResults, pRollData) {
     //console.log(diceSection)
 
     return rollCardInfo;
-}
+} 

@@ -16,8 +16,9 @@ export default async function getRoll(compiledRollData) {
   *       totalDice: Number
   *       successNumber: Number
   *       physicalDefense: Number
+  *       physicalDefenseDetail: String
   *   }
-  ***/
+  ***/ 
 
   let preppedRollData = compiledRollData;
 

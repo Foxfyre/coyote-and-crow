@@ -848,7 +848,8 @@
             "modifier": {
                 "modifier": {
                     "pd": {
-                        "value": 0
+                        "value": 0,
+                        "detail": ""
                     },
                     "stat": {
                         "agility": {
@@ -948,14 +949,8 @@
         "weapon": {
             "templates": [
                 "baseItem",
-                "modifer"
-            ],
-            "range": {
-                "short": "",
-                "medium": "",
-                "long": ""
-            },
-            "weaponDamage": 0
+                "modifier"
+            ]
         },
         "armor": {
             "templates": [

@@ -14,6 +14,11 @@ input[type="checkbox"]:checked {
     filter: none;
 }
 
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+
 .app {
     background-color: whitesmoke;
 }
@@ -59,6 +64,15 @@ select {
 }
 
 .sheet nav.sheet-tabs {
+    margin: 10px 0;
+}
+
+.item nav.item-tabs {
+    height: 32px;
+    flex: 0 0 32px;
+    line-height: 32px;
+    border-top: 1px solid rgb(57, 32, 91);
+    border-bottom: 1px solid rgb(57, 32, 91);
     margin: 10px 0;
 }
 
@@ -597,6 +611,26 @@ ul.items {
     padding: 3px 10px;
 }
 
+.c-sheet .ability-list-item > div {
+    margin: 0 3px;
+}
+
+.c-sheet .ability-list-name {
+    width: 15%;
+}
+
+.c-sheet .ability-action {
+    width: 20%;
+}
+
+.c-sheet .ability-short-desc {
+    width: 48%;
+}
+
+.c-sheet .ability-list-item.spec-controls {
+    width: 12%;
+    align-content: center;
+}
 /*Item Sheet CSS*/
 
 .item-sheet {
@@ -620,9 +654,8 @@ ul.items {
 .item-sheet .item-col-main {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
-    height: 100%;
 }
 
 .item-sheet .item-col-base {
@@ -659,8 +692,8 @@ ul.items {
 
 .item-row {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin: 5px;
 }
 
@@ -739,6 +772,30 @@ ul.items {
     text-align: center;
 }
 
+.item-section .sn-mod {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.item-section .sn-mod > * {
+    margin: 0 10px 0 0;
+}
+
+.item-row .editor {
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+    background-color: rgba(57, 32, 91, .1);
+    border-radius: 5px;
+    width: 100%;
+}
+
+.item-row .tox.tox-tinymce {
+    min-height: 100px;
+}
+
 .pd-stat {
     width: 100px;
 }
@@ -762,6 +819,13 @@ ul.items {
 .c-sheet .belonging-section {
     display: flex;
     flex-direction: column;
+}
+
+.c-sheet .equip-grp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 12%;
 }
 
 /*Bio & Notes*/
@@ -1062,3 +1126,4 @@ ul.items {
     display: flex;
     flex-direction: column;
 }
+

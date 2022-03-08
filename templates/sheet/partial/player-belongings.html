@@ -7,19 +7,24 @@
         <div class="belonging-section">
             <div class="ability-section-header">
                 <span>{{localize "ITEM.ArmourClothing"}}</span>
-                <a class="item-control item-create" data-type="item" title='{{localize "ITEM.createItem"}}'><i
+                <a class="item-control item-create" data-type="armor" title='{{localize "ITEM.createItem"}}'><i
                         class="fas fa-plus"></i>
                 </a>
             </div>
             <ul class="ability-list items">
                 {{#each items as |i key|}}
-                {{#ifCond "armor" '===' i.data.type}}
+                {{#ifCond "armor" '===' i.type}}
                 <li class="ability-list-item item" data-item-id="{{i._id}}">
                     <div class="ability-list-name">
                         <span>{{name}}</span>
                     </div>
                     <div class="ability-short-desc">
                         <span>{{i.data.shortDesc}}</span>
+                    </div>
+                    <div class="equip-grp">
+                        <span>Equip: </span>
+                        <input type="checkbox" class="coyote-checkbox equip" data-dtype="Boolean" name="i.data.equipped" value="{{i.data.equipped}}"
+                            {{checked i.data.equipped}}>
                     </div>
                     <div class="item-controls flexrow spec-controls">
                         <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
@@ -42,7 +47,7 @@
             </div>
             <ul class="ability-list items">
                 {{#each items as |i key|}}
-                {{#ifCond "item" '===' i.data.type}}
+                {{#ifCond "item" '===' i.type}}
                 <li class="ability-list-item item" data-item-id="{{i._id}}">
                     <div class="ability-list-name">
                         <span>{{name}}</span>
@@ -61,23 +66,28 @@
                 {{/each}}
             </ul>
         </div>
-        
+
         <div class="belonging-section">
             <div class="ability-section-header">
                 <span>{{localize "ITEM.Weapons"}}</span>
-                <a class="item-control item-create" data-type="item" title='{{localize "ITEM.createItem"}}'><i
+                <a class="item-control item-create" data-type="weapon" title='{{localize "ITEM.createItem"}}'><i
                         class="fas fa-plus"></i>
                 </a>
             </div>
             <ul class="ability-list items">
                 {{#each items as |i key|}}
-                {{#ifCond "weapon" '===' i.data.type}}
+                {{#ifCond "weapon" '===' i.type}}
                 <li class="ability-list-item item" data-item-id="{{i._id}}">
                     <div class="ability-list-name">
                         <span>{{name}}</span>
                     </div>
                     <div class="ability-short-desc">
                         <span>{{i.data.shortDesc}}</span>
+                    </div>
+                    <div class="equip-grp">
+                        <span>Equip: </span>
+                        <input type="checkbox" class="coyote-checkbox equip" data-dtype="Boolean" name="i.data.equipped" value="{{i.data.equipped}}"
+                            {{checked i.data.equipped}}>
                     </div>
                     <div class="item-controls flexrow spec-controls">
                         <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i

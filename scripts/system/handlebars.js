@@ -14,7 +14,12 @@ function preloadHandlebarsTemplates() {
         "systems/coyote-and-crow/templates/sheet/partial/player-biography.html",
         "systems/coyote-and-crow/templates/sheet/partial/player-gifts.html",
         "systems/coyote-and-crow/templates/sheet/partial/player-burdens.html",
-        "systems/coyote-and-crow/templates/sheet/partial/player-notes.html"
+        "systems/coyote-and-crow/templates/sheet/partial/player-notes.html",
+        "systems/coyote-and-crow/templates/sheet/partial/fragment/frag-sn.html",
+        "systems/coyote-and-crow/templates/sheet/partial/fragment/pdefense.html",
+        "systems/coyote-and-crow/templates/sheet/partial/fragment/stats.html",
+        "systems/coyote-and-crow/templates/sheet/partial/fragment/success.html",
+        "systems/coyote-and-crow/templates/sheet/partial/fragment/dice-pool.html"
     ];
     return loadTemplates(templatePaths);
 }

@@ -2,6 +2,9 @@
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
+
+//import { migration } from "../../module/migration.js";
+
 export class cncActor extends Actor {
     prepareData() {
         super.prepareData();
@@ -61,6 +64,8 @@ export class cncActor extends Actor {
         this.data.data.attributes.soul.sd = 0;
         this.data.data.attributes.init.score = 0;
         this.data.data.attributes.addDicePool = 0;
+
+        //migration(this.data);
     }
 
     _deriveItemModifiers(actorData) {
@@ -76,7 +81,11 @@ export class cncActor extends Actor {
         for (let x of items) {
             if (!x) { return }
             if (x.data.type === "specialization") { continue }
-
+            if (x.data.type === "weapon" || x.data.type === "armor") {
+                if (x.data.data.equipped === false) {
+                    continue;
+                }
+            }
             if (x.data.type !== "ability") {
                 if (x.data.data.modifier.init.value !== 0) {
                     let itemInit = x.data.data.modifier.init.value;
@@ -84,10 +93,12 @@ export class cncActor extends Actor {
                     this.data.data.attributes.init.modified = itemInit + initMod;
                 }
             }
-
-            if (x.data.data.type === "weapon" && x.data.data.weaponTypes !== "") {
+            if (x.data.type === "weapon" && x.data.data.weaponTypes !== "") {
                 let weaponType = x.data.data.weaponTypes; // get weapon type from item
                 let dp = x.data.data.modifier.dp.value;   // get value of dp from item
+                actorSkills = actorData.data;
+                let weaponSkill = actorSkills.skills[weaponType].skillRank;  // get skill rank of weaponskill
+                if (dp > weaponSkill) { dp = weaponSkill; }
                 this.data.data.skills[weaponType].addDice = dp;
             }
 
@@ -118,6 +129,7 @@ export class cncActor extends Actor {
                 let skillName = skillNameArr[0].toLowerCase();
                 let itemSNValue = Number(n.value);
                 let itemSNSkill = n.skill.toLowerCase();
+                console.log(actorSkills[skillName])
                 let skillSNMod = Number(actorSkills[skillName].snMod);
                 skillSNMod += itemSNValue;
                 actorSkills[skillName].snMod = Number(skillSNMod);

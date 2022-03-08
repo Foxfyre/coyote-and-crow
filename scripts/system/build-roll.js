@@ -15,10 +15,12 @@ export default function buildRoll(data, rollData) {
     *       mind:
     *       addDice:
     *       totalDice:
-    *       successNumber
+    *       successNumber:
+    *       physicalDefense:
+    *       physicalDefenseDetail:
     *   }
     ***/
-
+ 
     const skills = data.data.data.skills;
     const legendary = data.data.data.info.legendary.ranks;
     const mind = data.data.data.attributes.mind.currentValue;
