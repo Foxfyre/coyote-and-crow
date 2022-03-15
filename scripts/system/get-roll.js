@@ -15,6 +15,7 @@ export default async function getRoll(compiledRollData) {
   *       addDice: Number
   *       totalDice: Number
   *       successNumber: Number
+  *       statSuccessNumber: Number
   *       physicalDefense: Number
   *       physicalDefenseDetail: String
   *   }
@@ -41,16 +42,16 @@ export default async function getRoll(compiledRollData) {
 
   if (count12 > 0) {
     explodingRoll = await new Roll(`${count12}dbx12`).evaluate({ async: true })
-    console.log(explodingRoll)
+    //console.log(explodingRoll)
 
     let explodingResults = explodingRoll.terms[0].results;
-    console.log(explodingResults)
+    //console.log(explodingResults)
 
     //explodingResults.sort((a, b) => (a.result - b.result));
     //console.log(explodingResults)
 
     explodingRoll.terms[0].results = explodingResults;
-    console.log(explodingRoll.terms[0])
+    //console.log(explodingRoll.terms[0])
 
     const rolls = [baseRoll, explodingRoll];
     const pool = PoolTerm.fromRolls(rolls);

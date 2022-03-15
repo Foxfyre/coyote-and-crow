@@ -20,10 +20,11 @@ export class cncItem extends Item {
             
 
             // set activationName to lang file name
-            if (activationValue === "primary") { activationName = game.i18n.localize("REACTION.Primary") };
-            if (activationValue === "secondary") { activationName = game.i18n.localize("REACTION.Secondary") };
-            if (activationValue === "reaction") { activationName = game.i18n.localize("REACTION.Reaction") };
-            if (activationValue === "prisec") { activationName = game.i18n.localize("REACTION.PriSec") }
+            if (activationValue === "primary") { activationName = game.i18n.localize("ACTIVATION.Primary") };
+            if (activationValue === "secondary") { activationName = game.i18n.localize("ACTIVATION.Secondary") };
+            if (activationValue === "reaction") { activationName = game.i18n.localize("ACTIVATION.Reaction") };
+            if (activationValue === "prisec") { activationName = game.i18n.localize("ACTIVATION.PriSec") };
+            if (activationValue === "narrative") { activationName = game.i18n.localize("ACTIVATION.Narrative") };
 
             // write activationName to item data structure
 

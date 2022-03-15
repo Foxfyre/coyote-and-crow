@@ -5,7 +5,7 @@
     <div class="item-col-main">
         <div class="item-col-base">
             <div class="item-row">
-                <label class="item-label" for="name">{{localize "ITEM.Armor"}}:</label>
+                <label class="item-label" for="name">{{localize "ITEM.ItemName"}}:</label>
                 <input class="ability-input" name="name" type="text" value="{{name}}" />
             </div>
             <div class="item-row row-40">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="tab stats" data-group="items" data-tab="stats">
-            {{> systems/coyote-and-crow/templates/sheet/partial/fragment/stats.html}}
+            {{> systems/coyote-and-crow/templates/sheet/partial/fragment/stat-mod.html}}
         </div>
 
         <div class="tab success" data-group="items" data-tab="success">

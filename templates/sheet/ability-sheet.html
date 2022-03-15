@@ -33,10 +33,11 @@
         <label for="">Activation:</label>
         <select name="data.activate" value="{{data.activate}}">
             {{#select data.activate}}
-            <option value="primary">Primary Action</option>
-            <option value="reaction">Reaction Roll</option>
-            <option value="secondary">Secondary Action</option>
-            <option value="prisec">Primary & Secondary Action</option>
+            <option value="primary">{{localize "ACTIVATION.Primary"}}</option>
+            <option value="reaction">{{localize "ACTIVATION.Reaction"}}</option>
+            <option value="secondary">{{localize "ACTIVATION.Secondary"}}</option>
+            <option value="prisec">{{localize "ACTIVATION.PriSec"}}</option>
+            <option value="narrative">{{localize "ACTIVATION.Narrative"}}</option>
             {{/select}}
         </select>
     </div>

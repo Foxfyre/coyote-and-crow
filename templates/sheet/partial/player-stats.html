@@ -5,7 +5,7 @@
         </div>
         <div class="stats-sec-row">
             <div class="stat-block str-blue top-left-angle">
-                <div class="stat-name">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="strength" data-statrank="{{data.data.stats.strength.modified}}">
                     <span>STR</span>
                 </div>
                 <div class="stat-num">
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="stat-block agi-blue">
-                <div class="stat-name">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="agility" data-statrank="{{data.data.stats.agility.modified}}">
                     <span>AGI</span>
                 </div>
                 <div class="stat-num">
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="stat-block end-blue">
-                <div class="stat-name">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="endurance" data-statrank="{{data.data.stats.endurance.modified}}">
                     <span>END</span>
                 </div>
                 <div class="stat-num">
@@ -63,7 +63,8 @@
                     <span>Body</span>
                 </div>
                 <div class="stat-num">
-                    {{{attributes.body.value}}}
+                    <span>{{{attributes.body.value}}} {{#ifCond attributes.body.statMod '!==' 0}}
+                    ({{attributes.body.itemModified}})  {{/ifCond}}</span>
                 </div>
             </div>
 
@@ -85,7 +86,7 @@
     <div class="stats">
         <div class="stats-sec-row">
             <div class="stat-block int-purp top-left-angle">
-                <div class="stat-name">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="intelligence" data-statrank="{{data.data.stats.intelligence.modified}}">
                     <span>INT</span>
                 </div>
                 <div class="stat-num">
@@ -97,7 +98,7 @@
                 </div>
             </div>
             <div class="stat-block per-purp">
-                <div class="stat-name">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="perception" data-statrank="{{data.data.stats.perception.modified}}">
                     <span>PER</span>
                 </div>
                 <div class="stat-num">
@@ -109,7 +110,7 @@
                 </div>
             </div>
             <div class="stat-block wis-purp">
-                <div class="stat-name">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="wisdom" data-statrank="{{data.data.stats.wisdom.modified}}">
                     <span>WIS</span>
                 </div>
                 <div class="stat-num">
@@ -138,7 +139,8 @@
                     <span>Mind</span>
                 </div>
                 <div class="stat-num">
-                    {{{attributes.mind.value}}}
+                    <span>{{{attributes.mind.value}}} {{#ifCond attributes.mind.statMod '!==' 0}}
+                        ({{attributes.mind.itemModified}})  {{/ifCond}}</span>
                 </div>
             </div>
 
@@ -160,7 +162,7 @@
     <div class="stats">
         <div class="stats-sec-row">
             <div class="stat-block spi-yellow top-left-angle">
-                <div class="stat-name">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="spirit" data-statrank="{{data.data.stats.spirit.modified}}">
                     <span>SPI</span>
                 </div>
                 <div class="stat-num">
@@ -171,7 +173,7 @@
                 </div>
             </div>
             <div class="stat-block cha-yellow">
-                <div class="stat-name">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="charisma" data-statrank="{{data.data.stats.charisma.modified}}">
                     <span>CHA</span>
                 </div>
                 <div class="stat-num">
@@ -182,7 +184,7 @@
                 </div>
             </div>
             <div class="stat-block wll-yellow">
-                <div class="stat-name">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="will" data-statrank="{{data.data.stats.will.modified}}">
                     <span>WLL</span>
                 </div>
                 <div class="stat-num">
@@ -211,7 +213,8 @@
                     <span>Soul</span>
                 </div>
                 <div class="stat-num">
-                    {{{attributes.soul.value}}}
+                    <span>{{{attributes.soul.value}}} {{#ifCond attributes.soul.statMod '!==' 0}}
+                        ({{attributes.soul.itemModified}})  {{/ifCond}}</span>
                 </div>
             </div>
 

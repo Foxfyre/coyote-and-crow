@@ -99,26 +99,27 @@ Hooks.once("ready", async () => {
       title: `Welcome to v${game.system.data.version} of Coyote & Crow`,
       content: `
     <h1>Coyote & Crow</h1>
-    <h2>WARNING</h3>
-    <h4>Changes have been made to the Items that have broken previous functionality.
-    Items are now separate item entities and will need to be recreated in their appropriate Item cards</h4>
+    <h2>0.1.4 Update</h2>
 
     <h4>Always update your world files before updating to a new system version of Coyote & Crow. 
     This system is actively in development and may be subject to breaking changes without warning.</h4>
 
-    <h2>System Change log for v${game.system.data.version}</h2>
-
-    <h3><b>Features</b></h3>
-
+    <h3><b>Functionality</b></h3>
     <ul>
-    <li>Removed the general Item Card and replaced with separate item cards for Armor/clothing, Items, and Weapons.</li>
-    <li>Added the ability to be able to toggle on and off armor/clothing and weapons with the equip checkbox on the character sheet. This will add/remove relevant modifiers from the character sheet stats & rolls.</li>
-    <li>A text field has been added to Item cards to give the item a description.</li>
-    <li>Weapon Dice Pools are limited by the Skill Ranks in the appropriate weapon skill.</li>
-    <li>Added the Primary & Secondary option to the Abilities Activation dropdown.</li>
-    <li>Styling has been added to the journal entries.</li>
-    <li>Added a Modifier element on chat display roll cards indicating if there is a modifier to apply. Will only be shown if there is a Modifier.</li>
+    <li>Updated the formatting of the Gift items. </li>
+    <li>Removed Burden Items and made the Gift item a universal Gift/Burden card. </li>
+    <li>All items have been given modifierss for Body/Mind/Soul & Stat SN.</li>
+    <li>Stat names can now be clicked to roll Stats only.</li>
     </ul><br>
+
+    <h3>Bug Fixes</h3>
+    <li>Fixed bug that didnt include general stat information in a specialized skill roll.</li>
+
+    <h3>What's in the Development Queue?</h3>
+    <ul>
+    <li>Adding warnings to point out specific limitations of the system. Re: You can only use the amount of dice from a weapon equal to the weapon skill rank.</li>
+    <li>Having the skill list automatically adjust to the proper skill if using the skill as skilled or unskilled.</li>
+    </ul>
 
     <p>If you encounter any bugs, or have feature suggestions, you can join the Trello board and let us know <a href="https://trello.com/invite/b/jpGljTcv/e6c3e37afda0eb61278d7e432956594c/coyote-crow-bug-reporting">HERE</a>.</p>
 
@@ -141,6 +142,7 @@ Hooks.once("ready", async () => {
 
 /*Hooks.on("renderDialog", (dialog, html) => {
   Array.from(html.find("#document-create option")).forEach(i => {
+    console.log(i)
     if (i.value == "weapon" || i.value == "armor") {
       i.remove()
     }

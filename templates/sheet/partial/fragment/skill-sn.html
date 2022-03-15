@@ -1,5 +1,5 @@
 <div class="sheet-title-h2" style="margin-top: 10px;">
-    <span>Success Number</span>
+    <span>Skill Success Number</span>
 </div>
 <div class="pd-mod">
     <label name="data.modifier.sn.value">+ / - SN </label>
@@ -50,6 +50,7 @@
         {{/select}}
     </select>
 </div>
+{{#ifCond data.modifier.sn.value '!=' 0}}
 <div class="pd-mod">
     <label name="data.modifier.sn1.value">+ / - SN </label>
     <select name="data.modifier.sn1.value" value="{{data.modifier.sn1.value}}">
@@ -99,6 +100,8 @@
         {{/select}}
     </select>
 </div>
+{{/ifCond}}
+{{#ifCond data.modifier.sn1.value '!=' 0}}
 <div class="pd-mod">
     <label name="data.modifier.sn2.value">+ / - SN </label>
     <select name="data.modifier.sn2.value" value="{{data.modifier.sn2.value}}">
@@ -148,3 +151,4 @@
         {{/select}}
     </select>
 </div>
+{{/ifCond}}

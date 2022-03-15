@@ -2,14 +2,11 @@
     <div class="sheet-title" style="margin-top: 10px;">
         <span>Gifts</span>
     </div>
-    <div class="sheet-title-h2" style="margin-top: 10px;">
-        <span>Add a Gift </span>
-        <a class="item-control item-create" data-type="gift" title='{{localize "ITEM.CreateGift"}}'><i
-                class="fas fa-plus"></i>
-        </a>
-    </div>
+
     <ul class="bio-col items">
         {{#each gifts as |gift key|}}
+        {{log gift}}
+        {{#ifCond gift.data.type '===' "gift"}}
         <li class="item gift-item" data-item-id={{gift._id}}>
             <div class="bio-row">
                 <div class="gift-input">
@@ -48,6 +45,14 @@
                 </div>
             </div>
         </li>
+        {{/ifCond}}
         {{/each}}
+
     </ul>
+    <div class="sheet-title-h2" style="margin-top: 10px;">
+        <span>Add a Gift </span>
+        <a class="item-control item-create" data-type="gift" title='{{localize "ITEM.CreateGift"}}'><i
+                class="fas fa-plus"></i>
+        </a>
+    </div>
 </div>

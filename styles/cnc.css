@@ -371,7 +371,7 @@ select {
     width: 100px;
 }
 
-.c-sheet .col-rank, .col-rank > span {
+.c-sheet .col-rank, .col-rank>span {
     width: 40%;
     text-align: center;
 }
@@ -611,7 +611,7 @@ ul.items {
     padding: 3px 10px;
 }
 
-.c-sheet .ability-list-item > div {
+.c-sheet .ability-list-item>div {
     margin: 0 3px;
 }
 
@@ -631,6 +631,7 @@ ul.items {
     width: 12%;
     align-content: center;
 }
+
 /*Item Sheet CSS*/
 
 .item-sheet {
@@ -695,6 +696,31 @@ ul.items {
     flex-direction: column;
     align-items: flex-start;
     margin: 5px;
+}
+
+.range-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.range-row input[type="text"] {
+    width: 25px;
+}
+
+.range-row > span {
+    margin-right: 5px;
+}
+
+.range-row > input[type="text"] {
+    margin-right: 15px;
+    text-align: center;
+}
+
+.range-row > input[type="text"]:last-child {
+    margin-right: 0px;
+    text-align: center;
 }
 
 .item-sheet img {
@@ -779,7 +805,7 @@ ul.items {
     align-items: center;
 }
 
-.item-section .sn-mod > * {
+.item-section .sn-mod>* {
     margin: 0 10px 0 0;
 }
 
@@ -1127,3 +1153,27 @@ ul.items {
     flex-direction: column;
 }
 
+.item-success {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-around;
+}
+
+.item-success-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.item-stat-mods {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.item-mod-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}

@@ -21,9 +21,22 @@
                     </select>
                 </div>
             </div>
-            <div class="item-row row-40">
-                <label class="item-label" for="data.costRank">{{localize "ITEM.CostRank"}}:</label>
-                <input class="item-num-input" name="data.costRank" type="text" value="{{data.costRank}}" />
+            <div class="item-row row-40" style="flex-direction: row; justify-content: space-between;">
+                <div class="item-col">
+                    <label class="item-label" for="data.costRank">{{localize "ITEM.CostRank"}}:</label>
+                    <input class="item-num-input" name="data.costRank" type="text" value="{{data.costRank}}" />
+                </div>
+                <div class="item-col">
+                    <label class="item-label">{{localize "ITEM.Range"}}:</label>
+                    <div class="range-row">
+                        <span>S</span>
+                        <input class="item-num-input" name="data.range.short" type="text" value="{{data.range.short}}" />
+                        <span>M</span>
+                        <input class="item-num-input" name="data.range.medium" type="text" value="{{data.range.medium}}" />
+                        <span>L</span>
+                        <input class="item-num-input" name="data.range.long" type="text" value="{{data.range.long}}" />
+                    </div>
+                </div>
             </div>
             <div class="item-row">
                 <label class="item-label" for="data.traits">{{localize "ITEM.Traits"}}:</label>
@@ -63,7 +76,7 @@
         </div>
 
         <div class="tab stats" data-group="items" data-tab="stats">
-            {{> systems/coyote-and-crow/templates/sheet/partial/fragment/stats.html}}
+            {{> systems/coyote-and-crow/templates/sheet/partial/fragment/stat-mod.html}}
         </div>
 
         <div class="tab success" data-group="items" data-tab="success">

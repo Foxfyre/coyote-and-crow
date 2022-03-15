@@ -34,6 +34,7 @@ export class cncActor extends Actor {
         data.attributes.mind.value = data.stats.intelligence.value + data.stats.perception.value + data.stats.wisdom.value;
         data.attributes.soul.value = data.stats.spirit.value + data.stats.charisma.value + data.stats.will.value;
         data.attributes.init.total = data.attributes.init.score + data.attributes.init.modified;
+
         // Add any modifiers from items to the stat value;
         for (let r of Object.values(data.stats)) {
             r.modified = r.value + r.modified
@@ -53,8 +54,6 @@ export class cncActor extends Actor {
             this._setPath(actorData);
             this._deriveItemModifiers(actorData);
             this._calcTotalSkills()
-
-            //console.log(pathData)
         }
     }
 
@@ -64,23 +63,24 @@ export class cncActor extends Actor {
         this.data.data.attributes.soul.sd = 0;
         this.data.data.attributes.init.score = 0;
         this.data.data.attributes.addDicePool = 0;
-
-        //migration(this.data);
     }
 
     _deriveItemModifiers(actorData) {
         let items = actorData.items;
         let armorGroup = 0;
         let diceGroup = 0;
-        let actorStats;
+        let actorStats = actorData.data.stats;
         let actorSkills = this.data.data.skills;
+        let actorAttributes = this.data.data.attributes;
         let initiative;
 
 
 
         for (let x of items) {
             if (!x) { return }
+
             if (x.data.type === "specialization") { continue }
+            
             if (x.data.type === "weapon" || x.data.type === "armor") {
                 if (x.data.data.equipped === false) {
                     continue;
@@ -93,11 +93,12 @@ export class cncActor extends Actor {
                     this.data.data.attributes.init.modified = itemInit + initMod;
                 }
             }
+            
             if (x.data.type === "weapon" && x.data.data.weaponTypes !== "") {
                 let weaponType = x.data.data.weaponTypes; // get weapon type from item
                 let dp = x.data.data.modifier.dp.value;   // get value of dp from item
-                actorSkills = actorData.data;
-                let weaponSkill = actorSkills.skills[weaponType].skillRank;  // get skill rank of weaponskill
+                //actorSkills = actorData.data;
+                let weaponSkill = actorSkills[weaponType].skillRank;  // get skill rank of weaponskill
                 if (dp > weaponSkill) { dp = weaponSkill; }
                 this.data.data.skills[weaponType].addDice = dp;
             }
@@ -108,11 +109,17 @@ export class cncActor extends Actor {
             let armorPdMod = x.data.data.modifier.pd.value ? x.data.data.modifier.pd.value : 0;
             armorGroup += armorPdMod;
 
+            const derivedStats = ["body", "mind", "soul"];
+            const stats = ["agility", "charisma", "endurance", "intelligence", "perception", "spirit", "strength", "wisdom", "will"]
+
             for (let s of Object.values(x.data.data.modifier.stat)) {
-                actorStats = actorData.data.stats;
-                let itemStatName = s.name;
-                if (s.value !== 0) {
+                let itemStatName = s.name.toLowerCase();
+                //console.log(itemStatName)
+                if (s.value !== 0 && stats.includes(itemStatName)) {
                     actorStats[itemStatName].modified += s.value;
+                } else if (derivedStats.includes(itemStatName)) {
+                    actorAttributes[itemStatName].statMod += s.value;
+                    actorAttributes[itemStatName].itemModified = actorAttributes[itemStatName].statMod + actorAttributes[itemStatName].value;
                 }
             }
 
@@ -123,18 +130,46 @@ export class cncActor extends Actor {
                 sn2: x.data.data.modifier.sn2
             }
 
+            let snStatGroup = {
+                snStat1: x.data.data.modifier.snStat1,
+                snStat2: x.data.data.modifier.snStat2,
+                snStat3: x.data.data.modifier.snStat3,
+                snStat4: x.data.data.modifier.snStat4,
+                snStat5: x.data.data.modifier.snStat5,
+                snStat6: x.data.data.modifier.snStat6,
+                snStat7: x.data.data.modifier.snStat7,
+                snStat8: x.data.data.modifier.snStat8,
+            }
+
+            let specGroup = {
+                sn: x.data.data.modifier.sn
+            }
+
+            /*if (x.data.type === "specialization") {
+                console.log(x)
+            }*/
+
             for (let n of Object.values(snGroup)) {
                 if (n.skill.length === 0) { continue; }
                 let skillNameArr = n.skill.split(' ');
                 let skillName = skillNameArr[0].toLowerCase();
                 let itemSNValue = Number(n.value);
                 let itemSNSkill = n.skill.toLowerCase();
-                console.log(actorSkills[skillName])
                 let skillSNMod = Number(actorSkills[skillName].snMod);
                 skillSNMod += itemSNValue;
                 actorSkills[skillName].snMod = Number(skillSNMod);
             }
 
+            for (let n of Object.values(snStatGroup)) {
+                if (n.value == 0 || n.statName === "") { continue; }
+                let statName = n.statName.toLowerCase();
+                let itemSNValue = Number(n.value);
+                let statSNMod = Number(actorStats[statName].snMod);
+                statSNMod = itemSNValue;
+                actorStats[statName].snMod = Number(statSNMod);
+            }
+
+            this.data.data.attributes = actorAttributes // consolidate the other two into this. 
             this.data.data.stats = actorStats;
             this.data.data.attributes.addDicePool = diceGroup;
             this.data.data.attributes.body.modified = armorGroup + this.data.data.attributes.body.pd;

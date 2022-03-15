@@ -45,114 +45,11 @@
         </div>
 
         <div class="tab stats" data-group="items" data-tab="stats">
-            {{> systems/coyote-and-crow/templates/sheet/partial/fragment/stats.html}}
+            {{> systems/coyote-and-crow/templates/sheet/partial/fragment/stat-mod.html}}
         </div>
 
         <div class="tab success" data-group="items" data-tab="success">
             {{> systems/coyote-and-crow/templates/sheet/partial/fragment/success.html}}
         </div>
     </div>
-
-    <!--<div class="item-col-detail">
-        <div class="item-row" style="justify-content: space-around;">
-            <div class="item-section ">
-                <div class="sheet-title-h2" style="margin: 10px 0 0 0;">
-                    <span>Physical Defense</span>
-                </div>
-                <div class="sn-mod">
-                    <label name="" title='{{localize "DSTAT.PD"}}'>+ / - PD </label>
-                    <input type="number" name="data.modifier.pd.value" value="{{data.modifier.pd.value}}" />
-                </div>
-            </div>
-            {{#ifCond data.type "===" "weapon"}}
-            <div class="item-section">
-                <div class="sheet-title-h2" style="margin-top: 10px;">
-                    <span>Dice Pool</span>
-                </div>
-                <div class="dp-mod">
-                    <label name="data.modifier.dp.value" title='{{localize "ITEM.DicePool"}}'>+ / - Dice </label>
-                    <input type="number" name="data.modifier.dp.value" value="{{data.modifier.dp.value}}" />
-                </div>
-            </div>
-
-            <div class="item-section">
-                <div class="sheet-title-h2" style="margin-top: 10px;">
-                    <span>Weapon Type</span>
-                </div>
-                <div class="weapon-select">
-                    <label class="item-label" for="data.type">{{localize "ITEM.Type"}}:</label>
-                    <select name="data.weaponTypes" value="{{data.weaponTypes}}">
-                        {{#select data.weaponTypes}}
-                        <option value="">Select</option>
-                        <option value="melee">Melee</option>
-                        <option value="ranged">Ranged</option>
-                        <option value="unarmed">Unarmed</option>
-                        {{/select}}
-                    </select>
-                </div>
-            </div>
-            {{/ifCond}}
-
-        </div>
-        <div class="sheet-title-h2" style="margin-top: 10px;">
-            <span>Stat Modification</span>
-        </div>
-        <div class="item-mods">
-            <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.agility.statName}}">AGI</div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.agility.value"
-                    value="{{data.modifier.stat.agility.value}}" />
-            </div>
-            <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.charisma.statName}}">CHA</div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.charisma.value"
-                    value="{{data.modifier.stat.charisma.value}}" />
-            </div>
-            <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.endurance.statName}}">END
-                </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.endurance.value"
-                    value="{{data.modifier.stat.endurance.value}}" />
-            </div>
-            <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.intelligence.statName}}">INT
-                </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.intelligence.value"
-                    value="{{data.modifier.stat.intelligence.value}}" />
-            </div>
-            <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.perception.statName}}">PER
-                </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.perception.value"
-                    value="{{data.modifier.stat.perception.value}}" />
-            </div>
-            <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.spirit.statName}}">SPI</div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.spirit.value"
-                    value="{{data.modifier.stat.spirit.value}}" />
-            </div>
-            <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.strength.statName}}">STR</div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.strength.value"
-                    value="{{data.modifier.stat.strength.value}}" />
-            </div>
-            <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.wisdom.statName}}">WIS</div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.wisdom.value"
-                    value="{{data.modifier.stat.wisdom.value}}" />
-            </div>
-            <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.will.statName}}">WLL</div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.will.value"
-                    value="{{data.modifier.stat.will.value}}" />
-            </div>
-        </div>
-
-        <div class="item-sections">
-            <div class="item-section">
-                {{> systems/coyote-and-crow/templates/sheet/partial/fragment/frag-sn.html}}
-            </div>
-        </div>
-    </div>-->
-
 </form>

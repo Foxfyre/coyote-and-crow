@@ -63,5 +63,34 @@
         </div>
     </div>
 
+    <!-- MODIFIERS -->
+
+    <nav class="item-tabs tabs" data-group="items">
+        <a class="item" data-tab="success">{{localize "TAB.Success"}}</a>
+    </nav>
+
+    <div class="item-modifier">
+        <div class="tab success" data-group="items" data-tab="success">
+            <div class="sheet-title-h2" style="margin-top: 10px;">
+                <span>Skill Success Number</span>
+            </div>
+            <div class="pd-mod">
+                <label name="data.modifier.sn.value">+ / - SN </label>
+                <select name="data.modifier.sn.value" value="{{data.modifier.sn.value}}">
+                    {{#select data.modifier.sn.value}}
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">+1</option>
+                    <option value="2">+2</option>
+                    <option value="3">+3</option>
+                    <option value="4">+4</option>
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+    </div>
 
 </form>

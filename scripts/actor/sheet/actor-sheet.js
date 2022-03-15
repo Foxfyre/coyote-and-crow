@@ -54,7 +54,6 @@ export class cncActorSheet extends ActorSheet {
         sheetData.specialization = data.actor.items.filter(i => i.type === "specialization");
         sheetData.abilities[`${stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat1);
         sheetData.abilities[`${stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat2);
-        console.log(actorData)
         this._sortSkills(sheetData);
         console.log(sheetData);
         return sheetData;
@@ -82,36 +81,6 @@ export class cncActorSheet extends ActorSheet {
         return this.actor.updateEmbeddedDocuments("Item", [item]);
     }
 
-    /*
-            html.find(".item-equip").click(async e => {
-            const data = super.getData()
-            const items = data.items;
-
-            let itemId = e.currentTarget.getAttribute("data-item-id");
-            const armor = duplicate(this.actor.getEmbeddedDocument("Item", itemId));
-
-            for (let [k, v] of Object.entries(items)) {
-                // Confirming only one armour equipped
-                if ((v.type === "armor" || v.type === "shield") && v.data.equip === true && v._id !== itemId) {
-                    Dialog.prompt({
-                        title: "Cannot Equip",
-                        content: "<p>You can only have one piece of armour and shield equipped at one time. Please remove your current armor before continuing",
-                        label: "OK",
-                        callback: () => console.log("denied!")
-                    });
-                    return;
-                }
-                // If targeting same armor, cycle on off;
-                if (v.type === "armor" && v._id === itemId) {
-                    armor.data.equip = !armor.data.equip;
-                } else if (v.type === "shield" && v._id === itemId) {
-                    armor.data.equip = !armor.data.equip;
-                }
-                this.actor.updateEmbeddedDocuments("Item", [armor])
-            }
-        });
-    */
-
     _itemCreate(event) {
         event.preventDefault();
         const header = event.currentTarget;
@@ -136,7 +105,7 @@ export class cncActorSheet extends ActorSheet {
             };
         }
 
-        console.log(itemData)
+        //console.log(itemData)
         delete itemData.data.type;
         return this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: true });
     }
@@ -190,15 +159,16 @@ export class cncActorSheet extends ActorSheet {
             type: event.currentTarget.closest("[data-rolltype]").dataset.rolltype,
             specName: rollType === "specialization" ? event.currentTarget.closest("[data-rollname]").dataset.rollname : "",
             specRank: rollType === "specialization" ? Number(event.currentTarget.closest("[data-specrank]").dataset.specrank) : 0,
-            skillName: event.currentTarget.closest("[data-skillname]").dataset.skillname,
-            skillRank: Number(event.currentTarget.closest("[data-skillrank]").dataset.skillrank),
-            statName: event.currentTarget.closest("[data-statname]").dataset.statname,
+            skillName: (rollType === "skill" || rollType === "specialization") ? event.currentTarget.closest("[data-skillname]").dataset.skillname : "",
+            skillRank: (rollType === "skill" || rollType === "specialization") ? Number(event.currentTarget.closest("[data-skillrank]").dataset.skillrank) : 0,
+            statName: rollType === "stat" ? event.currentTarget.closest("[data-rollname").dataset.rollname : event.currentTarget.closest("[data-statname]").dataset.statname,
             statRank: Number(event.currentTarget.closest("[data-statrank]").dataset.statrank),
             legendary: 0,
             mind: 0,
-            addDice: Number(event.currentTarget.closest("[data-adddice]").dataset.adddice),
+            addDice: rollType === "skill" ? Number(event.currentTarget.closest("[data-adddice]").dataset.adddice) : 0,
             totalDice: 0,
             successNumber: 0,
+            statSuccessNumber: 0,
             physicalDefense: 0,
             physicalDefenseDetail: ""
         }
@@ -213,11 +183,11 @@ export class cncActorSheet extends ActorSheet {
         // Send data and roll info to gather all information required for rolls. 
         let compiledRollData = buildRoll(data, rollData);
 
-        console.log(compiledRollData)
+        //console.log(compiledRollData)
 
         let rollResults = await getRoll(compiledRollData)
 
-        console.log(rollResults)
+        //console.log(rollResults)
 
         let rolledCard = rollCard(rollResults, compiledRollData);
 

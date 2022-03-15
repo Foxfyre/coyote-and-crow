@@ -13,7 +13,7 @@
                             "will": "Will"
                         },
                         "label": "SKILL.art",
-                        "name": "Art", 
+                        "name": "Art",
                         "stat": "",
                         "statName": "",
                         "skillRank": 0,
@@ -467,54 +467,63 @@
                 "strength": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Strength",
                     "label": "STAT.Strength"
                 },
                 "agility": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Agility",
                     "label": "STAT.Agility"
                 },
                 "endurance": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Endurance",
                     "label": "STAT.Endurance"
                 },
                 "intelligence": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Intelligence",
                     "label": "STAT.Intelligence"
                 },
                 "perception": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Perception",
                     "label": "STAT.Perception"
                 },
                 "wisdom": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Wisdom",
                     "label": "STAT.Wisdom"
                 },
                 "spirit": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Spirit",
                     "label": "STAT.Spirit"
                 },
                 "charisma": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Charisma",
                     "label": "STAT.Charisma"
                 },
                 "will": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Will",
                     "label": "STAT.Will"
                 }
@@ -524,19 +533,22 @@
                     "value": 0,
                     "modified": 0,
                     "name": "Body (Current)",
-                    "currentValue": 0
+                    "currentValue": 0,
+                    "statMod": 0
                 },
                 "mind": {
                     "value": 0,
                     "modified": 0,
                     "name": "Mind (Current)",
-                    "currentValue": 0
+                    "currentValue": 0,
+                    "statMod": 0
                 },
                 "soul": {
                     "value": 0,
                     "modified": 0,
                     "name": "Soul (Current)",
-                    "currentValue": 0
+                    "currentValue": 0,
+                    "statMod": 0
                 },
                 "init": {
                     "score": 0,
@@ -631,54 +643,63 @@
                 "strength": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Strength",
                     "label": "STAT.Strength"
                 },
                 "agility": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Agility",
                     "label": "STAT.Agility"
                 },
                 "endurance": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Endurance",
                     "label": "STAT.Endurance"
                 },
                 "intelligence": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Intelligence",
                     "label": "STAT.Intelligence"
                 },
                 "perception": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Perception",
                     "label": "STAT.Perception"
                 },
                 "wisdom": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Wisdom",
                     "label": "STAT.Wisdom"
                 },
                 "spirit": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Spirit",
                     "label": "STAT.Spirit"
                 },
                 "charisma": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Charisma",
                     "label": "STAT.Charisma"
                 },
                 "will": {
                     "value": 0,
                     "modified": 0,
+                    "snMod": 0,
                     "name": "Will",
                     "label": "STAT.Will"
                 }
@@ -820,13 +841,12 @@
     },
     "Item": {
         "types": [
-            "specialization",
             "ability",
-            "weapon",
             "armor",
-            "item",
             "gift",
-            "burden"
+            "item",
+            "specialization",
+            "weapon"
         ],
         "templates": {
             "baseItem": {
@@ -896,6 +916,18 @@
                             "value": 0,
                             "statName": "STAT.will",
                             "name": "will"
+                        },
+                        "body": {
+                            "value": 0,
+                            "name": "Body"
+                        },
+                        "mind": {
+                            "value": 0,
+                            "name": "Mind"
+                        },
+                        "soul": {
+                            "value": 0,
+                            "name": "Soul"
                         }
                     },
                     "sn": {
@@ -913,6 +945,42 @@
                         "skillName": "",
                         "skill": ""
                     },
+                    "snStat1": {
+                        "value": 0,
+                        "statName": ""
+                    },
+                    "snStat2": {
+                        "value": 0,
+                        "statName": ""
+                    },
+                    "snStat3": {
+                        "value": 0,
+                        "statName": ""
+                    },
+                    "snStat4": {
+                        "value": 0,
+                        "statName": ""
+                    },
+                    "snStat5": {
+                        "value": 0,
+                        "statName": ""
+                    },
+                    "snStat6": {
+                        "value": 0,
+                        "statName": ""
+                    },
+                    "snStat7": {
+                        "value": 0,
+                        "statName": ""
+                    },
+                    "snStat8": {
+                        "value": 0,
+                        "statName": ""
+                    },
+                    "snStat9": {
+                        "value": 0,
+                        "statName": ""
+                    },
                     "dp": {
                         "value": 0
                     },
@@ -923,6 +991,9 @@
             }
         },
         "specialization": {
+            "templates": [
+                "modifier"
+            ],
             "label": "SPEC.",
             "skill": "",
             "skillRank": 0,
@@ -972,53 +1043,7 @@
             "category": "",
             "level": 0,
             "description": "",
-            "mod": {
-                "successNumber": {
-                    "active": false,
-                    "value": 0,
-                    "skill": ""
-                },
-                "initiative": {
-                    "active": false,
-                    "value": 0
-                },
-                "physicalDefense": {
-                    "active": false,
-                    "value": 0
-                },
-                "dicePool": {
-                    "active": false,
-                    "value": 0
-                }
-            }
-        },
-        "burden": {
-            "templates": [
-                "modifier",
-                "baseItem"
-            ],
-            "category": "",
-            "level": 0,
-            "description": "",
-            "mod": {
-                "successNumber": {
-                    "active": false,
-                    "value": 0,
-                    "skill": ""
-                },
-                "initiative": {
-                    "active": false,
-                    "value": 0
-                },
-                "physicalDefense": {
-                    "active": false,
-                    "value": 0
-                },
-                "dicePool": {
-                    "active": false,
-                    "value": 0
-                }
-            }
+            "type": ""
         }
     }
 }

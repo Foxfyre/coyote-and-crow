@@ -118,7 +118,7 @@ export class cncItemSheet extends ItemSheet {
             }
 
             itemObj.statRank = statRank;
-            itemObj.total = statRank + specRank + addDice;
+            itemObj.total = statRank + specRank + skillRank + addDice;
             itemData.data = itemObj;
         }
         this.actor.updateEmbeddedDocuments("Item", [itemData])
