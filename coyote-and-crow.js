@@ -99,26 +99,23 @@ Hooks.once("ready", async () => {
       title: `Welcome to v${game.system.data.version} of Coyote & Crow`,
       content: `
     <h1>Coyote & Crow</h1>
-    <h2>0.1.4 Update</h2>
+    <h2>0.1.5 Update</h2>
 
     <h4>Always update your world files before updating to a new system version of Coyote & Crow. 
     This system is actively in development and may be subject to breaking changes without warning.</h4>
 
     <h3><b>Functionality</b></h3>
     <ul>
-    <li>Updated the formatting of the Gift items. </li>
-    <li>Removed Burden Items and made the Gift item a universal Gift/Burden card. </li>
-    <li>All items have been given modifierss for Body/Mind/Soul & Stat SN.</li>
-    <li>Stat names can now be clicked to roll Stats only.</li>
+    <li>Added an option for Icon or Legend on the NPC sheet. </li>
+    <li>Added the ability to Equip Items.</li>
     </ul><br>
 
     <h3>Bug Fixes</h3>
-    <li>Fixed bug that didnt include general stat information in a specialized skill roll.</li>
+    <li>Fixed PD output that would show value in brackets when no modifiers were active.</li>
 
     <h3>What's in the Development Queue?</h3>
     <ul>
-    <li>Adding warnings to point out specific limitations of the system. Re: You can only use the amount of dice from a weapon equal to the weapon skill rank.</li>
-    <li>Having the skill list automatically adjust to the proper skill if using the skill as skilled or unskilled.</li>
+    <li>Adding buttons to the chat roll output to use Legendary and Focus metacurrency. </li>
     </ul>
 
     <p>If you encounter any bugs, or have feature suggestions, you can join the Trello board and let us know <a href="https://trello.com/invite/b/jpGljTcv/e6c3e37afda0eb61278d7e432956594c/coyote-crow-bug-reporting">HERE</a>.</p>
