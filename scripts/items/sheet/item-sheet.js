@@ -30,6 +30,7 @@ export class cncItemSheet extends ItemSheet {
     async getData(options) {
         const data = super.getData(options);
         const itemData = data.data;
+        let pathStats
 
         if (data.document.parent === null) {
             itemData.data.owned = false;
@@ -41,9 +42,23 @@ export class cncItemSheet extends ItemSheet {
         const actorData = data.item.parent.data
         itemData.actorData = actorData;
 
-        let pathStats = {
+        pathStats = {
             [`${itemData.actorData.data.info.path.stats.stat1.value}`]: itemData.actorData.data.info.path.stats.stat1.name,
             [`${itemData.actorData.data.info.path.stats.stat2.value}`]: itemData.actorData.data.info.path.stats.stat2.name
+        }
+
+        if (itemData.actorData.type === "npc") {
+            pathStats = {
+                [`${itemData.actorData.data.info.path.stats.stat1.value}`]: itemData.actorData.data.info.path.stats.stat1.name,
+                [`${itemData.actorData.data.info.path.stats.stat2.value}`]: itemData.actorData.data.info.path.stats.stat2.name,
+                [`${itemData.actorData.data.info.path.stats.stat3.value}`]: itemData.actorData.data.info.path.stats.stat3.name,
+                [`${itemData.actorData.data.info.path.stats.stat4.value}`]: itemData.actorData.data.info.path.stats.stat4.name,
+                [`${itemData.actorData.data.info.path.stats.stat5.value}`]: itemData.actorData.data.info.path.stats.stat5.name,
+                [`${itemData.actorData.data.info.path.stats.stat6.value}`]: itemData.actorData.data.info.path.stats.stat6.name,
+                [`${itemData.actorData.data.info.path.stats.stat7.value}`]: itemData.actorData.data.info.path.stats.stat7.name,
+                [`${itemData.actorData.data.info.path.stats.stat8.value}`]: itemData.actorData.data.info.path.stats.stat8.name,
+                [`${itemData.actorData.data.info.path.stats.stat9.value}`]: itemData.actorData.data.info.path.stats.stat9.name
+            }
         }
         itemData.data.allowStats = pathStats;
         itemData.data.owned = true;

@@ -12,6 +12,7 @@
                     <img class="c-image-small" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"
                         name="actor.img" />
                 </div>
+                {{#ifCond info.age.value '===' "icon"}}
                 <div class="c-status-col">
                     <div class="legendary-row">
                         <label for="data.info.legendary.ranks">Legendary Ranks:</label>
@@ -20,9 +21,11 @@
                     </div>
                     <div class="legendary-row">
                         <label for="data.attributes.init.score">Initiative Score:</label>
-                        <span class="faux-input init-span">{{{attributes.init.score}}} {{#ifCond attributes.init.modified '!=' 0}} ({{{attributes.init.modified}}}) {{/ifCond}}</span>
+                        <span class="faux-input init-span">{{{attributes.init.score}}} {{#ifCond
+                            attributes.init.modified '!=' 0}} ({{{attributes.init.modified}}}) {{/ifCond}}</span>
                     </div>
                 </div>
+                {{/ifCond}}
             </div>
 
             <div class="c-info-col">
@@ -31,17 +34,24 @@
                         <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
                     </div>
                     <div class="c-info-age">
-                        <input name="data.info.age.value" type="text" value="{{info.age.value}}" placeholder="Age" />
+                        <!--<input name="data.info.age.value" type="text" value="{{info.age.value}}" placeholder="Type" />-->
+                        <select name="data.info.age.value" value="info.age.value">
+                            {{#select info.age.value}}
+                            <option value="">NPC Type</option>
+                            <option value="icon">Icon</option>
+                            <option value="legend">Legend</option>
+                            {{/select}}
+                        </select>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="c-info-archetype">
                         <input name="data.info.archetype.value" type="text" value="{{info.archetype.value}}"
-                            placeholder="{{localize 'PLAYER.archetype'}}" />
+                            placeholder="{{localize 'NPC.Category'}}" />
                     </div>
                     <div class="c-info-path">
                         <!--<input name="data.info.path.value" type="text" value="{{info.path.value}}"
-                            placeholder="Path Of The..." />-->
+                            placeholder="Path Of The..." />
                         <select name="data.info.path.value" value="info.path.value">
                             {{#select info.path.value}}
                             <option value="">Select your Path</option>
@@ -61,28 +71,34 @@
                             <option value="snake">Path of the Snake</option>
                             <option value="spider">Path of the Spider</option>
                             {{/select}}
-                        </select>
+                        </select>-->
                     </div>
                     <div class="c-info-motivation">
                         <input name="data.info.motivation.value" type="text" value="{{info.motivation.value}}"
-                            placeholder="Motivation" />
+                            placeholder="Skill" />
                     </div>
                 </div>
                 <div class="c-separator">
                     <img src="systems/coyote-and-crow/ui/CNC_galley_divider.png">
                 </div>
-                <div class="c-stats-section">
+
+                <div class="c-stats-section npc-bg">
+                    {{#ifCond info.age.value '===' "icon"}}
+
                     {{> systems/coyote-and-crow/templates/sheet/partial/player-stats.html}}
+                    {{else}}
+
+                    {{> systems/coyote-and-crow/templates/sheet/partial/npc-background.html}}
+                    {{/ifCond}}
                 </div>
+
+
+
             </div>
 
-
-
-
         </div>
-
+        {{#ifCond info.age.value '===' "icon"}}
         <!--Tab Section -->
-
         <nav class="sheet-tabs tabs" data-group="primary">
             <a class="item" data-tab="summary">{{localize "TAB.summary"}}</a>
             <a class="item" data-tab="skills">{{localize "TAB.skills"}}</a>
@@ -91,7 +107,9 @@
             <a class="item" data-tab="bio">{{localize "TAB.Notes"}}</a>
         </nav>
 
+
         <div class="content-section">
+
             <div class="tab summary" data-group="primary" data-tab="summary">
                 {{> systems/coyote-and-crow/templates/sheet/partial/player-summary.html}}
             </div>
@@ -111,7 +129,9 @@
             <div class="tab bio" data-group="primary" data-tab="bio">
                 {{> systems/coyote-and-crow/templates/sheet/partial/player-bio.html}}
             </div>
+
         </div>
+        {{/ifCond}}
 
     </div>
 </form>

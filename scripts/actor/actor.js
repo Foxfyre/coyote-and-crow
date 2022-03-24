@@ -80,8 +80,8 @@ export class cncActor extends Actor {
             if (!x) { return }
 
             if (x.data.type === "specialization") { continue }
-            
-            if (x.data.type === "weapon" || x.data.type === "armor") {
+
+            if (x.data.type === "weapon" || x.data.type === "armor" || x.data.type === "item") {
                 if (x.data.data.equipped === false) {
                     continue;
                 }
@@ -93,7 +93,7 @@ export class cncActor extends Actor {
                     this.data.data.attributes.init.modified = itemInit + initMod;
                 }
             }
-            
+
             if (x.data.type === "weapon" && x.data.data.weaponTypes !== "") {
                 let weaponType = x.data.data.weaponTypes; // get weapon type from item
                 let dp = x.data.data.modifier.dp.value;   // get value of dp from item
@@ -262,7 +262,60 @@ export class cncActor extends Actor {
 
 
     _setPath(actorData) {
+        if (actorData.type === "npc") {
+            actorData.data.info.path.allowedStats = {
+                "agility": "Agility",
+                "charisma": "Charisma",
+                "endurance": "Endurance",
+                "intelligence": "Intelligence",
+                "perception": "Perception",
+                "spirit": "Spirit",
+                "strength": "Strength",
+                "wisdom": "Wisdom",
+                "will": "Will"
+            }
+            actorData.data.info.path.stats = {
+                "stat1": {
+                    "name": "Agility",
+                    "value": "agility"
+                },
+                "stat2": {
+                    "name": "Charisma",
+                    "value": "charisma"
+                }, 
+                "stat3": {
+                    "name": "Endurance",
+                    "value": "endurance"
+                },
+                "stat4": {
+                    "name": "Intelligence",
+                    "value": "intelligence"
+                },
+                "stat5": {
+                    "name": "Perception",
+                    "value": "perception"
+                },
+                "stat6": {
+                    "name": "Spirit",
+                    "value": "spirit"
+                },
+                "stat7": {
+                    "name": "Strength",
+                    "value": "strength"
+                },
+                "stat8": {
+                    "name": "Will",
+                    "value": "will"
+                },
+                "stat9": {
+                    "name": "Wisdom",
+                    "value": "wisdom"
+                },
 
+            }
+
+            return
+        }
         switch (actorData.data.info.path.value) {
             case "badger":
                 actorData.data.info.path.name = "Badger";

@@ -106,6 +106,25 @@ select {
     height: 25px;
 }
 
+.callout {
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(57, 32, 91);
+    color: whitesmoke;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.callout > p {
+    padding: 5px;
+}
+
+.callout > p > span[style*="text-decoration:underline"] {
+    color: goldenrod !important; 
+}
+
+
+
 /* Character Sheet */
 
 .warning {
@@ -1176,4 +1195,20 @@ ul.items {
     display: flex;
     flex-direction: row;
     margin-bottom: 15px;
+}
+
+.npc-bg .editor {
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
+    background-color: rgba(57, 32, 91, .1);
+    border-radius: 5px;
+}
+
+.npc-bg .tox.tox-tinymce {
+    min-height: 150px;
+}
+
+.sheet .editor-content {
+    padding: 0 10px;
 }

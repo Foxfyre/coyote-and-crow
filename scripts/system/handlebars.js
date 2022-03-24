@@ -22,7 +22,8 @@ function preloadHandlebarsTemplates() {
         "systems/coyote-and-crow/templates/sheet/partial/fragment/success.html",
         "systems/coyote-and-crow/templates/sheet/partial/fragment/dice-pool.html",
         "systems/coyote-and-crow/templates/sheet/partial/fragment/dstat-mod.html",
-        "systems/coyote-and-crow/templates/sheet/partial/fragment/stat-mod.html"
+        "systems/coyote-and-crow/templates/sheet/partial/fragment/stat-mod.html",
+        "systems/coyote-and-crow/templates/sheet/partial/npc-background.html"
     ];
     return loadTemplates(templatePaths);
 }

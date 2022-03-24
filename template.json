@@ -709,19 +709,22 @@
                     "value": 0,
                     "modified": 0,
                     "name": "Body (Current)",
-                    "currentValue": 0
+                    "currentValue": 0,
+                    "statMod": 0
                 },
                 "mind": {
                     "value": 0,
                     "modified": 0,
                     "name": "Mind (Current)",
-                    "currentValue": 0
+                    "currentValue": 0,
+                    "statMod": 0
                 },
                 "soul": {
                     "value": 0,
                     "modified": 0,
                     "name": "Soul (Current)",
-                    "currentValue": 0
+                    "currentValue": 0,
+                    "statMod": 0
                 },
                 "init": {
                     "score": 0,

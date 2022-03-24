@@ -1,0 +1,10 @@
+<div class="bio-page">
+    <div class="stat-block-title" style="margin-top: 10px;">
+        <span>{{localize "PLAYER.Background"}}</span>
+    </div>
+
+    <div class="bio-col">
+        <span class="item-label">{{localize "PLAYER.Notes"}}:</span>
+        {{editor content=data.data.data.bio.notes target="data.data.bio.notes" button=true owner=owner editable=true}}
+    </div>
+</div>

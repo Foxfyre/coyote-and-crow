@@ -19,8 +19,16 @@ export class cncActorSheet extends ActorSheet {
 
     // Picks between available/listed templates
     get template() {
-        return `systems/coyote-and-crow/templates/sheet/character-sheet.html`;
+        const path = "systems/coyote-and-crow/templates/sheet";
+        return `${path}/${this.actor.data.type}-sheet.html`;
     }
+
+
+    /*get template() {
+        const path = "systems/expanse/templates/sheet"
+        return `${path}/${this.actor.data.type}-sheet.html`;
+    }*/
+
 
     get actorData() {
         return this.actor.data;
@@ -47,13 +55,46 @@ export class cncActorSheet extends ActorSheet {
         let stat1 = data.actor.data.info.path.stats.stat1.value;
         let stat2 = data.actor.data.info.path.stats.stat2.value;
 
-        sheetData.abilities = {
-            [`${stat1}`]: "",
-            [`${stat2}`]: ""
+        // This block allows for the NPC to have access to all of the abilities.
+        if (actorData.type === "npc") {
+            let stat3 = data.actor.data.info.path.stats.stat3.value;
+            let stat4 = data.actor.data.info.path.stats.stat4.value;
+            let stat5 = data.actor.data.info.path.stats.stat5.value;
+            let stat6 = data.actor.data.info.path.stats.stat6.value;
+            let stat7 = data.actor.data.info.path.stats.stat7.value;
+            let stat8 = data.actor.data.info.path.stats.stat8.value;
+            let stat9 = data.actor.data.info.path.stats.stat9.value;
+            sheetData.abilities = {
+                [`${stat1}`]: "",
+                [`${stat2}`]: "",
+                [`${stat3}`]: "",
+                [`${stat4}`]: "",
+                [`${stat5}`]: "",
+                [`${stat6}`]: "",
+                [`${stat7}`]: "",
+                [`${stat8}`]: "",
+                [`${stat9}`]: ""
+            }
+            sheetData.abilities[`${stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat1);
+            sheetData.abilities[`${stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat2);
+            sheetData.abilities[`${stat3}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat3);
+            sheetData.abilities[`${stat4}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat4);
+            sheetData.abilities[`${stat5}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat5);
+            sheetData.abilities[`${stat6}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat6);
+            sheetData.abilities[`${stat7}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat7);
+            sheetData.abilities[`${stat8}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat8);
+            sheetData.abilities[`${stat9}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat9);
+
+        } else if (actorData.type === "character") {
+            sheetData.abilities = {
+                [`${stat1}`]: "",
+                [`${stat2}`]: ""
+            }
+            sheetData.abilities[`${stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat1);
+            sheetData.abilities[`${stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat2);
         }
+
         sheetData.specialization = data.actor.items.filter(i => i.type === "specialization");
-        sheetData.abilities[`${stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat1);
-        sheetData.abilities[`${stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat2);
         this._sortSkills(sheetData);
         console.log(sheetData);
         return sheetData;
@@ -154,7 +195,7 @@ export class cncActorSheet extends ActorSheet {
         const data = super.getData()
         const rollType = event.currentTarget.closest("[data-rolltype]").dataset.rolltype;
         let rollData = {};
- 
+
         rollData = {
             type: event.currentTarget.closest("[data-rolltype]").dataset.rolltype,
             specName: rollType === "specialization" ? event.currentTarget.closest("[data-rollname]").dataset.rollname : "",

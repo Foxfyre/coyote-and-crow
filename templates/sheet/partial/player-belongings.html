@@ -55,6 +55,11 @@
                     <div class="ability-short-desc">
                         <span>{{i.data.shortDesc}}</span>
                     </div>
+                    <div class="equip-grp">
+                        <span>Equip: </span>
+                        <input type="checkbox" class="coyote-checkbox equip" data-dtype="Boolean" name="i.data.equipped" value="{{i.data.equipped}}"
+                            {{checked i.data.equipped}}>
+                    </div>
                     <div class="item-controls flexrow spec-controls">
                         <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
                                 class="fas fa-edit"></i></a>
