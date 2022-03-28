@@ -849,7 +849,8 @@
             "gift",
             "item",
             "specialization",
-            "weapon"
+            "weapon",
+            "burden"
         ],
         "templates": {
             "baseItem": {
@@ -1039,6 +1040,16 @@
             ]
         },
         "gift": {
+            "templates": [
+                "modifier",
+                "baseItem"
+            ],
+            "category": "",
+            "level": 0,
+            "description": "",
+            "type": ""
+        },
+        "burden": {
             "templates": [
                 "modifier",
                 "baseItem"
