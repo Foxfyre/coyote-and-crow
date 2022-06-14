@@ -1,18 +1,9 @@
 <form class="{{cssClass}} dice-prep" autocomplete="off">
+  {{log data}}
+  {{log results}}
   <div class="dice-dialog">
-      <div class="dice-box">
-          <div class="stat-block-title">
-              <span>${statDiceName}</span>
-          </div>
-          <div class="stat-section">
-              ${statDiv}
-          </div>
-          <div class="stat-block-title">
-              <span>${skillDiceName}</span>
-          </div>
-          <div class="stat-section">
-              ${skillDiv}
-          </div>
+      <div class="dice-box" style="display: flex; flex-direction: row; justify-content: space-around; flex-wrap: wrap;">
+        {{{diceSection}}}
       </div>
       <div class="options-box">
           <input type="checkbox" />
@@ -34,6 +25,6 @@
       else {
         document.getElementById(new_red).className += " dice-prep-dialog";
       }
-    } else { console.log("uhhhhhhhhhh") }
+    } else { }
   }
 </script>

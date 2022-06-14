@@ -2,7 +2,7 @@ import { cncActorSheet } from "./scripts/actor/sheet/actor-sheet.js";
 import { cncActor } from "./scripts/actor/actor.js";
 import { cncItemSheet } from "./scripts/items/sheet/item-sheet.js";
 import { cncItem } from "./scripts/items/item.js";
-import { cncScene } from "./scripts/scenes/scene.js";
+//import { cncScene } from "./scripts/scenes/scene.js";
 import { registerDiceSoNice } from "./scripts/hooks/dice-so-nice.js";
 
 import { initializeHandlebars } from "./scripts/system/handlebars.js";
@@ -16,7 +16,7 @@ Hooks.once("init", async function () {
   // Define custom Entity classes
   CONFIG.Actor.documentClass = cncActor;
   CONFIG.Item.documentClass = cncItem;
-  CONFIG.Scene.documentClass = cncScene;
+  //CONFIG.Scene.documentClass = cncScene;
   CONFIG.Combat.initiative = {
     formula: "1d12",
     decimals: 2
@@ -99,24 +99,19 @@ Hooks.once("ready", async () => {
       title: `Welcome to v${game.system.data.version} of Coyote & Crow`,
       content: `
     <h1>Coyote & Crow</h1>
-    <h2>0.1.5 Update</h2>
+    <h2>0.1.7 Update</h2>
 
     <h4>Always update your world files before updating to a new system version of Coyote & Crow. 
     This system is actively in development and may be subject to breaking changes without warning.</h4>
 
     <h3><b>Functionality</b></h3>
     <ul>
-    <li>Added an option for Icon or Legend on the NPC sheet. </li>
-    <li>Added the ability to Equip Items.</li>
+    <li>None this time! </li>
     </ul><br>
 
     <h3>Bug Fixes</h3>
-    <li>Fixed PD output that would show value in brackets when no modifiers were active.</li>
+    <li>Fixed an issue where tiles weren't showing.</li>
 
-    <h3>What's in the Development Queue?</h3>
-    <ul>
-    <li>Adding buttons to the chat roll output to use Legendary and Focus metacurrency. </li>
-    </ul>
 
     <p>If you encounter any bugs, or have feature suggestions, you can join the Trello board and let us know <a href="https://trello.com/invite/b/jpGljTcv/e6c3e37afda0eb61278d7e432956594c/coyote-crow-bug-reporting">HERE</a>.</p>
 

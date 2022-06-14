@@ -190,6 +190,18 @@ export class cncActorSheet extends ActorSheet {
         }
     }
 
+    /*  Click rollable button
+    *   \/
+    *   Build Roll - Collect all relevant values for a roll - return
+    *   \/
+    *   Get roll results - Send relevant roll data through the dice roll process - return
+    *       If player has legendary or mind points - pop up roll modifier
+    *           In roll modifier screen - see current roll - decide to modify any dice by the relevant meta values
+    *       Else roll normally
+    *   \/
+    *   Send Results into roll card 
+    */ 
+
     async _diceRoll(event) {
         event.preventDefault();
         const data = super.getData()
@@ -243,24 +255,5 @@ export class cncActorSheet extends ActorSheet {
         };
 
         ChatMessage.create(chatOptions);
-
-        /*let rollApp = new Promise((resolve) => {
-
-            new Dialog({
-                title: game.i18n.localize("DICE.DicePrepare"),
-                content: (dicePool),
-                buttons: {
-                    roll: {
-                        label: game.i18n.localize("DICE.Roll"),
-                        callback: (html) => {
-                            resolve(getRoll(pRollData, dicePool))
-                        }
-                    }
-                },
-                default: "Roll"
-            },{width: 700, height: 400}).render(true)
-        })
-        console.log(rollApp);*/
-
     }
 }

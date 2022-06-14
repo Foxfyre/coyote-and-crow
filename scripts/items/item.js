@@ -1,3 +1,5 @@
+//import { convertBurdenToGift } from "../system/utility.js";
+
 export class cncItem extends Item {
     prepareData() {
         super.prepareData();
@@ -7,17 +9,20 @@ export class cncItem extends Item {
     }
 
     prepareBaseData() {
-
+ 
     }
 
     prepareDerivedData() {
         const itemData = this.data;
+
+
+
         if (itemData.type === "ability") {
             // get value of activation
             let activationValue = itemData.data.activate;
             let activationName;
             //console.log(activationValue);
-            
+
 
             // set activationName to lang file name
             if (activationValue === "primary") { activationName = game.i18n.localize("ACTIVATION.Primary") };

@@ -109,18 +109,18 @@ select {
 .callout {
     display: flex;
     flex-direction: column;
-    background-color:rgb(57, 32, 91);
+    background-color: rgb(57, 32, 91);
     color: whitesmoke;
     width: 100%;
     border-radius: 5px;
 }
 
-.callout > p {
+.callout>p {
     padding: 5px;
 }
 
-.callout > p > span[style*="text-decoration:underline"] {
-    color: goldenrod !important; 
+.callout>p>span[style*="text-decoration:underline"] {
+    color: goldenrod !important;
 }
 
 
@@ -728,16 +728,16 @@ ul.items {
     width: 25px;
 }
 
-.range-row > span {
+.range-row>span {
     margin-right: 5px;
 }
 
-.range-row > input[type="text"] {
+.range-row>input[type="text"] {
     margin-right: 15px;
     text-align: center;
 }
 
-.range-row > input[type="text"]:last-child {
+.range-row>input[type="text"]:last-child {
     margin-right: 0px;
     text-align: center;
 }
@@ -1211,4 +1211,17 @@ ul.items {
 
 .sheet .editor-content {
     padding: 0 10px;
+}
+
+/* CHAT CARD */
+
+.modify-roll {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    background-color: plum;
+    font-size: large;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
 }

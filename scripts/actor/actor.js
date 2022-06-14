@@ -11,6 +11,28 @@ export class cncActor extends Actor {
     }
 
     _preCreate(data) {
+
+        let createData = {};
+        if (!data.token) {
+          mergeObject(createData,
+            {
+              "token.displayName": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,    // Default display name to be on owner hover
+              "token.displayBars": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,    // Default display bars to be on owner hover
+              "token.disposition": CONST.TOKEN_DISPOSITIONS.NEUTRAL,         // Default disposition to neutral
+              "token.name": data.name,                                       // Set token name to actor name
+            }
+          )
+        } else if (data.token) {
+          createData.token = data.token
+        }
+    
+        if (data.type == "character") {
+          createData.token.vision = true;
+          createData.token.actorLink = true;
+        }
+    
+        this.data.update(createData);
+        console.log(this.data)
     }
 
     prepareBaseData() {

@@ -101,6 +101,8 @@
     "WARN.KnowledgeMax": "Knowledge is limited to one rank from skills maximum",
     "COYOTE.SELECT.Gift": "Gift",
     "COYOTE.SELECT.Burden": "Burden",
-    "COYOTE.SELECT.Select": "Select"
+    "COYOTE.SELECT.Select": "Select",
+    "COYOTE.DIALOG.ModifyRoll": "Modify Roll",
+    "COYOTE.BUTTON.Roll": "Roll"
 
 }
