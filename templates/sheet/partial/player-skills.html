@@ -25,9 +25,7 @@
                     <span>{{localize label}}</span>
                 </div>
                 <div class="skill-table-col">
-                    <select name="data.skills.{{key}}.stat">
-                        {{selectOptions relStats selected=skill.stat}}
-                    </select>
+                    <span>{{skill.statName}}</span>
                 </div>
                 <div class="skill-table-col col-rank">
                     <input class="skill-table-rank" type="number" name="data.skills.{{key}}.skillRank"
@@ -64,9 +62,7 @@
                     <span>{{localize label}}</span>
                 </div>
                 <div class="skill-table-col">
-                    <select name="data.skills.{{key}}.stat">
-                        {{selectOptions relStats selected=skill.stat}}
-                    </select>
+                    <span>{{skill.statName}}</span>
                 </div>
                 <div class="skill-table-col col-rank">
                     <input class="skill-table-rank" type="number" name="data.skills.{{key}}.skillRank"
