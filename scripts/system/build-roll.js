@@ -1,7 +1,7 @@
 export default function buildRoll(data, rollData) {
     let buildRollData = rollData
 
-    // rollData arguement comes in with the following information
+    // rollData argument comes in with the following information
     /***
     *   rollData = {
     *       type: 
@@ -55,11 +55,7 @@ export default function buildRoll(data, rollData) {
 
     buildRollData.mind = mind;
 
-    if (rollData.type === "specialization") {
-        buildRollData.totalDice = rollData.specRank + rollData.skillRank + rollData.statRank + Number(rollData.addDice);
-    } else {
-        buildRollData.totalDice = rollData.specRank + rollData.skillRank + rollData.statRank + Number(rollData.addDice);
-    }
+    buildRollData.totalDice = rollData.statRank + Number(rollData.addDice) + (rollData.type === "specialization" ? rollData.specRank : rollData.skillRank);
     buildRollData.physicalDefense = pDefense
     return buildRollData;
 }

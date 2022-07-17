@@ -39,7 +39,7 @@ export default function rollCard(rollResults, compiledRollData) {
 
     const flavorText = type === "stat" ? `Rolling <b>${compiledRollData.statName.toUpperCase()}</b><br>` :
         type === "skill" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.skillName.toUpperCase()}</b><br>` :
-            type === "specialization" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.skillName.toUpperCase()} & ${compiledRollData.specName.toUpperCase()}</b><br>` : `BOOPs!`;
+            type === "specialization" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.specName.toUpperCase()}</b><br>` : `BOOPs!`;
 
     if (rollResults.type == "PoolTerm") {
         for (let d = 0; d < rollResults.terms[0].rolls[0].terms[0].results.length; d++) {
