@@ -461,7 +461,8 @@
                 "legendary": {
                     "ranks": 0,
                     "name": "Legendary Ranks"
-                }
+                },
+                "wealth": 4
             },
             "stats": {
                 "strength": {
