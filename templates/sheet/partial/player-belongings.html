@@ -3,10 +3,11 @@
         <span>Belongings</span>
     </div>
     <div class="belonging-block">
-        <div class="belonging-section">
-            <label for="data.character.info.wealth">Wealth Rank:</label>
-            <input class="number-input" name="data.info.wealth.rank" type="number"
-                                value="{{info.wealth.rank}}" />
+        <div>
+            <label class="wealth-rank rollable" for="data.stats.wealth.value" data-rolltype="stat" 
+                data-rollname="wealth" data-statrank="{{data.data.stats.wealth.modified}}">Wealth Rank:</label>
+            <input class="wealth-rank" class="number-input" name="data.stats.wealth.value" 
+                type="number" value="{{data.data.stats.wealth.value}}" />
         </div>
         <!--items-->
         <div class="belonging-section">
