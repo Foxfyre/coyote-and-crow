@@ -861,6 +861,10 @@ ul.items {
     flex-direction: column;
 }
 
+.c-sheet input.wealth-rank {
+    width: 65px;
+}
+
 .c-sheet .belonging-section {
     display: flex;
     flex-direction: column;
