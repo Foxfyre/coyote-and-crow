@@ -202,10 +202,12 @@ export class cncActor extends Actor {
         const skilledTests = ["Ceremony", "Cybernetics", "Herbalism", "Language", "Medicine", "Science"];
         for (let skillKey in this.data.data.skills) {
             let skill = this.data.data.skills[skillKey]
-			let higher = this._skillMod(Object.keys(skill.relStats)[0]) >= this._skillMod(Object.keys(skill.relStats)[1]) ? 0 : 1;
-			// This next line asks if skillRank is skillRank is 0; if it is, then the ternary operator resolves to false, meaning it uses the lower of the two stats. If it's more than 0 (and thus resolves to true), it grabs the higher of the two stats
-            let whichStat = skill.skillRank ? higher : (higher ? 0 : 1); 
-			// Uses the keys function to turn the 0 or 1 into a stat
+            // XORs the stat comparison with whether the rank is > 0
+            // If the first stat is smaller AND skillrank > 0, 1 != 1 is 0
+            // If the first stat is smaller BUT skillrank == 0, 1 != 0 is 1
+            // If the first stat is bigger AND skillrank > 0, 0 != 1 is 1
+            // If the first stat is bigger BUT skillrank == 0, 0 != 0 is 0
+            let whichStat = (this._skillMod(Object.keys(skill.relStats)[0]) < this._skillMod(Object.keys(skill.relStats)[1])) != (skill.skillRank > 0) ? 0 : 1
 			skill.stat = Object.keys(skill.relStats)[whichStat];
             let stat = this.data.data.skills[skillKey].stat;
             this._setSkillName(skill, skillKey);
