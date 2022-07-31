@@ -1215,6 +1215,13 @@ ul.items {
 
 /* CHAT CARD */
 
+div.rolls {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-around; 
+    flex-wrap: wrap;
+}
+
 .modify-roll {
     display: flex;
     flex-direction: row;

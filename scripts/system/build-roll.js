@@ -57,5 +57,6 @@ export default function buildRoll(data, rollData) {
 
     buildRollData.totalDice = rollData.statRank + Number(rollData.addDice) + (rollData.type === "specialization" ? rollData.specRank : rollData.skillRank);
     buildRollData.physicalDefense = pDefense
+    buildRollData.critical = false;
     return buildRollData;
 }

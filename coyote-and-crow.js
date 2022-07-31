@@ -132,6 +132,35 @@ Hooks.once("ready", async () => {
   }
 })
 
+Hooks.on("renderChatMessage", (message, html, data) => {
+  console.log("Here's the Message")
+  console.log(message);
+  console.log("Here's the raw html")
+  console.log(html);
+  console.log("Here's the data");
+  console.log(data);
+  if (game.userId != data.message.user) {
+    html.find("button").remove();
+  }
+  if (html.find("button.modRoll")[0]){
+    html.find("button.modRoll")[0].addEventListener("click", ev => {
+      console.log("Modify Roll!")
+
+    })
+  }
+  if (html.find("button.critRoll")[0]){
+    html.find("button.critRoll")[0].addEventListener("click", ev => {
+      console.log("Crit Roll!")
+      let crits = parseInt(html.find("button.critRoll")[0].dataset.crits)
+      let compiledRollData = {
+        totalDice: crits
+      }
+
+
+    })
+  }
+})
+
 /*Hooks.on("renderDialog", (dialog, html) => {
   Array.from(html.find("#document-create option")).forEach(i => {
     console.log(i)

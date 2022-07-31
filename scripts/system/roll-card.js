@@ -21,7 +21,10 @@
 
 export default function rollCard(rollResults, compiledRollData) {
     let diceSection = '';
-    //console.log(rollResults);
+    let buttons = '';
+    console.log("Roll Results")
+    console.log(rollResults);
+    console.log("Compiled Roll Data")
     console.log(compiledRollData);
     let type = compiledRollData.type;
 
@@ -41,19 +44,59 @@ export default function rollCard(rollResults, compiledRollData) {
         type === "skill" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.skillName.toUpperCase()}</b><br>` :
             type === "specialization" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.specName.toUpperCase()}</b><br>` : `BOOPs!`;
 
-    if (rollResults.type == "PoolTerm") {
-        for (let d = 0; d < rollResults.terms[0].rolls[0].terms[0].results.length; d++) {
-            diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${rollResults.terms[0].rolls[0].terms[0].results[d].result}.png" />`
-        }
-        for (let e = 0; e < rollResults.terms[0].rolls[1].terms[0].results.length; e++) {
-            diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${rollResults.terms[0].rolls[1].terms[0].results[e].result}.png" />`
-        }
-    } else {
-        let results = rollResults.terms[0].results;
-        for (let d = 0; d < results.length; d++) {
-            diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${results[d].result}.png" />`
-        }
+
+    
+
+
+
+    // New design is to just print the white dice, then offer modify & roll criticals
+    
+    let results = rollResults.terms[0].results;
+    switch(rollResults.type) {
+        case "Base":
+            let legendary = compiledRollData.legendary > 0 ? true : false;
+            // let mind = compiledRollData.mind > 0 ? true : false;
+            let rollMods = `Spend Focus (${compiledRollData.mind})`
+            if (legendary) {
+                rollMods = `Use Legendary Status (${compiledRollData.legendary}) or<br>` + rollMods
+            }
+            let resultArray = [];
+            results.forEach(i => {resultArray.push(i.result)});
+            let resultString = resultArray.toString()
+            diceSection+=`<div class="rolls" data-rolls="${resultString}">`
+            for (let d = 0; d < results.length; d++) {
+                diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${results[d].result}.png" />`
+            }
+            diceSection+=`</div>`
+            buttons +=`<br><button class="modRoll">${rollMods}</button>` // 
+            let count12 = 0;
+            results.find(v => {
+                if (v.result === 12) {
+                    count12++;
+                }
+            })
+            if (count12){
+                buttons += `<br><button class="critRoll"" data-crits=${count12}>Roll Crits (${count12})</button>`;
+            }
+            break;
+        // case "Modded":
+        //     // might need to think about structure about how dicemods[d] is handled
+        //     let moddedTotal = 0;
+        //     for (let d = 0; d < results.length; d++) {
+        //         moddedTotal = results[d].result + dicemods[d]//
+        //         diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${moddedTotal}.png" />`
+        //     }
+        //     break;
+        case "Critical":
+            for (let d = 0; d < results.length; d++) {
+                diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${results[d].result}.png" />`
+            }
+            break;
     }
+    
+
+    
+
     let modifiedResults;
 
     /*if (compiledRollData.legendary > 0 || compiledRollData.mind > 0) {
@@ -62,8 +105,6 @@ export default function rollCard(rollResults, compiledRollData) {
  
     let modifyButton;
 
-    let legendary = compiledRollData.legendary > 0 ? true : false;
-    let mind = compiledRollData.mind > 0 ? true : false;
 
     let rollTitle = '';
 
@@ -71,10 +112,8 @@ export default function rollCard(rollResults, compiledRollData) {
 
     let rollCardInfo = {
         title: rollTitle,
-        dice: `<div style="display: flex; flex-direction: row; justify-content: space-around; flex-wrap: wrap;">
-            ${diceSection}
-            </div>
-            </br>`
+        dice: `${diceSection}
+            ${buttons}`
     }
 
     //console.log(diceSection)
@@ -134,3 +173,18 @@ async function _modifyRoll(rollData, rollResults, diceSection) {
         })
     })
     return modifyDialog;*/
+
+
+        // if (rollResults.type == "PoolTerm") {
+    //     for (let d = 0; d < rollResults.terms[0].rolls[0].terms[0].results.length; d++) {
+    //         diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${rollResults.terms[0].rolls[0].terms[0].results[d].result}.png" />`
+    //     }
+    //     for (let e = 0; e < rollResults.terms[0].rolls[1].terms[0].results.length; e++) {
+    //         diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${rollResults.terms[0].rolls[1].terms[0].results[e].result}.png" />`
+    //     }
+    // } else {
+    //     let results = rollResults.terms[0].results;
+    //     for (let d = 0; d < results.length; d++) {
+    //         diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${results[d].result}.png" />`
+    //     }
+    // }
