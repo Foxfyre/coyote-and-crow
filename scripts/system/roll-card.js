@@ -63,7 +63,11 @@ export default function rollCard(rollResults, compiledRollData) {
             let resultArray = [];
             results.forEach(i => {resultArray.push(i.result)});
             let resultString = resultArray.toString()
-            diceSection+=`<div class="rolls" data-rolls="${resultString}">`
+            diceSection+=`<div class="rolls" data-rolls="${resultString}"`
+            Object.entries(compiledRollData).forEach(([key, value]) => {
+                diceSection+=` data-${key}="${value}"`
+            })
+            diceSection+=">"
             for (let d = 0; d < results.length; d++) {
                 diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${results[d].result}.png" />`
             }

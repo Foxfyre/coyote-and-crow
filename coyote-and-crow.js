@@ -9,6 +9,8 @@ import { initializeHandlebars } from "./scripts/system/handlebars.js";
 
 import { CoyoteDiceBlack } from "./module/cnc-dice-black.js";
 import { CoyoteDiceWhite } from "./module/cnc-dice-white.js";
+import getRoll from "./scripts/system/get-roll.js";
+import rollCard from "./scripts/system/roll-card.js";
 
 Hooks.once("init", async function () {
   console.log(`Initializing A Template`);
@@ -142,22 +144,61 @@ Hooks.on("renderChatMessage", (message, html, data) => {
   if (game.userId != data.message.user) {
     html.find("button").remove();
   }
-  if (html.find("button.modRoll")[0]){
-    html.find("button.modRoll")[0].addEventListener("click", ev => {
-      console.log("Modify Roll!")
+  if (html.find("div.rolls")[0]){
+    let actor = game.actors.get(data.message.speaker.actor);
+    console.log("This is a roll")
+    // Unfortunately this is stripping the capitalization and so doesn't quite work
+    let rawdata = html.find("div.rolls")[0].dataset; 
 
-    })
-  }
-  if (html.find("button.critRoll")[0]){
-    html.find("button.critRoll")[0].addEventListener("click", ev => {
-      console.log("Crit Roll!")
-      let crits = parseInt(html.find("button.critRoll")[0].dataset.crits)
-      let compiledRollData = {
-        totalDice: crits
-      }
-
-
-    })
+    let rolldata = {
+      type: rawdata.type,
+      specName: rawdata.specname,
+      specRank: rawdata.specrank,
+      skillName: rawdata.skillname,
+      skillRank: rawdata.skillrank,
+      statName: rawdata.statname,
+      statRank: rawdata.statrank,
+      legendary: rawdata.legendary,
+      mind: rawdata.mind,
+      addDice: rawdata.adddice,
+      totalDice: rawdata.totaldice,
+      successNumber: rawdata.successnumber,
+      statSuccessNumber: rawdata.statsuccessnumber,
+      physicalDefense: rawdata.physicaldefense,
+      physicalDefenseDetail: rawdata.physicaldefensedetail
+    }
+    console.log(rolldata);
+    if (html.find("button.modRoll")[0]){
+      html.find("button.modRoll")[0].addEventListener("click", ev => {
+        console.log("Modify Roll!")
+        
+      })
+    }
+    if (html.find("button.critRoll")[0]){
+      console.log("The crit roll button was found")
+      html.find("button.critRoll")[0].addEventListener("click", ev => {
+        console.log("Crit Roll!")
+        let crits = html.find("button.critRoll")[0].dataset.crits
+        let roll = new Roll(`${crits}dbx12`)
+        roll.evaluate({async: true})
+        roll.type = "Critical";
+        rolldata.totalDice = crits;
+        let rolledCard = rollCard(roll, rolldata);
+  
+        let chatOptions = {
+          type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+          roll: roll,
+          flavor: rolledCard.title,
+          speaker: ChatMessage.getSpeaker({ actor: actor }),
+          rollMode: game.settings.get("core", "rollMode"),
+          content: rolledCard.dice,
+          sound: CONFIG.sounds.dice
+        };
+  
+        ChatMessage.create(chatOptions);
+  
+      })
+    }
   }
 })
 
