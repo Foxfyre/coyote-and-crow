@@ -11,6 +11,7 @@ import { CoyoteDiceBlack } from "./module/cnc-dice-black.js";
 import { CoyoteDiceWhite } from "./module/cnc-dice-white.js";
 import getRoll from "./scripts/system/get-roll.js";
 import rollCard from "./scripts/system/roll-card.js";
+import modifyRoll from "./scripts/system/modify-roll.js";
 
 Hooks.once("init", async function () {
   console.log(`Initializing A Template`);
@@ -135,19 +136,18 @@ Hooks.once("ready", async () => {
 })
 
 Hooks.on("renderChatMessage", (message, html, data) => {
-  console.log("Here's the Message")
-  console.log(message);
-  console.log("Here's the raw html")
-  console.log(html);
-  console.log("Here's the data");
-  console.log(data);
+  // console.log("Here's the Message")
+  // console.log(message);
+  // console.log("Here's the raw html")
+  // console.log(html);
+  // console.log("Here's the data");
+  // console.log(data);
   if (game.userId != data.message.user) {
     html.find("button").remove();
   }
   if (html.find("div.rolls")[0]){
     let actor = game.actors.get(data.message.speaker.actor);
-    console.log("This is a roll")
-    // Unfortunately this is stripping the capitalization and so doesn't quite work
+    // console.log("This is a roll")
     let rawdata = html.find("div.rolls")[0].dataset; 
 
     let rolldata = {
@@ -171,7 +171,10 @@ Hooks.on("renderChatMessage", (message, html, data) => {
     if (html.find("button.modRoll")[0]){
       html.find("button.modRoll")[0].addEventListener("click", ev => {
         console.log("Modify Roll!")
-        
+        let rolls = rawdata.rolls.split(',')
+        // rawdata.rolls.split(',').forEach(i => rolls.push(Number(i)))
+        modifyRoll(rolldata, rolls, data.message.speaker.actor)
+        // new modifyRollDialog('example').render(true);
       })
     }
     if (html.find("button.critRoll")[0]){

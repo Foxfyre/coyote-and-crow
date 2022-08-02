@@ -69,7 +69,7 @@ export default function rollCard(rollResults, compiledRollData) {
             })
             diceSection+=">"
             for (let d = 0; d < results.length; d++) {
-                diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${results[d].result}.png" />`
+                diceSection += `<img class="die" src="systems/coyote-and-crow/ui/dice/chat/w${results[d].result}.png" />`
             }
             diceSection+=`</div>`
             buttons +=`<br><button class="modRoll">${rollMods}</button>` // 
@@ -93,7 +93,7 @@ export default function rollCard(rollResults, compiledRollData) {
         //     break;
         case "Critical":
             for (let d = 0; d < results.length; d++) {
-                diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${results[d].result}.png" />`
+                diceSection += `<img class="die" src="systems/coyote-and-crow/ui/dice/chat/c${results[d].result}.png" />`
             }
             break;
     }
