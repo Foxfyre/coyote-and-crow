@@ -209,7 +209,7 @@ export class cncActorSheet extends ActorSheet {
         let rollData = {};
 
         rollData = {
-            type: event.currentTarget.closest("[data-rolltype]").dataset.rolltype,
+            type: rollType,
             specName: rollType === "specialization" ? event.currentTarget.closest("[data-rollname]").dataset.rollname : "",
             specRank: rollType === "specialization" ? Number(event.currentTarget.closest("[data-specrank]").dataset.specrank) : 0,
             skillName: (rollType === "skill" || rollType === "specialization") ? event.currentTarget.closest("[data-skillname]").dataset.skillname : "",
@@ -221,7 +221,6 @@ export class cncActorSheet extends ActorSheet {
             addDice: rollType === "skill" ? Number(event.currentTarget.closest("[data-adddice]").dataset.adddice) : 0,
             totalDice: 0,
             successNumber: 0,
-            statSuccessNumber: 0,
             physicalDefense: 0,
             physicalDefenseDetail: ""
         }

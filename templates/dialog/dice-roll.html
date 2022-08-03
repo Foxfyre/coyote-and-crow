@@ -18,9 +18,9 @@
     </div>
     <div class="mod-roll-body">
     {{#each rolls}}
-      <div class="mod-roll-row" data-rowCount="{{@index}}">
+      <div class="mod-roll-row" data-rowCount="{{@index}}" data-value="{{this.value}}" data-modified="{{this.modified}}" data-legendmod=0 data-focusmod=0>
         <div class="dieCol">
-          <img class="die" src="systems/coyote-and-crow/ui/dice/chat/w{{this.value}}.png" />
+          <img class="die start" src="systems/coyote-and-crow/ui/dice/chat/w{{this.value}}.png" />
         </div>
         {{#if @root.rolldata.legendary.max}}
         <div class="legCol">
@@ -35,19 +35,25 @@
           {{/if}}
         </div>
         <div class="resultCol">
-          <img class="die" src="systems/coyote-and-crow/ui/dice/chat/w{{this.modified}}.png" />
+          <img class="die result" src="systems/coyote-and-crow/ui/dice/chat/w{{this.modified}}.png" />
         </div>
       </div>
     {{/each}}
-  </div>
+    </div>
     <div class="mod-roll-footer">
       {{#if rolldata.legendary.max}}
       <div class="legendary remain">
-        <p><strong>Legendary Remaining:</strong> <span name="remLegend">{{rolldata.legendary.remaining}}</span></p>
+        <p>
+          <strong>Legendary Remaining:</strong> 
+          <span name="remLegend" data-legendmax="{{rolldata.legendary.max}}">{{rolldata.legendary.remaining}}</span>
+        </p>
       </div>
       {{/if}}
       <div class="focus remain">
-        <p><strong>Mind Spent:</strong> <span name="usedMind" data-value="{{rolldata.mind.used}}">{{rolldata.mind.used}}</span></p>
+        <p>
+          <strong>Mind Spent:</strong> 
+          <span name="usedMind">{{rolldata.mind.used}}</span>
+        </p>
       </div>
     </div>
   </div>

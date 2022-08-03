@@ -15,7 +15,6 @@ export default async function getRoll(compiledRollData) {
     *       addDice: Number
     *       totalDice: Number
     *       successNumber: Number
-    *       statSuccessNumber: Number
     *       physicalDefense: Number
     *       physicalDefenseDetail: String
     *       critical: Boolean
