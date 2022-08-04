@@ -18,41 +18,37 @@
 *   }
 ***/
 
-export default function rollCard(rollResults, compiledRollData) {
+export default function rollCard(rollResults) {
+    const compiledRollData = rollResults.data
     let diceSection = '';
     let buttons = '';
     console.log("Roll Results")
     console.log(rollResults);
     console.log("Compiled Roll Data")
     console.log(compiledRollData);
-    let type = compiledRollData.type;
-    let sn = compiledRollData.successNumber;
 
     /*** 
     * Flavour text (Subject Line)
     * ***/
-    let sNumber = (sn !== 0) ? `<b>Modifier:</b> Apply ${compiledRollData.successNumber} to the Success Number` : ``;
+    let sNumber = (compiledRollData.successNumber !== 0) ? `<b>Modifier:</b> Apply ${compiledRollData.successNumber} to the Success Number` : ``;
 
-    const flavorText = type === "stat" ? `Rolling <b>${compiledRollData.statName.toUpperCase()}</b><br>` :
-        type === "skill" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.skillName.toUpperCase()}</b><br>` :
-            type === "specialization" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.specName.toUpperCase()}</b><br>` : `BOOPs!`;
+    const flavorText = compiledRollData.type === "stat" ? `Rolling <b>${compiledRollData.statName.toUpperCase()}</b><br>` :
+        compiledRollData.type === "skill" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.skillName.toUpperCase()}</b><br>` :
+            compiledRollData.type === "specialization" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.specName.toUpperCase()}</b><br>` : `BOOPs!`;
 
 
-    let results = rollResults.terms[0].results;
+    const results = rollResults.terms[0].results;
     switch(rollResults.type) {
         case "Base":
             let rollMods = `Spend Focus (${compiledRollData.mind})`
             if (compiledRollData.legendary > 0) {
                 rollMods = `Use Legendary Status (${compiledRollData.legendary}) or<br>` + rollMods
             }
-            let resultArray = [];
-            results.forEach(i => {resultArray.push(i.result)});
-            let resultString = resultArray.toString()
-            diceSection+=`<div class="rolls" data-rolls="${resultString}"`
-            Object.entries(compiledRollData).forEach(([key, value]) => {
-                diceSection+=` data-${key}="${value}"`
-            })
-            diceSection+=">"
+            diceSection+=`<div class="rolls">`
+            // Object.entries(compiledRollData).forEach(([key, value]) => {
+            //     diceSection+=` data-${key}="${value}"`
+            // })
+            // diceSection+=">"
             for (let d = 0; d < results.length; d++) {
                 diceSection += `<img class="die" src="systems/coyote-and-crow/ui/dice/chat/w${results[d].result}.png" />`
             }

@@ -142,64 +142,48 @@ Hooks.on("renderChatMessage", (message, html, data) => {
   console.log(html);
   console.log("Here's the data");
   console.log(data);
-  if (game.userId != data.message.user) {
+  if (!message.isAuthor) {
     html.find("button").remove();
   }
-  if (html.find("div.rolls")[0]){
-    let actor = game.actors.get(data.message.speaker.actor);
-    // console.log("This is a roll")
-    let rawdata = html.find("div.rolls")[0].dataset; 
+  if (message.isRoll){
+    if (Object.keys(message.data.flags["coyote-and-crow"]).length > 0) {
+      const actor = game.actors.get(data.message.speaker.actor);
+      const rolldata = message.data.flags["coyote-and-crow"];
+      console.log(rolldata);
+      if (html.find("button.modRoll")[0]){
+        html.find("button.modRoll")[0].addEventListener("click", ev => {
+          console.log("Modify Roll!")
+          // let rolls = rawdata.rolls.split(',')
+          // modifyRoll(rolldata, rolls, data.message.speaker.actor)
+          // new modifyRollDialog('example').render(true);
+        })
+      }
+      if (html.find("button.critRoll")[0]){
+        console.log("The crit roll button was found")
+        html.find("button.critRoll")[0].addEventListener("click", ev => {
+          console.log("Crit Roll!")
+          rolldata.totalDice = html.find("button.critRoll")[0].dataset.crits
+          rolldata.critical = true;
 
-    let rolldata = {
-      type: rawdata.type,
-      specName: rawdata.specname,
-      specRank: rawdata.specrank,
-      skillName: rawdata.skillname,
-      skillRank: rawdata.skillrank,
-      statName: rawdata.statname,
-      statRank: rawdata.statrank,
-      legendary: rawdata.legendary,
-      mind: rawdata.mind,
-      addDice: rawdata.adddice,
-      totalDice: rawdata.totaldice,
-      successNumber: rawdata.successnumber,
-      statSuccessNumber: rawdata.statsuccessnumber,
-      physicalDefense: rawdata.physicaldefense,
-      physicalDefenseDetail: rawdata.physicaldefensedetail
-    }
-    console.log(rolldata);
-    if (html.find("button.modRoll")[0]){
-      html.find("button.modRoll")[0].addEventListener("click", ev => {
-        console.log("Modify Roll!")
-        let rolls = rawdata.rolls.split(',')
-        // modifyRoll(rolldata, rolls, data.message.speaker.actor)
-        // new modifyRollDialog('example').render(true);
-      })
-    }
-    if (html.find("button.critRoll")[0]){
-      console.log("The crit roll button was found")
-      html.find("button.critRoll")[0].addEventListener("click", ev => {
-        console.log("Crit Roll!")
-        let crits = html.find("button.critRoll")[0].dataset.crits
-        let roll = new Roll(`${crits}dbx12`)
-        roll.evaluate({async: true})
-        roll.type = "Critical";
-        rolldata.totalDice = crits;
-        let rolledCard = rollCard(roll, rolldata);
-  
-        let chatOptions = {
-          type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-          roll: roll,
-          flavor: rolledCard.title,
-          speaker: ChatMessage.getSpeaker({ actor: actor }),
-          rollMode: game.settings.get("core", "rollMode"),
-          content: rolledCard.dice,
-          sound: CONFIG.sounds.dice
-        };
-  
-        ChatMessage.create(chatOptions);
-  
-      })
+          // We've got some kind of issue here
+          const rollResults = getRoll(rolldata)
+          const rolledCard = rollCard(rollResults);
+    
+          let chatOptions = {
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            roll: roll,
+            flavor: rolledCard.title,
+            speaker: ChatMessage.getSpeaker({ actor: actor }),
+            rollMode: game.settings.get("core", "rollMode"),
+            content: rolledCard.dice,
+            sound: CONFIG.sounds.dice,
+            flags: {"coyote-and-crow": rolldata}
+          };
+    
+          ChatMessage.create(chatOptions);
+    
+        })
+      }
     }
   }
 })

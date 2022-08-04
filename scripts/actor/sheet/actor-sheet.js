@@ -233,15 +233,15 @@ export class cncActorSheet extends ActorSheet {
         }
 
         // Send data and roll info to gather all information required for rolls. 
-        let compiledRollData = buildRoll(data, rollData);
+        const compiledRollData = buildRoll(data, rollData);
 
         //console.log(compiledRollData)
 
-        let rollResults = await getRoll(compiledRollData)
+        const rollResults = await getRoll(compiledRollData)
 
         //console.log(rollResults)
 
-        let rolledCard = rollCard(rollResults, compiledRollData);
+        const rolledCard = rollCard(rollResults);
 
         let chatOptions = {
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
@@ -250,9 +250,11 @@ export class cncActorSheet extends ActorSheet {
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
             rollMode: game.settings.get("core", "rollMode"),
             content: rolledCard.dice,
-            sound: CONFIG.sounds.dice
+            sound: CONFIG.sounds.dice,
+            flags: {"coyote-and-crow": compiledRollData}
         };
 
         ChatMessage.create(chatOptions);
+        // msg._roll.data = compiledRollData
     }
 }

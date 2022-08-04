@@ -1,6 +1,6 @@
 import rollCard from "./roll-card";
 
-export default async function modifyRoll(rolldata, rolls, actorid) {
+export default async function modifyRoll(roll, actorid) {
     let data = {
         rolldata: rolldata,
         rolls: []
