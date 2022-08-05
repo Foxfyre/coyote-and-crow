@@ -136,12 +136,12 @@ Hooks.once("ready", async () => {
 })
 
 Hooks.on("renderChatMessage", (message, html, data) => {
-  console.log("Here's the Message")
-  console.log(message);
-  console.log("Here's the raw html")
-  console.log(html);
-  console.log("Here's the data");
-  console.log(data);
+  // console.log("Here's the Message")
+  // console.log(message);
+  // console.log("Here's the raw html")
+  // console.log(html);
+  // console.log("Here's the data");
+  // console.log(data);
   if (!message.isAuthor) {
     html.find("button").remove();
   }
