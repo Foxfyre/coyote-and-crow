@@ -1,48 +1,37 @@
-import rollCard from "./roll-card";
+import rollCard from "./roll-card.js";
+import getRoll from "./get-roll.js";
 
-export default async function modifyRoll(roll, actorid) {
-    let data = {
-        rolldata: rolldata,
+export default async function modifyRoll(rolldata, roll, actorid) {
+    const data = {
+        legendary: {
+            max: Number(rolldata.legendary),
+            remaining: Number(rolldata.legendary)
+        },
+        mind: {
+            current: Number(rolldata.mind),
+            used: 0
+        },
         rolls: []
     }
-    /* rolls structure
-     * value: Number
-     * fail: Boolean
-     */
-    data.rolldata.legendary = {
-        max: Number(data.rolldata.legendary),
-        remaining: Number(data.rolldata.legendary)
-    }
-    data.rolldata.mind = {
-        current: Number(data.rolldata.mind),
-        used: 0
-    }
-    console.log(data.rolldata)
+    console.log(data)
 
 
-    rolls.forEach((r, i) => {
-        let legendmax = Math.min(12 - Number(r), data.rolldata.legendary.max)
-        let focusmax = Math.min(12 - Number(r), data.rolldata.mind.current)
+    roll.terms[0].results.forEach((r, i) => {
+        let legendmax = Math.min(12 - Number(r.result), data.legendary.max)
+        let focusmax = Math.min(12 - Number(r.result), data.mind.current)
+        let value = r.result;
         data.rolls.push({
-            value: r,
-            modified: r,
-            fail: (r === '1'),
-            crit: (r === '12'),
-            moddable: (r != '1' && r != '12'),
+            value: value,
+            modified: value,
+            fail: (value === 1),
+            crit: (value === 12),
+            moddable: (value != 1 && value != 12),
             legendmax: legendmax,
             legendmod: 0,
             focusmax: focusmax,
             focusmod: 0
         })
     });
-
-    let compiledRollData = {
-        type: rolldata.type,
-        successNumber: rolldata.successNumber,
-        statName: rolldata.statName,
-        skillName: rolldata.skillName,
-        specName: rolldata.specName
-    }
     
     const modifyTemplate = await renderTemplate("systems/coyote-and-crow/templates/dialog/dice-roll.html", data)
     new Dialog({
@@ -51,7 +40,7 @@ export default async function modifyRoll(roll, actorid) {
         buttons: {
             button1: {
                 label: "Modify Roll",
-                callback: (html) => {_modifyRoll(html, actorid, compiledRollData)},
+                callback: (html) => {_modifyRoll(html, actorid, rolldata, roll)},
                 icon: `<i class="fas fa-check"></i>`
             }
         },
@@ -66,7 +55,7 @@ export default async function modifyRoll(roll, actorid) {
                     data.modified = Number(data.value) + Number(data.legendmod) + Number(data.focusmod);
                     let newdie = Math.min(12, data.modified)
                     e.path[2].lastElementChild.children[0].src = `systems/coyote-and-crow/ui/dice/chat/w${newdie}.png`;
-                    let footer = e.path[4].lastElementChild;
+                    const footer = e.path[4].lastElementChild;
                     let body = e.path[3];
                     let legendused = 0;
                     let spendmind = 0;
@@ -95,41 +84,56 @@ export default async function modifyRoll(roll, actorid) {
 }
 
 
-function _modifyRoll(html, actorid, compiledRollData) {
+function _modifyRoll(html, actorid, compiledRollData, originalRoll) {
     console.log("Modify the roll!");
-    let actor = game.actors.get(actorid);
-    let curmind = actor.data.data.attributes.mind.currentValue;
-    let spendmind = Number(html.find('span[name="usedMind"]')[0].innerHTML);
+    const actor = game.actors.get(actorid);
+    const curmind = actor.data.data.attributes.mind.currentValue;
+    const spendmind = Number(html.find('span[name="usedMind"]')[0].innerHTML);
     actor.update({"data.attributes.mind.currentValue": curmind - spendmind})
 
-    let rows = html.find("div.mod-roll-row");
-    let results = [];
+
+    const baseRoll = originalRoll.reroll({async: false})
     let crits = 0;
-    for (let i = 0; i < rows.length; i++) {
-        results.push(Number(rows[i].dataset.modified))
-        if (rows[i].dataset.modified == '12') {
+    const rows = html.find("div.mod-roll-row");
+    baseRoll.terms[0]._total = 0;
+    // baseRoll.terms[0].values = JSON.parse(JSON.stringify(originalRoll.terms[0].values));
+    baseRoll.terms[0].results.forEach(function(v,i){
+        let modResult = Number(rows[i].dataset.modified)
+        baseRoll.terms[0]._total += modResult;
+        baseRoll.terms[0].results[i] = {
+            result: modResult,
+            active: true
+        }
+        if (modResult == 12) {
             crits+=1
         }
-    };
+    })
 
+    compiledRollData.critical = true;
+    compiledRollData.totalDice = crits;
+
+    getRoll(compiledRollData).then(function(critRoll){
+        console.log(baseRoll)
+        console.log(critRoll)
     
-
-
-    rollResults = new Roll(`${crits}dbx12`)
-    rollResults.evaluate({async: true})
-    rollResults.type = "Modded"
-
-    let rolledCard = rollCard(rollResults, compiledRollData);
+        const rollResults = PoolTerm.fromRolls([baseRoll, critRoll])
     
-    let chatOptions = {
-        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-        roll: rollResults,
-        flavor: rolledCard.title,
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        rollMode: game.settings.get("core", "rollMode"),
-        content: rolledCard.dice,
-        sound: CONFIG.sounds.dice
-    };
+        rollResults.type = "Modded";
+        rollResults.data = compiledRollData;
 
-    ChatMessage.create(chatOptions);
+        const rolledCard = rollCard(rollResults);
+
+        // rollResults.data = {};
+        
+        let chatOptions = {
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+            roll: baseRoll,
+            flavor: rolledCard.title,
+            speaker: ChatMessage.getSpeaker({ actor: actor }),
+            rollMode: game.settings.get("core", "rollMode"),
+            content: rolledCard.dice,
+            sound: CONFIG.sounds.dice
+        };
+        ChatMessage.create(chatOptions);
+    })
 }

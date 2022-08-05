@@ -35,42 +35,11 @@ export default async function getRoll(compiledRollData) {
       roll.type = "Base";
     }
     else { // critical dice
-      let criticalRoll = await new Roll("(@totalDice)dbx12", preppedRollData).evaluate({ async: true });
-
+      
+      let criticalRoll = new Roll("(@totalDice)dbx12", preppedRollData).evaluate({ async: false });
       roll = criticalRoll;
       roll.type = "Critical";
     }
 
     return roll;
 }
-
-//  Make function to check for 12s.
-
-  // let count12 = 0;
-  // let explodingRoll;
-  // results.find(v => {
-  //   if (v.result === 12) {
-  //     count12++;
-  //   }
-  // })
-
-  // if (count12 > 0) {
-  //   explodingRoll = await new Roll(`${count12}dbx12`).evaluate({ async: true })
-  //   //console.log(explodingRoll)
-
-  //   let explodingResults = explodingRoll.terms[0].results;
-  //   //console.log(explodingResults)
-
-  //   //explodingResults.sort((a, b) => (a.result - b.result));
-  //   //console.log(explodingResults)
-
-  //   explodingRoll.terms[0].results = explodingResults;
-  //   //console.log(explodingRoll.terms[0])
-
-  //   const rolls = [baseRoll, explodingRoll];
-  //   const pool = PoolTerm.fromRolls(rolls);
-  //   roll = Roll.fromTerms([pool])
-  //   roll.type = "PoolTerm";
-  // } else {
-  //   roll = baseRoll;
-  // }

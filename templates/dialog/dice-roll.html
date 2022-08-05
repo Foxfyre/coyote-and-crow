@@ -4,7 +4,7 @@
       <div class="dieCol">
         <h3>Die</h3>
       </div>
-      {{#if rolldata.legendary.max}}
+      {{#if legendary.max}}
       <div class="legCol">
         <h3>Legendary</h3>
       </div>
@@ -22,7 +22,7 @@
         <div class="dieCol">
           <img class="die start" src="systems/coyote-and-crow/ui/dice/chat/w{{this.value}}.png" />
         </div>
-        {{#if @root.rolldata.legendary.max}}
+        {{#if @root.legendary.max}}
         <div class="legCol">
           {{#if this.moddable}} 
             <input value=0 type="number" step=1 min=0 max={{legendmax}} name="legendmod"/>
@@ -41,18 +41,18 @@
     {{/each}}
     </div>
     <div class="mod-roll-footer">
-      {{#if rolldata.legendary.max}}
+      {{#if legendary.max}}
       <div class="legendary remain">
         <p>
           <strong>Legendary Remaining:</strong> 
-          <span name="remLegend" data-legendmax="{{rolldata.legendary.max}}">{{rolldata.legendary.remaining}}</span>
+          <span name="remLegend" data-legendmax="{{legendary.max}}">{{legendary.remaining}}</span>
         </p>
       </div>
       {{/if}}
       <div class="focus remain">
         <p>
           <strong>Mind Spent:</strong> 
-          <span name="usedMind">{{rolldata.mind.used}}</span>
+          <span name="usedMind">{{mind.used}}</span>
         </p>
       </div>
     </div>

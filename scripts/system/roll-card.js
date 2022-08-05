@@ -19,7 +19,8 @@
 ***/
 
 export default function rollCard(rollResults) {
-    const compiledRollData = rollResults.data
+    let compiledRollData = rollResults.data
+    
     let diceSection = '';
     let buttons = '';
     console.log("Roll Results")
@@ -37,9 +38,10 @@ export default function rollCard(rollResults) {
             compiledRollData.type === "specialization" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.specName.toUpperCase()}</b><br>` : `BOOPs!`;
 
 
-    const results = rollResults.terms[0].results;
+    let results = []
     switch(rollResults.type) {
         case "Base":
+            results = rollResults.terms[0].results;
             let rollMods = `Spend Focus (${compiledRollData.mind})`
             if (compiledRollData.legendary > 0) {
                 rollMods = `Use Legendary Status (${compiledRollData.legendary}) or<br>` + rollMods
@@ -65,18 +67,22 @@ export default function rollCard(rollResults) {
             }
             break;
         case "Modded":
-
-            // for (let d = 0; d < rollResults.terms[0].rolls[0].terms[0].results.length; d++) {
-            //     diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${rollResults.terms[0].rolls[0].terms[0].results[d].result}.png" />`
-            // }
-            // for (let e = 0; e < rollResults.terms[0].rolls[1].terms[0].results.length; e++) {
-            //     diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${rollResults.terms[0].rolls[1].terms[0].results[e].result}.png" />`
-            // }
+            diceSection+=`<div class="rolls">`
+            for (let d = 0; d < rollResults.rolls[0].terms[0].results.length; d++) {
+                diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${rollResults.rolls[0].terms[0].results[d].result}.png" />`
+            }
+            for (let e = 0; e < rollResults.rolls[1].terms[0].results.length; e++) {
+                diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${rollResults.rolls[1].terms[0].results[e].result}.png" />`
+            }
+            diceSection+=`</div>`
             break;
         case "Critical":
+            results = rollResults.terms[0].results;
+            diceSection+=`<div class="rolls">`
             for (let d = 0; d < results.length; d++) {
                 diceSection += `<img class="die" src="systems/coyote-and-crow/ui/dice/chat/c${results[d].result}.png" />`
             }
+            diceSection+=`</div>`
             break;
     }
 

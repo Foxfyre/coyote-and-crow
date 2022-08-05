@@ -1243,8 +1243,7 @@ ul.items {
 
 div.rolls {
     display: flex; 
-    flex-direction: row; 
-    justify-content: space-around; 
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
