@@ -5,6 +5,7 @@
   "version": "0.1.8",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
+  "maximumCoreVersion": "9",
   "author": "Charlotte Hamilton",
   "authors": [
     {
