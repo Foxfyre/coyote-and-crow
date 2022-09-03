@@ -526,6 +526,13 @@
                     "snMod": 0,
                     "name": "Will",
                     "label": "STAT.Will"
+                },
+                "wealth": {
+                    "value": 4,
+                    "modified": 0,
+                    "snMod": 0,
+                    "name": "Wealth",
+                    "label": "STAT.Wealth"
                 }
             },
             "attributes": {
@@ -920,6 +927,11 @@
                             "value": 0,
                             "statName": "STAT.will",
                             "name": "will"
+                        },
+                        "wealth": {
+                            "value": 0,
+                            "statName": "STAT.wealth",
+                            "name": "wealth"
                         },
                         "body": {
                             "value": 0,
