@@ -13,57 +13,78 @@
 *       addDice: Number
 *       totalDice: Number
 *       successNumber: Number
-*       statSuccessNumber: Number
 *       physicalDefense: Number
 *       physicalDefenseDetail: String
 *   }
 ***/
 
-export default function rollCard(rollResults, compiledRollData) {
+export default function rollCard(rollResults) {
+    let compiledRollData = rollResults.data
+    
     let diceSection = '';
-    //console.log(rollResults);
+    let buttons = '';
+    console.log("Roll Results")
+    console.log(rollResults);
+    console.log("Compiled Roll Data")
     console.log(compiledRollData);
-    let type = compiledRollData.type;
-
-
-
-
-    let sn = (type === "skill" || type === "specialization") ? compiledRollData.successNumber : type === "stat" ? compiledRollData.statSuccessNumber : 0;
 
     /*** 
     * Flavour text (Subject Line)
     * ***/
-    let sNumber = (type === "stat" && sn !== 0) ? `<b>Modifier:</b> Apply ${compiledRollData.statSuccessNumber} to the Success Number` :
-        (type === "skill" && sn !== 0) ? `<b>Modifier:</b> Apply ${compiledRollData.successNumber} to the Success Number` :
-            (type === "specialization" && sn !== 0) ? `<b>Modifier:</b> Apply ${compiledRollData.successNumber} to the Success Number` : ``;
+    let sNumber = (compiledRollData.successNumber !== 0) ? `<b>Modifier:</b> Apply ${compiledRollData.successNumber} to the Success Number` : ``;
 
-    const flavorText = type === "stat" ? `Rolling <b>${compiledRollData.statName.toUpperCase()}</b><br>` :
-        type === "skill" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.skillName.toUpperCase()}</b><br>` :
-            type === "specialization" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.specName.toUpperCase()}</b><br>` : `BOOPs!`;
+    const flavorText = compiledRollData.type === "stat" ? `Rolling <b>${compiledRollData.statName.toUpperCase()}</b><br>` :
+        compiledRollData.type === "skill" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.skillName.toUpperCase()}</b><br>` :
+            compiledRollData.type === "specialization" ? `Rolling <b>${compiledRollData.statName.toUpperCase()} & ${compiledRollData.specName.toUpperCase()}</b><br>` : `BOOPs!`;
 
-    if (rollResults.type == "PoolTerm") {
-        for (let d = 0; d < rollResults.terms[0].rolls[0].terms[0].results.length; d++) {
-            diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${rollResults.terms[0].rolls[0].terms[0].results[d].result}.png" />`
-        }
-        for (let e = 0; e < rollResults.terms[0].rolls[1].terms[0].results.length; e++) {
-            diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${rollResults.terms[0].rolls[1].terms[0].results[e].result}.png" />`
-        }
-    } else {
-        let results = rollResults.terms[0].results;
-        for (let d = 0; d < results.length; d++) {
-            diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${results[d].result}.png" />`
-        }
+
+    let results = []
+    switch(rollResults.type) {
+        case "Base":
+            results = rollResults.terms[0].results;
+            let rollMods = `Spend Focus (${compiledRollData.mind})`
+            if (compiledRollData.legendary > 0) {
+                rollMods = `Use Legendary Status (${compiledRollData.legendary}) or<br>` + rollMods
+            }
+            diceSection+=`<div class="rolls">`
+            // Object.entries(compiledRollData).forEach(([key, value]) => {
+            //     diceSection+=` data-${key}="${value}"`
+            // })
+            // diceSection+=">"
+            for (let d = 0; d < results.length; d++) {
+                diceSection += `<img class="die" src="systems/coyote-and-crow/ui/dice/chat/w${results[d].result}.png" />`
+            }
+            diceSection+=`</div>`
+            buttons +=`<br><button class="modRoll">${rollMods}</button>` // 
+            let count12 = 0;
+            results.find(v => {
+                if (v.result === 12) {
+                    count12++;
+                }
+            })
+            if (count12){
+                buttons += `<br><button class="critRoll"" data-crits=${count12}>Roll Crits (${count12})</button>`;
+            }
+            break;
+        case "Modded":
+            diceSection+=`<div class="rolls">`
+            for (let d = 0; d < rollResults.rolls[0].terms[0].results.length; d++) {
+                diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/w${rollResults.rolls[0].terms[0].results[d].result}.png" />`
+            }
+            for (let e = 0; e < rollResults.rolls[1].terms[0].results.length; e++) {
+                diceSection += `<img height="50px" width="50px" src="systems/coyote-and-crow/ui/dice/chat/c${rollResults.rolls[1].terms[0].results[e].result}.png" />`
+            }
+            diceSection+=`</div>`
+            break;
+        case "Critical":
+            results = rollResults.terms[0].results;
+            diceSection+=`<div class="rolls">`
+            for (let d = 0; d < results.length; d++) {
+                diceSection += `<img class="die" src="systems/coyote-and-crow/ui/dice/chat/c${results[d].result}.png" />`
+            }
+            diceSection+=`</div>`
+            break;
     }
-    let modifiedResults;
-
-    /*if (compiledRollData.legendary > 0 || compiledRollData.mind > 0) {
-        modifiedResults =  _modifyRoll(compiledRollData, rollResults, diceSection);
-    }*/
- 
-    let modifyButton;
-
-    let legendary = compiledRollData.legendary > 0 ? true : false;
-    let mind = compiledRollData.mind > 0 ? true : false;
 
     let rollTitle = '';
 
@@ -71,66 +92,11 @@ export default function rollCard(rollResults, compiledRollData) {
 
     let rollCardInfo = {
         title: rollTitle,
-        dice: `<div style="display: flex; flex-direction: row; justify-content: space-around; flex-wrap: wrap;">
-            ${diceSection}
-            </div>
-            </br>`
+        dice: `${diceSection}
+            ${buttons}`
     }
 
     //console.log(diceSection)
 
     return rollCardInfo;
 }
-
-async function _modifyRoll(rollData, rollResults, diceSection) {
-
-    console.log(rollData)
-    console.log(rollResults)
-
-    const dialogTemplate = await renderTemplate("/systems/coyote-and-crow/templates/dialog/dice-roll.html", { data: rollData, results: rollResults, diceSection: diceSection });
-
-    return new Promise(resolve => {
-        const dialogContent = {
-            title: game.i18n.localize("COYOTE.DIALOG.ModifyRoll"),
-            content: dialogTemplate,
-            buttons: {
-                roll: {
-                    label: game.i18n.localize("COYOTE.BUTTON.Roll"),
-                    callback: html => {
-                        resolve(console.log("RETURN MODIFIED ROLL"))
-                    }
-                }
-            },
-            default: "Roll"
-        }
-
-        new Dialog(dialogContent, { width: 600, height: 400 }).render(true)
-    })
-}
-//return modifyDialog;
-
-
-/*
-    console.log(roll)
-
-    const dialogTemplate = await renderTemplate("/systems/coyote-and-crow/templates/dialog/dice-roll.html", { data: roll });
-
-    let modifyDialog = new Promise((resolve) => {
-        renderTemplate("/systems/coyote-and-crow/templates/dialog/dice-roll.html", { data: roll }).then(dialog => {
-            return new Dialog({ roll }, {
-                title: game.i18n.localize("COYOTE.DIALOG.ModifyRoll"),
-                content: dialog,
-                render: data,
-                buttons: {
-                    roll: {
-                        label: game.i18n.localize("COYOTE.BUTTON.Roll"),
-                        callback: html => {
-                            resolve(console.log("RETURN MODIFIED ROLL"))
-                        }
-                    }
-                },
-                default: "Roll"
-            }, { width: 600, height: 400 }).render(true)
-        })
-    })
-    return modifyDialog;*/

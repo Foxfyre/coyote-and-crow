@@ -209,7 +209,7 @@ export class cncActorSheet extends ActorSheet {
         let rollData = {};
 
         rollData = {
-            type: event.currentTarget.closest("[data-rolltype]").dataset.rolltype,
+            type: rollType,
             specName: rollType === "specialization" ? event.currentTarget.closest("[data-rollname]").dataset.rollname : "",
             specRank: rollType === "specialization" ? Number(event.currentTarget.closest("[data-specrank]").dataset.specrank) : 0,
             skillName: (rollType === "skill" || rollType === "specialization") ? event.currentTarget.closest("[data-skillname]").dataset.skillname : "",
@@ -221,7 +221,6 @@ export class cncActorSheet extends ActorSheet {
             addDice: rollType === "skill" ? Number(event.currentTarget.closest("[data-adddice]").dataset.adddice) : 0,
             totalDice: 0,
             successNumber: 0,
-            statSuccessNumber: 0,
             physicalDefense: 0,
             physicalDefenseDetail: ""
         }
@@ -234,15 +233,15 @@ export class cncActorSheet extends ActorSheet {
         }
 
         // Send data and roll info to gather all information required for rolls. 
-        let compiledRollData = buildRoll(data, rollData);
+        const compiledRollData = buildRoll(data, rollData);
 
         //console.log(compiledRollData)
 
-        let rollResults = await getRoll(compiledRollData)
+        const rollResults = await getRoll(compiledRollData)
 
         //console.log(rollResults)
 
-        let rolledCard = rollCard(rollResults, compiledRollData);
+        const rolledCard = rollCard(rollResults);
 
         let chatOptions = {
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
@@ -251,9 +250,11 @@ export class cncActorSheet extends ActorSheet {
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
             rollMode: game.settings.get("core", "rollMode"),
             content: rolledCard.dice,
-            sound: CONFIG.sounds.dice
+            sound: CONFIG.sounds.dice,
+            flags: {"coyote-and-crow": compiledRollData}
         };
 
         ChatMessage.create(chatOptions);
+        // msg._roll.data = compiledRollData
     }
 }

@@ -9,6 +9,9 @@ import { initializeHandlebars } from "./scripts/system/handlebars.js";
 
 import { CoyoteDiceBlack } from "./module/cnc-dice-black.js";
 import { CoyoteDiceWhite } from "./module/cnc-dice-white.js";
+import getRoll from "./scripts/system/get-roll.js";
+import rollCard from "./scripts/system/roll-card.js";
+import modifyRoll from "./scripts/system/modify-roll.js";
 
 Hooks.once("init", async function () {
   console.log(`Initializing A Template`);
@@ -129,6 +132,60 @@ Hooks.once("ready", async () => {
         }
       }
     }, { width: 600 }).render(true)
+  }
+})
+
+Hooks.on("renderChatMessage", (message, html, data) => {
+  // console.log("Here's the Message")
+  // console.log(message);
+  // console.log("Here's the raw html")
+  // console.log(html);
+  // console.log("Here's the data");
+  // console.log(data);
+  if (!message.isAuthor) {
+    html.find("button").remove();
+  }
+  if (message.isRoll){
+    if (Object.keys(message.data.flags).length > 0) {
+      if (Object.keys(message.data.flags["coyote-and-crow"]).length > 0) {
+        const actor = game.actors.get(data.message.speaker.actor);
+        const rolldata = message.data.flags["coyote-and-crow"];
+        console.log(rolldata);
+        if (html.find("button.modRoll")[0]){
+          html.find("button.modRoll")[0].addEventListener("click", ev => {
+            console.log("Modify Roll!")
+            modifyRoll(rolldata, message._roll, data.message.speaker.actor)
+          })
+        }
+        if (html.find("button.critRoll")[0]){
+          console.log("The crit roll button was found")
+          html.find("button.critRoll")[0].addEventListener("click", ev => {
+            console.log("Crit Roll!")
+            rolldata.totalDice = html.find("button.critRoll")[0].dataset.crits
+            rolldata.critical = true;
+  
+            // We've got some kind of issue here
+            getRoll(rolldata).then(function(rollResults) {
+              const rolledCard = rollCard(rollResults);
+              // console.log(rolledCard)
+    
+              let chatOptions = {
+                type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+                roll: rollResults,
+                flavor: rolledCard.title,
+                speaker: ChatMessage.getSpeaker({ actor: actor }),
+                rollMode: game.settings.get("core", "rollMode"),
+                content: rolledCard.dice,
+                sound: CONFIG.sounds.dice,
+                flags: {"coyote-and-crow": rolldata}
+              };
+        
+              ChatMessage.create(chatOptions);
+            })
+          })
+        }
+      }
+    }
   }
 })
 
