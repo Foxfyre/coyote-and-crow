@@ -19,8 +19,10 @@ export class cncActorSheet extends ActorSheet {
 
     // Picks between available/listed templates
     get template() {
-        const path = "systems/coyote-and-crow/templates/sheet";
-        return `${path}/${this.actor.data.type}-sheet.html`;
+        let type = this.actor.type;
+        return `systems/coyote-and-crow/templates/sheet/${type}-sheet.html`;
+        /*const path = "systems/coyote-and-crow/templates/sheet";
+        return `${path}/${this.actor.data.type}-sheet.html`;*/
     }
 
 
@@ -31,39 +33,39 @@ export class cncActorSheet extends ActorSheet {
 
 
     get actorData() {
-        return this.actor.data;
+        return this.actor.system;
     }
-
+    // V10 update - changed actorData.data to actorData.system
     getData() {
         const sheetData = super.getData();
-        const data = {};
-        const actorData = this.actor.data.toObject(false);
+        sheetData.system = sheetData.data.system;
+        //const data = {};
+        
+        const actorData = sheetData.actor;
+        //data.actor = actorData;
+        sheetData.stats = actorData.system.stats;
+        sheetData.skills = actorData.system.skills;
+        sheetData.derived = actorData.system.derived;
+        sheetData.attributes = actorData.system.attributes;
+        sheetData.info = actorData.system.info;
+        sheetData.gifts = sheetData.items.filter(i => i.type === "gift");
+        sheetData.burdens = sheetData.items.filter(i => i.type === "burden");
+        sheetData.effects = actorData.system.effects;
+        sheetData.states = actorData.system.states;
+        sheetData.playerInfo = {} // Can this be deleted?
 
-        data.actor = actorData;
-        data.data = actorData.data;
-        sheetData.stats = actorData.data.stats;
-        sheetData.skills = actorData.data.skills;
-        sheetData.derived = actorData.data.derived;
-        sheetData.attributes = actorData.data.attributes;
-        sheetData.info = actorData.data.info;
-        sheetData.gifts = data.actor.items.filter(i => i.type === "gift");
-        sheetData.burdens = data.actor.items.filter(i => i.type === "burden");
-        sheetData.effects = actorData.data.effects;
-        sheetData.states = actorData.data.states;
-        sheetData.playerInfo = {}
-
-        let stat1 = data.actor.data.info.path.stats.stat1.value;
-        let stat2 = data.actor.data.info.path.stats.stat2.value;
+        let stat1 = sheetData.info.path.stats.stat1.value;
+        let stat2 = sheetData.info.path.stats.stat2.value;
 
         // This block allows for the NPC to have access to all of the abilities.
         if (actorData.type === "npc") {
-            let stat3 = data.actor.data.info.path.stats.stat3.value;
-            let stat4 = data.actor.data.info.path.stats.stat4.value;
-            let stat5 = data.actor.data.info.path.stats.stat5.value;
-            let stat6 = data.actor.data.info.path.stats.stat6.value;
-            let stat7 = data.actor.data.info.path.stats.stat7.value;
-            let stat8 = data.actor.data.info.path.stats.stat8.value;
-            let stat9 = data.actor.data.info.path.stats.stat9.value;
+            let stat3 = sheetData.system.info.path.stats.stat3.value;
+            let stat4 = sheetData.system.info.path.stats.stat4.value;
+            let stat5 = sheetData.system.info.path.stats.stat5.value;
+            let stat6 = sheetData.system.info.path.stats.stat6.value;
+            let stat7 = sheetData.system.info.path.stats.stat7.value;
+            let stat8 = sheetData.system.info.path.stats.stat8.value;
+            let stat9 = sheetData.system.info.path.stats.stat9.value;
             sheetData.abilities = {
                 [`${stat1}`]: "",
                 [`${stat2}`]: "",
@@ -75,29 +77,38 @@ export class cncActorSheet extends ActorSheet {
                 [`${stat8}`]: "",
                 [`${stat9}`]: ""
             }
-            sheetData.abilities[`${stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat1);
-            sheetData.abilities[`${stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat2);
-            sheetData.abilities[`${stat3}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat3);
-            sheetData.abilities[`${stat4}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat4);
-            sheetData.abilities[`${stat5}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat5);
-            sheetData.abilities[`${stat6}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat6);
-            sheetData.abilities[`${stat7}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat7);
-            sheetData.abilities[`${stat8}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat8);
-            sheetData.abilities[`${stat9}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat9);
+            sheetData.abilities[`${stat1}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat1);
+            sheetData.abilities[`${stat2}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat2);
+            sheetData.abilities[`${stat3}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat3);
+            sheetData.abilities[`${stat4}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat4);
+            sheetData.abilities[`${stat5}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat5);
+            sheetData.abilities[`${stat6}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat6);
+            sheetData.abilities[`${stat7}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat7);
+            sheetData.abilities[`${stat8}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat8);
+            sheetData.abilities[`${stat9}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat9);
 
         } else if (actorData.type === "character") {
             sheetData.abilities = {
                 [`${stat1}`]: "",
                 [`${stat2}`]: ""
             }
-            sheetData.abilities[`${stat1}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat1);
-            sheetData.abilities[`${stat2}`] = data.actor.items.filter(i => i.type === "ability" && i.data.relStat === stat2);
+            sheetData.abilities[`${stat1}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat1);
+            sheetData.abilities[`${stat2}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat2);
         }
-
-        sheetData.specialization = data.actor.items.filter(i => i.type === "specialization");
-        this._sortSkills(sheetData);
         console.log(sheetData);
+        sheetData.specialization = sheetData.items.filter(i => i.type === "specialization");
+
+        this._sortSkills(sheetData);
+        sheetData.enrichment = this._enrichBio();
+
         return sheetData;
+    }
+
+    _enrichBio() {
+        let enrichment = {};
+        enrichment['system.bio.notes'] = TextEditor.enrichHTML(this.actor.system.bio.notes, {async: false, relativeTo: this.actor});
+
+        return expandObject(enrichment);
     }
 
     activateListeners(html) {
@@ -116,9 +127,9 @@ export class cncActorSheet extends ActorSheet {
         const li = event.currentTarget.closest(".item");
         const itemId = li.dataset.itemId;
         const item = duplicate(this.actor.getEmbeddedDocument("Item", itemId))
-        let isEquipped = item.data.equipped;
+        let isEquipped = item.system.equipped;
         isEquipped = !isEquipped;
-        item.data.equipped = isEquipped;
+        item.system.equipped = isEquipped;
         return this.actor.updateEmbeddedDocuments("Item", [item]);
     }
 
@@ -145,9 +156,7 @@ export class cncActorSheet extends ActorSheet {
                 data: foundry.utils.deepClone(header.dataset)
             };
         }
-
-        //console.log(itemData)
-        delete itemData.data.type;
+        //delete itemData.system.type;
         return this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: true });
     }
 

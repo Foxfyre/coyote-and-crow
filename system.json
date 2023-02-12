@@ -1,22 +1,19 @@
 {
-  "name": "coyote-and-crow",
+  "id": "coyote-and-crow",
   "title": "Coyote And Crow",
   "description": "The official system for Coyote And Crow",
-  "version": "0.1.8",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9",
-  "maximumCoreVersion": "9",
-  "author": "Charlotte Hamilton",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Foxfyre",
       "email": "foxfyre2204@gmail.com",
-      "discord": "Foxfyre#2204"
+      "discord": "Foxfyre#2204",
+      "flags": {}
     },
     {
       "name": "Coyote And Crow",
-      "website": "https://coyoteandcrow.net",
-      "discord": "https://discord.gg/Fbm8Uevvny"
+      "discord": "https://discord.gg/Fbm8Uevvny",
+      "flags": {}
     }
   ],
   "esmodules": [
@@ -26,19 +23,18 @@
     "styles/cnc.css",
     "styles/fonts.css"
   ],
-  "scripts": [],
-  "packs": [],
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     }
   ],
   "media": [
     {
-      "type": "",
-      "url": ""
+      "loop": false,
+      "flags": {}
     }
   ],
   "socket": true,
@@ -47,7 +43,12 @@
   "primaryTokenAttribute": "attributes.body.currentValue",
   "secondaryTokenAttribute": "attributes.mind.currentValue",
   "url": "https://github.com/Foxfyre/coyote-and-crow",
-  "manifest": "https://raw.githubusercontent.com/Foxfyre/coyote-and-crow/main/system.json",
-  "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/v0.1.8/coyote-and-crow.zip",
-  "license": "LICENSE.txt"
+  "manifest": "https://github.com/Foxfyre/coyote-and-crow/releases/latest/download/system.json",
+  "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/v1.0.0/coyote-and-crow.zip",
+  "license": "LICENSE.txt",
+  "compatibility": {
+    "minimum": "10.291",
+    "verified": "10",
+    "maximum": "10"
+  }
 }

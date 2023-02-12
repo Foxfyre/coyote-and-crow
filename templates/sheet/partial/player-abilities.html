@@ -19,13 +19,13 @@
             
             <li class="ability-list-item item" data-item-id="{{ability._id}}">
                 <div class="ability-list-name">
-                    <span>{{name}}</span>
+                    <span>{{ability.name}}</span>
                 </div>
                 <div class="ability-activation">
-                    <span>{{ability.data.activationName}}</span>
+                    <span>{{ability.system.activationName}}</span>
                 </div>
                 <div class="ability-short-desc">
-                    <span>{{ability.data.shortDesc}}</span>
+                    <span>{{ability.system.shortDesc}}</span>
                 </div>
                 <div class="item-controls flexrow spec-controls">
                     <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i

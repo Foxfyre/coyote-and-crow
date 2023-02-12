@@ -89,7 +89,7 @@ function _modifyRoll(html, actorid, compiledRollData, originalRoll) {
     const actor = game.actors.get(actorid);
     const curmind = actor.data.data.attributes.mind.currentValue;
     const spendmind = Number(html.find('span[name="usedMind"]')[0].innerHTML);
-    actor.update({"data.attributes.mind.currentValue": curmind - spendmind})
+    actor.updateSource({"data.attributes.mind.currentValue": curmind - spendmind})
 
 
     const baseRoll = originalRoll.reroll({async: false})

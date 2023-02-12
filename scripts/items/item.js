@@ -12,14 +12,14 @@ export class cncItem extends Item {
  
     }
 
-    prepareDerivedData() {
-        const itemData = this.data;
+    prepareDerivedData(data) {
+        //const itemData = this.data;
 
 
 
-        if (itemData.type === "ability") {
+        if (this.type === "ability") {
             // get value of activation
-            let activationValue = itemData.data.activate;
+            let activationValue = this.system.activate;
             let activationName;
             //console.log(activationValue);
 
@@ -33,7 +33,7 @@ export class cncItem extends Item {
 
             // write activationName to item data structure
 
-            this.data.data.activationName = activationName;
+            this.system.activationName = activationName;
         }
     }
 }

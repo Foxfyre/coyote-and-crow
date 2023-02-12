@@ -102,18 +102,15 @@ Hooks.once("ready", async () => {
       title: `Welcome to v${game.system.data.version} of Coyote & Crow`,
       content: `
     <h1>Coyote & Crow</h1>
-    <h2>0.1.7 Update</h2>
+    <h2>1.0.0 Update</h2>
 
     <h4>Always update your world files before updating to a new system version of Coyote & Crow. 
     This system is actively in development and may be subject to breaking changes without warning.</h4>
 
     <h3><b>Functionality</b></h3>
     <ul>
-    <li>None this time! </li>
+    <li>The entire Coyote & Crow system has been updated to Foundry V10! </li>
     </ul><br>
-
-    <h3>Bug Fixes</h3>
-    <li>Fixed an issue where tiles weren't showing.</li>
 
 
     <p>If you encounter any bugs, or have feature suggestions, you can join the Trello board and let us know <a href="https://trello.com/invite/b/jpGljTcv/e6c3e37afda0eb61278d7e432956594c/coyote-crow-bug-reporting">HERE</a>.</p>
@@ -140,16 +137,16 @@ Hooks.on("renderChatMessage", (message, html, data) => {
   // console.log(message);
   // console.log("Here's the raw html")
   // console.log(html);
-  // console.log("Here's the data");
-  // console.log(data);
+  //console.log("Here's the data");
+  //console.log(data);
   if (!message.isAuthor) {
     html.find("button").remove();
   }
   if (message.isRoll){
-    if (Object.keys(message.data.flags).length > 0) {
-      if (Object.keys(message.data.flags["coyote-and-crow"]).length > 0) {
+    if (Object.keys(data.message.flags).length > 0) {
+      if (Object.keys(data.message.flags["coyote-and-crow"]).length > 0) {
         const actor = game.actors.get(data.message.speaker.actor);
-        const rolldata = message.data.flags["coyote-and-crow"];
+        const rolldata = data.message.flags["coyote-and-crow"];
         console.log(rolldata);
         if (html.find("button.modRoll")[0]){
           html.find("button.modRoll")[0].addEventListener("click", ev => {
@@ -189,14 +186,14 @@ Hooks.on("renderChatMessage", (message, html, data) => {
   }
 })
 
-/*Hooks.on("renderDialog", (dialog, html) => {
+Hooks.on("renderDialog", (dialog, html) => {
   Array.from(html.find("#document-create option")).forEach(i => {
-    console.log(i)
-    if (i.value == "weapon" || i.value == "armor") {
+    //console.log(i)
+    if (i.value == "burden") {
       i.remove()
     }
   })
-})*/
+})
 
 /*Hooks.on("canvasReady", () => {
   console.log(canvas.scene.data.drawings.document.img)

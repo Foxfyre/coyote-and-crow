@@ -6,20 +6,20 @@
     <div class="gift-row">
         <div class="gift-input">
             <span>Name</span>
-            <input class="gift-category" name="name" type="text" value="{{name}}" />
+            <input class="gift-category" name="name" type="text" value="{{item.name}}" />
         </div>
         <div class="gift-input">
             <span>Category</span>
-            <input class="gift-category" name="data.category" type="text" value="{{data.category}}" />
+            <input class="gift-category" name="system.category" type="text" value="{{system.category}}" />
         </div>
         <div class="gift-input">
             <span>Level</span>
-            <input class="gift-level" name="data.level" type="text" value="{{data.level}}" />
+            <input class="gift-level" name="system.level" type="text" value="{{system.level}}" />
         </div>
     </div>
     <div class="gift-editor">
         <span>Description</span>
-        {{editor content=data.description target="data.description" button=true owner=owner editable=true}}
+        {{editor enrichment.system.description target="system.description" button=true owner=owner editable=true}}
     </div>
 
     <!--Modifications-->
@@ -34,7 +34,7 @@
                 </div>
                 <div class="sn-mod">
                     <label name="" title='{{localize "DSTAT.PD"}}'>+ / - PD </label>
-                    <input type="number" name="data.modifier.pd.value" value="{{data.modifier.pd.value}}" />
+                    <input type="number" name="system.modifier.pd.value" value="{{system.modifier.pd.value}}" />
                 </div>
             </div>
             <div class="item-section">
@@ -42,8 +42,8 @@
                     <span>Initiative</span>
                 </div>
                 <div class="gb-mod">
-                    <label name="data.modifier.init.value" title='{{localize "ITEM.DicePool"}}'>+ / - </label>
-                    <input type="number" name="data.modifier.init.value" value="{{data.modifier.init.value}}" />
+                    <label name="system.modifier.init.value" title='{{localize "ITEM.DicePool"}}'>+ / - </label>
+                    <input type="number" name="system.modifier.init.value" value="{{system.modifier.init.value}}" />
                 </div>
             </div>
 
@@ -53,57 +53,57 @@
         </div>
         <div class="item-mods">
             <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.agility.statName}}">AGI
+                <div class="item-stat-mod-label" title="{{localize system.modifier.stat.agility.statName}}">AGI
                 </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.agility.value"
-                    value="{{data.modifier.stat.agility.value}}" />
+                <input class="item-stat-mod-value" type="number" name="system.modifier.stat.agility.value"
+                    value="{{system.modifier.stat.agility.value}}" />
             </div>
             <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.charisma.statName}}">CHA
+                <div class="item-stat-mod-label" title="{{localize system.modifier.stat.charisma.statName}}">CHA
                 </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.charisma.value"
-                    value="{{data.modifier.stat.charisma.value}}" />
+                <input class="item-stat-mod-value" type="number" name="system.modifier.stat.charisma.value"
+                    value="{{system.modifier.stat.charisma.value}}" />
             </div>
             <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.endurance.statName}}">END
+                <div class="item-stat-mod-label" title="{{localize system.modifier.stat.endurance.statName}}">END
                 </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.endurance.value"
-                    value="{{data.modifier.stat.endurance.value}}" />
+                <input class="item-stat-mod-value" type="number" name="system.modifier.stat.endurance.value"
+                    value="{{system.modifier.stat.endurance.value}}" />
             </div>
             <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.intelligence.statName}}">
+                <div class="item-stat-mod-label" title="{{localize system.modifier.stat.intelligence.statName}}">
                     INT</div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.intelligence.value"
-                    value="{{data.modifier.stat.intelligence.value}}" />
+                <input class="item-stat-mod-value" type="number" name="system.modifier.stat.intelligence.value"
+                    value="{{system.modifier.stat.intelligence.value}}" />
             </div>
             <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.perception.statName}}">PER
+                <div class="item-stat-mod-label" title="{{localize system.modifier.stat.perception.statName}}">PER
                 </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.perception.value"
-                    value="{{data.modifier.stat.perception.value}}" />
+                <input class="item-stat-mod-value" type="number" name="system.modifier.stat.perception.value"
+                    value="{{system.modifier.stat.perception.value}}" />
             </div>
             <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.spirit.statName}}">SPI
+                <div class="item-stat-mod-label" title="{{localize system.modifier.stat.spirit.statName}}">SPI
                 </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.spirit.value"
-                    value="{{data.modifier.stat.spirit.value}}" />
+                <input class="item-stat-mod-value" type="number" name="system.modifier.stat.spirit.value"
+                    value="{{system.modifier.stat.spirit.value}}" />
             </div>
             <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.strength.statName}}">STR
+                <div class="item-stat-mod-label" title="{{localize system.modifier.stat.strength.statName}}">STR
                 </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.strength.value"
-                    value="{{data.modifier.stat.strength.value}}" />
+                <input class="item-stat-mod-value" type="number" name="system.modifier.stat.strength.value"
+                    value="{{system.modifier.stat.strength.value}}" />
             </div>
             <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.wisdom.statName}}">WIS
+                <div class="item-stat-mod-label" title="{{localize system.modifier.stat.wisdom.statName}}">WIS
                 </div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.wisdom.value"
-                    value="{{data.modifier.stat.wisdom.value}}" />
+                <input class="item-stat-mod-value" type="number" name="system.modifier.stat.wisdom.value"
+                    value="{{system.modifier.stat.wisdom.value}}" />
             </div>
             <div class="item-stat-mod">
-                <div class="item-stat-mod-label" title="{{localize data.modifier.stat.will.statName}}">WLL</div>
-                <input class="item-stat-mod-value" type="number" name="data.modifier.stat.will.value"
-                    value="{{data.modifier.stat.will.value}}" />
+                <div class="item-stat-mod-label" title="{{localize system.modifier.stat.will.statName}}">WLL</div>
+                <input class="item-stat-mod-value" type="number" name="system.modifier.stat.will.value"
+                    value="{{system.modifier.stat.will.value}}" />
             </div>
         </div>
     </div>
@@ -114,9 +114,9 @@
                 <span>Success Number</span>
             </div>
             <div class="pd-mod">
-                <label name="data.modifier.sn.value">+ / - SN </label>
-                <select name="data.modifier.sn.value" value="{{data.modifier.sn.value}}">
-                    {{#select data.modifier.sn.value}}
+                <label name="system.modifier.sn.value">+ / - SN </label>
+                <select name="system.modifier.sn.value" value="{{system.modifier.sn.value}}">
+                    {{#select system.modifier.sn.value}}
                     <option value="-4">-4</option>
                     <option value="-3">-3</option>
                     <option value="-2">-2</option>
@@ -128,8 +128,8 @@
                     <option value="4">+4</option>
                     {{/select}}
                 </select>
-                <select class="pd-stat" name="data.modifier.sn.skill" value="{{data.modifier.sn.skill}}">
-                    {{#select data.modifier.sn.skill}}
+                <select class="pd-stat" name="system.modifier.sn.skill" value="{{system.modifier.sn.skill}}">
+                    {{#select system.modifier.sn.skill}}
                     <option value="">None</option>
                     <option value="Art">Art</option>
                     <option value="Athletics">Athletics</option>
@@ -163,9 +163,9 @@
                 </select>
             </div>
             <div class="pd-mod">
-                <label name="data.modifier.sn1.value">+ / - SN </label>
-                <select name="data.modifier.sn1.value" value="{{data.modifier.sn1.value}}">
-                    {{#select data.modifier.sn1.value}}
+                <label name="system.modifier.sn1.value">+ / - SN </label>
+                <select name="system.modifier.sn1.value" value="{{system.modifier.sn1.value}}">
+                    {{#select system.modifier.sn1.value}}
                     <option value="-4">-4</option>
                     <option value="-3">-3</option>
                     <option value="-2">-2</option>
@@ -177,8 +177,8 @@
                     <option value="4">+4</option>
                     {{/select}}
                 </select>
-                <select class="pd-stat" name="data.modifier.sn1.skill" value="{{data.modifier.sn1.skill}}">
-                    {{#select data.modifier.sn1.skill}}
+                <select class="pd-stat" name="system.modifier.sn1.skill" value="{{system.modifier.sn1.skill}}">
+                    {{#select system.modifier.sn1.skill}}
                     <option value="">None</option>
                     <option value="Art">Art</option>
                     <option value="Athletics">Athletics</option>
@@ -212,9 +212,9 @@
                 </select>
             </div>
             <div class="pd-mod">
-                <label name="data.modifier.sn2.value">+ / - SN </label>
-                <select name="data.modifier.sn2.value" value="{{data.modifier.sn2.value}}">
-                    {{#select data.modifier.sn2.value}}
+                <label name="system.modifier.sn2.value">+ / - SN </label>
+                <select name="system.modifier.sn2.value" value="{{system.modifier.sn2.value}}">
+                    {{#select system.modifier.sn2.value}}
                     <option value="-4">-4</option>
                     <option value="-3">-3</option>
                     <option value="-2">-2</option>
@@ -226,8 +226,8 @@
                     <option value="4">+4</option>
                     {{/select}}
                 </select>
-                <select class="pd-stat" name="data.modifier.sn2.skill" value="{{data.modifier.sn2.skill}}">
-                    {{#select data.modifier.sn2.skill}}
+                <select class="pd-stat" name="system.modifier.sn2.skill" value="{{system.modifier.sn2.skill}}">
+                    {{#select system.modifier.sn2.skill}}
                     <option value="">None</option>
                     <option value="Art">Art</option>
                     <option value="Athletics">Athletics</option>

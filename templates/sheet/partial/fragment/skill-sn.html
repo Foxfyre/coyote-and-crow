@@ -2,9 +2,9 @@
     <span>Skill Success Number</span>
 </div>
 <div class="pd-mod">
-    <label name="data.modifier.sn.value">+ / - SN </label>
-    <select name="data.modifier.sn.value" value="{{data.modifier.sn.value}}">
-        {{#select data.modifier.sn.value}}
+    <label name="system.modifier.sn.value">+ / - SN </label>
+    <select name="system.modifier.sn.value" value="{{system.modifier.sn.value}}">
+        {{#select system.modifier.sn.value}}
         <option value="-4">-4</option>
         <option value="-3">-3</option>
         <option value="-2">-2</option>
@@ -16,8 +16,8 @@
         <option value="4">+4</option>
         {{/select}}
     </select>
-    <select class="pd-stat" name="data.modifier.sn.skill" value="{{data.modifier.sn.skill}}">
-        {{#select data.modifier.sn.skill}}
+    <select class="pd-stat" name="system.modifier.sn.skill" value="{{system.modifier.sn.skill}}">
+        {{#select system.modifier.sn.skill}}
         <option value="">None</option>
         <option value="Art">Art</option>
         <option value="Athletics">Athletics</option>
@@ -50,11 +50,11 @@
         {{/select}}
     </select>
 </div>
-{{#ifCond data.modifier.sn.value '!=' 0}}
+{{#ifCond system.modifier.sn.value '!=' 0}}
 <div class="pd-mod">
-    <label name="data.modifier.sn1.value">+ / - SN </label>
-    <select name="data.modifier.sn1.value" value="{{data.modifier.sn1.value}}">
-        {{#select data.modifier.sn1.value}}
+    <label name="system.modifier.sn1.value">+ / - SN </label>
+    <select name="system.modifier.sn1.value" value="{{system.modifier.sn1.value}}">
+        {{#select system.modifier.sn1.value}}
         <option value="-4">-4</option>
         <option value="-3">-3</option>
         <option value="-2">-2</option>
@@ -66,8 +66,8 @@
         <option value="4">+4</option>
         {{/select}}
     </select>
-    <select class="pd-stat" name="data.modifier.sn1.skill" value="{{data.modifier.sn1.skill}}">
-        {{#select data.modifier.sn1.skill}}
+    <select class="pd-stat" name="system.modifier.sn1.skill" value="{{system.modifier.sn1.skill}}">
+        {{#select system.modifier.sn1.skill}}
         <option value="">None</option>
         <option value="Art">Art</option>
         <option value="Athletics">Athletics</option>
@@ -101,11 +101,11 @@
     </select>
 </div>
 {{/ifCond}}
-{{#ifCond data.modifier.sn1.value '!=' 0}}
+{{#ifCond system.modifier.sn1.value '!=' 0}}
 <div class="pd-mod">
-    <label name="data.modifier.sn2.value">+ / - SN </label>
-    <select name="data.modifier.sn2.value" value="{{data.modifier.sn2.value}}">
-        {{#select data.modifier.sn2.value}}
+    <label name="system.modifier.sn2.value">+ / - SN </label>
+    <select name="system.modifier.sn2.value" value="{{system.modifier.sn2.value}}">
+        {{#select system.modifier.sn2.value}}
         <option value="-4">-4</option>
         <option value="-3">-3</option>
         <option value="-2">-2</option>
@@ -117,8 +117,8 @@
         <option value="4">+4</option>
         {{/select}}
     </select>
-    <select class="pd-stat" name="data.modifier.sn2.skill" value="{{data.modifier.sn2.skill}}">
-        {{#select data.modifier.sn2.skill}}
+    <select class="pd-stat" name="system.modifier.sn2.skill" value="{{system.modifier.sn2.skill}}">
+        {{#select system.modifier.sn2.skill}}
         <option value="">None</option>
         <option value="Art">Art</option>
         <option value="Athletics">Athletics</option>

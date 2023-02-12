@@ -4,10 +4,10 @@
     </div>
     <div class="belonging-block">
         <div>
-            <label class="wealth-rank rollable" for="data.stats.wealth.value" data-rolltype="stat" 
-                data-rollname="wealth" data-statrank="{{data.data.stats.wealth.modified}}">Wealth Rank:</label>
-            <input class="wealth-rank" class="number-input" name="data.stats.wealth.value" 
-                type="number" value="{{data.data.stats.wealth.value}}" />
+            <label class="wealth-rank rollable" for="system.stats.wealth.value" data-rolltype="stat" 
+                data-rollname="wealth" data-statrank="{{system.system.stats.wealth.modified}}">Wealth Rank:</label>
+            <input class="wealth-rank" class="number-input" name="system.stats.wealth.value" 
+                type="number" value="{{system.system.stats.wealth.value}}" />
         </div>
         <!--items-->
         <div class="belonging-section">
@@ -22,15 +22,15 @@
                 {{#ifCond "armor" '===' i.type}}
                 <li class="ability-list-item item" data-item-id="{{i._id}}">
                     <div class="ability-list-name">
-                        <span>{{name}}</span>
+                        <span>{{i.name}}</span>
                     </div>
                     <div class="ability-short-desc">
-                        <span>{{i.data.shortDesc}}</span>
+                        <span>{{i.system.shortDesc}}</span>
                     </div>
                     <div class="equip-grp">
                         <span>Equip: </span>
-                        <input type="checkbox" class="coyote-checkbox equip" data-dtype="Boolean" name="i.data.equipped" value="{{i.data.equipped}}"
-                            {{checked i.data.equipped}}>
+                        <input type="checkbox" class="coyote-checkbox equip" data-dtype="Boolean" name="i.system.equipped" value="{{i.system.equipped}}"
+                            {{checked i.system.equipped}}>
                     </div>
                     <div class="item-controls flexrow spec-controls">
                         <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
@@ -56,15 +56,15 @@
                 {{#ifCond "item" '===' i.type}}
                 <li class="ability-list-item item" data-item-id="{{i._id}}">
                     <div class="ability-list-name">
-                        <span>{{name}}</span>
+                        <span>{{i.name}}</span>
                     </div>
                     <div class="ability-short-desc">
-                        <span>{{i.data.shortDesc}}</span>
+                        <span>{{i.system.shortDesc}}</span>
                     </div>
                     <div class="equip-grp">
                         <span>Equip: </span>
-                        <input type="checkbox" class="coyote-checkbox equip" data-dtype="Boolean" name="i.data.equipped" value="{{i.data.equipped}}"
-                            {{checked i.data.equipped}}>
+                        <input type="checkbox" class="coyote-checkbox equip" data-dtype="Boolean" name="i.system.equipped" value="{{i.system.equipped}}"
+                            {{checked i.system.equipped}}>
                     </div>
                     <div class="item-controls flexrow spec-controls">
                         <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
@@ -90,15 +90,15 @@
                 {{#ifCond "weapon" '===' i.type}}
                 <li class="ability-list-item item" data-item-id="{{i._id}}">
                     <div class="ability-list-name">
-                        <span>{{name}}</span>
+                        <span>{{i.name}}</span>
                     </div>
                     <div class="ability-short-desc">
-                        <span>{{i.data.shortDesc}}</span>
+                        <span>{{i.system.shortDesc}}</span>
                     </div>
                     <div class="equip-grp">
                         <span>Equip: </span>
-                        <input type="checkbox" class="coyote-checkbox equip" data-dtype="Boolean" name="i.data.equipped" value="{{i.data.equipped}}"
-                            {{checked i.data.equipped}}>
+                        <input type="checkbox" class="coyote-checkbox equip" data-dtype="Boolean" name="i.system.equipped" value="{{i.system.equipped}}"
+                            {{checked i.system.equipped}}>
                     </div>
                     <div class="item-controls flexrow spec-controls">
                         <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i

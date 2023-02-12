@@ -5,38 +5,38 @@
         </div>
         <div class="stats-sec-row">
             <div class="stat-block str-blue top-left-angle">
-                <div class="stat-name rollable" data-rolltype="stat" data-rollname="strength" data-statrank="{{data.data.stats.strength.modified}}">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="strength" data-statrank="{{system.stats.strength.modified}}">
                     <span>STR</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.stats.strength.value" value="{{data.data.stats.strength.value}}"
+                    <input type="number" name="system.stats.strength.value" value="{{system.stats.strength.value}}"
                         min=0 oninput="validity.valid||(value='');" />
-                    {{#ifCond data.data.stats.strength.modified '!==' data.data.stats.strength.value}}
-                    <span class="stat-modified">({{{data.data.stats.strength.modified}}})</span>
+                    {{#ifCond system.stats.strength.modified '!==' system.stats.strength.value}}
+                    <span class="stat-modified">({{{system.stats.strength.modified}}})</span>
                     {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block agi-blue">
-                <div class="stat-name rollable" data-rolltype="stat" data-rollname="agility" data-statrank="{{data.data.stats.agility.modified}}">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="agility" data-statrank="{{system.stats.agility.modified}}">
                     <span>AGI</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.stats.agility.value" value="{{data.data.stats.agility.value}}" 
+                    <input type="number" name="system.stats.agility.value" value="{{system.stats.agility.value}}" 
                     min=0 oninput="validity.valid||(value='');" />
-                    {{#ifCond data.data.stats.agility.modified '!==' data.data.stats.agility.value}}
-                    <span class="stat-modified">({{{data.data.stats.agility.modified}}})</span>
+                    {{#ifCond system.stats.agility.modified '!==' system.stats.agility.value}}
+                    <span class="stat-modified">({{{system.stats.agility.modified}}})</span>
                     {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block end-blue">
-                <div class="stat-name rollable" data-rolltype="stat" data-rollname="endurance" data-statrank="{{data.data.stats.endurance.modified}}">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="endurance" data-statrank="{{system.stats.endurance.modified}}">
                     <span>END</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.stats.endurance.value"
-                        value="{{data.data.stats.endurance.value}}" min=0 oninput="validity.valid||(value='');" />
-                    {{#ifCond data.data.stats.endurance.modified '!==' data.data.stats.endurance.value}}
-                    <span class="stat-modified">({{{data.data.stats.endurance.modified}}})</span>
+                    <input type="number" name="system.stats.endurance.value"
+                        value="{{system.stats.endurance.value}}" min=0 oninput="validity.valid||(value='');" />
+                    {{#ifCond system.stats.endurance.modified '!==' system.stats.endurance.value}}
+                    <span class="stat-modified">({{{system.stats.endurance.modified}}})</span>
                     {{/ifCond}}
                 </div>
             </div>
@@ -53,8 +53,8 @@
                     <span>PD</span>
                 </div>
                 <div class="stat-num">
-                    <span>{{{attributes.body.pd}}} {{#ifCond attributes.body.modified '!==' 0}}
-                        ({{attributes.body.modified}}) {{/ifCond}}</span>
+                    <span>{{{system.attributes.body.pd}}} {{#ifCond system.attributes.body.modified '!==' 0}}</span>
+                        <span class="stat-modified">({{system.attributes.body.modified}})</span> {{/ifCond}}
                 </div>
             </div>
 
@@ -63,8 +63,8 @@
                     <span>Body</span>
                 </div>
                 <div class="stat-num">
-                    <span>{{{attributes.body.value}}} {{#ifCond attributes.body.statMod '!=' 0}}
-                    ({{attributes.body.itemModified}})  {{/ifCond}}</span>
+                    <span>{{{system.attributes.body.value}}} {{#ifCond system.attributes.body.statMod '!==' 0}}</span>
+                        <span class="stat-modified">({{system.attributes.body.itemModified}})</span>  {{/ifCond}}
                 </div>
             </div>
 
@@ -74,8 +74,8 @@
                     <sub>(current)</sub>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.body.currentValue"
-                        value="{{data.data.attributes.body.currentValue}}" />
+                    <input type="number" name="system.attributes.body.currentValue"
+                        value="{{system.attributes.body.currentValue}}" />
                 </div>
             </div>
         </div>
@@ -86,37 +86,37 @@
     <div class="stats">
         <div class="stats-sec-row">
             <div class="stat-block int-purp top-left-angle">
-                <div class="stat-name rollable" data-rolltype="stat" data-rollname="intelligence" data-statrank="{{data.data.stats.intelligence.modified}}">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="intelligence" data-statrank="{{system.stats.intelligence.modified}}">
                     <span>INT</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.stats.intelligence.value"
-                        value="{{data.data.stats.intelligence.value}}" min=0 oninput="validity.valid||(value='');" />
-                    {{#ifCond data.data.stats.intelligence.modified '!==' data.data.stats.intelligence.value}}
-                    <span class="stat-modified">({{{data.data.stats.intelligence.modified}}})</span>
+                    <input type="number" name="system.stats.intelligence.value"
+                        value="{{system.stats.intelligence.value}}" min=0 oninput="validity.valid||(value='');" />
+                    {{#ifCond system.stats.intelligence.modified '!==' system.stats.intelligence.value}}
+                    <span class="stat-modified">({{{system.stats.intelligence.modified}}})</span>
                     {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block per-purp">
-                <div class="stat-name rollable" data-rolltype="stat" data-rollname="perception" data-statrank="{{data.data.stats.perception.modified}}">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="perception" data-statrank="{{system.stats.perception.modified}}">
                     <span>PER</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.stats.perception.value"
-                        value="{{data.data.stats.perception.value}}" min=0 oninput="validity.valid||(value='');" />
-                    {{#ifCond data.data.stats.perception.modified '!==' data.data.stats.perception.value}}
-                    <span class="stat-modified">({{{data.data.stats.perception.modified}}})</span>
+                    <input type="number" name="system.stats.perception.value"
+                        value="{{system.stats.perception.value}}" min=0 oninput="validity.valid||(value='');" />
+                    {{#ifCond system.stats.perception.modified '!==' system.stats.perception.value}}
+                    <span class="stat-modified">({{{system.stats.perception.modified}}})</span>
                     {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block wis-purp">
-                <div class="stat-name rollable" data-rolltype="stat" data-rollname="wisdom" data-statrank="{{data.data.stats.wisdom.modified}}">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="wisdom" data-statrank="{{system.stats.wisdom.modified}}">
                     <span>WIS</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.stats.wisdom.value" value="{{data.data.stats.wisdom.value}}" min=0 oninput="validity.valid||(value='');" />
-                    {{#ifCond data.data.stats.wisdom.modified '!==' data.data.stats.wisdom.value}}
-                    <span class="stat-modified">({{{data.data.stats.wisdom.modified}}})</span>
+                    <input type="number" name="system.stats.wisdom.value" value="{{system.stats.wisdom.value}}" min=0 oninput="validity.valid||(value='');" />
+                    {{#ifCond system.stats.wisdom.modified '!==' system.stats.wisdom.value}}
+                    <span class="stat-modified">({{{system.stats.wisdom.modified}}})</span>
                     {{/ifCond}}
                 </div>
             </div>
@@ -130,7 +130,7 @@
                     <span>MD</span>
                 </div>
                 <div class="stat-num">
-                    <span>{{{attributes.mind.md}}}</span>
+                    <span>{{{system.attributes.mind.md}}}</span>
                 </div>
             </div>
 
@@ -139,8 +139,8 @@
                     <span>Mind</span>
                 </div>
                 <div class="stat-num">
-                    <span>{{{attributes.mind.value}}} {{#ifCond attributes.mind.statMod '!==' 0}}
-                        ({{attributes.mind.itemModified}})  {{/ifCond}}</span>
+                    <span>{{{system.attributes.mind.value}}} {{#ifCond system.attributes.mind.statMod '!==' 0}}</span>
+                        <span class="stat-modified">({{system.attributes.mind.itemModified}})</span>  {{/ifCond}}
                 </div>
             </div>
 
@@ -150,8 +150,8 @@
                     <sub>(current)</sub>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.mind.currentValue"
-                        value="{{data.data.attributes.mind.currentValue}}" />
+                    <input type="number" name="system.attributes.mind.currentValue"
+                        value="{{system.attributes.mind.currentValue}}" />
                 </div>
             </div>
         </div>
@@ -162,35 +162,35 @@
     <div class="stats">
         <div class="stats-sec-row">
             <div class="stat-block spi-yellow top-left-angle">
-                <div class="stat-name rollable" data-rolltype="stat" data-rollname="spirit" data-statrank="{{data.data.stats.spirit.modified}}">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="spirit" data-statrank="{{system.stats.spirit.modified}}">
                     <span>SPI</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.stats.spirit.value" value="{{data.data.stats.spirit.value}}" min=0 oninput="validity.valid||(value='');" />
-                    {{#ifCond data.data.stats.spirit.modified '!==' data.data.stats.spirit.value}}
-                    <span class="stat-modified">({{{data.data.stats.spirit.modified}}})</span>
+                    <input type="number" name="system.stats.spirit.value" value="{{system.stats.spirit.value}}" min=0 oninput="validity.valid||(value='');" />
+                    {{#ifCond system.stats.spirit.modified '!==' system.stats.spirit.value}}
+                    <span class="stat-modified">({{{system.stats.spirit.modified}}})</span>
                     {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block cha-yellow">
-                <div class="stat-name rollable" data-rolltype="stat" data-rollname="charisma" data-statrank="{{data.data.stats.charisma.modified}}">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="charisma" data-statrank="{{system.stats.charisma.modified}}">
                     <span>CHA</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.stats.charisma.value" value="{{data.data.stats.charisma.value}}" min=0 oninput="validity.valid||(value='');" />
-                    {{#ifCond data.data.stats.charisma.modified '!==' data.data.stats.charisma.value}}
-                    <span class="stat-modified">({{{data.data.stats.charisma.modified}}})</span>
+                    <input type="number" name="system.stats.charisma.value" value="{{system.stats.charisma.value}}" min=0 oninput="validity.valid||(value='');" />
+                    {{#ifCond system.stats.charisma.modified '!==' system.stats.charisma.value}}
+                    <span class="stat-modified">({{{system.stats.charisma.modified}}})</span>
                     {{/ifCond}}
                 </div>
             </div>
             <div class="stat-block wll-yellow">
-                <div class="stat-name rollable" data-rolltype="stat" data-rollname="will" data-statrank="{{data.data.stats.will.modified}}">
+                <div class="stat-name rollable" data-rolltype="stat" data-rollname="will" data-statrank="{{system.stats.will.modified}}">
                     <span>WLL</span>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.stats.will.value" value="{{data.data.stats.will.value}}" min=0 oninput="validity.valid||(value='');" />
-                    {{#ifCond data.data.stats.will.modified '!==' data.data.stats.will.value}}
-                    <span class="stat-modified">({{{data.data.stats.will.modified}}})</span>
+                    <input type="number" name="system.stats.will.value" value="{{system.stats.will.value}}" min=0 oninput="validity.valid||(value='');" />
+                    {{#ifCond system.stats.will.modified '!==' system.stats.will.value}}
+                    <span class="stat-modified">({{{system.stats.will.modified}}})</span>
                     {{/ifCond}}
                 </div>
             </div>
@@ -204,7 +204,7 @@
                     <span>SD</span>
                 </div>
                 <div class="stat-num">
-                    {{{attributes.soul.sd}}}
+                    {{{system.attributes.soul.sd}}}
                 </div>
             </div>
 
@@ -213,8 +213,8 @@
                     <span>Soul</span>
                 </div>
                 <div class="stat-num">
-                    <span>{{{attributes.soul.value}}} {{#ifCond attributes.soul.statMod '!==' 0}}
-                        ({{attributes.soul.itemModified}})  {{/ifCond}}</span>
+                    <span>{{{system.attributes.soul.value}}} {{#ifCond system.attributes.soul.statMod '!==' 0}} </span>
+                        <span class="stat-modified"> ({{system.attributes.soul.itemModified}})</span>  {{/ifCond}}
                 </div>
             </div>
 
@@ -224,8 +224,8 @@
                     <sub>(current)</sub>
                 </div>
                 <div class="stat-num">
-                    <input type="number" name="data.attributes.soul.currentValue"
-                        value="{{data.data.attributes.soul.currentValue}}" />
+                    <input type="number" name="system.attributes.soul.currentValue"
+                        value="{{system.attributes.soul.currentValue}}" />
                 </div>
             </div>
         </div>

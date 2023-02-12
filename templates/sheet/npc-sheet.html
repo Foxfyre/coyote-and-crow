@@ -15,14 +15,14 @@
                 {{#ifCond info.age.value '===' "icon"}}
                 <div class="c-status-col">
                     <div class="legendary-row">
-                        <label for="data.info.legendary.ranks">Legendary Ranks:</label>
-                        <input class="number-input" name="data.info.legendary.ranks" type="number"
-                            value="{{info.legendary.ranks}}" />
+                        <label for="system.info.legendary.ranks">Legendary Ranks:</label>
+                        <input class="number-input" name="system.info.legendary.ranks" type="number"
+                            value="{{system.info.legendary.ranks}}" />
                     </div>
                     <div class="legendary-row">
-                        <label for="data.attributes.init.score">Initiative Score:</label>
-                        <span class="faux-input init-span">{{{attributes.init.score}}} {{#ifCond
-                            attributes.init.modified '!=' 0}} ({{{attributes.init.modified}}}) {{/ifCond}}</span>
+                        <label for="system.attributes.init.score">Initiative Score:</label>
+                        <span class="faux-input init-span">{{{system.attributes.init.score}}} {{#ifCond
+                            system.attributes.init.modified '!=' 0}} ({{{system.attributes.init.modified}}}) {{/ifCond}}</span>
                     </div>
                 </div>
                 {{/ifCond}}
@@ -31,12 +31,12 @@
             <div class="c-info-col">
                 <div class="info-row">
                     <div class="c-info-name">
-                        <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
+                        <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
                     </div>
                     <div class="c-info-age">
-                        <!--<input name="data.info.age.value" type="text" value="{{info.age.value}}" placeholder="Type" />-->
-                        <select name="data.info.age.value" value="info.age.value">
-                            {{#select info.age.value}}
+                        <!--<input name="system.info.age.value" type="text" value="{{info.age.value}}" placeholder="Type" />-->
+                        <select name="system.info.age.value" value="system.info.age.value">
+                            {{#select system.info.age.value}}
                             <option value="">NPC Type</option>
                             <option value="icon">Icon</option>
                             <option value="legend">Legend</option>
@@ -46,13 +46,13 @@
                 </div>
                 <div class="info-row">
                     <div class="c-info-archetype">
-                        <input name="data.info.archetype.value" type="text" value="{{info.archetype.value}}"
+                        <input name="system.info.archetype.value" type="text" value="{{system.info.archetype.value}}"
                             placeholder="{{localize 'NPC.Category'}}" />
                     </div>
                     <div class="c-info-path">
-                        <!--<input name="data.info.path.value" type="text" value="{{info.path.value}}"
+                        <!--<input name="system.info.path.value" type="text" value="{{info.path.value}}"
                             placeholder="Path Of The..." />
-                        <select name="data.info.path.value" value="info.path.value">
+                        <select name="system.info.path.value" value="info.path.value">
                             {{#select info.path.value}}
                             <option value="">Select your Path</option>
                             <option value="badger">Path of the Badger</option>
@@ -74,7 +74,7 @@
                         </select>-->
                     </div>
                     <div class="c-info-motivation">
-                        <input name="data.info.motivation.value" type="text" value="{{info.motivation.value}}"
+                        <input name="system.info.motivation.value" type="text" value="{{system.info.motivation.value}}"
                             placeholder="Skill" />
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="c-stats-section npc-bg">
-                    {{#ifCond info.age.value '===' "icon"}}
+                    {{#ifCond system.info.age.value '===' "icon"}}
 
                     {{> systems/coyote-and-crow/templates/sheet/partial/player-stats.html}}
                     {{else}}
@@ -97,7 +97,7 @@
             </div>
 
         </div>
-        {{#ifCond info.age.value '===' "icon"}}
+        {{#ifCond system.info.age.value '===' "icon"}}
         <!--Tab Section -->
         <nav class="sheet-tabs tabs" data-group="primary">
             <a class="item" data-tab="summary">{{localize "TAB.summary"}}</a>

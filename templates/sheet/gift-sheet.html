@@ -7,14 +7,14 @@
         <div class="item-col-base">
             <div class="item-row">
                 <span>Name</span>
-                <input class="gift-category" name="name" type="text" value="{{name}}" />
+                <input class="gift-category" name="name" type="text" value="{{item.name}}" />
             </div>
 
             <div class="item-row row-50">
                 <div class="weapon-select">
-                    <label class="item-label" for="data.type">{{localize "ITEM.GiftBurden"}}:</label>
-                    <select name="data.type" value="{{data.type}}">
-                        {{#select data.type}}
+                    <label class="item-label" for="system.type">{{localize "ITEM.GiftBurden"}}:</label>
+                    <select name="system.type" value="{{system.type}}">
+                        {{#select system.type}}
                         <option value="gift">{{localize "COYOTE.SELECT.Gift"}}</option>
                         <option value="burden">{{localize "COYOTE.SELECT.Burden"}}</option>
                         {{/select}}
@@ -24,17 +24,17 @@
 
             <div class="item-row">
                 <span>Category</span>
-                <input class="gift-category" name="data.category" type="text" value="{{data.category}}" />
+                <input class="gift-category" name="system.category" type="text" value="{{system.category}}" />
             </div>
 
             <div class="item-row">
                 <span>Level</span>
-                <input class="item-num-input" name="data.level" type="text" value="{{data.level}}" />
+                <input class="item-num-input" name="system.level" type="text" value="{{system.level}}" />
             </div>
         </div>
 
         <div class="item-col-img">
-            <img class="item-image" src="{{img}}" data-edit="img" name="name" />
+            <img class="item-image" src="{{item.img}}" data-edit="img" name="name" />
         </div>
     </div>
 
@@ -42,7 +42,7 @@
 
     <div class="item-row">
         <span class="item-label">{{localize "ITEM.Notes"}}:</span>
-        {{editor content=data.notes target="data.notes" button=true owner=owner editable=true}}
+        {{editor enrichment.system.notes target="system.notes" button=true owner=owner editable=true}}
     </div>
 
     <!-- MODIFIERS -->
@@ -61,8 +61,8 @@
                     <span>Initiative</span>
                 </div>
                 <div class="gb-mod">
-                    <label name="data.modifier.init.value" title='{{localize "ITEM.DicePool"}}'>+ / - </label>
-                    <input type="number" name="data.modifier.init.value" value="{{data.modifier.init.value}}" />
+                    <label name="system.modifier.init.value" title='{{localize "ITEM.DicePool"}}'>+ / - </label>
+                    <input type="number" name="system.modifier.init.value" value="{{system.modifier.init.value}}" />
                 </div>
             </div>
         </div>

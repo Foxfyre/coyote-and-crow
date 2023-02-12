@@ -4,18 +4,18 @@
     </div>
     <div class="ability-row">
         <label for="name">Name:</label>
-        <input class="ability-input" name="name" type="text" value="{{name}}" />
+        <input class="ability-input" name="name" type="text" value="{{item.name}}" />
     </div>
     <div class="ability-row">
         <label for="">Stat:</label>
-        {{#if data.owned}}
-        <select name="data.relStat">
-            {{selectOptions data.allowStats selected=data.relStat localize=true}}
+        {{#if system.owned}}
+        <select name="system.relStat">
+            {{selectOptions system.allowStats selected=system.relStat localize=true}}
         </select>
 
         {{else}}
-        <select name="data.relStat" value="{{data.relStat}}">
-            {{#select data.relStat}}
+        <select name="system.relStat" value="{{system.relStat}}">
+            {{#select system.relStat}}
             <option value="agility">Agility</option>
             <option value="charisma">Charisma</option>
             <option value="endurance">Endurance</option>
@@ -31,8 +31,8 @@
     </div>
     <div class="ability-row">
         <label for="">Activation:</label>
-        <select name="data.activate" value="{{data.activate}}">
-            {{#select data.activate}}
+        <select name="system.activate" value="{{system.activate}}">
+            {{#select system.activate}}
             <option value="primary">{{localize "ACTIVATION.Primary"}}</option>
             <option value="reaction">{{localize "ACTIVATION.Reaction"}}</option>
             <option value="secondary">{{localize "ACTIVATION.Secondary"}}</option>
@@ -42,20 +42,20 @@
         </select>
     </div>
     <div class="ability-row">
-        <label for="data.value">Cost:</label>
-        <input class="ability-input" name="data.value" type="text" value="{{data.value}}" />
+        <label for="system.value">Cost:</label>
+        <input class="ability-input" name="system.value" type="text" value="{{system.value}}" />
     </div>
     <div class="ability-row">
-        <label for="data.diceCheck">Dice Check:</label>
-        <input class="ability-input" name="data.diceCheck" type="text" value="{{data.diceCheck}}" />
+        <label for="system.diceCheck">Dice Check:</label>
+        <input class="ability-input" name="system.diceCheck" type="text" value="{{system.diceCheck}}" />
     </div>
     <div class="ability-row">
-        <label for="data.shortDesc">Short Description:</label>
-        <input class="ability-input" name="data.shortDesc" type="text" value="{{data.shortDesc}}" />
+        <label for="system.shortDesc">Short Description:</label>
+        <input class="ability-input" name="system.shortDesc" type="text" value="{{system.shortDesc}}" />
     </div>
     <div class="ability-col">
-        <label for="data.description" class="ability-description">Description</label>
+        <label for="system.description" class="ability-description">Description</label>
         <!--editor-->
-        {{editor content=data.description target="data.description" button=true owner=owner editable=true}}
+        {{editor enrichment.system.description target="system.description" button=true owner=owner editable=true}}
     </div>
 </form>

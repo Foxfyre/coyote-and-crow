@@ -23,77 +23,91 @@ export class cncItemSheet extends ItemSheet {
     }
 
     get template() {
-        const path = "systems/coyote-and-crow/templates/sheet"
-        return `${path}/${this.item.data.type}-sheet.html`;
+        let type = this.item.type;
+        return `systems/coyote-and-crow/templates/sheet/${type}-sheet.html`;
+    }
+
+    get itemData() {
+        return this.item.data;
     }
 
     async getData(options) {
-        const data = super.getData(options);
-        const itemData = data.data;
+        const itemData = super.getData(options);
+        itemData.system = itemData.item._source.system;
+        itemData._id = itemData.data._id;
+        //const data = super.getData(options);
+        //console.log(data);
+        //const itemData = data.data;
+        console.log(itemData);
+        //console.log(this.actor);
+        itemData.system.name = itemData.data.name;
         let pathStats
+        itemData.enrichment = await this._enrichItem();
 
-        if (data.document.parent === null) {
-            itemData.data.owned = false;
+        if (this.item.isOwned === null) {
+            itemData.system.owned = false;
             return itemData;
         } else {
-            itemData.data.owned = true;
+            itemData.system.owned = true;
         }
-
-        const actorData = data.item.parent.data
+        const actorData = this.actor;
         itemData.actorData = actorData;
-
+        //console.log(itemData.actorData);
+        
         pathStats = {
-            [`${itemData.actorData.data.info.path.stats.stat1.value}`]: itemData.actorData.data.info.path.stats.stat1.name,
-            [`${itemData.actorData.data.info.path.stats.stat2.value}`]: itemData.actorData.data.info.path.stats.stat2.name
+            [`${itemData.actorData.system.info.path.stats.stat1.value}`]: itemData.actorData.system.info.path.stats.stat1.name,
+            [`${itemData.actorData.system.info.path.stats.stat2.value}`]: itemData.actorData.system.info.path.stats.stat2.name
         }
 
         if (itemData.actorData.type === "npc") {
             pathStats = {
-                [`${itemData.actorData.data.info.path.stats.stat1.value}`]: itemData.actorData.data.info.path.stats.stat1.name,
-                [`${itemData.actorData.data.info.path.stats.stat2.value}`]: itemData.actorData.data.info.path.stats.stat2.name,
-                [`${itemData.actorData.data.info.path.stats.stat3.value}`]: itemData.actorData.data.info.path.stats.stat3.name,
-                [`${itemData.actorData.data.info.path.stats.stat4.value}`]: itemData.actorData.data.info.path.stats.stat4.name,
-                [`${itemData.actorData.data.info.path.stats.stat5.value}`]: itemData.actorData.data.info.path.stats.stat5.name,
-                [`${itemData.actorData.data.info.path.stats.stat6.value}`]: itemData.actorData.data.info.path.stats.stat6.name,
-                [`${itemData.actorData.data.info.path.stats.stat7.value}`]: itemData.actorData.data.info.path.stats.stat7.name,
-                [`${itemData.actorData.data.info.path.stats.stat8.value}`]: itemData.actorData.data.info.path.stats.stat8.name,
-                [`${itemData.actorData.data.info.path.stats.stat9.value}`]: itemData.actorData.data.info.path.stats.stat9.name
+                [`${itemData.actorData.system.info.path.stats.stat1.value}`]: itemData.actorData.system.info.path.stats.stat1.name,
+                [`${itemData.actorData.system.info.path.stats.stat2.value}`]: itemData.actorData.system.info.path.stats.stat2.name,
+                [`${itemData.actorData.system.info.path.stats.stat3.value}`]: itemData.actorData.system.info.path.stats.stat3.name,
+                [`${itemData.actorData.system.info.path.stats.stat4.value}`]: itemData.actorData.system.info.path.stats.stat4.name,
+                [`${itemData.actorData.system.info.path.stats.stat5.value}`]: itemData.actorData.system.info.path.stats.stat5.name,
+                [`${itemData.actorData.system.info.path.stats.stat6.value}`]: itemData.actorData.system.info.path.stats.stat6.name,
+                [`${itemData.actorData.system.info.path.stats.stat7.value}`]: itemData.actorData.system.info.path.stats.stat7.name,
+                [`${itemData.actorData.system.info.path.stats.stat8.value}`]: itemData.actorData.system.info.path.stats.stat8.name,
+                [`${itemData.actorData.system.info.path.stats.stat9.value}`]: itemData.actorData.system.info.path.stats.stat9.name
             }
         }
-        itemData.data.allowStats = pathStats;
-        itemData.data.owned = true;
+        itemData.system.allowStats = pathStats;
+        //itemData.system.owned = true;
 
-        if (itemData.type === "specialization") {
+        if (itemData.item.type === "specialization") {
             // get the name of the skill used in specialization, and force lowercase
-            let genSkillNameArr = itemData.data.skill.split(' ');
+            let genSkillNameArr = itemData.system.skill.split(' ');
             let genSkillName = genSkillNameArr[0].toLowerCase();
             //console.log(genSkillName);
 
             // get the specific named skill data from the actor
-            let specSkillObj = foundry.utils.deepClone(itemData.actorData.data.skills[genSkillName], { strict: true })
+            let specSkillObj = foundry.utils.deepClone(itemData.actorData.system.skills[genSkillName], { strict: true })
             //console.log(specSkillObj);
 
             // make a copy of the item to mutate. Note to self: find some turtles.
-            let itemObj = foundry.utils.deepClone(itemData.data);
+            let itemObj = foundry.utils.deepClone(itemData.system);
             //console.log(itemObj)
 
             // assign the stat name used on the skill to the item.
             itemObj.stat = specSkillObj.stat
+            //console.log(itemObj.stat);
 
             // get the skill rank of the general skill used in the specialized skill
-            itemObj.skillRank = actorData.data.skills[genSkillName].skillRank; /**** THIS NEEDS TO UPDATE THE ITEM. */
+            itemObj.skillRank = itemData.actorData.system.skills[genSkillName].skillRank; /**** THIS NEEDS TO UPDATE THE ITEM. */
             let skillRank = itemObj.skillRank;
             //console.log(itemObj.skillRank)
 
             // get stat name of stat the general skill is using to support
-            let statName = itemData.actorData.data.skills[genSkillName].stat;
+            let statName = itemData.actorData.system.skills[genSkillName].stat;
+            //console.log(statName);
 
             // get addDice value from skill. Values assigned from  items and only relevant if using combat skill (melee, ranged, unarmed)
             let addDice = specSkillObj.addDice ? specSkillObj.addDice : 0;
             //console.log(addDice)
 
             // get the specialized skill rank from the item
-            let specRank = itemData.data.specRank;
+            let specRank = itemData.system.specRank;
 
             itemObj.statName = statName.capitalize(); // roll into itemData update clone
 
@@ -101,31 +115,31 @@ export class cncItemSheet extends ItemSheet {
 
             switch (itemObj.stat) {
                 case "agility":
-                    statRank = actorData.data.stats.agility.value;
+                    statRank = itemData.actorData.system.stats.agility.value;
                     break;
                 case "charisma":
-                    statRank = actorData.data.stats.charisma.value;
+                    statRank = itemData.actorData.system.stats.charisma.value;
                     break;
                 case "endurance":
-                    statRank = actorData.data.stats.endurance.value;
+                    statRank = itemData.actorData.system.stats.endurance.value;
                     break;
                 case "intelligence":
-                    statRank = actorData.data.stats.intelligence.value;
+                    statRank = itemData.actorData.system.stats.intelligence.value;
                     break;
                 case "perception":
-                    statRank = actorData.data.stats.perception.value;
+                    statRank = itemData.actorData.system.stats.perception.value;
                     break;
                 case "spirit":
-                    statRank = actorData.data.stats.spirit.value;
+                    statRank = itemData.actorData.system.stats.spirit.value;
                     break;
                 case "strength":
-                    statRank = actorData.data.stats.strength.value;
+                    statRank = itemData.actorData.system.stats.strength.value;
                     break;
                 case "wisdom":
-                    statRank = actorData.data.stats.wisdom.value;
+                    statRank = itemData.actorData.system.stats.wisdom.value;
                     break;
                 case "will":
-                    statRank = actorData.data.stats.will.value;
+                    statRank = itemData.actorData.system.stats.will.value;
                     break;
                 default:
                     console.log("ItemData.data.statRank not set")
@@ -134,10 +148,21 @@ export class cncItemSheet extends ItemSheet {
 
             itemObj.statRank = statRank;
             itemObj.total = statRank + specRank + addDice;
-            itemData.data = itemObj;
+            itemData.system = itemObj;
+            //this.actor.updateEmbeddedDocuments("Item", [itemData])
         }
+        //console.log(itemData);
         this.actor.updateEmbeddedDocuments("Item", [itemData])
         return itemData;
+    }
+
+    async _enrichItem() {
+        //console.log("Enrichment processing");
+        let enrichment = {};
+        enrichment['system.notes'] = TextEditor.enrichHTML(this.item.system.notes, {async: false, relativeTo: this.item});
+        enrichment[`system.description`] = TextEditor.enrichHTML(this.item.system.description, {async: false, relativeTo: this.item});
+
+        return expandObject(enrichment);
     }
 
     activateListeners(html) {

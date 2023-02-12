@@ -28,7 +28,7 @@
                     <span>{{skill.statName}}</span>
                 </div>
                 <div class="skill-table-col col-rank">
-                    <input class="skill-table-rank" type="number" name="data.skills.{{key}}.skillRank"
+                    <input class="skill-table-rank" type="number" name="system.skills.{{key}}.skillRank"
                         value="{{skill.skillRank}}" />
                 </div>
                 <div class="skill-table-col col-total">
@@ -65,7 +65,7 @@
                     <span>{{skill.statName}}</span>
                 </div>
                 <div class="skill-table-col col-rank">
-                    <input class="skill-table-rank" type="number" name="data.skills.{{key}}.skillRank"
+                    <input class="skill-table-rank" type="number" name="system.skills.{{key}}.skillRank"
                         value="{{skill.skillRank}}" />
                 </div>
                 <div class="skill-table-col col-total">
@@ -116,23 +116,23 @@
                             <!--Specialization Name-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <input type="number" value="{{spec.data.specRank}}" readonly="readonly" />
+                            <input type="number" value="{{spec.system.specRank}}" readonly="readonly" />
                             <!--Specialization Rank-->
                         </div>
                         <div class="spec-table-col spec-col-20">
-                            <input type="text" value="{{spec.data.skill}}" readonly="readonly" />
+                            <input type="text" value="{{spec.system.skill}}" readonly="readonly" />
                             <!--Linked Skill Name-->
                         </div>
                         <div class="spec-table-col spec-col-20">
-                            <input type="text" value="{{spec.data.statName}}" readonly="readonly" />
+                            <input type="text" value="{{spec.system.statName}}" readonly="readonly" />
                             <!--Linked Stat Name-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <input type="number" value="{{spec.data.statRank}}" readonly="readonly" />
+                            <input type="number" value="{{spec.system.statRank}}" readonly="readonly" />
                             <!--Linked Stat Rank-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <span class="spec-table-rank">{{spec.data.total}}</span>
+                            <span class="spec-table-rank">{{spec.system.total}}</span>
                             <!--Total of all 3 values-->
                         </div>
                         <div class="item-controls flexrow spec-controls">

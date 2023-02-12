@@ -5,7 +5,6 @@
 
     <ul class="bio-col items">
         {{#each gifts as |gift key|}}
-        {{log gift}}
         {{#ifCond gift.data.type '===' "gift"}}
         <li class="item gift-item" data-item-id={{gift._id}}>
             <div class="bio-row">

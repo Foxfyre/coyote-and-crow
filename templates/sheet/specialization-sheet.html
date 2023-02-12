@@ -17,14 +17,15 @@
                 <div class="spec-table-col spec-values">
                     <span>Rank</span>
                 </div>
-            </div>
+            </div> 
+            
             <div class="spec-table-row">
                 <div class="spec-table-col">
-                    <input type="text" name="name" value="{{name}}" />
+                    <input type="text" name="name" value="{{item.name}}" />
                 </div>
                 <div class="spec-table-col">
-                    <select name="data.skill" value="{{data.skill}}">
-                        {{#select data.skill}}
+                    <select name="system.skill" value="{{system.skill}}">
+                        {{#select system.skill}}
                         <option value="Art">Art</option>
                         <option value="Athletics">Athletics</option>
                         <option value="Ceremony">Ceremony</option>
@@ -57,7 +58,7 @@
                     </select>
                 </div>
                 <div class="spec-table-col spec-values">
-                    <input class="spec-table-rank" type="number" name="data.specRank" value="{{data.specRank}}" />
+                    <input class="spec-table-rank" type="number" name="system.specRank" value="{{system.specRank}}" />
                 </div>
             </div>
         </div>
@@ -75,9 +76,9 @@
                 <span>Skill Success Number</span>
             </div>
             <div class="pd-mod">
-                <label name="data.modifier.sn.value">+ / - SN </label>
-                <select name="data.modifier.sn.value" value="{{data.modifier.sn.value}}">
-                    {{#select data.modifier.sn.value}}
+                <label name="system.modifier.sn.value">+ / - SN </label>
+                <select name="system.modifier.sn.value" value="{{system.modifier.sn.value}}">
+                    {{#select system.modifier.sn.value}}
                     <option value="-4">-4</option>
                     <option value="-3">-3</option>
                     <option value="-2">-2</option>

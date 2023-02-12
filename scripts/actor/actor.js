@@ -7,11 +7,10 @@
 
 export class cncActor extends Actor {
     prepareData() {
-        super.prepareData();
     }
 
     _preCreate(data) {
-
+        console.log(data);
         let createData = {};
         if (!data.token) {
           mergeObject(createData,
@@ -26,13 +25,12 @@ export class cncActor extends Actor {
           createData.token = data.token
         }
     
-        if (data.type == "character") {
+        if (data.type == "character" ||  data.type == "npc") {
           createData.token.vision = true;
           createData.token.actorLink = true;
         }
-    
-        this.data.update(createData);
-        console.log(this.data)
+        // changged from this.data.update(createData) to this.update(createDate);
+        this.updateSource(createData);
     }
 
     prepareBaseData() {
@@ -43,22 +41,25 @@ export class cncActor extends Actor {
     prepareEmbeddedEntities() {
     }
 
-    prepareDerivedData() {
-        const actorData = this.data;
-        const data = actorData.data;
-        let pathData;
-
-        data.attributes.init.score = data.stats.agility.value + data.stats.perception.value + data.stats.charisma.value;
-        data.attributes.body.pd = data.stats.agility.value + data.stats.endurance.value;
-        data.attributes.mind.md = data.stats.perception.value + data.stats.wisdom.value;
-        data.attributes.soul.sd = data.stats.charisma.value + data.stats.will.value;
-        data.attributes.body.value = data.stats.strength.value + data.stats.agility.value + data.stats.endurance.value;
-        data.attributes.mind.value = data.stats.intelligence.value + data.stats.perception.value + data.stats.wisdom.value;
-        data.attributes.soul.value = data.stats.spirit.value + data.stats.charisma.value + data.stats.will.value;
-        data.attributes.init.total = data.attributes.init.score + data.attributes.init.modified;
+    prepareData() {
+        //console.log(this.system); // use this
+        const newSystem = this.system;
+        newSystem.items = this.items;
+        //console.log(newSystem)
+        //const actorData = this.data;
+        //const data = actorData.system;
+        //let pathData;
+        newSystem.attributes.init.score = newSystem.stats.agility.value + newSystem.stats.perception.value + newSystem.stats.charisma.value;
+        newSystem.attributes.body.pd = newSystem.stats.agility.value + newSystem.stats.endurance.value;
+        newSystem.attributes.mind.md = newSystem.stats.perception.value + newSystem.stats.wisdom.value;
+        newSystem.attributes.soul.sd = newSystem.stats.charisma.value + newSystem.stats.will.value;
+        newSystem.attributes.body.value = newSystem.stats.strength.value + newSystem.stats.agility.value + newSystem.stats.endurance.value;
+        newSystem.attributes.mind.value = newSystem.stats.intelligence.value + newSystem.stats.perception.value + newSystem.stats.wisdom.value;
+        newSystem.attributes.soul.value = newSystem.stats.spirit.value + newSystem.stats.charisma.value + newSystem.stats.will.value;
+        newSystem.attributes.init.total = newSystem.attributes.init.score + newSystem.attributes.init.modified;
 
         // Add any modifiers from items to the stat value;
-        for (let r of Object.values(data.stats)) {
+        for (let r of Object.values(newSystem.stats)) {
             r.modified = r.value + r.modified
         }
         if (this.type === "character" || this.type === "npc") {
@@ -73,68 +74,69 @@ export class cncActor extends Actor {
             /*getPathJSON().then(pathData => {
                 
             })*/
-            this._setPath(actorData);
-            this._deriveItemModifiers(actorData);
+            this._setPath(newSystem);
+            this._deriveItemModifiers(newSystem.items, newSystem);
             this._calcTotalSkills()
         }
     }
 
     _initData() {
-        this.data.data.attributes.body.pd = 0;
-        this.data.data.attributes.mind.md = 0;
-        this.data.data.attributes.soul.sd = 0;
-        this.data.data.attributes.init.score = 0;
-        this.data.data.attributes.addDicePool = 0;
+        this.system.attributes.body.pd = 0;
+        this.system.attributes.mind.md = 0;
+        this.system.attributes.soul.sd = 0;
+        this.system.attributes.init.score = 0;
+        this.system.attributes.addDicePool = 0;
     }
 
-    _deriveItemModifiers(actorData) {
-        let items = actorData.items;
+    _deriveItemModifiers(items, newSystem) {
+        //let items = actorData.items;
         let armorGroup = 0;
         let diceGroup = 0;
-        let actorStats = actorData.data.stats;
-        let actorSkills = this.data.data.skills;
-        let actorAttributes = this.data.data.attributes;
+        let actorStats = newSystem.stats;
+        let actorSkills = newSystem.skills;
+        let actorAttributes = newSystem.attributes;
         let initiative;
 
 
 
         for (let x of items) {
+            //console.log(x);
             if (!x) { return }
 
-            if (x.data.type === "specialization") { continue }
+            if (x.type === "specialization") { continue }
 
-            if (x.data.type === "weapon" || x.data.type === "armor" || x.data.type === "item") {
-                if (x.data.data.equipped === false) {
+            if (x.type === "weapon" || x.type === "armor" || x.type === "item") {
+                if (x.system.equipped === false) {
                     continue;
                 }
             }
-            if (x.data.type !== "ability") {
-                if (x.data.data.modifier.init.value !== 0) {
-                    let itemInit = x.data.data.modifier.init.value;
-                    let initMod = actorData.data.attributes.init.score;
-                    this.data.data.attributes.init.modified = itemInit + initMod;
+            if (x.type !== "ability") {
+                if (x.system.modifier.init.value !== 0) {
+                    let itemInit = x.system.modifier.init.value;
+                    let initMod = newSystem.attributes.init.score;
+                    newSystem.attributes.init.modified = itemInit + initMod;
                 }
             }
 
-            if (x.data.type === "weapon" && x.data.data.weaponTypes !== "") {
-                let weaponType = x.data.data.weaponTypes; // get weapon type from item
-                let dp = x.data.data.modifier.dp.value;   // get value of dp from item
+            if (x.type === "weapon" && x.system.weaponTypes !== "") {
+                let weaponType = x.system.weaponTypes; // get weapon type from item
+                let dp = x.system.modifier.dp.value;   // get value of dp from item
                 //actorSkills = actorData.data;
                 let weaponSkill = actorSkills[weaponType].skillRank;  // get skill rank of weaponskill
                 if (dp > weaponSkill) { dp = weaponSkill; }
-                this.data.data.skills[weaponType].addDice = dp;
+                this.system.skills[weaponType].addDice = dp;
             }
 
             // cycle through the stat object, record the modifier on the item, pull actor stat value, add & write to actor. Valid on all items
-            if (x.data.type === "ability") { continue }
+            if (x.type === "ability") { continue }
 
-            let armorPdMod = x.data.data.modifier.pd.value ? x.data.data.modifier.pd.value : 0;
+            let armorPdMod = x.system.modifier.pd.value ? x.system.modifier.pd.value : 0;
             armorGroup += armorPdMod;
 
             const derivedStats = ["body", "mind", "soul"];
             const stats = ["agility", "charisma", "endurance", "intelligence", "perception", "spirit", "strength", "wisdom", "will"]
 
-            for (let s of Object.values(x.data.data.modifier.stat)) {
+            for (let s of Object.values(x.system.modifier.stat)) {
                 let itemStatName = s.name.toLowerCase();
                 //console.log(itemStatName)
                 if (s.value !== 0 && stats.includes(itemStatName)) {
@@ -147,24 +149,24 @@ export class cncActor extends Actor {
 
             // cycle through sn, record the skill and value, pull actor skill value, add & write to actor, valid on all items
             let snGroup = {
-                sn: x.data.data.modifier.sn,
-                sn1: x.data.data.modifier.sn1,
-                sn2: x.data.data.modifier.sn2
+                sn: x.system.modifier.sn,
+                sn1: x.system.modifier.sn1,
+                sn2: x.system.modifier.sn2
             }
 
             let snStatGroup = {
-                snStat1: x.data.data.modifier.snStat1,
-                snStat2: x.data.data.modifier.snStat2,
-                snStat3: x.data.data.modifier.snStat3,
-                snStat4: x.data.data.modifier.snStat4,
-                snStat5: x.data.data.modifier.snStat5,
-                snStat6: x.data.data.modifier.snStat6,
-                snStat7: x.data.data.modifier.snStat7,
-                snStat8: x.data.data.modifier.snStat8,
+                snStat1: x.system.modifier.snStat1,
+                snStat2: x.system.modifier.snStat2,
+                snStat3: x.system.modifier.snStat3,
+                snStat4: x.system.modifier.snStat4,
+                snStat5: x.system.modifier.snStat5,
+                snStat6: x.system.modifier.snStat6,
+                snStat7: x.system.modifier.snStat7,
+                snStat8: x.system.modifier.snStat8,
             }
 
             let specGroup = {
-                sn: x.data.data.modifier.sn
+                sn: x.system.modifier.sn
             }
 
             /*if (x.data.type === "specialization") {
@@ -191,17 +193,17 @@ export class cncActor extends Actor {
                 actorStats[statName].snMod = Number(statSNMod);
             }
 
-            this.data.data.attributes = actorAttributes // consolidate the other two into this. 
-            this.data.data.stats = actorStats;
-            this.data.data.attributes.addDicePool = diceGroup;
-            this.data.data.attributes.body.modified = armorGroup + this.data.data.attributes.body.pd;
+            this.system.attributes = actorAttributes // consolidate the other two into this. 
+            this.system.stats = actorStats;
+            this.system.attributes.addDicePool = diceGroup;
+            this.system.attributes.body.modified = armorGroup + this.system.attributes.body.pd;
         }
     }
 
     _calcTotalSkills() {
         const skilledTests = ["Ceremony", "Cybernetics", "Herbalism", "Language", "Medicine", "Science"];
-        for (let skillKey in this.data.data.skills) {
-            let skill = this.data.data.skills[skillKey]
+        for (let skillKey in this.system.skills) {
+            let skill = this.system.skills[skillKey]
             // XORs the stat comparison with whether the rank is > 0
             // If the first stat is smaller AND skillrank > 0, 1 != 1 is 0
             // If the first stat is smaller BUT skillrank == 0, 1 != 0 is 1
@@ -209,19 +211,19 @@ export class cncActor extends Actor {
             // If the first stat is bigger BUT skillrank == 0, 0 != 0 is 0
             let whichStat = (this._skillMod(Object.keys(skill.relStats)[0]) < this._skillMod(Object.keys(skill.relStats)[1])) != (skill.skillRank > 0) ? 0 : 1
 			skill.stat = Object.keys(skill.relStats)[whichStat];
-            let stat = this.data.data.skills[skillKey].stat;
+            let stat = this.system.skills[skillKey].stat;
             this._setSkillName(skill, skillKey);
             let skillModValue = this._skillMod(stat);
-            let weaponDPMod = this.data.data.skills[skillKey].addDice ? this.data.data.skills[skillKey].addDice : 0;
+            let weaponDPMod = this.system.skills[skillKey].addDice ? this.system.skills[skillKey].addDice : 0;
             skill.statRank = skillModValue
-            !this.data.data.skills[skillKey].dicePoolMod ? this.data.data.skills[skillKey].dicePoolMod = 0 : null;
+            !this.system.skills[skillKey].dicePoolMod ? this.system.skills[skillKey].dicePoolMod = 0 : null;
 
 
             if (skill.name === "Knowledge" && skill.skillRank > 1) {
                 ui.notifications ? ui.notifications.warn(game.i18n.format("WARN.KnowledgeMax", { name: this.name })) : null;
             }
-            skill.skillRank = 0 + this.data.data.skills[skillKey].skillRank;
-            skill.skillTotal = 0 + skillModValue + this.data.data.skills[skillKey].skillRank + this.data.data.skills[skillKey].dicePoolMod;
+            skill.skillRank = 0 + this.system.skills[skillKey].skillRank;
+            skill.skillTotal = 0 + skillModValue + this.system.skills[skillKey].skillRank + this.system.skills[skillKey].dicePoolMod;
             // 0 out skilled only skills if no skill rank present. Prevents confusion on character sheet.
             if (skilledTests.includes(skill.name) === true && skill.skillRank === 0) {
                 skill.skillTotal = 0;
@@ -235,31 +237,31 @@ export class cncActor extends Actor {
     _setSkillName(skill, skillKey) {
         switch (skill.stat) {
             case "strength":
-                this.data.data.skills[skillKey].statName = "Strength";
+                this.system.skills[skillKey].statName = "Strength";
                 break;
             case "agility":
-                this.data.data.skills[skillKey].statName = "Agility";
+                this.system.skills[skillKey].statName = "Agility";
                 break;
             case "endurance":
-                this.data.data.skills[skillKey].statName = "Endurance";
+                this.system.skills[skillKey].statName = "Endurance";
                 break;
             case "intelligence":
-                this.data.data.skills[skillKey].statName = "Intelligence";
+                this.system.skills[skillKey].statName = "Intelligence";
                 break;
             case "perception":
-                this.data.data.skills[skillKey].statName = "Perception";
+                this.system.skills[skillKey].statName = "Perception";
                 break;
             case "wisdom":
-                this.data.data.skills[skillKey].statName = "Wisdom";
+                this.system.skills[skillKey].statName = "Wisdom";
                 break;
             case "spirit":
-                this.data.data.skills[skillKey].statName = "Spirit";
+                this.system.skills[skillKey].statName = "Spirit";
                 break;
             case "charisma":
-                this.data.data.skills[skillKey].statName = "Charisma";
+                this.system.skills[skillKey].statName = "Charisma";
                 break;
             case "will":
-                this.data.data.skills[skillKey].statName = "Will";
+                this.system.skills[skillKey].statName = "Will";
                 break;
         }
     }
@@ -268,23 +270,23 @@ export class cncActor extends Actor {
     _skillMod(stat) {
         switch (stat) {
             case "strength":
-                return this.data.data.stats.strength.modified;
+                return this.system.stats.strength.modified;
             case "agility":
-                return this.data.data.stats.agility.modified;
+                return this.system.stats.agility.modified;
             case "endurance":
-                return this.data.data.stats.endurance.modified;
+                return this.system.stats.endurance.modified;
             case "intelligence":
-                return this.data.data.stats.intelligence.modified;
+                return this.system.stats.intelligence.modified;
             case "perception":
-                return this.data.data.stats.perception.modified;
+                return this.system.stats.perception.modified;
             case "wisdom":
-                return this.data.data.stats.wisdom.modified;
+                return this.system.stats.wisdom.modified;
             case "spirit":
-                return this.data.data.stats.spirit.modified;
+                return this.system.stats.spirit.modified;
             case "charisma":
-                return this.data.data.stats.charisma.modified;
+                return this.system.stats.charisma.modified;
             case "will":
-                return this.data.data.stats.will.modified;
+                return this.system.stats.will.modified;
         }
     }
 
@@ -292,7 +294,7 @@ export class cncActor extends Actor {
 
     _setPath(actorData) {
         if (actorData.type === "npc") {
-            actorData.data.info.path.allowedStats = {
+            actorData.info.path.allowedStats = {
                 "agility": "Agility",
                 "charisma": "Charisma",
                 "endurance": "Endurance",
@@ -303,7 +305,7 @@ export class cncActor extends Actor {
                 "wisdom": "Wisdom",
                 "will": "Will"
             }
-            actorData.data.info.path.stats = {
+            actorData.info.path.stats = {
                 "stat1": {
                     "name": "Agility",
                     "value": "agility"
@@ -345,10 +347,10 @@ export class cncActor extends Actor {
 
             return
         }
-        switch (actorData.data.info.path.value) {
+        switch (actorData.info.path.value) {
             case "badger":
-                actorData.data.info.path.name = "Badger";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Badger";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Intelligence",
                         "value": "intelligence"
@@ -358,14 +360,14 @@ export class cncActor extends Actor {
                         "value": "will"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "intelligence": "Intelligence",
                     "will": "Will"
                 }
                 return actorData;
             case "bear":
-                actorData.data.info.path.name = "Bear";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Bear";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Charisma",
                         "value": "charisma"
@@ -375,14 +377,14 @@ export class cncActor extends Actor {
                         "value": "strength"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "charisma": "Charisma",
                     "strength": "Strength"
                 }
                 return actorData;
             case "beaver":
-                actorData.data.info.path.name = "Beaver";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Beaver";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Endurance",
                         "value": "endurance"
@@ -392,14 +394,14 @@ export class cncActor extends Actor {
                         "value": "perception"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "endurance": "Endurance",
                     "perception": "Perception"
                 }
                 return actorData;
             case "bison":
-                actorData.data.info.path.name = "Bison";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Bison";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Strength",
                         "value": "strength"
@@ -409,14 +411,14 @@ export class cncActor extends Actor {
                         "value": "will"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "strength": "Strength",
                     "will": "Will"
                 }
                 return actorData;
             case "coyote":
-                actorData.data.info.path.name = "Coyote";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Coyote";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Agility",
                         "value": "agility"
@@ -426,14 +428,14 @@ export class cncActor extends Actor {
                         "value": "intelligence"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "agility": "Agility",
                     "intelligence": "Intelligence"
                 }
                 return actorData;
             case "crow":
-                actorData.data.info.path.name = "Crow";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Crow";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Spirit",
                         "value": "spirit"
@@ -443,14 +445,14 @@ export class cncActor extends Actor {
                         "value": "wisdom"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "spirit": "Spirit",
                     "wisdom": "Wisdom"
                 }
                 return actorData;
             case "deer":
-                actorData.data.info.path.name = "Deer";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Deer";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Wisdom",
                         "value": "wisdom"
@@ -460,14 +462,14 @@ export class cncActor extends Actor {
                         "value": "charisma"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "wisdom": "Wisdom",
                     "charisma": "Charisma"
                 }
                 return actorData;
             case "eagle":
-                actorData.data.info.path.name = "Eagle";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Eagle";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Strength",
                         "value": "strength"
@@ -477,14 +479,14 @@ export class cncActor extends Actor {
                         "value": "wisdom"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "strength": "Strength",
                     "wisdom": "Wisdom"
                 }
                 return actorData;
             case "falcon":
-                actorData.data.info.path.name = "Falcon";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Falcon";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Perception",
                         "value": "perception"
@@ -494,14 +496,14 @@ export class cncActor extends Actor {
                         "value": "spirit"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "perception": "Perception",
                     "spirit": "Spirit"
                 }
                 return actorData;
             case "fox":
-                actorData.data.info.path.name = "Fox";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Fox";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Agility",
                         "value": "agility"
@@ -511,14 +513,14 @@ export class cncActor extends Actor {
                         "value": "spirit"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "agility": "Agility",
                     "spirit": "Spirit"
                 }
                 return actorData;
             case "owl":
-                actorData.data.info.path.name = "Owl";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Owl";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Endurance",
                         "value": "endurance"
@@ -528,14 +530,14 @@ export class cncActor extends Actor {
                         "value": "intelligence"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "endurance": "Endurance",
                     "intelligence": "Intelligence"
                 }
                 return actorData;
             case "raccoon":
-                actorData.data.info.path.name = "Raccoon";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Raccoon";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Charisma",
                         "value": "charisma"
@@ -545,14 +547,14 @@ export class cncActor extends Actor {
                         "value": "intelligence"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "charisma": "Charisma",
                     "intelligence": "Intelligence"
                 }
                 return actorData;
             case "salmon":
-                actorData.data.info.path.name = "Salmon";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Salmon";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Will",
                         "value": "will"
@@ -562,14 +564,14 @@ export class cncActor extends Actor {
                         "value": "agility"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "will": "Will",
                     "agility": "Agility"
                 }
                 return actorData;
             case "snake":
-                actorData.data.info.path.name = "Snake";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Snake";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Spirit",
                         "value": "spirit"
@@ -579,14 +581,14 @@ export class cncActor extends Actor {
                         "value": "endurance"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "spirit": "Spirit",
                     "endurance": "Endurance"
                 }
                 return actorData;
             case "spider":
-                actorData.data.info.path.name = "Spider";
-                actorData.data.info.path.stats = {
+                actorData.info.path.name = "Spider";
+                actorData.info.path.stats = {
                     "stat1": {
                         "name": "Perception",
                         "value": "perception"
@@ -596,7 +598,7 @@ export class cncActor extends Actor {
                         "value": "strength"
                     }
                 }
-                actorData.data.info.path.allowedStats = {
+                actorData.info.path.allowedStats = {
                     "perception": "Perception",
                     "strength": "Strength"
                 }

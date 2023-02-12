@@ -6,21 +6,21 @@
         <div class="item-col-base">
             <div class="item-row">
                 <label class="item-label" for="name">{{localize "ITEM.ItemName"}}:</label>
-                <input class="ability-input" name="name" type="text" value="{{name}}" />
+                <input class="ability-input" name="name" type="text" value="{{item.name}}" />
             </div>
             <div class="item-row row-40">
-                <label class="item-label" for="data.costRank">{{localize "ITEM.CostRank"}}:</label>
-                <input class="item-num-input" name="data.costRank" type="text" value="{{data.costRank}}" />
+                <label class="item-label" for="system.costRank">{{localize "ITEM.CostRank"}}:</label>
+                <input class="item-num-input" name="system.costRank" type="text" value="{{system.costRank}}" />
             </div>
             <div class="item-row">
-                <label class="item-label" for="data.traits">{{localize "ITEM.Traits"}}:</label>
-                <input class="ability-input" name="data.traits" type="text" value="{{data.traits}}" />
+                <label class="item-label" for="system.traits">{{localize "ITEM.Traits"}}:</label>
+                <input class="ability-input" name="system.traits" type="text" value="{{system.traits}}" />
             </div>
 
         </div>
 
         <div class="item-col-img">
-            <img class="item-image" src="{{img}}" data-edit="img" name="name" />
+            <img class="item-image" src="{{item.img}}" data-edit="img" name="name" />
         </div>
     </div>
 
@@ -28,7 +28,7 @@
 
     <div class="item-row">
         <span class="item-label">{{localize "ITEM.Notes"}}:</span>
-        {{editor content=data.notes target="data.notes" button=true owner=owner editable=true}}
+        {{editor enrichment.system.notes target="system.notes" button=true owner=owner editable=true}}
     </div>
 
     <!-- MODIFIERS -->

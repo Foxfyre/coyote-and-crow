@@ -21,13 +21,15 @@ export default function buildRoll(data, rollData) {
     *       physicalDefenseDetail:
     *   }
     ***/
- 
-    const skills = data.data.data.skills;
-    const stats = data.data.data.stats;
-    const legendary = data.data.data.info.legendary.ranks;
-    const mind = data.data.data.attributes.mind.currentValue;
+    console.log("There is the buildRoll Data");
+    console.log(data)
+    let actorData = data.actor.system;
+    const skills = actorData.skills;
+    const stats = actorData.stats;
+    const legendary = actorData.info.legendary.ranks;
+    const mind = actorData.attributes.mind.currentValue;
     const specialization = data.items.filter(i => i.type === "specialization")
-    let pDefense = data.data.data.attributes.body.modified > 0 ? data.data.data.attributes.body.modified : data.data.data.attributes.body.pd;
+    let pDefense = actorData.attributes.body.modified > 0 ? actorData.attributes.body.modified : actorData.attributes.body.pd;
     // get rollName and match it with the relevant skill from players skill list.
 
     switch (rollData.type) {
@@ -48,7 +50,7 @@ export default function buildRoll(data, rollData) {
         case "specialization":
             for (let p in Object(specialization)) {
                 if (specialization[p].name === buildRollData.specName) {
-                    buildRollData.successNumber = Number(specialization[p].data.modifier.sn.value);
+                    buildRollData.successNumber = Number(specialization[p].system.modifier.sn.value);
                 }
             }
             break;

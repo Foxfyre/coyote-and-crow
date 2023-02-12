@@ -106,44 +106,44 @@
                     <span></span>
                 </div>
             </div>
-
             <ul class="items spec-list">
                 {{#each specialization as |spec key|}}
                 <li class="item spec-items rollable" data-item-id="{{spec._id}}" data-rollname="{{name}}"
-                    data-specrank="{{spec.data.specRank}}" data-skillname="{{spec.data.skill}}" data-adddice="{{skill.addDice}}"
-                    data-skillrank="{{spec.data.skillRank}}" data-statname="{{spec.data.statName}}"
-                    data-statrank="{{spec.data.statRank}}" data-rolltype="specialization">
+                    data-specrank="{{spec.system.specRank}}" data-skillname="{{spec.system.skill}}" data-adddice="{{system.skill.addDice}}"
+                    data-skillrank="{{spec.system.skillRank}}" data-statname="{{spec.system.statName}}"
+                    data-statrank="{{spec.system.statRank}}" data-rolltype="specialization">
                     <div class="spec-table-row">
                         <div class="spec-table-col spec-col-20">
+                            {{log spec}}
                             <span>{{spec.name}}</span>
                             <!--Specialization Name-->
                         </div>
                         <div class="spec-table-col spec-values col-rank">
                             <span>
-                                {{{spec.data.specRank}}}
+                                {{{spec.system.specRank}}}
                             </span>
                             <!--Specialization Rank-->
                         </div>
                         <div class="spec-table-col spec-col-20">
                             <span>
-                                {{{spec.data.skill}}}
+                                {{{spec.system.skill}}}
                             </span>
                             <!--Linked Skill Name-->
                         </div>
                         <div class="spec-table-col spec-col-20">
                             <span>
-                                {{{spec.data.statName}}}
+                                {{{spec.system.statName}}}
                             </span>
                             <!--Linked Stat Name-->
                         </div>
                         <div class="spec-table-col spec-values col-rank">
                             <span>
-                                {{{spec.data.statRank}}}
+                                {{{spec.system.statRank}}}
                             </span>
                             <!--Linked Stat Rank-->
                         </div>
                         <div class="spec-table-col spec-values">
-                            <span>{{{spec.data.total}}}</span>
+                            <span>{{{spec.system.total}}}</span>
                             <!--Total of all 3 values-->
                         </div>
                         <div class="item-controls flexrow spec-controls">
@@ -164,46 +164,46 @@
                 <div class="effect">
                     <span>Environmental</span>
                     <div class="effect-row">
-                        <input type="checkbox" class="coyote-checkbox" name="data.effects.environmental.active"
+                        <input type="checkbox" class="coyote-checkbox" name="system.effects.environmental.active"
                             {{checked effects.environmental.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.environmental.value"
-                            value="{{effects.environmental.value}}">
+                        <input type="text" class="effect-text-input" name="system.effects.environmental.value"
+                            value="{{system.effects.environmental.value}}">
                     </div>
                 </div>
                 <div class="effect">
                     <span>Poison</span>
                     <div class="effect-row">
-                        <input type="checkbox" class="coyote-checkbox" name="data.effects.poison.active" {{checked
+                        <input type="checkbox" class="coyote-checkbox" name="system.effects.poison.active" {{checked
                             effects.poison.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.poison.value"
-                            value="{{effects.poison.value}}">
+                        <input type="text" class="effect-text-input" name="system.effects.poison.value"
+                            value="{{system.effects.poison.value}}">
                     </div>
                 </div>
                 <div class="effect">
                     <span>Bleeding</span>
                     <div class="effect-row">
-                        <input type="checkbox" class="coyote-checkbox" name="data.effects.bleeding.active" {{checked
+                        <input type="checkbox" class="coyote-checkbox" name="system.effects.bleeding.active" {{checked
                             effects.bleeding.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.bleeding.value"
-                            value="{{effects.bleeding.value}}">
+                        <input type="text" class="effect-text-input" name="system.effects.bleeding.value"
+                            value="{{system.effects.bleeding.value}}">
                     </div>
                 </div>
                 <div class="effect">
                     <span>Stunned</span>
                     <div class="effect-row">
-                        <input type="checkbox" class="coyote-checkbox" name="data.effects.stun.active" {{checked
+                        <input type="checkbox" class="coyote-checkbox" name="system.effects.stun.active" {{checked
                             effects.stun.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.stun.value"
-                            value="{{effects.stun.value}}">
+                        <input type="text" class="effect-text-input" name="system.effects.stun.value"
+                            value="{{system.effects.stun.value}}">
                     </div>
                 </div>
                 <div class="effect">
                     <span>Burning</span>
                     <div class="effect-row">
-                        <input type="checkbox" class="coyote-checkbox" name="data.effects.burning.active" {{checked
+                        <input type="checkbox" class="coyote-checkbox" name="system.effects.burning.active" {{checked
                             effects.burning.active}}>
-                        <input type="text" class="effect-text-input" name="data.effects.burning.value"
-                            value="{{effects.burning.value}}">
+                        <input type="text" class="effect-text-input" name="system.effects.burning.value"
+                            value="{{system.effects.burning.value}}">
                     </div>
                 </div>
             </div>
@@ -215,37 +215,37 @@
             <div class="effect">
                 <span>Sleeping</span>
                 <div class="effect-row">
-                    <input type="checkbox" class="coyote-checkbox" name="data.states.sleeping.active" {{checked
+                    <input type="checkbox" class="coyote-checkbox" name="system.states.sleeping.active" {{checked
                         states.sleeping.active}}>
-                    <input type="text" class="effect-text-input" name="data.states.sleeping.value"
-                        value="{{states.sleeping.value}}">
+                    <input type="text" class="effect-text-input" name="system.states.sleeping.value"
+                        value="{{system.states.sleeping.value}}">
                 </div>
             </div>
             <div class="effect">
                 <span>Altered</span>
                 <div class="effect-row">
-                    <input type="checkbox" class="coyote-checkbox" name="data.states.altered.active" {{checked
+                    <input type="checkbox" class="coyote-checkbox" name="system.states.altered.active" {{checked
                         states.altered.active}}>
-                    <input type="text" class="effect-text-input" name="data.states.altered.value"
-                        value="{{states.altered.value}}">
+                    <input type="text" class="effect-text-input" name="system.states.altered.value"
+                        value="{{system.states.altered.value}}">
                 </div>
             </div>
             <div class="effect">
                 <span>Panic</span>
                 <div class="effect-row">
-                    <input type="checkbox" class="coyote-checkbox" name="data.states.panic.active" {{checked
+                    <input type="checkbox" class="coyote-checkbox" name="system.states.panic.active" {{checked
                         states.panic.active}}>
-                    <input type="text" class="effect-text-input" name="data.states.panic.value"
-                        value="{{states.panic.value}}">
+                    <input type="text" class="effect-text-input" name="system.states.panic.value"
+                        value="{{system.states.panic.value}}">
                 </div>
             </div>
             <div class="effect">
                 <span>Unconcious</span>
                 <div class="effect-row">
-                    <input type="checkbox" class="coyote-checkbox" name="data.states.unconcious.active" {{checked
+                    <input type="checkbox" class="coyote-checkbox" name="system.states.unconcious.active" {{checked
                         states.unconcious.active}}>
-                    <input type="text" class="effect-text-input" name="data.states.unconcious.value"
-                        value="{{states.unconcious.value}}">
+                    <input type="text" class="effect-text-input" name="system.states.unconcious.value"
+                        value="{{system.states.unconcious.value}}">
                 </div>
             </div>
         </div>
