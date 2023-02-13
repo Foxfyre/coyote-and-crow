@@ -21,8 +21,8 @@ export default function buildRoll(data, rollData) {
     *       physicalDefenseDetail:
     *   }
     ***/
-    console.log("There is the buildRoll Data");
-    console.log(data)
+    //console.log("There is the buildRoll Data");
+    //console.log(data)
     let actorData = data.actor.system;
     const skills = actorData.skills;
     const stats = actorData.stats;

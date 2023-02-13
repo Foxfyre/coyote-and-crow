@@ -133,8 +133,8 @@ Hooks.once("ready", async () => {
 })
 
 Hooks.on("renderChatMessage", (message, html, data) => {
-  // console.log("Here's the Message")
-  // console.log(message);
+  //console.log("Here's the Message")
+  //console.log(message);
   // console.log("Here's the raw html")
   // console.log(html);
   //console.log("Here's the data");
@@ -147,11 +147,11 @@ Hooks.on("renderChatMessage", (message, html, data) => {
       if (Object.keys(data.message.flags["coyote-and-crow"]).length > 0) {
         const actor = game.actors.get(data.message.speaker.actor);
         const rolldata = data.message.flags["coyote-and-crow"];
-        console.log(rolldata);
+        //console.log(rolldata);
         if (html.find("button.modRoll")[0]){
           html.find("button.modRoll")[0].addEventListener("click", ev => {
-            console.log("Modify Roll!")
-            modifyRoll(rolldata, message._roll, data.message.speaker.actor)
+            //console.log("Modify Roll!")
+            modifyRoll(rolldata, message.rolls[0], data.message.speaker.actor)
           })
         }
         if (html.find("button.critRoll")[0]){
