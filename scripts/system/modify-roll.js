@@ -85,9 +85,8 @@ export default async function modifyRoll(rolldata, roll, actorid) {
 
 
 function _modifyRoll(html, actorid, compiledRollData, originalRoll) {
-    console.log("Modify the roll!");
+    //console.log("Modify the roll!");
     const actor = game.actors.get(actorid);
-    console.log(actor);
     const curmind = actor.system.attributes.mind.currentValue;
     const spendmind = Number(html.find('span[name="usedMind"]')[0].innerHTML);
     actor.updateSource({"system.attributes.mind.currentValue": curmind - spendmind})
