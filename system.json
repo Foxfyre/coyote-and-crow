@@ -47,8 +47,8 @@
   "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/v1.0.0/coyote-and-crow.zip",
   "license": "LICENSE.txt",
   "compatibility": {
-    "minimum": "10.291",
-    "verified": "10",
+    "minimum": "10",
+    "verified": "10.291",
     "maximum": "10"
   }
 }
