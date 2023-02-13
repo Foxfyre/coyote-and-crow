@@ -1,10 +1,10 @@
 # coyote-and-crow
 More than 700 years ago, a massive disaster changed the course of history. 
-The world was plunged into centuries of darkness,  but the event also introduced the Adanadi - The Gift- a strange  mark that appeared on all life. This mark would have a massive impact on humanityh. Centurues later, the Earth is healing. New, advanced nations have risen. Ancient legends stir.
+The world was plunged into centuries of darkness,  but the event also introduced the Adanadi - The Gift- a strange  mark that appeared on all life. This mark would have a massive impact on humanity. Centuries later, the Earth is healing. New, advanced nations have risen. Ancient legends stir.
 
 Coyote & Crow is a tabletop roleplaying game set in an alternate future where colonization of the Americas never happened. In this world that is both familiar and entirely new, you'll take on the role of heroic characters adventuring in a changing landscape.
 
-Coyote & Crow is a bold look iinto  a different future full of possibilities and fresh perspectives, created and developed by a diver, Indigenous-led team.
+Coyote & Crow is a bold look into a different future full of possibilities and fresh perspectives, created and developed by a diverse, Indigenous-led team.
 
 # Coyote And Crow on Foundry VTT
 
