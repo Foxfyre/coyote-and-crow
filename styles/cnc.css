@@ -1267,3 +1267,21 @@ img.die {
     margin: 0 auto;
     text-align: center;
 } */
+
+/* Journal */
+
+.sheet.journal-entry .journal-sheet-container {
+    background: url(../ui/parchment.jpg) repeat !important;
+    
+}
+
+.sheet.journal-entry .journal-entry-content {
+    border: none;
+    border-radius: none;
+}
+
+.sheet.journal-entry .journal-sidebar {
+    color: var(--color-text-dark-primary);
+    border-right:black solid 2px;
+    box-shadow: inset 0px 0px 20px 5px rgba(0, 0, 0, 0.25);
+}
