@@ -14,7 +14,7 @@ export default async function modifyRoll(rolldata, roll, actorid) {
         rolls: []
     }
     console.log(data)
-
+    console.log(roll);
 
     roll.terms[0].results.forEach((r, i) => {
         let legendmax = Math.min(12 - Number(r.result), data.legendary.max)
@@ -87,9 +87,10 @@ export default async function modifyRoll(rolldata, roll, actorid) {
 function _modifyRoll(html, actorid, compiledRollData, originalRoll) {
     console.log("Modify the roll!");
     const actor = game.actors.get(actorid);
-    const curmind = actor.data.data.attributes.mind.currentValue;
+    console.log(actor);
+    const curmind = actor.system.attributes.mind.currentValue;
     const spendmind = Number(html.find('span[name="usedMind"]')[0].innerHTML);
-    actor.updateSource({"data.attributes.mind.currentValue": curmind - spendmind})
+    actor.updateSource({"system.attributes.mind.currentValue": curmind - spendmind})
 
 
     const baseRoll = originalRoll.reroll({async: false})

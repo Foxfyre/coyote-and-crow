@@ -133,12 +133,12 @@ Hooks.once("ready", async () => {
 })
 
 Hooks.on("renderChatMessage", (message, html, data) => {
-  // console.log("Here's the Message")
-  // console.log(message);
+  console.log("Here's the Message")
+  console.log(message);
   // console.log("Here's the raw html")
   // console.log(html);
-  //console.log("Here's the data");
-  //console.log(data);
+  console.log("Here's the data");
+  console.log(data);
   if (!message.isAuthor) {
     html.find("button").remove();
   }
@@ -151,7 +151,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
         if (html.find("button.modRoll")[0]){
           html.find("button.modRoll")[0].addEventListener("click", ev => {
             console.log("Modify Roll!")
-            modifyRoll(rolldata, message._roll, data.message.speaker.actor)
+            modifyRoll(rolldata, message.rolls[0], data.message.speaker.actor)
           })
         }
         if (html.find("button.critRoll")[0]){

@@ -10,7 +10,7 @@ export class cncActor extends Actor {
     }
 
     _preCreate(data) {
-        console.log(data);
+        //console.log(data);
         let createData = {};
         if (!data.token) {
           mergeObject(createData,

@@ -95,7 +95,7 @@ export class cncActorSheet extends ActorSheet {
             sheetData.abilities[`${stat1}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat1);
             sheetData.abilities[`${stat2}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat2);
         }
-        console.log(sheetData);
+        //console.log(sheetData);
         sheetData.specialization = sheetData.items.filter(i => i.type === "specialization");
 
         this._sortSkills(sheetData);
