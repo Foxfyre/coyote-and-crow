@@ -102,7 +102,7 @@ Hooks.once("ready", async () => {
       title: `Welcome to v${game.system.data.version} of Coyote & Crow`,
       content: `
     <h1>Coyote & Crow</h1>
-    <h2>1.0.0 Update</h2>
+    <h2>2.0.0 Update</h2>
 
     <h4>Always update your world files before updating to a new system version of Coyote & Crow. 
     This system is actively in development and may be subject to breaking changes without warning.</h4>

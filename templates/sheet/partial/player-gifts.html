@@ -5,7 +5,7 @@
 
     <ul class="bio-col items">
         {{#each gifts as |gift key|}}
-        {{#ifCond gift.data.type '===' "gift"}}
+        {{#ifCond gift.system.type '===' "gift"}}
         <li class="item gift-item" data-item-id={{gift._id}}>
             <div class="bio-row">
                 <div class="gift-input">
@@ -17,13 +17,13 @@
                 <div class="gift-input">
                     <span>Category</span>
                     <div class="input-readonly">
-                        <span>{{{gift.data.category}}}</span>
+                        <span>{{{gift.system.category}}}</span>
                     </div>
                 </div>
                 <div class="gift-level-input">
                     <span>Level</span>
                     <div class="input-readonly-num">
-                        <span>{{{gift.data.level}}}</span>
+                        <span>{{{gift.system.level}}}</span>
                     </div>
                 </div>
                 <div class="item-controls flexrow gift-controls gift-input">
@@ -40,7 +40,7 @@
             <div class="gift-editor">
                 <span>Description</span>
                 <div class="gift-editor-text">
-                    {{{gift.data.notes}}}
+                    {{{gift.system.notes}}}
                 </div>
             </div>
         </li>

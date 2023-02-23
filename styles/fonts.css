@@ -1,18 +1,22 @@
 @import url("../fonts/QuizaPro/quizapro.css");
 @import url("../fonts/Lombok/lombok.css");
 
-.sheet.actor, .dialog-content {
+.sheet.actor, .dialog-content, .app.window-app.sheet.journal-page-content, body {
     font-family: 'Quiza Pro', sans-serif;
 }
 
-.app.window-app.sheet.journal-sheet h1, .dialog-content h1 {
+.journal-entry-content .journal-entry-pages {
+    font-size: 16px;
+}
+
+.app.window-app.sheet.journal-sheet h1, .dialog-content h1, .app.window-app.sheet.journal-page-content .editor-content {
     font-family: 'Lombok', sans-serif;
     text-align: center;
     text-transform: uppercase;
     padding: 0 0 0.5rem 0;
 }
 
-.app.window-app.sheet.journal-sheet h2, .dialog-content h2{
+.app.window-app.sheet.journal-sheet h2, .dialog-content h2, .app.window-app.sheet.journal-page-content h2 {
     font-weight: bold;
     font-size: x-large;
     padding: 20px 0 0 0;
@@ -21,19 +25,19 @@
     color: rgb(57, 32, 91);
 }
 
-.app.window-app.sheet.journal-sheet h3, .dialog-content h3{
+.app.window-app.sheet.journal-sheet h3, .dialog-content h3, .app.window-app.sheet.journal-page-content h3 {
     font-weight: bold;
     font-size: large;
     padding: 20px 0 0 10px;
     font-family: 'Quiza Pro', sans-serif;
 }
 
-.app.window-app.sheet.journal-sheet .editor-content {
+.app.window-app.sheet.journal-sheet .editor-content, .app.window-app.sheet.journal-page-content {
     text-align: justify;
     padding: 0 5px;
 }
 
-.app.window-app.sheet.journal-sheet .editor-content p {
+.app.window-app.sheet.journal-sheet .editor-content p, .app.window-app.sheet.journal-page-content .editor-content p {
     padding-right: 10px;
 }
 
@@ -44,30 +48,30 @@
     font-size: large;
 }
 
-.app.window-app.sheet.journal-sheet .editor-content .underline {
+.app.window-app.sheet.journal-sheet .editor-content .underline, .app.window-app.sheet.journal-page-content .editor-content .underline {
     color: rgb(57, 32, 91);
     font-weight: bold;
     border-bottom: solid rgb(57, 32, 91) 2px;
 }
 
-.app.window-app.sheet.journal-sheet .editor-content span[style*="text-decoration:underline"] {
+.app.window-app.sheet.journal-sheet .editor-content span[style*="text-decoration:underline"], .app.window-app.sheet.journal-page-content .editor-content span[style*="text-decoration:underline"] {
     color: rgb(57, 32, 91);
     font-weight: bold;
 }
 
-.app.window-app.sheet.journal-sheet .editor-content img[style*="float:right"] {
+.app.window-app.sheet.journal-sheet .editor-content img[style*="float:right"], .app.window-app.sheet.journal-page-content .editor-content img[style*="float:right"] {
     margin: 3px 0 5px 10px;
 }
 
-.app.window-app.sheet.journal-sheet .editor-content img[style*="float:left"] {
+.app.window-app.sheet.journal-sheet .editor-content img[style*="float:left"], .app.window-app.sheet.journal-page-content .editor-content img[style*="float:left"] {
     margin: 3px 10px 5px 0;
 }
 
-.app.window-app.sheet.journal-sheet .editor-content table td {
+.app.window-app.sheet.journal-sheet .editor-content table td, .app.window-app.sheet.journal-page-content .editor-content table td {
     padding-left: 0.25em;
 }
 
-.app.window-app.sheet.journal-sheet .editor-content blockquote {
+.app.window-app.sheet.journal-sheet .editor-content blockquote, .app.window-app.sheet.journal-page-content .editor-content blockquote {
     padding: 0 20px 0 10px;
     border-bottom: solid;
     border-top: solid;
@@ -79,6 +83,6 @@
     background: linear-gradient(90deg, rgba(0, 104, 180, 0.2) 0%, rgba(0, 104, 180, 0.15) 25%, rgba(0, 104, 180, 0.1) 50%, rgba(0, 104, 180, 0) 100%);
 }
 
-.app.window-app.sheet.journal-sheet .editor-content blockquote p {
+.app.window-app.sheet.journal-sheet .editor-content blockquote p, .app.window-app.sheet.journal-page-content .editor-content blockquote p {
     padding: 5px 0;
 }
