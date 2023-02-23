@@ -12,7 +12,7 @@ export class cncActor extends Actor {
     _preCreate(data) {
         //console.log(data);
         let createData = {};
-        if (!data.prototypeToken) {
+        if (!data.token) {
           mergeObject(createData,
             {
               "token.displayName": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,    // Default display name to be on owner hover
