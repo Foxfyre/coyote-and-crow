@@ -21,16 +21,7 @@ export class cncActorSheet extends ActorSheet {
     get template() {
         let type = this.actor.type;
         return `systems/coyote-and-crow/templates/sheet/${type}-sheet.html`;
-        /*const path = "systems/coyote-and-crow/templates/sheet";
-        return `${path}/${this.actor.data.type}-sheet.html`;*/
     }
-
-
-    /*get template() {
-        const path = "systems/expanse/templates/sheet"
-        return `${path}/${this.actor.data.type}-sheet.html`;
-    }*/
-
 
     get actorData() {
         return this.actor.system;
@@ -39,10 +30,8 @@ export class cncActorSheet extends ActorSheet {
     getData() {
         const sheetData = super.getData();
         sheetData.system = sheetData.data.system;
-        //const data = {};
-        
+
         const actorData = sheetData.actor;
-        //data.actor = actorData;
         sheetData.stats = actorData.system.stats;
         sheetData.skills = actorData.system.skills;
         sheetData.derived = actorData.system.derived;
@@ -52,10 +41,19 @@ export class cncActorSheet extends ActorSheet {
         sheetData.burdens = sheetData.items.filter(i => i.type === "burden");
         sheetData.effects = actorData.system.effects;
         sheetData.states = actorData.system.states;
-        sheetData.playerInfo = {} // Can this be deleted?
 
         let stat1 = sheetData.info.path.stats.stat1.value;
         let stat2 = sheetData.info.path.stats.stat2.value;
+
+
+        //Fix Notes
+        if (actorData.system.hasOwnProperty('data')) {
+            if (actorData.system.bio.notes === "" && actorData.system.data.bio.notes !== "") {
+                let notesData = actorData.system.data.bio.notes;
+                actorData.system.bio.notes = notesData;
+            }
+        }
+
 
         // This block allows for the NPC to have access to all of the abilities.
         if (actorData.type === "npc") {
@@ -95,7 +93,6 @@ export class cncActorSheet extends ActorSheet {
             sheetData.abilities[`${stat1}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat1);
             sheetData.abilities[`${stat2}`] = sheetData.items.filter(i => i.type === "ability" && i.system.relStat === stat2);
         }
-        //console.log(sheetData);
         sheetData.specialization = sheetData.items.filter(i => i.type === "specialization");
 
         this._sortSkills(sheetData);
@@ -106,8 +103,7 @@ export class cncActorSheet extends ActorSheet {
 
     _enrichBio() {
         let enrichment = {};
-        enrichment['system.bio.notes'] = TextEditor.enrichHTML(this.actor.system.bio.notes, {async: false, relativeTo: this.actor});
-
+        enrichment['system.bio.notes'] = TextEditor.enrichHTML(this.actor.system.bio.notes, { async: false, relativeTo: this.actor });
         return expandObject(enrichment);
     }
 
@@ -209,7 +205,7 @@ export class cncActorSheet extends ActorSheet {
     *       Else roll normally
     *   \/
     *   Send Results into roll card 
-    */ 
+    */
 
     async _diceRoll(event) {
         event.preventDefault();
@@ -244,11 +240,7 @@ export class cncActorSheet extends ActorSheet {
         // Send data and roll info to gather all information required for rolls. 
         const compiledRollData = buildRoll(data, rollData);
 
-        //console.log(compiledRollData)
-
         const rollResults = await getRoll(compiledRollData)
-
-        //console.log(rollResults)
 
         const rolledCard = rollCard(rollResults);
 
@@ -260,7 +252,7 @@ export class cncActorSheet extends ActorSheet {
             rollMode: game.settings.get("core", "rollMode"),
             content: rolledCard.dice,
             sound: CONFIG.sounds.dice,
-            flags: {"coyote-and-crow": compiledRollData}
+            flags: { "coyote-and-crow": compiledRollData }
         };
 
         ChatMessage.create(chatOptions);
