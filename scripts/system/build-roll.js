@@ -22,7 +22,7 @@ export default function buildRoll(data, rollData) {
     *   }
     ***/
     //console.log("There is the buildRoll Data");
-    //console.log(data)
+    
     let actorData = data.actor.system;
     const skills = actorData.skills;
     const stats = actorData.stats;
@@ -31,10 +31,13 @@ export default function buildRoll(data, rollData) {
     const specialization = data.items.filter(i => i.type === "specialization")
     let pDefense = actorData.attributes.body.modified > 0 ? actorData.attributes.body.modified : actorData.attributes.body.pd;
     // get rollName and match it with the relevant skill from players skill list.
-
     switch (rollData.type) {
         case "stat":
             for (let s in Object(stats)) {
+                if (stats[s].name === undefined) {
+                    continue;
+                }
+                
                 if (stats[s].name.toLowerCase() === buildRollData.statName) {
                     buildRollData.successNumber = stats[s].snMod
                 }
