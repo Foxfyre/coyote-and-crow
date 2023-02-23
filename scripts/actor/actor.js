@@ -12,7 +12,7 @@ export class cncActor extends Actor {
     _preCreate(data) {
         //console.log(data);
         let createData = {};
-        if (!data.token) {
+        if (!data.prototypeToken) {
           mergeObject(createData,
             {
               "token.displayName": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,    // Default display name to be on owner hover
@@ -29,7 +29,7 @@ export class cncActor extends Actor {
           createData.token.vision = true;
           createData.token.actorLink = true;
         }
-        // changged from this.data.update(createData) to this.update(createDate);
+        // changed from this.data.update(createData) to this.update(createDate);
         this.updateSource(createData);
     }
 
@@ -42,13 +42,8 @@ export class cncActor extends Actor {
     }
 
     prepareData() {
-        //console.log(this.system); // use this
         const newSystem = this.system;
         newSystem.items = this.items;
-        //console.log(newSystem)
-        //const actorData = this.data;
-        //const data = actorData.system;
-        //let pathData;
         newSystem.attributes.init.score = newSystem.stats.agility.value + newSystem.stats.perception.value + newSystem.stats.charisma.value;
         newSystem.attributes.body.pd = newSystem.stats.agility.value + newSystem.stats.endurance.value;
         newSystem.attributes.mind.md = newSystem.stats.perception.value + newSystem.stats.wisdom.value;
@@ -63,17 +58,6 @@ export class cncActor extends Actor {
             r.modified = r.value + r.modified
         }
         if (this.type === "character" || this.type === "npc") {
-
-            /*fetch('/systems/coyote-and-crow/scripts/data/path.json')
-                .then(response => response.json())
-                .then(data => {
-                    pathData = data;
-                    console.log(pathData);
-                    this._setPath(actorData, pathData);
-                })*/
-            /*getPathJSON().then(pathData => {
-                
-            })*/
             this._setPath(newSystem);
             this._deriveItemModifiers(newSystem.items, newSystem);
             this._calcTotalSkills()
@@ -121,7 +105,6 @@ export class cncActor extends Actor {
             if (x.type === "weapon" && x.system.weaponTypes !== "") {
                 let weaponType = x.system.weaponTypes; // get weapon type from item
                 let dp = x.system.modifier.dp.value;   // get value of dp from item
-                //actorSkills = actorData.data;
                 let weaponSkill = actorSkills[weaponType].skillRank;  // get skill rank of weaponskill
                 if (dp > weaponSkill) { dp = weaponSkill; }
                 this.system.skills[weaponType].addDice = dp;
@@ -293,7 +276,7 @@ export class cncActor extends Actor {
 
 
     _setPath(actorData) {
-        if (actorData.type === "npc") {
+        if (this.type === "npc") {
             actorData.info.path.allowedStats = {
                 "agility": "Agility",
                 "charisma": "Charisma",
@@ -344,8 +327,7 @@ export class cncActor extends Actor {
                 },
 
             }
-
-            return
+            return actorData.info.path;
         }
         switch (actorData.info.path.value) {
             case "badger":
