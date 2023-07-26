@@ -26,7 +26,7 @@ export class cncItemSheet extends ItemSheet {
         let type = this.item.type;
         return `systems/coyote-and-crow/templates/sheet/${type}-sheet.html`;
     }
-
+ 
     get itemData() {
         return this.item.data;
     }
@@ -37,14 +37,13 @@ export class cncItemSheet extends ItemSheet {
         itemData._id = itemData.data._id;
         //const data = super.getData(options);
         //console.log(data);
-        //const itemData = data.data;
-        console.log(itemData);
+        //const itemData = data.data
         //console.log(this.actor);
         itemData.system.name = itemData.data.name;
         let pathStats
         itemData.enrichment = await this._enrichItem();
 
-        if (this.item.isOwned === null) {
+        if (this.item.isOwned === null || this.item.isOwned === false) {
             itemData.system.owned = false;
             return itemData;
         } else {
@@ -53,7 +52,7 @@ export class cncItemSheet extends ItemSheet {
         const actorData = this.actor;
         itemData.actorData = actorData;
         //console.log(itemData.actorData);
-        
+
         pathStats = {
             [`${itemData.actorData.system.info.path.stats.stat1.value}`]: itemData.actorData.system.info.path.stats.stat1.name,
             [`${itemData.actorData.system.info.path.stats.stat2.value}`]: itemData.actorData.system.info.path.stats.stat2.name
@@ -153,6 +152,7 @@ export class cncItemSheet extends ItemSheet {
         }
         //console.log(itemData);
         this.actor.updateEmbeddedDocuments("Item", [itemData])
+        //console.log(itemData);
         return itemData;
     }
 
