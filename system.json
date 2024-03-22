@@ -50,5 +50,6 @@
     "minimum": "10",
     "verified": "11.306",
     "maximum": "11"
-  }
+  },
+  "background": "systems/coyote-and-crow/ui/cover.jpg"
 }

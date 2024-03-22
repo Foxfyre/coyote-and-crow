@@ -97,7 +97,7 @@ export class cncActorSheet extends ActorSheet {
 
         this._sortSkills(sheetData);
         sheetData.enrichment = this._enrichBio();
-
+        console.log(sheetData);
         return sheetData;
     }
 
