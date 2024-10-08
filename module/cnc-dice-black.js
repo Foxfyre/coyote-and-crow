@@ -1,4 +1,4 @@
-export class CoyoteDiceBlack extends Die {
+export class CoyoteDiceBlack extends foundry.dice.terms.Die {
     constructor(termData) {
         termData.faces = 12;
         super(termData);
