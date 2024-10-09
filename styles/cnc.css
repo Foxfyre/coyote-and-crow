@@ -123,7 +123,9 @@ select {
     color: goldenrod !important;
 }
 
-
+.compendium.directory .directory-list .directory-item {
+    background-color: rgb(57, 32, 91);
+}
 
 /* Character Sheet */
 
