@@ -4,7 +4,7 @@
     "PLAYER.Background": "Background",
     "PLAYER.ShortGoal": "Short Term Goals",
     "PLAYER.LongGoal": "Long Term Goal",
-    "PLAYER.Gifts" : "Gifts",
+    "PLAYER.Gifts": "Gifts",
     "PLAYER.Burdens": "Burdens",
     "PLAYER.Notes": "Notes",
     "NPC.Category": "Category",
@@ -104,6 +104,94 @@
     "COYOTE.SELECT.Burden": "Burden",
     "COYOTE.SELECT.Select": "Select",
     "COYOTE.DIALOG.ModifyRoll": "Modify Roll",
-    "COYOTE.BUTTON.Roll": "Roll"
-
+    "COYOTE.BUTTON.Roll": "Roll",
+    "COYOTE.PathChoices": {
+        "select": "Select your Path",
+        "badger": "Path of the Badger",
+        "bear": "Path of the Bear",
+        "beaver": "Path of the Beaver",
+        "bison": "Path of the Bison",
+        "coyote": "Path of the Coyote",
+        "crow": "Path of the Crow",
+        "deer": "Path of the Deer",
+        "eagle": "Path of the Eagle",
+        "falcon": "Path of the Falcon",
+        "fox": "Path of the Fox",
+        "owl": "Path of the Owl",
+        "raccoon": "Path of the Raccoon",
+        "salmon": "Path of the Salmon",
+        "snake": "Path of the Snake",
+        "spider": "Path of the Spider"
+    },
+    "COYOTE.WeaponTypes": {
+        "select": "Select your Weapon Type",
+        "melee": "Melee",
+        "ranged": "Ranged",
+        "unarmed": "Unarmed"
+    },
+    "COYOTE.Skills": {
+        "select": "Select your Skill",
+        "Art": "Art",
+        "Athletics": "Athletics",
+        "Ceremony": "Ceremony",
+        "Charm": "Charm",
+        "Coercion": "Coercion",
+        "Computers": "Computers",
+        "Cooking": "Cooking",
+        "Crafting": "Crafting",
+        "Cybernetics": "Cybernetics",
+        "Deception": "Deception",
+        "Farming": "Farming",
+        "Herbalism": "Herbalism",
+        "Husbandry": "Husbandry",
+        "Investigation": "Investigation",
+        "Knowledge": "Knowledge",
+        "Language": "Language",
+        "Medicine": "Medicine",
+        "melee": "Melee Weapons",
+        "Music": "Music",
+        "Performance": "Performance",
+        "Piloting": "Piloting",
+        "ranged": "Ranged Weapons",
+        "Science": "Science",
+        "Skulduggery": "Skulduggery",
+        "Stealth": "Stealth",
+        "Survival": "Survival",
+        "Tracking": "Tracking",
+        "unarmed": "Unarmed Combat"
+    },
+    "COYOTE.Stats": {
+        "select": "Select Stat",
+        "Agility": "Agility",
+        "Charisma": "Charisma",
+        "Endurance": "Endurance",
+        "Intelligence": "Intelligence",
+        "Perception": "Perception",
+        "Spirit": "Spirit",
+        "Strength": "Strength",
+        "Will": "Will",
+        "Wisdom": "Wisdom",
+        "Wealth": "Wealth"
+    },
+    "COYOTE.PhysicalDefense": {
+        "select": "Select",
+        "environmental": "Environmental"
+    },
+    "COYOTE.GiftBurden": {
+        "gift": "Gift",
+        "burden": "Burden"
+    },
+    "COYOTE.PrimaryAction": {
+        "select": "Select Activation Type",
+        "primary": "Primary",
+        "reaction": "Reaction",
+        "secondary": "Secondary",
+        "prisec": "PriSec",
+        "narrative": "Narrative"
+    },
+    "COYOTE.Npc": {
+        "select": "NPC Type",
+        "icon": "Icon",
+        "legend": "Legend"
+    }
 }

@@ -20,13 +20,13 @@
 
 export default function rollCard(rollResults) {
     let compiledRollData = rollResults.data
-    
+    //console.log(rollResults);
     let diceSection = '';
     let buttons = '';
-    console.log("Roll Results")
+/*     console.log("Roll Results")
     console.log(rollResults);
     console.log("Compiled Roll Data")
-    console.log(compiledRollData);
+    console.log(compiledRollData); */
 
     /*** 
     * Flavour text (Subject Line)

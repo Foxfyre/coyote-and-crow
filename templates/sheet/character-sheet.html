@@ -43,24 +43,7 @@
                         <!--<input name="system.info.path.value" type="text" value="{{info.path.value}}"
                             placeholder="Path Of The..." />-->
                         <select name="system.info.path.value" value="info.path.value">
-                            {{#select info.path.value}}
-                            <option value="">Select your Path</option>
-                            <option value="badger">Path of the Badger</option>
-                            <option value="bear">Path of the Bear</option>
-                            <option value="beaver">Path of the Beaver</option>
-                            <option value="bison">Path of the Bison</option>
-                            <option value="coyote">Path of the Coyote</option>
-                            <option value="crow">Path of the Crow</option>
-                            <option value="deer">Path of the Deer</option>
-                            <option value="eagle">Path of the Eagle</option>
-                            <option value="falcon">Path of the Falcon</option>
-                            <option value="fox">Path of the Fox</option>
-                            <option value="owl">Path of the Owl</option>
-                            <option value="raccoon">Path of the Raccoon</option>
-                            <option value="salmon">Path of the Salmon</option>
-                            <option value="snake">Path of the Snake</option>
-                            <option value="spider">Path of the Spider</option>
-                            {{/select}}
+                            {{selectOptions dropDowns.pathChoices selected=info.path.value localize=true}}
                         </select>
                     </div>
                     <div class="c-info-motivation">

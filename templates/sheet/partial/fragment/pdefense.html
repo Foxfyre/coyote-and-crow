@@ -7,10 +7,7 @@
         <input type="number" name="system.modifier.pd.value" value="{{system.modifier.pd.value}}" />
         <span>vs.</span>
         <select name="system.modifier.pd.detail" value="{{system.modifier.pd.detail}}">
-            {{#select system.modifier.pd.detail}}
-            <option value=""></option>
-            <option value="environmental">Environmental</option>
-            {{/select}}
+            {{selectOptions dropDowns.physicalDefense selected=system.modifier.pd.detail localize=true}}
         </select>
         <span>Damage</span>
     </div>

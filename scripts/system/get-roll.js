@@ -26,7 +26,7 @@ export default async function getRoll(compiledRollData) {
     let roll;
 
     if (!preppedRollData.critical){ // base roll
-      let baseRoll = await new Roll("(@totalDice)da", preppedRollData).evaluate({ async: true });
+      let baseRoll = await new Roll("(@totalDice)da", preppedRollData).evaluate();
 
       let results = baseRoll.terms[0].results;
       results.sort((a, b) => (a.result - b.result));
@@ -36,7 +36,7 @@ export default async function getRoll(compiledRollData) {
     }
     else { // critical dice
       
-      let criticalRoll = new Roll("(@totalDice)dbx12", preppedRollData).evaluate({ async: false });
+      let criticalRoll = new Roll("(@totalDice)dbx12", preppedRollData).evaluate();
       roll = criticalRoll;
       roll.type = "Critical";
     }

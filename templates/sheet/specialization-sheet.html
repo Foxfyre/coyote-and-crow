@@ -25,36 +25,7 @@
                 </div>
                 <div class="spec-table-col">
                     <select name="system.skill" value="{{system.skill}}">
-                        {{#select system.skill}}
-                        <option value="Art">Art</option>
-                        <option value="Athletics">Athletics</option>
-                        <option value="Ceremony">Ceremony</option>
-                        <option value="Charm">Charm</option>
-                        <option value="Coercion">Coercion</option>
-                        <option value="Computers">Computers</option>
-                        <option value="Cooking">Cooking</option>
-                        <option value="Crafting">Crafting</option>
-                        <option value="Cybernetics">Cybernetics</option>
-                        <option value="Deception">Deception</option>
-                        <option value="Farming">Farming</option>
-                        <option value="Herbalism">Herbalism</option>
-                        <option value="Husbandry">Husbandry</option>
-                        <option value="Investigation">Investigation</option>
-                        <option value="Knowledge">Knowledge</option>
-                        <option value="Language">Language</option>
-                        <option value="Medicine">Medicine</option>
-                        <option value="Melee Weapons">Melee Weapons</option>
-                        <option value="Music">Music</option>
-                        <option value="Performance">Performance</option>
-                        <option value="Piloting">Piloting</option>
-                        <option value="Ranged Weapons">Ranged Weapons</option>
-                        <option value="Science">Science</option>
-                        <option value="Skulduggery">Skulduggery</option>
-                        <option value="Stealth">Stealth</option>
-                        <option value="Survival">Survival</option>
-                        <option value="Tracking">Tracking</option>
-                        <option value="Unarmed Combat">Unarmed Combat</option>
-                        {{/select}}
+                        {{selectOptions dropDowns.dropdownSkills selected=system.skill localize=true}}
                     </select>
                 </div>
                 <div class="spec-table-col spec-values">
@@ -78,17 +49,7 @@
             <div class="pd-mod">
                 <label name="system.modifier.sn.value">+ / - SN </label>
                 <select name="system.modifier.sn.value" value="{{system.modifier.sn.value}}">
-                    {{#select system.modifier.sn.value}}
-                    <option value="-4">-4</option>
-                    <option value="-3">-3</option>
-                    <option value="-2">-2</option>
-                    <option value="-1">-1</option>
-                    <option value="0">0</option>
-                    <option value="1">+1</option>
-                    <option value="2">+2</option>
-                    <option value="3">+3</option>
-                    <option value="4">+4</option>
-                    {{/select}}
+                    {{selectOptions dropDowns.modifierSN selected=system.modifier.sn.value localize=false}}
                 </select>
             </div>
         </div>

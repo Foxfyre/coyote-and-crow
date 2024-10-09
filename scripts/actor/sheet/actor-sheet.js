@@ -5,7 +5,7 @@ import rollCard from "../../system/roll-card.js";
 export class cncActorSheet extends ActorSheet {
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ["sheet", "actor"],
             height: 750,
             width: 700,
@@ -27,7 +27,7 @@ export class cncActorSheet extends ActorSheet {
         return this.actor.system;
     }
     // V10 update - changed actorData.data to actorData.system
-    getData() {
+    async getData() {
         const sheetData = super.getData();
         sheetData.system = sheetData.data.system;
 
@@ -41,6 +41,7 @@ export class cncActorSheet extends ActorSheet {
         sheetData.burdens = sheetData.items.filter(i => i.type === "burden");
         sheetData.effects = actorData.system.effects;
         sheetData.states = actorData.system.states;
+        sheetData.dropDowns = CONFIG.COYOTE;
 
         let stat1 = sheetData.info.path.stats.stat1.value;
         let stat2 = sheetData.info.path.stats.stat2.value;
@@ -96,15 +97,15 @@ export class cncActorSheet extends ActorSheet {
         sheetData.specialization = sheetData.items.filter(i => i.type === "specialization");
 
         this._sortSkills(sheetData);
-        sheetData.enrichment = this._enrichBio();
-        console.log(sheetData);
+        sheetData.enrichment = await this._enrichBio();
+        //console.log(sheetData);
         return sheetData;
     }
 
-    _enrichBio() {
+    async _enrichBio() {
         let enrichment = {};
-        enrichment['system.bio.notes'] = TextEditor.enrichHTML(this.actor.system.bio.notes, { async: false, relativeTo: this.actor });
-        return expandObject(enrichment);
+        enrichment['system.bio.notes'] = await TextEditor.enrichHTML(this.actor.system.bio.notes, { async: true, relativeTo: this.actor });
+        return foundry.utils.expandObject(enrichment);
     }
 
     activateListeners(html) {
@@ -122,7 +123,7 @@ export class cncActorSheet extends ActorSheet {
         event.preventDefault();
         const li = event.currentTarget.closest(".item");
         const itemId = li.dataset.itemId;
-        const item = duplicate(this.actor.getEmbeddedDocument("Item", itemId))
+        const item = foundry.utils.duplicate(this.actor.getEmbeddedDocument("Item", itemId))
         let isEquipped = item.system.equipped;
         isEquipped = !isEquipped;
         item.system.equipped = isEquipped;
@@ -244,18 +245,27 @@ export class cncActorSheet extends ActorSheet {
 
         const rolledCard = rollCard(rollResults);
 
-        let chatOptions = {
+        /*let chatOptions = {
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-            roll: rollResults,
+            roll: await getRoll(compiledRollData),
             flavor: rolledCard.title,
             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
             rollMode: game.settings.get("core", "rollMode"),
             content: rolledCard.dice,
             sound: CONFIG.sounds.dice,
             flags: { "coyote-and-crow": compiledRollData }
-        };
+        };*/
 
-        ChatMessage.create(chatOptions);
+        rollResults.toMessage({
+            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+            flavor: rolledCard.title,
+            rollMode: game.settings.get("core", "rollMode"),
+            flags: { "coyote-and-crow": compiledRollData },
+            content: rolledCard.dice,
+            sound: CONFIG.sounds.dice
+        });
+
+        //ChatMessage.create(chatOptions);
         // msg._roll.data = compiledRollData
     }
 }

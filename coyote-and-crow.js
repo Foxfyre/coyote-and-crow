@@ -12,6 +12,7 @@ import { CoyoteDiceWhite } from "./module/cnc-dice-white.js";
 import getRoll from "./scripts/system/get-roll.js";
 import rollCard from "./scripts/system/roll-card.js";
 import modifyRoll from "./scripts/system/modify-roll.js";
+import { COYOTE } from "./module/select-config.js";
 
 Hooks.once("init", async function () {
   console.log(`Initializing A Template`);
@@ -43,6 +44,8 @@ Hooks.once("init", async function () {
     arg.pop();
     return arg.join('');
   })
+
+  CONFIG.COYOTE = COYOTE;
 
   Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
     switch (operator) {
@@ -99,23 +102,21 @@ Hooks.once("init", () => {
 Hooks.once("ready", async () => {
   if (!game.settings.get("coyote-and-crow", "initial-welcome")) {
     new Dialog({
-      title: `Welcome to v${game.system.data.version} of Coyote & Crow`,
+      title: `Welcome to v${game.system.version} of Coyote & Crow`,
       content: `
     <h1>Coyote & Crow</h1>
-    <h2>2.0.0 Update</h2>
+    <h2>3.0.0 Update</h2>
 
-    <h4>Always update your world files before updating to a new system version of Coyote & Crow. 
-    This system is actively in development and may be subject to breaking changes without warning.</h4>
+    <h2>Always update your world files before updating to a new system version of Coyote & Crow. 
+    This system is actively in development and may be subject to breaking changes without warning.</h2>
 
     <h3><b>Functionality</b></h3>
     <ul>
-    <li>The entire Coyote & Crow system has been updated to Foundry V10! </li>
+    <li>The entire Coyote & Crow system has been updated to Foundry V12! </li>
     </ul><br>
 
 
-    <p>If you encounter any bugs, or have feature suggestions, you can join the Trello board and let us know <a href="https://trello.com/invite/b/jpGljTcv/e6c3e37afda0eb61278d7e432956594c/coyote-crow-bug-reporting">HERE</a>.</p>
-
-    <p>Want to find others who play Coyote & Crow? Join us on <a href="https://discord.gg/Fbm8Uevvny">Discord!</a></p>
+    <p>Report bugs, suggest features, and find others who play Coyote & Crow. Join us on <a href="https://discord.gg/Fbm8Uevvny">Discord!</a></p>
     `,
       buttons: {
         dont_show: {
@@ -133,12 +134,12 @@ Hooks.once("ready", async () => {
 })
 
 Hooks.on("renderChatMessage", (message, html, data) => {
-  //console.log("Here's the Message")
-  //console.log(message);
-  // console.log("Here's the raw html")
-  // console.log(html);
-  //console.log("Here's the data");
-  //console.log(data);
+  /* console.log("Here's the Message")
+  console.log(message);
+  console.log("Here's the raw html")
+  console.log(html);
+  console.log("Here's the data");
+  console.log(data); */
   if (!message.isAuthor) {
     html.find("button").remove();
   }

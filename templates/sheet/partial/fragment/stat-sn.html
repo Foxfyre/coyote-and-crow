@@ -4,64 +4,20 @@
 <div class="pd-mod">
     <label name="system.modifier.snStat1.value">+ / - SN </label>
     <select name="system.modifier.snStat1.value" value="{{system.modifier.snStat1.value}}">
-        {{#select system.modifier.snStat1.value}}
-        <option value="-4">-4</option>
-        <option value="-3">-3</option>
-        <option value="-2">-2</option>
-        <option value="-1">-1</option>
-        <option value="0">0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-        <option value="4">+4</option>
-        {{/select}}
+        {{selectOptions dropDowns.modifierSN selected=system.modifier.snStat1.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.snStat1.statName" value="{{system.modifier.snStat1.statName}}">
-        {{#select system.modifier.snStat1.statName}}
-        <option value="">None</option>
-        <option value="Agility">Agility</option>
-        <option value="Charisma">Charisma</option>
-        <option value="Endurance">Endurance</option>
-        <option value="Intelligence">Intelligence</option>
-        <option value="Perception">Perception</option>
-        <option value="Spirit">Spirit</option>
-        <option value="Strength">Strength</option>
-        <option value="Will">Will</option>
-        <option value="Wisdom">Wisdom</option>
-        <option value="Wealth">Wealth</option>
-        {{/select}}
+        {{selectOptions dropDowns.stats selected=system.modifier.snStat1.statName localize=true}}
     </select>
 </div>
 {{#ifCond system.modifier.snStat1.value '!=' 0}}
 <div class="pd-mod">
     <label name="system.modifier.snStat2.value">+ / - SN </label>
     <select name="system.modifier.snStat2.value" value="{{system.modifier.snStat2.value}}">
-        {{#select system.modifier.snStat2.value}}
-        <option value="-4">-4</option>
-        <option value="-3">-3</option>
-        <option value="-2">-2</option>
-        <option value="-1">-1</option>
-        <option value="0">0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-        <option value="4">+4</option>
-        {{/select}}
+        {{selectOptions dropDowns.modifierSN selected=system.modifier.snStat2.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.snStat2.statName" value="{{system.modifier.snStat2.statName}}">
-        {{#select system.modifier.snStat2.statName}}
-        <option value="">None</option>
-        <option value="Agility">Agility</option>
-        <option value="Charisma">Charisma</option>
-        <option value="Endurance">Endurance</option>
-        <option value="Intelligence">Intelligence</option>
-        <option value="Perception">Perception</option>
-        <option value="Spirit">Spirit</option>
-        <option value="Strength">Strength</option>
-        <option value="Will">Will</option>
-        <option value="Wisdom">Wisdom</option>
-        <option value="Wealth">Wealth</option>
-        {{/select}}
+        {{selectOptions dropDowns.stats selected=system.modifier.snStat2.statName localize=true}}
     </select>
 </div>
 {{/ifCond}}
@@ -69,32 +25,10 @@
 <div class="pd-mod">
     <label name="system.modifier.snStat3.value">+ / - SN </label>
     <select name="system.modifier.snStat3.value" value="{{system.modifier.snStat3.value}}">
-        {{#select system.modifier.snStat3.value}}
-        <option value="-4">-4</option>
-        <option value="-3">-3</option>
-        <option value="-2">-2</option>
-        <option value="-1">-1</option>
-        <option value="0">0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-        <option value="4">+4</option>
-        {{/select}}
+        {{selectOptions dropDowns.modifierSN selected=system.modifier.snStat3.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.snStat3.statName" value="{{system.modifier.snStat3.statName}}">
-        {{#select system.modifier.snStat3.statName}}
-        <option value="">None</option>
-        <option value="Agility">Agility</option>
-        <option value="Charisma">Charisma</option>
-        <option value="Endurance">Endurance</option>
-        <option value="Intelligence">Intelligence</option>
-        <option value="Perception">Perception</option>
-        <option value="Spirit">Spirit</option>
-        <option value="Strength">Strength</option>
-        <option value="Will">Will</option>
-        <option value="Wisdom">Wisdom</option>
-        <option value="Wealth">Wealth</option>
-        {{/select}}
+        {{selectOptions dropDowns.stats selected=system.modifier.snStat3.statName localize=true}}
     </select>
 </div>
 {{/ifCond}}
@@ -102,32 +36,10 @@
 <div class="pd-mod">
     <label name="system.modifier.snStat4.value">+ / - SN </label>
     <select name="system.modifier.snStat4.value" value="{{system.modifier.snStat4.value}}">
-        {{#select system.modifier.snStat4.value}}
-        <option value="-4">-4</option>
-        <option value="-3">-3</option>
-        <option value="-2">-2</option>
-        <option value="-1">-1</option>
-        <option value="0">0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-        <option value="4">+4</option>
-        {{/select}}
+        {{selectOptions dropDowns.modifierSN selected=system.modifier.snStat4.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.snStat4.statName" value="{{system.modifier.snStat4.statName}}">
-        {{#select system.modifier.snStat4.statName}}
-        <option value="">None</option>
-        <option value="Agility">Agility</option>
-        <option value="Charisma">Charisma</option>
-        <option value="Endurance">Endurance</option>
-        <option value="Intelligence">Intelligence</option>
-        <option value="Perception">Perception</option>
-        <option value="Spirit">Spirit</option>
-        <option value="Strength">Strength</option>
-        <option value="Will">Will</option>
-        <option value="Wisdom">Wisdom</option>
-        <option value="Wealth">Wealth</option>
-        {{/select}}
+        {{selectOptions dropDowns.stats selected=system.modifier.snStat4.statName localize=true}}
     </select>
 </div>
 {{/ifCond}}
@@ -135,32 +47,10 @@
 <div class="pd-mod">
     <label name="system.modifier.snStat5.value">+ / - SN </label>
     <select name="system.modifier.snStat5.value" value="{{system.modifier.snStat5.value}}">
-        {{#select system.modifier.snStat5.value}}
-        <option value="-4">-4</option>
-        <option value="-3">-3</option>
-        <option value="-2">-2</option>
-        <option value="-1">-1</option>
-        <option value="0">0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-        <option value="4">+4</option>
-        {{/select}}
+        {{selectOptions dropDowns.modifierSN selected=system.modifier.snStat5.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.snStat5.statName" value="{{system.modifier.snStat5.statName}}">
-        {{#select system.modifier.snStat5.statName}}
-        <option value="">None</option>
-        <option value="Agility">Agility</option>
-        <option value="Charisma">Charisma</option>
-        <option value="Endurance">Endurance</option>
-        <option value="Intelligence">Intelligence</option>
-        <option value="Perception">Perception</option>
-        <option value="Spirit">Spirit</option>
-        <option value="Strength">Strength</option>
-        <option value="Will">Will</option>
-        <option value="Wisdom">Wisdom</option>
-        <option value="Wealth">Wealth</option>
-        {{/select}}
+        {{selectOptions dropDowns.stats selected=system.modifier.snStat5.statName localize=true}}
     </select>
 </div>
 {{/ifCond}}
@@ -168,32 +58,10 @@
 <div class="pd-mod">
     <label name="system.modifier.snStat6.value">+ / - SN </label>
     <select name="system.modifier.snStat6.value" value="{{system.modifier.snStat6.value}}">
-        {{#select system.modifier.snStat6.value}}
-        <option value="-4">-4</option>
-        <option value="-3">-3</option>
-        <option value="-2">-2</option>
-        <option value="-1">-1</option>
-        <option value="0">0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-        <option value="4">+4</option>
-        {{/select}}
+        {{selectOptions dropDowns.modifierSN selected=system.modifier.snStat6.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.snStat6.statName" value="{{system.modifier.snStat6.statName}}">
-        {{#select system.modifier.snStat6.statName}}
-        <option value="">None</option>
-        <option value="Agility">Agility</option>
-        <option value="Charisma">Charisma</option>
-        <option value="Endurance">Endurance</option>
-        <option value="Intelligence">Intelligence</option>
-        <option value="Perception">Perception</option>
-        <option value="Spirit">Spirit</option>
-        <option value="Strength">Strength</option>
-        <option value="Will">Will</option>
-        <option value="Wisdom">Wisdom</option>
-        <option value="Wealth">Wealth</option>
-        {{/select}}
+        {{selectOptions dropDowns.stats selected=system.modifier.snStat6.statName localize=true}}
     </select>
 </div>
 {{/ifCond}}
@@ -201,32 +69,10 @@
 <div class="pd-mod">
     <label name="system.modifier.snStat7.value">+ / - SN </label>
     <select name="system.modifier.snStat7.value" value="{{system.modifier.snStat7.value}}">
-        {{#select system.modifier.snStat7.value}}
-        <option value="-4">-4</option>
-        <option value="-3">-3</option>
-        <option value="-2">-2</option>
-        <option value="-1">-1</option>
-        <option value="0">0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-        <option value="4">+4</option>
-        {{/select}}
+        {{selectOptions dropDowns.modifierSN selected=system.modifier.snStat7.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.snStat7.statName" value="{{system.modifier.snStat7.statName}}">
-        {{#select system.modifier.snStat7.statName}}
-        <option value="">None</option>
-        <option value="Agility">Agility</option>
-        <option value="Charisma">Charisma</option>
-        <option value="Endurance">Endurance</option>
-        <option value="Intelligence">Intelligence</option>
-        <option value="Perception">Perception</option>
-        <option value="Spirit">Spirit</option>
-        <option value="Strength">Strength</option>
-        <option value="Will">Will</option>
-        <option value="Wisdom">Wisdom</option>
-        <option value="Wealth">Wealth</option>
-        {{/select}}
+        {{selectOptions dropDowns.stats selected=system.modifier.snStat7.statName localize=true}}
     </select>
 </div>
 {{/ifCond}}
@@ -234,32 +80,10 @@
 <div class="pd-mod">
     <label name="system.modifier.snStat8.value">+ / - SN </label>
     <select name="system.modifier.snStat8.value" value="{{system.modifier.snStat8.value}}">
-        {{#select system.modifier.snStat8.value}}
-        <option value="-4">-4</option>
-        <option value="-3">-3</option>
-        <option value="-2">-2</option>
-        <option value="-1">-1</option>
-        <option value="0">0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-        <option value="4">+4</option>
-        {{/select}}
+        {{selectOptions dropDowns.modifierSN selected=system.modifier.snStat8.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.snStat8.statName" value="{{system.modifier.snStat8.statName}}">
-        {{#select system.modifier.snStat8.statName}}
-        <option value="">None</option>
-        <option value="Agility">Agility</option>
-        <option value="Charisma">Charisma</option>
-        <option value="Endurance">Endurance</option>
-        <option value="Intelligence">Intelligence</option>
-        <option value="Perception">Perception</option>
-        <option value="Spirit">Spirit</option>
-        <option value="Strength">Strength</option>
-        <option value="Will">Will</option>
-        <option value="Wisdom">Wisdom</option>
-        <option value="Wealth">Wealth</option>
-        {{/select}}
+        {{selectOptions dropDowns.stats selected=system.modifier.snStat8.statName localize=true}}
     </select>
 </div>
 {{/ifCond}}
@@ -267,32 +91,10 @@
 <div class="pd-mod">
     <label name="system.modifier.snStat9.value">+ / - SN </label>
     <select name="system.modifier.snStat9.value" value="{{system.modifier.snStat9.value}}">
-        {{#select system.modifier.snStat9.value}}
-        <option value="-4">-4</option>
-        <option value="-3">-3</option>
-        <option value="-2">-2</option>
-        <option value="-1">-1</option>
-        <option value="0">0</option>
-        <option value="1">+1</option>
-        <option value="2">+2</option>
-        <option value="3">+3</option>
-        <option value="4">+4</option>
-        {{/select}}
+        {{selectOptions dropDowns.modifierSN selected=system.modifier.snStat9.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.snStat9.statName" value="{{system.modifier.snStat9.statName}}">
-        {{#select system.modifier.snStat9.statName}}
-        <option value="">None</option>
-        <option value="Agility">Agility</option>
-        <option value="Charisma">Charisma</option>
-        <option value="Endurance">Endurance</option>
-        <option value="Intelligence">Intelligence</option>
-        <option value="Perception">Perception</option>
-        <option value="Spirit">Spirit</option>
-        <option value="Strength">Strength</option>
-        <option value="Will">Will</option>
-        <option value="Wisdom">Wisdom</option>
-        <option value="Wealth">Wealth</option>
-        {{/select}}
+        {{selectOptions dropDowns.stats selected=system.modifier.snStat9.statName localize=true}}
     </select>
 </div>
 {{/ifCond}}

@@ -14,10 +14,7 @@
                 <div class="weapon-select">
                     <label class="item-label" for="system.type">{{localize "ITEM.GiftBurden"}}:</label>
                     <select name="system.type" value="{{system.type}}">
-                        {{#select system.type}}
-                        <option value="gift">{{localize "COYOTE.SELECT.Gift"}}</option>
-                        <option value="burden">{{localize "COYOTE.SELECT.Burden"}}</option>
-                        {{/select}}
+                        {{selectOptions dropDowns.giftBurden selected=system.type localize=true}}
                     </select>
                 </div>
             </div>

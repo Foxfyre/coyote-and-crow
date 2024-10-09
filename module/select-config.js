@@ -1,6 +1,6 @@
 export const COYOTE = {};
 
-COYOTE.dropdownChoices = {
+COYOTE.pathChoices = {
     "": "COYOTE.PathChoices.select",
     "badger": "COYOTE.PathChoices.badger",
     "bear": "COYOTE.PathChoices.bear",
@@ -101,4 +101,10 @@ COYOTE.modifierSN = {
     "2": "+2",
     "3": "+3",
     "4": "+4"
+}
+
+COYOTE.npcType = {
+    "": "COYOTE.Npc.select",
+    "legend": "COYOTE.Npc.legend",
+    "icon": "COYOTE.Npc.icon"
 }

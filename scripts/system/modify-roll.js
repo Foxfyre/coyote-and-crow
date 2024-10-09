@@ -54,9 +54,9 @@ export default async function modifyRoll(rolldata, roll, actorid) {
                     data[key] = e.target.value;
                     data.modified = Number(data.value) + Number(data.legendmod) + Number(data.focusmod);
                     let newdie = Math.min(12, data.modified)
-                    e.path[2].lastElementChild.children[0].src = `systems/coyote-and-crow/ui/dice/chat/w${newdie}.png`;
-                    const footer = e.path[4].lastElementChild;
-                    let body = e.path[3];
+                    e.srcElement.parentNode.parentNode.lastElementChild.firstElementChild.src = `systems/coyote-and-crow/ui/dice/chat/w${newdie}.png`;
+                    const footer = e.srcElement.parentNode.parentNode.parentNode.parentNode.children[2];
+                    let body = e.srcElement.parentNode.parentNode.parentNode;
                     let legendused = 0;
                     let spendmind = 0;
                     for (let i = 0; i < body.children.length; i++) {
@@ -64,12 +64,11 @@ export default async function modifyRoll(rolldata, roll, actorid) {
                         spendmind+= Number(body.children[i].dataset.focusmod)
                     }
                     for (let i = 0; i < footer.children.length; i++) {
-                        let targetSpan = footer.children[i].lastElementChild.lastElementChild;
+                        let targetSpan = footer.children[i].children[0].children[1];
                         switch (targetSpan.attributes.name.value) {
                             case "remLegend":
-                                let remLegend = Number(targetSpan.dataset.legendmax) - legendused
+                                let remLegend = Number(targetSpan.dataset.legendmax) - legendused;
                                 targetSpan.innerHTML = remLegend;
-                                e.path[7].lastElementChild.lastElementChild.disabled = remLegend < 0;
                                 break;
                             case "usedMind":
                                 targetSpan.innerHTML = spendmind;
@@ -85,16 +84,21 @@ export default async function modifyRoll(rolldata, roll, actorid) {
 
 
 function _modifyRoll(html, actorid, compiledRollData, originalRoll) {
-    //console.log("Modify the roll!");
+    console.log("Modify the roll!");
     const actor = game.actors.get(actorid);
+    console.log(actor);
     const curmind = actor.system.attributes.mind.currentValue;
+    console.log(curmind);
     const spendmind = Number(html.find('span[name="usedMind"]')[0].innerHTML);
+    console.log(spendmind);
     actor.updateSource({"system.attributes.mind.currentValue": curmind - spendmind})
 
 
-    const baseRoll = originalRoll.reroll({async: false})
+    const baseRoll = originalRoll;
+    console.log(baseRoll);
     let crits = 0;
     const rows = html.find("div.mod-roll-row");
+    console.log(baseRoll);
     baseRoll.terms[0]._total = 0;
     // baseRoll.terms[0].values = JSON.parse(JSON.stringify(originalRoll.terms[0].values));
     baseRoll.terms[0].results.forEach(function(v,i){
@@ -116,24 +120,20 @@ function _modifyRoll(html, actorid, compiledRollData, originalRoll) {
         console.log(baseRoll)
         console.log(critRoll)
     
-        const rollResults = PoolTerm.fromRolls([baseRoll, critRoll])
+        const rollResults = foundry.dice.terms.PoolTerm.fromRolls([baseRoll, critRoll])
     
         rollResults.type = "Modded";
         rollResults.data = compiledRollData;
 
         const rolledCard = rollCard(rollResults);
 
-        // rollResults.data = {};
-        
-        let chatOptions = {
-            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-            roll: baseRoll,
-            flavor: rolledCard.title,
+        baseRoll.toMessage({
             speaker: ChatMessage.getSpeaker({ actor: actor }),
+            flavor: rolledCard.title,
             rollMode: game.settings.get("core", "rollMode"),
+            flags: { "coyote-and-crow": compiledRollData },
             content: rolledCard.dice,
             sound: CONFIG.sounds.dice
-        };
-        ChatMessage.create(chatOptions);
+        });
     })
 }

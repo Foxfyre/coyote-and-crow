@@ -13,7 +13,7 @@ export class cncActor extends Actor {
         //console.log(data);
         let createData = {};
         if (!data.token) {
-          mergeObject(createData,
+          foundry.utils.mergeObject(createData,
             {
               "token.displayName": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,    // Default display name to be on owner hover
               "token.displayBars": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,    // Default display bars to be on owner hover

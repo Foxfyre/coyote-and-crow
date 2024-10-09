@@ -36,11 +36,7 @@
                     <div class="c-info-age">
                         <!--<input name="system.info.age.value" type="text" value="{{info.age.value}}" placeholder="Type" />-->
                         <select name="system.info.age.value" value="system.info.age.value">
-                            {{#select system.info.age.value}}
-                            <option value="">NPC Type</option>
-                            <option value="icon">Icon</option>
-                            <option value="legend">Legend</option>
-                            {{/select}}
+                            {{selectOptions dropDowns.npcType selected=info.age.value localize=true}}
                         </select>
                     </div>
                 </div>
@@ -50,28 +46,6 @@
                             placeholder="{{localize 'NPC.Category'}}" />
                     </div>
                     <div class="c-info-path">
-                        <!--<input name="system.info.path.value" type="text" value="{{info.path.value}}"
-                            placeholder="Path Of The..." />
-                        <select name="system.info.path.value" value="info.path.value">
-                            {{#select info.path.value}}
-                            <option value="">Select your Path</option>
-                            <option value="badger">Path of the Badger</option>
-                            <option value="bear">Path of the Bear</option>
-                            <option value="beaver">Path of the Beaver</option>
-                            <option value="bison">Path of the Bison</option>
-                            <option value="coyote">Path of the Coyote</option>
-                            <option value="crow">Path of the Crow</option>
-                            <option value="deer">Path of the Deer</option>
-                            <option value="eagle">Path of the Eagle</option>
-                            <option value="falcon">Path of the Falcon</option>
-                            <option value="fox">Path of the Fox</option>
-                            <option value="owl">Path of the Owl</option>
-                            <option value="raccoon">Path of the Raccoon</option>
-                            <option value="salmon">Path of the Salmon</option>
-                            <option value="snake">Path of the Snake</option>
-                            <option value="spider">Path of the Spider</option>
-                            {{/select}}
-                        </select>-->
                     </div>
                     <div class="c-info-motivation">
                         <input name="system.info.motivation.value" type="text" value="{{system.info.motivation.value}}"
@@ -83,7 +57,7 @@
                 </div>
 
                 <div class="c-stats-section npc-bg">
-                    {{#ifCond system.info.age.value '===' "icon"}}
+                    {{#ifCond info.age.value '===' "icon"}}
 
                     {{> systems/coyote-and-crow/templates/sheet/partial/player-stats.html}}
                     {{else}}

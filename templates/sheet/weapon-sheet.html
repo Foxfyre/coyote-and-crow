@@ -12,12 +12,7 @@
                 <div class="weapon-select">
                     <label class="item-label" for="system.type">{{localize "ITEM.WeaponType"}}:</label>
                     <select name="system.weaponTypes" value="{{system.weaponTypes}}">
-                        {{#select system.weaponTypes}}
-                        <option value="">Select</option>
-                        <option value="melee">Melee</option>
-                        <option value="ranged">Ranged</option>
-                        <option value="unarmed">Unarmed</option>
-                        {{/select}}
+                        {{selectOptions dropDowns.weaponTypes selected=system.weaponTypes localize=true}}
                     </select>
                 </div>
             </div>

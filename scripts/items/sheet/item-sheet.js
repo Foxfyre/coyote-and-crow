@@ -12,7 +12,7 @@ export class cncItemSheet extends ItemSheet {
     }
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ["item"],
             height: 500,
             tabs: [{ navSelector: ".item-tabs", contentSelector: ".item-modifier" }],
@@ -42,6 +42,7 @@ export class cncItemSheet extends ItemSheet {
         itemData.system.name = itemData.data.name;
         let pathStats
         itemData.enrichment = await this._enrichItem();
+        itemData.dropDowns = CONFIG.COYOTE;
 
         if (this.item.isOwned === null || this.item.isOwned === false) {
             itemData.system.owned = false;
@@ -51,7 +52,6 @@ export class cncItemSheet extends ItemSheet {
         }
         const actorData = this.actor;
         itemData.actorData = actorData;
-        //console.log(itemData.actorData);
 
         pathStats = {
             [`${itemData.actorData.system.info.path.stats.stat1.value}`]: itemData.actorData.system.info.path.stats.stat1.name,
@@ -159,10 +159,10 @@ export class cncItemSheet extends ItemSheet {
     async _enrichItem() {
         //console.log("Enrichment processing");
         let enrichment = {};
-        enrichment['system.notes'] = TextEditor.enrichHTML(this.item.system.notes, {async: false, relativeTo: this.item});
-        enrichment[`system.description`] = TextEditor.enrichHTML(this.item.system.description, {async: false, relativeTo: this.item});
+        enrichment['system.notes'] = await TextEditor.enrichHTML(this.item.system.notes, {async: true, relativeTo: this.item});
+        enrichment[`system.description`] = await TextEditor.enrichHTML(this.item.system.description, {async: true, relativeTo: this.item});
 
-        return expandObject(enrichment);
+        return foundry.utils.expandObject(enrichment);
     }
 
     activateListeners(html) {

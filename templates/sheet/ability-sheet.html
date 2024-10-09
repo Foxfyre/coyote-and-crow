@@ -15,30 +15,14 @@
 
         {{else}}
         <select name="system.relStat" value="{{system.relStat}}">
-            {{#select system.relStat}}
-            <option value="agility">Agility</option>
-            <option value="charisma">Charisma</option>
-            <option value="endurance">Endurance</option>
-            <option value="intelligence">Intelligence</option>
-            <option value="perception">Perception</option>
-            <option value="spirit">Spirit</option>
-            <option value="strength">Strength</option>
-            <option value="will">Will</option>
-            <option value="wisdom">Wisdom</option>
-            {{/select}}
+            {{selectOptions dropDowns.stats selected=system.relStat localize=true}}
         </select>
         {{/if}}
     </div>
     <div class="ability-row">
         <label for="">Activation:</label>
         <select name="system.activate" value="{{system.activate}}">
-            {{#select system.activate}}
-            <option value="primary">{{localize "ACTIVATION.Primary"}}</option>
-            <option value="reaction">{{localize "ACTIVATION.Reaction"}}</option>
-            <option value="secondary">{{localize "ACTIVATION.Secondary"}}</option>
-            <option value="prisec">{{localize "ACTIVATION.PriSec"}}</option>
-            <option value="narrative">{{localize "ACTIVATION.Narrative"}}</option>
-            {{/select}}
+            {{selectOptions dropDowns.primaryAction selected=system.activate localize=true}}
         </select>
     </div>
     <div class="ability-row">
