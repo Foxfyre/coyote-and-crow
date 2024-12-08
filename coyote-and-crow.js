@@ -166,19 +166,15 @@ Hooks.on("renderChatMessage", (message, html, data) => {
             getRoll(rolldata).then(function(rollResults) {
               const rolledCard = rollCard(rollResults);
               // console.log(rolledCard)
-    
-              let chatOptions = {
-                type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-                roll: rollResults,
-                flavor: rolledCard.title,
+
+              rollResults.toMessage({
                 speaker: ChatMessage.getSpeaker({ actor: actor }),
+                flavor: rolledCard.title,
                 rollMode: game.settings.get("core", "rollMode"),
+                flags: {"coyote-and-crow": rolldata},
                 content: rolledCard.dice,
-                sound: CONFIG.sounds.dice,
-                flags: {"coyote-and-crow": rolldata}
-              };
-        
-              ChatMessage.create(chatOptions);
+                sound: CONFIG.sounds.dice
+              })
             })
           })
         }

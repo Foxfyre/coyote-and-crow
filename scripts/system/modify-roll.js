@@ -91,9 +91,9 @@ function _modifyRoll(html, actorid, compiledRollData, originalRoll) {
     console.log(curmind);
     const spendmind = Number(html.find('span[name="usedMind"]')[0].innerHTML);
     console.log(spendmind);
-    actor.updateSource({"system.attributes.mind.currentValue": curmind - spendmind})
+    actor.update({"system.attributes.mind.currentValue": curmind - spendmind})
 
-
+ 
     const baseRoll = originalRoll;
     console.log(baseRoll);
     let crits = 0;

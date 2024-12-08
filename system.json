@@ -2,7 +2,7 @@
   "id": "coyote-and-crow",
   "title": "Coyote And Crow",
   "description": "The official system for Coyote And Crow",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "authors": [
     {
       "name": "Foxfyre",
@@ -38,8 +38,10 @@
     }
   ],
   "socket": true,
-  "gridDistance": 1,
-  "gridUnits": "m",
+  "grid": {
+    "distance": 1,
+    "units": "m"
+  },
   "primaryTokenAttribute": "attributes.body.currentValue",
   "secondaryTokenAttribute": "attributes.mind.currentValue",
   "url": "https://github.com/Foxfyre/coyote-and-crow",

@@ -140,10 +140,10 @@ export class cncActorSheet extends ActorSheet {
             itemData = {
                 name: game.i18n.format("ITEM.itemNew", { type: game.i18n.localize(`ITEM.ItemType${type.capitalize()}`) }),
                 type: type,
-                data: foundry.utils.deepClone(header.dataset),
-                data: {
+                system: {
                     skill: "Art",
-                    stat: ""
+                    stat: "",
+                    ...foundry.utils.deepClone(header.dataset)
                 }
             }
         } else {
