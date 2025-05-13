@@ -2,7 +2,7 @@
   "id": "coyote-and-crow",
   "title": "Coyote And Crow",
   "description": "The official system for Coyote And Crow",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "authors": [
     {
       "name": "Foxfyre",
@@ -49,9 +49,9 @@
   "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/3.0.1/coyote-and-crow.zip",
   "license": "LICENSE.txt",
   "compatibility": {
-    "minimum": "10",
-    "verified": "12.331",
-    "maximum": "12"
+    "minimum": "13",
+    "verified": "13",
+    "maximum": "13"
   },
   "background": "systems/coyote-and-crow/ui/cover.jpg"
 }
