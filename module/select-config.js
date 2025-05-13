@@ -1,7 +1,7 @@
 export const COYOTE = {};
 
 COYOTE.pathChoices = {
-    "": "COYOTE.PathChoices.select",
+    "select": "COYOTE.PathChoices.select",
     "badger": "COYOTE.PathChoices.badger",
     "bear": "COYOTE.PathChoices.bear",
     "beaver": "COYOTE.PathChoices.beaver",
@@ -20,14 +20,14 @@ COYOTE.pathChoices = {
 }
 
 COYOTE.weaponTypes = {
-    "": "COYOTE.WeaponTypes.select",
+    "select": "COYOTE.WeaponTypes.select",
     "melee": "COYOTE.WeaponTypes.melee",
     "ranged": "COYOTE.WeaponTypes.ranged",
     "unarmed": "COYOTE.WeaponTypes.unarmed"
 }
 
 COYOTE.physicalDefense = {
-    "": "COYOTE.PhysicalDefense.select",
+    "select": "COYOTE.PhysicalDefense.select",
     "environmental": "COYOTE.PhysicalDefense.environmental"
 }
 
@@ -42,11 +42,10 @@ COYOTE.primaryAction = {
     "secondary": "COYOTE.PrimaryAction.secondary",
     "prisec": "COYOTE.PrimaryAction.prisec",
     "narrative": "COYOTE.PrimaryAction.narrative"
-
 }
 
 COYOTE.stats = {
-    "": "COYOTE.Stats.select",
+    "select": "COYOTE.Stats.select",
     "Agility": "COYOTE.Stats.Agility",
     "Charisma": "COYOTE.Stats.Charisma",
     "Endurance": "COYOTE.Stats.Endurance",
@@ -60,7 +59,7 @@ COYOTE.stats = {
 }
 
 COYOTE.dropdownSkills = {
-    "": "COYOTE.Skills.select",
+    "select": "COYOTE.Skills.select",
     "Art": "COYOTE.Skills.Art",
     "Athletics": "COYOTE.Skills.Athletics",
     "Ceremony": "COYOTE.Skills.Ceremony",
@@ -104,7 +103,7 @@ COYOTE.modifierSN = {
 }
 
 COYOTE.npcType = {
-    "": "COYOTE.Npc.select",
+    "select": "COYOTE.Npc.select",
     "legend": "COYOTE.Npc.legend",
     "icon": "COYOTE.Npc.icon"
 }
