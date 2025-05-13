@@ -9,6 +9,10 @@
     font-size: 16px;
 }
 
+.dialog-content h1 {
+    color: rgb(57, 32, 91);
+}
+
 .app.window-app.sheet.journal-sheet h1, .dialog-content h1, .app.window-app.sheet.journal-page-content .editor-content {
     font-family: 'Lombok', sans-serif;
     text-align: center;
@@ -30,6 +34,7 @@
     font-size: large;
     padding: 20px 0 0 10px;
     font-family: 'Quiza Pro', sans-serif;
+    color: rgb(57, 32, 91);
 }
 
 .app.window-app.sheet.journal-sheet .editor-content, .app.window-app.sheet.journal-page-content {
