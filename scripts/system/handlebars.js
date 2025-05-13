@@ -25,5 +25,5 @@ function preloadHandlebarsTemplates() {
         "systems/coyote-and-crow/templates/sheet/partial/fragment/stat-mod.html",
         "systems/coyote-and-crow/templates/sheet/partial/npc-background.html"
     ];
-    return loadTemplates(templatePaths);
+    return foundry.applications.handlebars.loadTemplates(templatePaths);
 }
