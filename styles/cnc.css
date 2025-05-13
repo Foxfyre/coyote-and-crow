@@ -127,6 +127,13 @@ select {
     background-color: rgb(57, 32, 91);
 }
 
+.dialog.welcome {
+    background-color: whitesmoke;
+    width: 600px;
+    height: 800px;
+    color: rgb(57, 32, 91);
+}
+
 /* Character Sheet */
 
 .warning {
