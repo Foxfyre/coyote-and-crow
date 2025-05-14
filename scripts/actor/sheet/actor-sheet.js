@@ -2,7 +2,7 @@ import buildRoll from "../../system/build-roll.js";
 import getRoll from "../../system/get-roll.js";
 import rollCard from "../../system/roll-card.js";
 
-export class cncActorSheet extends ActorSheet {
+export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
@@ -30,7 +30,6 @@ export class cncActorSheet extends ActorSheet {
     async getData() {
         const sheetData = super.getData();
         sheetData.system = sheetData.data.system;
-
         const actorData = sheetData.actor;
         sheetData.stats = actorData.system.stats;
         sheetData.skills = actorData.system.skills;
@@ -98,13 +97,13 @@ export class cncActorSheet extends ActorSheet {
 
         this._sortSkills(sheetData);
         sheetData.enrichment = await this._enrichBio();
-        //console.log(sheetData);
+        console.log(sheetData);
         return sheetData;
     }
 
     async _enrichBio() {
         let enrichment = {};
-        enrichment['system.bio.notes'] = await TextEditor.enrichHTML(this.actor.system.bio.notes, { async: true, relativeTo: this.actor });
+        enrichment['system.bio.notes'] = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.actor.system.bio.notes, { async: true, relativeTo: this.actor });
         return foundry.utils.expandObject(enrichment);
     }
 
@@ -134,6 +133,10 @@ export class cncActorSheet extends ActorSheet {
         event.preventDefault();
         const header = event.currentTarget;
         const type = header.dataset.type;
+        const relstat = header.dataset.relstat;
+
+        console.log(header.dataset);
+
         let itemData;
 
         if (type === "specialization") {
@@ -146,6 +149,16 @@ export class cncActorSheet extends ActorSheet {
                     ...foundry.utils.deepClone(header.dataset)
                 }
             }
+        } else if (type === "ability") {
+            itemData = {
+                name: game.i18n.format("ITEM.itemNew", { type: game.i18n.localize(`ITEM.ItemType${type.capitalize()}`) }),
+                type: type,
+                system: {
+                    relstat: relstat,
+                    ...foundry.utils.deepClone(header.dataset)
+                }
+
+            };
         } else {
             itemData = {
                 name: game.i18n.format("ITEM.itemNew", { type: game.i18n.localize(`ITEM.ItemType${type.capitalize()}`) }),
@@ -154,6 +167,7 @@ export class cncActorSheet extends ActorSheet {
             };
         }
         //delete itemData.system.type;
+        console.log(itemData);
         return this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: true });
     }
 

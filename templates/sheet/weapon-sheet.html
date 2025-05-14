@@ -6,13 +6,13 @@
         <div class="item-col-base">
             <div class="item-row">
                 <label class="item-label" for="name">{{localize "ITEM.Weapon"}}:</label>
-                <input class="ability-input" name="name" type="text" value="{{item.name}}" />
+                <input class="ability-input" name="name" type="text" value="{{system.name}}" />
             </div>
             <div class="item-row row-50">
                 <div class="weapon-select">
                     <label class="item-label" for="system.type">{{localize "ITEM.WeaponType"}}:</label>
                     <select name="system.weaponTypes" value="{{system.weaponTypes}}">
-                        {{selectOptions dropDowns.weaponTypes selected=system.weaponTypes localize=true}}
+                        {{selectOptions system.dropDowns.weaponTypes selected=system.weaponTypes localize=true}}
                     </select>
                 </div>
             </div>

@@ -4,7 +4,7 @@
     </div>
     <div class="ability-row">
         <label for="name">Name:</label>
-        <input class="ability-input" name="name" type="text" value="{{item.name}}" />
+        <input class="ability-input" name="name" type="text" value="{{system.name}}" />
     </div>
     <div class="ability-row">
         <label for="">Stat:</label>
@@ -15,14 +15,14 @@
 
         {{else}}
         <select name="system.relStat" value="{{system.relStat}}">
-            {{selectOptions dropDowns.stats selected=system.relStat localize=true}}
+            {{selectOptions system.dropDowns.stats selected=system.relStat localize=true}}
         </select>
         {{/if}}
     </div>
     <div class="ability-row">
         <label for="">Activation:</label>
         <select name="system.activate" value="{{system.activate}}">
-            {{selectOptions dropDowns.primaryAction selected=system.activate localize=true}}
+            {{selectOptions system.dropDowns.primaryAction selected=system.activate localize=true}}
         </select>
     </div>
     <div class="ability-row">
