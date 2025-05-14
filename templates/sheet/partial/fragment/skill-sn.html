@@ -4,20 +4,20 @@
 <div class="pd-mod">
     <label name="system.modifier.sn.value">+ / - SN </label>
     <select name="system.modifier.sn.value" value="{{system.modifier.sn.value}}">
-        {{selectOptions dropDowns.modifierSN selected=system.modifier.sn.value localize=false}}
+        {{selectOptions system.dropDowns.modifierSN selected=system.modifier.sn.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.sn.skill" value="{{system.modifier.sn.skill}}">
-        {{selectOptions dropDowns.dropdownSkills selected=system.modifier.sn.skill localize=true}}
+        {{selectOptions system.dropDowns.dropdownSkills selected=system.modifier.sn.skill localize=true}}
     </select>
 </div>
 {{#ifCond system.modifier.sn.value '!=' 0}}
 <div class="pd-mod">
     <label name="system.modifier.sn1.value">+ / - SN </label>
     <select name="system.modifier.sn1.value" value="{{system.modifier.sn1.value}}">
-        {{selectOptions dropDowns.modifierSN selected=system.modifier.sn1.value localize=false}}
+        {{selectOptions system.dropDowns.modifierSN selected=system.modifier.sn1.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.sn1.skill" value="{{system.modifier.sn1.skill}}">
-        {{selectOptions dropDowns.dropdownSkills selected=system.modifier.sn1.skill localize=true}}
+        {{selectOptions system.dropDowns.dropdownSkills selected=system.modifier.sn1.skill localize=true}}
     </select>
 </div>
 {{/ifCond}}
@@ -25,10 +25,10 @@
 <div class="pd-mod">
     <label name="system.modifier.sn2.value">+ / - SN </label>
     <select name="system.modifier.sn2.value" value="{{system.modifier.sn2.value}}">
-        {{selectOptions dropDowns.modifierSN selected=system.modifier.sn2.value localize=false}}
+        {{selectOptions system.dropDowns.modifierSN selected=system.modifier.sn2.value localize=false}}
     </select>
     <select class="pd-stat" name="system.modifier.sn2.skill" value="{{system.modifier.sn2.skill}}">
-        {{selectOptions dropDowns.dropdownSkills selected=system.modifier.sn2.skill localize=true}}
+        {{selectOptions system.dropDowns.dropdownSkills selected=system.modifier.sn2.skill localize=true}}
     </select>
 </div>
-{{/ifCond}}
+{{/ifCond}} 
