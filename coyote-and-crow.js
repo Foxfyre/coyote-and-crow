@@ -26,14 +26,14 @@ Hooks.once("init", async function () {
     decimals: 2
   }
 
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("coyote-and-crow", cncActorSheet, {
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet("coyote-and-crow", cncActorSheet, {
     types: ["character", "npc"],
     makeDefault: true
   });
 
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("coyote-and-crow", cncItemSheet, {
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet("coyote-and-crow", cncItemSheet, {
     makeDefault: true
   });
 
@@ -101,39 +101,43 @@ Hooks.once("init", () => {
 
 Hooks.once("ready", async () => {
   if (!game.settings.get("coyote-and-crow", "initial-welcome")) {
-    new Dialog({
-      title: `Welcome to v${game.system.version} of Coyote & Crow`,
+    new foundry.applications.api.DialogV2({
+      window: {
+        title: `Welcome to v${game.system.version} of Coyote & Crow`,
+      },
+      classes: ["dialog", "welcome"],
       content: `
-    <h1>Coyote & Crow</h1>
-    <h2>3.0.0 Update</h2>
+        <h1>Coyote & Crow</h1>
+        <h2>4.0.0 Update</h2>
 
-    <h2>Always update your world files before updating to a new system version of Coyote & Crow. 
-    This system is actively in development and may be subject to breaking changes without warning.</h2>
+        <h2>Always update your world files before updating to a new system version of Coyote & Crow. 
+        This system is actively in development and may be subject to breaking changes without warning.</h2>
 
-    <h3><b>Functionality</b></h3>
-    <ul>
-    <li>The entire Coyote & Crow system has been updated to Foundry V12! </li>
-    </ul><br>
+        <h3><b>Functionality</b></h3>
+        <ul>
+        <li>The entire Coyote & Crow system has been updated to Foundry V13! </li>
+        </ul><br>
 
 
-    <p>Report bugs, suggest features, and find others who play Coyote & Crow. Join us on <a href="https://discord.gg/Fbm8Uevvny">Discord!</a></p>
-    `,
-      buttons: {
-        dont_show: {
+        <p>Report bugs, suggest features, and find others who play Coyote & Crow. Join us on <a href="https://discord.gg/Fbm8Uevvny">Discord!</a></p>
+        `,
+      buttons: [
+        {
+          action: "dont_show",
           label: "Don't Show Again",
-          callback: async () => {
-            await game.settings.set("coyote-and-crow", "initial-welcome", true)
-          }
+          default: true,
+          callback: () => game.settings.set("coyote-and-crow", "initial-welcome", true)
         },
-        close: {
+        {
+          action: "close",
           label: "Close"
         }
-      }
-    }, { width: 600 }).render(true)
+      ],
+    }, { width: 600, height: 400 }).render(true)
   }
 })
 
-Hooks.on("renderChatMessage", (message, html, data) => {
+Hooks.on("renderChatMessageHTML", (message, html, data) => {
   /* console.log("Here's the Message")
   console.log(message);
   console.log("Here's the raw html")
@@ -141,29 +145,30 @@ Hooks.on("renderChatMessage", (message, html, data) => {
   console.log("Here's the data");
   console.log(data); */
   if (!message.isAuthor) {
-    html.find("button").remove();
+    html.querySelector("button").remove();
   }
-  if (message.isRoll){
+  if (message.isRoll) {
     if (Object.keys(data.message.flags).length > 0) {
       if (Object.keys(data.message.flags["coyote-and-crow"]).length > 0) {
         const actor = game.actors.get(data.message.speaker.actor);
         const rolldata = data.message.flags["coyote-and-crow"];
         //console.log(rolldata);
-        if (html.find("button.modRoll")[0]){
-          html.find("button.modRoll")[0].addEventListener("click", ev => {
+        const modRollButton = html.querySelector("button.modRoll");
+        if (modRollButton) {
+          modRollButton.addEventListener("click", ev => {
             //console.log("Modify Roll!")
             modifyRoll(rolldata, message.rolls[0], data.message.speaker.actor)
           })
         }
-        if (html.find("button.critRoll")[0]){
+        if (html.querySelector("button.critRoll")) {
           console.log("The crit roll button was found")
-          html.find("button.critRoll")[0].addEventListener("click", ev => {
+          html.querySelector("button.critRoll").addEventListener("click", ev => {
             console.log("Crit Roll!")
-            rolldata.totalDice = html.find("button.critRoll")[0].dataset.crits
+            rolldata.totalDice = html.querySelector("button.critRoll").dataset.crits
             rolldata.critical = true;
-  
+
             // We've got some kind of issue here
-            getRoll(rolldata).then(function(rollResults) {
+            getRoll(rolldata).then(function (rollResults) {
               const rolledCard = rollCard(rollResults);
               // console.log(rolledCard)
 
@@ -171,7 +176,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
                 speaker: ChatMessage.getSpeaker({ actor: actor }),
                 flavor: rolledCard.title,
                 rollMode: game.settings.get("core", "rollMode"),
-                flags: {"coyote-and-crow": rolldata},
+                flags: { "coyote-and-crow": rolldata },
                 content: rolledCard.dice,
                 sound: CONFIG.sounds.dice
               })

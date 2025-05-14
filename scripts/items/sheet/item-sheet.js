@@ -5,7 +5,7 @@
 
 import { convertStatName } from "../../system/utility.js";
 
-export class cncItemSheet extends ItemSheet {
+export class cncItemSheet extends foundry.appv1.sheets.ItemSheet {
     constructor(...args) {
         super(...args)
 
@@ -35,14 +35,17 @@ export class cncItemSheet extends ItemSheet {
         const itemData = super.getData(options);
         itemData.system = itemData.item._source.system;
         itemData._id = itemData.data._id;
+        itemData.system.dropDowns = CONFIG.COYOTE;
+        console.log(itemData);
         //const data = super.getData(options);
         //console.log(data);
-        //const itemData = data.data
         //console.log(this.actor);
         itemData.system.name = itemData.data.name;
         let pathStats
-        itemData.enrichment = await this._enrichItem();
-        itemData.dropDowns = CONFIG.COYOTE;
+        itemData.system.enrichment = await this._enrichItem();
+        itemData.system.dropDowns.physicalDefense = itemData.system.dropDowns.physicalDefense || [];
+        itemData.system.dropDowns.modifierSN = itemData.system.dropDowns.modifierSN || [];
+        itemData.system.dropDowns.dropdownSkills = itemData.system.dropDowns.dropdownSkills || [];
 
         if (this.item.isOwned === null || this.item.isOwned === false) {
             itemData.system.owned = false;
@@ -152,15 +155,15 @@ export class cncItemSheet extends ItemSheet {
         }
         //console.log(itemData);
         this.actor.updateEmbeddedDocuments("Item", [itemData])
-        //console.log(itemData);
+        console.log(itemData);
         return itemData;
     }
 
     async _enrichItem() {
         //console.log("Enrichment processing");
         let enrichment = {};
-        enrichment['system.notes'] = await TextEditor.enrichHTML(this.item.system.notes, {async: true, relativeTo: this.item});
-        enrichment[`system.description`] = await TextEditor.enrichHTML(this.item.system.description, {async: true, relativeTo: this.item});
+        enrichment['system.notes'] = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.item.system.notes, {async: true, relativeTo: this.item});
+        enrichment[`system.description`] = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.item.system.description, {async: true, relativeTo: this.item});
 
         return foundry.utils.expandObject(enrichment);
     }
