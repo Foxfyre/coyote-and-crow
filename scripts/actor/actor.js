@@ -44,6 +44,7 @@ export class cncActor extends Actor {
     prepareData() {
         const newSystem = this.system;
         newSystem.items = this.items;
+        console.log(newSystem);
         newSystem.attributes.init.score = newSystem.stats.agility.value + newSystem.stats.perception.value + newSystem.stats.charisma.value;
         newSystem.attributes.body.pd = newSystem.stats.agility.value + newSystem.stats.endurance.value;
         newSystem.attributes.mind.md = newSystem.stats.perception.value + newSystem.stats.wisdom.value;
@@ -84,7 +85,6 @@ export class cncActor extends Actor {
 
 
         for (let x of items) {
-            //console.log(x);
             if (!x) { return }
 
             if (x.type === "specialization") { continue }
@@ -102,12 +102,21 @@ export class cncActor extends Actor {
                 }
             }
 
-            if (x.type === "weapon" && x.system.weaponTypes !== "") {
+            if (x.type === "weapon" && x.system.weaponTypes) {
                 let weaponType = x.system.weaponTypes; // get weapon type from item
-                let dp = x.system.modifier.dp.value;   // get value of dp from item
-                let weaponSkill = actorSkills[weaponType].skillRank;  // get skill rank of weaponskill
-                if (dp > weaponSkill) { dp = weaponSkill; }
-                this.system.skills[weaponType].addDice = dp;
+                let dp = x.system.modifier?.dp?.value || 0; // safely get dp value, default to 0 if undefined
+
+                if (!actorSkills[weaponType]) {
+                    console.warn(`Weapon skill '${weaponType}' not found in actorSkills.`);
+                    return; // Skip if the weapon skill does not exist
+                }
+
+                let weaponSkill = actorSkills[weaponType].skillRank || 0; // default skill rank to 0 if undefined
+                if (dp > weaponSkill) {
+                    dp = weaponSkill; // cap dp at weaponSkill
+                }
+
+                actorSkills[weaponType].addDice = (actorSkills[weaponType].addDice || 0) + dp; // safely add dp to addDice
             }
 
             // cycle through the stat object, record the modifier on the item, pull actor stat value, add & write to actor. Valid on all items
@@ -157,14 +166,22 @@ export class cncActor extends Actor {
             }*/
 
             for (let n of Object.values(snGroup)) {
-                if (n.skill.length === 0) { continue; }
+                if (!n || !n.skill || typeof n.skill !== "string" || n.skill.length === 0) {
+                    continue; // Skip if `n` or `n.skill` is invalid
+                }
+
                 let skillNameArr = n.skill.split(' ');
                 let skillName = skillNameArr[0].toLowerCase();
-                let itemSNValue = Number(n.value);
-                let itemSNSkill = n.skill.toLowerCase();
-                let skillSNMod = Number(actorSkills[skillName].snMod);
+                let itemSNValue = Number(n.value) || 0;
+
+                if (!actorSkills[skillName]) {
+                    //console.warn(`Skill '${skillName}' not found in actorSkills.`);
+                    continue; // Skip if the skill does not exist in `actorSkills`
+                }
+
+                let skillSNMod = Number(actorSkills[skillName].snMod) || 0;
                 skillSNMod += itemSNValue;
-                actorSkills[skillName].snMod = Number(skillSNMod);
+                actorSkills[skillName].snMod = skillSNMod;
             }
 
             for (let n of Object.values(snStatGroup)) {
