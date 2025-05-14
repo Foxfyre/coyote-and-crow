@@ -6,7 +6,8 @@
         <div class="item-col-base">
             <div class="item-row">
                 <label class="item-label" for="name">{{localize "ITEM.Name"}}:</label>
-                <input class="ability-input" name="name" type="text" value="{{item.name}}" />
+                {{log item}}
+                <input class="ability-input" name="name" type="text" value="{{system.name}}" />
             </div>
             <div class="item-row">
                 <label class="item-label" for="system.costRank">{{localize "ITEM.CostRank"}}:</label>
