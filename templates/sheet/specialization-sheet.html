@@ -18,14 +18,14 @@
                     <span>Rank</span>
                 </div>
             </div> 
-            
+             
             <div class="spec-table-row">
                 <div class="spec-table-col">
                     <input type="text" name="name" value="{{item.name}}" />
                 </div>
                 <div class="spec-table-col">
                     <select name="system.skill" value="{{system.skill}}">
-                        {{selectOptions dropDowns.dropdownSkills selected=system.skill localize=true}}
+                        {{selectOptions system.dropDowns.dropdownSkills selected=system.skill localize=true}}
                     </select>
                 </div>
                 <div class="spec-table-col spec-values">
@@ -49,7 +49,7 @@
             <div class="pd-mod">
                 <label name="system.modifier.sn.value">+ / - SN </label>
                 <select name="system.modifier.sn.value" value="{{system.modifier.sn.value}}">
-                    {{selectOptions dropDowns.modifierSN selected=system.modifier.sn.value localize=false}}
+                    {{selectOptions system.dropDowns.modifierSN selected=system.modifier.sn.value localize=false}}
                 </select>
             </div>
         </div>
