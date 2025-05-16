@@ -134,6 +134,14 @@ select {
     color: rgb(57, 32, 91);
 }
 
+.prosemirror .editor-container, prose-mirror .editor-container {
+    min-height: 100px;
+    background-color: lightgray;
+}
+
+.prosemirror .editor-container .editor-content {
+    padding: 0 10px;
+}
 /* Character Sheet */
 
 .warning {

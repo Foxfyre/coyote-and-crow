@@ -19,9 +19,9 @@
     </div>
     <div class="gift-editor">
         <span>Description</span>
-        {{editor enrichment.system.description target="system.description" button=true owner=owner editable=true}}
+        {{editor system.description target="system.description" engine="prosemirror" button=true owner=owner editable=true}}
     </div>
-
+ 
     <!--Modifications-->
     <div class="sheet-title-h2 toggle-on-click" data-toggle="toggle" style="margin-top: 10px;">
         <span>Modifiers <i class="fas fa-angle-double-down"></i></span>
