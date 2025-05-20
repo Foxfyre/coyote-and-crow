@@ -46,7 +46,7 @@
   "secondaryTokenAttribute": "attributes.mind.currentValue",
   "url": "https://github.com/Foxfyre/coyote-and-crow",
   "manifest": "https://github.com/Foxfyre/coyote-and-crow/releases/latest/download/system.json",
-  "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/3.0.1/coyote-and-crow.zip",
+  "download": "https://github.com/Foxfyre/coyote-and-crow/releases/download/4.0.0/coyote-and-crow.zip",
   "license": "LICENSE.txt",
   "compatibility": {
     "minimum": "13",
