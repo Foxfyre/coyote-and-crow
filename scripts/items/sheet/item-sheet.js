@@ -40,6 +40,7 @@ export class cncItemSheet extends foundry.appv1.sheets.ItemSheet {
         //const data = super.getData(options);
         //console.log(data);
         //console.log(this.actor);
+        itemData.system.img = itemData.data.img;
         itemData.system.name = itemData.data.name;
         let pathStats
         itemData.system.enrichment = await this._enrichItem();
