@@ -97,7 +97,7 @@ export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
 
         this._sortSkills(sheetData);
         sheetData.enrichment = await this._enrichBio();
-        console.log(sheetData);
+        //console.log(sheetData);
         return sheetData;
     }
 
@@ -135,7 +135,7 @@ export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
         const type = header.dataset.type;
         const relstat = header.dataset.relstat;
 
-        console.log(header.dataset);
+        //console.log(header.dataset);
 
         let itemData;
 
@@ -167,7 +167,7 @@ export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
             };
         }
         //delete itemData.system.type;
-        console.log(itemData);
+        //console.log(itemData);
         return this.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: true });
     }
 

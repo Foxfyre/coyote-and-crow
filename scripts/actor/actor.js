@@ -44,7 +44,7 @@ export class cncActor extends Actor {
     prepareData() {
         const newSystem = this.system;
         newSystem.items = this.items;
-        console.log(newSystem);
+        //console.log(newSystem);
         newSystem.attributes.init.score = newSystem.stats.agility.value + newSystem.stats.perception.value + newSystem.stats.charisma.value;
         newSystem.attributes.body.pd = newSystem.stats.agility.value + newSystem.stats.endurance.value;
         newSystem.attributes.mind.md = newSystem.stats.perception.value + newSystem.stats.wisdom.value;

@@ -13,8 +13,8 @@ export default async function modifyRoll(rolldata, roll, actorid) {
         },
         rolls: []
     }
-    console.log(data)
-    console.log(roll);
+    //console.log(data)
+    //console.log(roll);
 
     roll.terms[0].results.forEach((r, i) => {
         let legendmax = Math.min(12 - Number(r.result), data.legendary.max)
@@ -84,21 +84,21 @@ export default async function modifyRoll(rolldata, roll, actorid) {
 
 
 function _modifyRoll(html, actorid, compiledRollData, originalRoll) {
-    console.log("Modify the roll!");
+    //console.log("Modify the roll!");
     const actor = game.actors.get(actorid);
-    console.log(actor);
+    //console.log(actor);
     const curmind = actor.system.attributes.mind.currentValue;
-    console.log(curmind);
+    //console.log(curmind);
     const spendmind = Number(html.find('span[name="usedMind"]')[0].innerHTML);
-    console.log(spendmind);
+    //console.log(spendmind);
     actor.update({"system.attributes.mind.currentValue": curmind - spendmind})
 
  
     const baseRoll = originalRoll;
-    console.log(baseRoll);
+    //console.log(baseRoll);
     let crits = 0;
     const rows = html.find("div.mod-roll-row");
-    console.log(baseRoll);
+    //console.log(baseRoll);
     baseRoll.terms[0]._total = 0;
     // baseRoll.terms[0].values = JSON.parse(JSON.stringify(originalRoll.terms[0].values));
     baseRoll.terms[0].results.forEach(function(v,i){
@@ -117,8 +117,8 @@ function _modifyRoll(html, actorid, compiledRollData, originalRoll) {
     compiledRollData.totalDice = crits;
 
     getRoll(compiledRollData).then(function(critRoll){
-        console.log(baseRoll)
-        console.log(critRoll)
+        //console.log(baseRoll)
+        //console.log(critRoll)
     
         const rollResults = foundry.dice.terms.PoolTerm.fromRolls([baseRoll, critRoll])
     

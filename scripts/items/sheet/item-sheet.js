@@ -156,7 +156,7 @@ export class cncItemSheet extends foundry.appv1.sheets.ItemSheet {
         }
         //console.log(itemData);
         this.actor.updateEmbeddedDocuments("Item", [itemData])
-        console.log(itemData);
+        //console.log(itemData);
         return itemData;
     }
 
