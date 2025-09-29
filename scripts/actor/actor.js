@@ -24,7 +24,7 @@ export class cncActor extends Actor {
         } else if (data.token) {
           createData.token = data.token
         }
-    
+
         if (data.type == "character" ||  data.type == "npc") {
           createData.token.vision = true;
           createData.token.actorLink = true;
@@ -193,7 +193,7 @@ export class cncActor extends Actor {
                 actorStats[statName].snMod = Number(statSNMod);
             }
 
-            this.system.attributes = actorAttributes // consolidate the other two into this. 
+            this.system.attributes = actorAttributes // consolidate the other two into this.
             this.system.stats = actorStats;
             this.system.attributes.addDicePool = diceGroup;
             this.system.attributes.body.modified = armorGroup + this.system.attributes.body.pd;
@@ -201,7 +201,7 @@ export class cncActor extends Actor {
     }
 
     _calcTotalSkills() {
-        const skilledTests = ["Ceremony", "Cybernetics", "Herbalism", "Language", "Medicine", "Science"];
+        const skilledTests = ["ceremony", "cybernetics", "herbalism", "language", "medicine", "science"];
         for (let skillKey in this.system.skills) {
             let skill = this.system.skills[skillKey]
             // XORs the stat comparison with whether the rank is > 0
@@ -219,13 +219,13 @@ export class cncActor extends Actor {
             !this.system.skills[skillKey].dicePoolMod ? this.system.skills[skillKey].dicePoolMod = 0 : null;
 
 
-            if (skill.name === "Knowledge" && skill.skillRank > 1) {
+            if (skillKey === "knowledge" && skill.skillRank > 1) {
                 ui.notifications ? ui.notifications.warn(game.i18n.format("WARN.KnowledgeMax", { name: this.name })) : null;
             }
             skill.skillRank = 0 + this.system.skills[skillKey].skillRank;
             skill.skillTotal = 0 + skillModValue + this.system.skills[skillKey].skillRank + this.system.skills[skillKey].dicePoolMod;
             // 0 out skilled only skills if no skill rank present. Prevents confusion on character sheet.
-            if (skilledTests.includes(skill.name) === true && skill.skillRank === 0) {
+            if (skilledTests.includes(skillKey) && skill.skillRank === 0) {
                 skill.skillTotal = 0;
             }
 
@@ -313,7 +313,7 @@ export class cncActor extends Actor {
                 "stat2": {
                     "name": "Charisma",
                     "value": "charisma"
-                }, 
+                },
                 "stat3": {
                     "name": "Endurance",
                     "value": "endurance"

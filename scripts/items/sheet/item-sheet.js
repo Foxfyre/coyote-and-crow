@@ -26,7 +26,7 @@ export class cncItemSheet extends foundry.appv1.sheets.ItemSheet {
         let type = this.item.type;
         return `systems/coyote-and-crow/templates/sheet/${type}-sheet.html`;
     }
- 
+
     get itemData() {
         return this.item.data;
     }
@@ -46,9 +46,10 @@ export class cncItemSheet extends foundry.appv1.sheets.ItemSheet {
         itemData.system.enrichment = await this._enrichItem();
         itemData.system.dropDowns.physicalDefense = itemData.system.dropDowns.physicalDefense || [];
         itemData.system.dropDowns.modifierSN = itemData.system.dropDowns.modifierSN || [];
-        itemData.system.dropDowns.dropdownSkills = itemData.system.dropDowns.dropdownSkills || [];
 
-        if (this.item.isOwned === null || this.item.isOwned === false) {
+        itemData.config = CONFIG.COYOTE;
+
+        if (!this.item.isEmbedded) {
             itemData.system.owned = false;
             return itemData;
         } else {
@@ -154,9 +155,7 @@ export class cncItemSheet extends foundry.appv1.sheets.ItemSheet {
             itemData.system = itemObj;
             //this.actor.updateEmbeddedDocuments("Item", [itemData])
         }
-        //console.log(itemData);
-        this.actor.updateEmbeddedDocuments("Item", [itemData])
-        //console.log(itemData);
+
         return itemData;
     }
 

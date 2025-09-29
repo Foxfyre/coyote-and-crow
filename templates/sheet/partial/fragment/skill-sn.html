@@ -6,8 +6,8 @@
     <select name="system.modifier.sn.value" value="{{system.modifier.sn.value}}">
         {{selectOptions system.dropDowns.modifierSN selected=system.modifier.sn.value localize=false}}
     </select>
-    <select class="pd-stat" name="system.modifier.sn.skill" value="{{system.modifier.sn.skill}}">
-        {{selectOptions system.dropDowns.dropdownSkills selected=system.modifier.sn.skill localize=true}}
+    <select class="pd-stat" name="system.modifier.sn.skill">
+        {{selectOptions config.dropdownSkills selected=system.modifier.sn.skill localize=true}}
     </select>
 </div>
 {{#ifCond system.modifier.sn.value '!=' 0}}
@@ -16,8 +16,8 @@
     <select name="system.modifier.sn1.value" value="{{system.modifier.sn1.value}}">
         {{selectOptions system.dropDowns.modifierSN selected=system.modifier.sn1.value localize=false}}
     </select>
-    <select class="pd-stat" name="system.modifier.sn1.skill" value="{{system.modifier.sn1.skill}}">
-        {{selectOptions system.dropDowns.dropdownSkills selected=system.modifier.sn1.skill localize=true}}
+    <select class="pd-stat" name="system.modifier.sn1.skill">
+        {{selectOptions config.dropdownSkills selected=system.modifier.sn1.skill localize=true}}
     </select>
 </div>
 {{/ifCond}}
@@ -27,8 +27,8 @@
     <select name="system.modifier.sn2.value" value="{{system.modifier.sn2.value}}">
         {{selectOptions system.dropDowns.modifierSN selected=system.modifier.sn2.value localize=false}}
     </select>
-    <select class="pd-stat" name="system.modifier.sn2.skill" value="{{system.modifier.sn2.skill}}">
-        {{selectOptions system.dropDowns.dropdownSkills selected=system.modifier.sn2.skill localize=true}}
+    <select class="pd-stat" name="system.modifier.sn2.skill">
+        {{selectOptions config.dropdownSkills selected=system.modifier.sn2.skill localize=true}}
     </select>
 </div>
-{{/ifCond}} 
+{{/ifCond}}

@@ -4,14 +4,13 @@
     </div>
 
     <ul class="bio-col items">
-        {{#each gifts as |burden key|}}
-        {{#ifCond burden.system.type '===' "burden"}}
-        <li class="item gift-item" data-item-id={{burden._id}}>
+      {{#each actor.items.documentsByType.burden as |burden|}}
+        <li class="item gift-item" data-item-id={{burden.id}}>
             <div class="bio-row">
                 <div class="gift-input">
                     <span>Name</span>
                     <div class="input-readonly">
-                        <span>{{{name}}}</span>
+                        <span>{{{burden.name}}}</span>
                     </div>
                 </div>
                 <div class="gift-input">
@@ -28,13 +27,15 @@
                 </div>
                 <div class="item-controls flexrow gift-controls gift-input">
                     <span>Edit</span>
-                    <a class="item-control item-edit" title='{{localize "ITEM.EditItem"}}'><i
-                            class="fas fa-edit"></i></a>
+                    <a class="item-control item-edit" data-tooltip="ITEM.EditItem">
+                      <i class="fas fa-edit"></i>
+                    </a>
                 </div>
                 <div class="item-controls flexrow gift-controls gift-input">
                     <span>Delete</span>
-                    <a class="item-control item-delete" title='{{localize "ITEM.DeleteItem"}}'><i
-                            class="fas fa-trash"></i></a>
+                    <a class="item-control item-delete" data-tooltip="ITEM.DeleteItem">
+                      <i class="fas fa-trash"></i>
+                    </a>
                 </div>
             </div>
             <div class="gift-editor">
@@ -44,13 +45,12 @@
                 </div>
             </div>
         </li>
-        {{/ifCond}}
         {{/each}}
     </ul>
     <div class="sheet-title-h2" style="margin-top: 10px;">
         <span>Add a Burden </span>
-        <a class="item-control item-create" data-type="burden" title='{{localize "ITEM.CreateBurden"}}'><i
-                class="fas fa-plus"></i>
+        <a class="item-control item-create" data-type="burden" data-tooltip="ITEM.CreateBurden">
+          <i class="fas fa-plus"></i>
         </a>
     </div>
 </div>
