@@ -10,12 +10,12 @@
         <label for="">Stat:</label>
         {{#if system.owned}}
         <select name="system.relStat">
-            {{selectOptions system.allowStats selected=system.relStat localize=true}}
+            {{selectOptions system.allowStats selected=system.relStat localize=true blank="COYOTE.Stats.select"}}
         </select>
 
         {{else}}
         <select name="system.relStat" value="{{system.relStat}}">
-            {{selectOptions system.dropDowns.stats selected=system.relStat localize=true}}
+            {{selectOptions system.dropDowns.stats selected=system.relStat localize=true blank="COYOTE.Stats.select"}}
         </select>
         {{/if}}
     </div>

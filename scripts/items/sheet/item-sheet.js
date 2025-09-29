@@ -26,14 +26,14 @@ export class cncItemSheet extends foundry.appv1.sheets.ItemSheet {
         let type = this.item.type;
         return `systems/coyote-and-crow/templates/sheet/${type}-sheet.html`;
     }
- 
+
     get itemData() {
         return this.item.data;
     }
 
     async getData(options) {
         const itemData = super.getData(options);
-        itemData.system = itemData.item._source.system;
+        itemData.system = itemData.item.toObject().system;
         itemData._id = itemData.data._id;
         itemData.system.dropDowns = CONFIG.COYOTE;
         console.log(itemData);

@@ -154,8 +154,8 @@ export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
                 name: game.i18n.format("ITEM.itemNew", { type: game.i18n.localize(`ITEM.ItemType${type.capitalize()}`) }),
                 type: type,
                 system: {
-                    relstat: relstat,
-                    ...foundry.utils.deepClone(header.dataset)
+                    ...foundry.utils.deepClone(header.dataset),
+                    relStat: relstat,
                 }
 
             };
@@ -219,7 +219,7 @@ export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
     *           In roll modifier screen - see current roll - decide to modify any dice by the relevant meta values
     *       Else roll normally
     *   \/
-    *   Send Results into roll card 
+    *   Send Results into roll card
     */
 
     async _diceRoll(event) {
@@ -252,7 +252,7 @@ export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
             return;
         }
 
-        // Send data and roll info to gather all information required for rolls. 
+        // Send data and roll info to gather all information required for rolls.
         const compiledRollData = buildRoll(data, rollData);
 
         const rollResults = await getRoll(compiledRollData)

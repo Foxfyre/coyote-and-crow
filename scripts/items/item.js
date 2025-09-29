@@ -1,18 +1,8 @@
 //import { convertBurdenToGift } from "../system/utility.js";
 
 export class cncItem extends Item {
-    prepareData() {
-        super.prepareData();
-    }
-
-    _preCreate(data) {
-    }
-
-    prepareBaseData() {
- 
-    }
-
-    prepareDerivedData(data) {
+    prepareDerivedData() {
+      super.prepareDerivedData();
         //const itemData = this.data;
 
 
@@ -35,5 +25,19 @@ export class cncItem extends Item {
 
             this.system.activationName = activationName;
         }
+    }
+
+    /** @inheritdoc */
+    static migrateData(source) {
+      // Some items have system.relstat instead of system.relStat.
+      if (foundry.utils.hasProperty(source, "system.relstat")) {
+        if (!foundry.utils.hasProperty(source, "system.relStat")) source.system.relStat = source.system.relstat;
+        delete source.system.relstat;
+      }
+
+      // Some items were created with capitalized system.relStat value.
+      if (source.system?.relStat) source.system.relStat = source.system.relStat.toLowerCase();
+
+      return super.migrateData(source);
     }
 }

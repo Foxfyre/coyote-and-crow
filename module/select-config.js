@@ -45,17 +45,16 @@ COYOTE.primaryAction = {
 }
 
 COYOTE.stats = {
-    "select": "COYOTE.Stats.select",
-    "Agility": "COYOTE.Stats.Agility",
-    "Charisma": "COYOTE.Stats.Charisma",
-    "Endurance": "COYOTE.Stats.Endurance",
-    "Intelligence": "COYOTE.Stats.Intelligence",
-    "Perception": "COYOTE.Stats.Perception",
-    "Spirit": "COYOTE.Stats.Spirit",
-    "Strength": "COYOTE.Stats.Strength",
-    "Will": "COYOTE.Stats.Will",
-    "Wisdom": "COYOTE.Stats.Wisdom",
-    "Wealth": "COYOTE.Stats.Wealth"
+    "agility": "COYOTE.Stats.Agility",
+    "charisma": "COYOTE.Stats.Charisma",
+    "endurance": "COYOTE.Stats.Endurance",
+    "intelligence": "COYOTE.Stats.Intelligence",
+    "perception": "COYOTE.Stats.Perception",
+    "spirit": "COYOTE.Stats.Spirit",
+    "strength": "COYOTE.Stats.Strength",
+    "will": "COYOTE.Stats.Will",
+    "wisdom": "COYOTE.Stats.Wisdom",
+    "wealth": "COYOTE.Stats.Wealth"
 }
 
 COYOTE.dropdownSkills = {
