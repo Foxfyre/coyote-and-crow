@@ -1,6 +1,6 @@
 <form class="{{cssClass}} item-sheet" autocomplete="off">
     <div class="sheet-title" style="margin-top: 10px;">
-        <span>Gifts / Burdens</span>
+        <span>Gifts</span>
     </div>
 
     <div class="item-col-main">
@@ -9,12 +9,11 @@
                 <span>Name</span>
                 <input class="gift-category" name="name" type="text" value="{{system.name}}" />
             </div>
-
             <div class="item-row row-50">
                 <div class="weapon-select">
-                    <label class="item-label" for="system.type">{{localize "ITEM.GiftBurden"}}:</label>
-                    <select name="system.type" value="{{system.type}}">
-                        {{selectOptions system.dropDowns.giftBurden selected=system.type localize=true}}
+                    <label class="item-label" for="item.type">{{localize "ITEM.GiftBurden"}}:</label>
+                    <select name="item.type" value="{{item.type}}">
+                        {{selectOptions system.dropDowns.giftBurden selected=item.type localize=true}}
                     </select>
                 </div>
             </div>

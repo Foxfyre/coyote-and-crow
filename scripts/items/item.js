@@ -13,10 +13,6 @@ export class cncItem extends Item {
     }
 
     prepareDerivedData(data) {
-        //const itemData = this.data;
-
-
-
         if (this.type === "ability") {
             // get value of activation
             let activationValue = this.system.activate;

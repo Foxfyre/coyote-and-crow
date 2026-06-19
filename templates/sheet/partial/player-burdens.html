@@ -4,8 +4,8 @@
     </div>
 
     <ul class="bio-col items">
-        {{#each gifts as |burden key|}}
-        {{#ifCond burden.system.type '===' "burden"}}
+        {{#each burdens as |burden key|}}
+        {{#ifCond burden.type '===' "burden"}}
         <li class="item gift-item" data-item-id={{burden._id}}>
             <div class="bio-row">
                 <div class="gift-input">

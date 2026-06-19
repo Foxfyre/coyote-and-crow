@@ -31,6 +31,21 @@ export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
         const sheetData = super.getData();
         sheetData.system = sheetData.data.system;
         const actorData = sheetData.actor;
+
+        console.log(sheetData.items);
+        console.log(actorData);
+        for (let item of sheetData.items) {
+            if (item.type === "gift" || item.type === "burden") {
+                console.log("Name", item.name, "Type", item.type, "System Type", item.system.type);
+
+                // If system.type is missing or mismatched, set it to item.type
+                if (!item.system.type || item.system.type !== item.type) {
+                    item.system.type = item.type;
+                    console.log("Name", item.name, "Type", item.type, "System Type", item.system.type);
+                }
+            }
+        }
+
         sheetData.stats = actorData.system.stats;
         sheetData.skills = actorData.system.skills;
         sheetData.derived = actorData.system.derived;
@@ -42,9 +57,10 @@ export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
         sheetData.states = actorData.system.states;
         sheetData.dropDowns = CONFIG.COYOTE;
 
+        // TODO Add filtering clean up to sort burdens and gifts properly. Make sure system.type is set to burden or gift.
+
         let stat1 = sheetData.info.path.stats.stat1.value;
         let stat2 = sheetData.info.path.stats.stat2.value;
-
 
         //Fix Notes
         if (actorData.system.hasOwnProperty('data')) {
@@ -97,7 +113,7 @@ export class cncActorSheet extends foundry.appv1.sheets.ActorSheet {
 
         this._sortSkills(sheetData);
         sheetData.enrichment = await this._enrichBio();
-        //console.log(sheetData);
+        console.log(sheetData);
         return sheetData;
     }
 

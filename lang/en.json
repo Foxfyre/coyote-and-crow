@@ -79,6 +79,8 @@
     "ITEM.Weapon": "Weapon",
     "ITEM.Armor": "Armor/Clothing",
     "ITEM.GiftBurden": "Gift/Burden",
+    "ITEM.Gift": "Gift",
+    "ITEM.Burden": "Burden",
     "ITEM.Traits": "Traits",
     "ITEM.Type": "Type",
     "ITEM.Items": "Items",
